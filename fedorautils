@@ -1,0 +1,107 @@
+#!/bin/bash
+# Fedora Utils for software, codec installs and system tweaks for Fedora.
+# Copyright (C) 2012  Satyajit sahoo
+#
+# License: GNU General Public License 3 <http://www.gnu.org/licenses/gpl-3.0.html>
+# Author: Satyajit Sahoo <satyajit.happy@gmail.com>
+# Site: Project Page <http://fedorautils.sorceforge.net>
+# Blog: Funsurf <http://funsurf-blog.blogspot.com>
+#
+# Fedora Utils lets you install multimedia codecs, flash, java, microsoft fonts,
+# install many additional softwares not available in Fedora repos,
+# useful tweaks such as autologin, add user to sudoers etc.
+# turn off unnecessary daemons to improve boot time,
+# fix problems and cleanup your system,
+# view your system ShowMsgrmation and much more with just few clicks.
+#
+# This script modifies system files and adds software from various repositories and other sources which are not under its control.
+#
+# This script benefits both for codes and ideas from
+# AutoPlus by dangermouse <http://www.dnmouse.org/autoten/>
+# easyLife by dulinux <http://easylifeproject.org>
+#
+# I'm grateful to dangermouse for providing RPM pacakge and pointing out the bugs & mistakes
+# Thanks to Andrew <http://webupd8.org> for testing and publishing it in his blog
+# Special credits to Valdur Kana <valdur55@gmail.com> for dynamic way of creating menus
+# And of course, all those users who reported bugs
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# http://www.gnu.org/licenses/gpl-3.0.html
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# No Warranty or guarantee of suitability exists for this software
+# Use at your own risk. The author is not responsible if your system breaks.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>..
+
+# Declare Variables
+
+PROGRAM="Fedora Utils"
+VERSION="2.0.4"
+USER="$(logname)"
+REBOOTREQUIRED="NO"
+FORCE="NO"
+FORCEDISTRO="NO"
+ERRORS="0"
+ARG="$1"
+HOMEDIR=`awk -F: -v v="$(logname)" '{if ($1==v) print $6}' /etc/passwd`
+SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Configuration
+
+LIBS="$SCRIPTDIR/lib/*.sh"		# Provides core functionality, change only if you know what are you doing
+MODULES="$SCRIPTDIR/modules/*.sh"	# Provides the main menu
+PLUGINS="$SCRIPTDIR/plugins/*.sh"	# The directory where all the plugins are contained
+WORKINGDIR="/tmp/fedorautils"		# If Downloads folder exists, the content is synced here
+KEEPBACKUP="YES"			# If you don't want to backup previous configurations, change "YES" to "NO"
+KEEPDOWNLOADS="YES"			# If you don't intend to save downloads, change "YES" to "NO"
+DOWNLOADSDIR="$HOMEDIR/FedoraUtils"	# This is where you'll find the Downloads
+KEEPLOG="NO"				# If you want to enable logging, change "NO" to "YES"
+LOGFILE="/var/log/fedorautils.log"	# Outputs will be redirected to this file if logging is enabled
+LOCKFILE='/var/run/fedorautils.pid'	# This is the lockfile used to prevent multiple instances
+
+# Set Colors
+
+BOLD="\033[1;10m"
+RED="\033[0;31m"
+REDBOLD="\033[1;31m"
+GREEN="\033[0;32m"
+GREENBOLD="\033[1;32m"
+YELLOW="\033[0;33m"
+YELLOWBOLD="\033[1;33m"
+BLUE="\033[0;34m"
+BLUEBOLD="\033[1;34m"
+ENDCOLOR="\033[0m"
+
+# Source functions
+
+for lib in $LIBS; do source "$lib"; done
+for module in $MODULES; do source "$module"; done
+for plug in $PLUGINS; do source "$plug"; done
+
+# Additional Parameters
+
+trap Terminate INT
+
+# Run the Program
+
+CheckArgs	# Check any supplied arguments and run the suitable function
+ShowLicense	# Show the License when starting the script
+EnableLog	# Enable logging if --enable-log argument is given
+CheckRoot	# Check if running as root
+CheckLock	# Check if any other instances running and exit
+CheckReq	# Check the minimum requirements for running the script
+Initialize	# Initialize the script
+Main		# Show the main menu
+Complete	# Do all the clean up and other stuff when all tasks are complete
+
+# Please report bugs at <http://fedorautils.sourceforgef.net>
+# End of the Script

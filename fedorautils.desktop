@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Fedora Utils
+GenericName=Post-install Script
+Comment=Software, Codec Installs & System Tweaks
+TryExec=fedorautils
+Exec=fedorautils
+Terminal=true
+Type=Application
+Icon=fedorautils
+Categories=System;
+X-Desktop-File-Install-Version=0.18

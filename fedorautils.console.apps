@@ -1,0 +1,5 @@
+USER=root
+PROGRAM=/usr/share/fedorautils/fedorautils
+SESSION=true
+KEEP_ENV_VARS=http_proxy,ftp_proxy
+
