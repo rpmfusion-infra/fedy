@@ -1,6 +1,8 @@
 Changelog 2.0.5 (12-05-2012)
 
-1. Deleted Java and JDK plugins due to download restrictions imposed by Oracle
+1. Fixed Arista plugin
+2. Deleted Java and JDK plugins due to download restrictions imposed by Oracle
+3. Removed installation of Gnome Shell extensions due to incompatibility issues
 
 Changelog 2.0.4 (24-03-2012)
 
