@@ -9,7 +9,7 @@ ShowFunc "Installing Arista Transcoder"
 if [ -e /usr/bin/arista-gtk ]; then
 StatusMsg "Arista Transcoder already installed"
 else
-InstallPkg python2-devel python3-devel python-gudev gstreamer-plugins-bad-nonfree
+InstallPkg python2-devel python3-devel gstreamer-plugins-bad-nonfree
 file="arista-0.9.7.tar.gz"
 get="http://programmer-art.org/media/releases/arista-transcoder/arista-0.9.7.tar.gz"
 GetFile
