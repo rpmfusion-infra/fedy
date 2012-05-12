@@ -1,20 +1,13 @@
 #!/bin/bash
-# Fedora Utils for software, codec installs and system tweaks for Fedora.
+# Fedora Utils lets you install codecs and additional software,
+# fix problems, tweak and cleanup your system,
+# view system information and much more with just few clicks.
+#
 # Copyright (C) 2012  Satyajit sahoo
 #
 # License: GNU General Public License 3 <http://www.gnu.org/licenses/gpl-3.0.html>
 # Author: Satyajit Sahoo <satyajit.happy@gmail.com>
 # Site: Project Page <http://fedorautils.sorceforge.net>
-# Blog: Funsurf <http://funsurf-blog.blogspot.com>
-#
-# Fedora Utils lets you install multimedia codecs, flash, java, microsoft fonts,
-# install many additional softwares not available in Fedora repos,
-# useful tweaks such as autologin, add user to sudoers etc.
-# turn off unnecessary daemons to improve boot time,
-# fix problems and cleanup your system,
-# view your system ShowMsgrmation and much more with just few clicks.
-#
-# This script modifies system files and adds software from various repositories and other sources which are not under its control.
 #
 # This script benefits both for codes and ideas from
 # AutoPlus by dangermouse <http://www.dnmouse.org/autoten/>
@@ -24,23 +17,6 @@
 # Thanks to Andrew <http://webupd8.org> for testing and publishing it in his blog
 # Special credits to Valdur Kana <valdur55@gmail.com> for dynamic way of creating menus
 # And of course, all those users who reported bugs
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-# http://www.gnu.org/licenses/gpl-3.0.html
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# No Warranty or guarantee of suitability exists for this software
-# Use at your own risk. The author is not responsible if your system breaks.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program. If not, see <http://www.gnu.org/licenses/>..
 
 # Declare Variables
 
