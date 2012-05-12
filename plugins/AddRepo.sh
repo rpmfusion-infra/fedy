@@ -131,3 +131,21 @@ gpgcheck=0
 EOF
 fi
 }
+
+function FedoraUtilsRepo()
+{
+if [ -f /etc/yum.repos.d/fedorautils.repo ]; then
+StatusMsg "Fedora Utils repo already present"
+else
+# Add Fedora Utils Repo
+cat <<EOF | tee /etc/yum.repos.d/fedorautils.repo
+[fedorautils]
+name=Fedora Utils
+baseurl=http://master.dl.sourceforge.net/project/fedorautils/
+enabled=1
+metadata_expire=1d
+skip_if_unavailable=1
+gpgcheck=0
+EOF
+fi
+}
