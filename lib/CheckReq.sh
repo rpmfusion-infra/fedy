@@ -2,7 +2,7 @@ function CheckReq()
 {
 ShowFunc "Verifying minimum system requirements"
 # Check Distro
-s=`cat /etc/issue | grep -i "Fedora"`
+s=`cat /etc/issue | grep -wf "$REMIXSUPPORT"`
 if [ -n "$s" ]; then
 	StatusMsg "Distro verified"
 else
@@ -13,11 +13,11 @@ else
 	Terminate
 	fi
 fi
-if [ -e /etc/fedora-release ]; then
-StatusMsg "$(cat /etc/fedora-release) detected"
-fver="$(cat /etc/fedora-release | cut -c16-17)"
+if [ -e /etc/system-release ]; then
+StatusMsg "$(cat /etc/system-release) detected"
+fver="$(cat /etc/system-release | cut -c16-17)"
 else
-WarnMsg "Could not detect version"
+WarnMsg "Could not detect Fedora version"
 fi
 # Check Architecture
 if [ $(uname -i) = "i386" ]; then
