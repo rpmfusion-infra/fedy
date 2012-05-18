@@ -1,7 +1,6 @@
 --enable-log,start with logging enabled
 --redownload,force redownload of files
 --force-distro,run with unsupported distro
---noupdate,start with autoupdate disabled
 --nobakup,do not keep backups
 --debug,show last logfile and exit
 --help,show this help message and exit
