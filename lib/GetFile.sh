@@ -3,6 +3,7 @@ function GetFile()
 if [ ! -f "$WORKINGDIR/$file" ] || [ "$FORCE" = "YES" ]; then
 	ShowMsg "Downloading from: $get"
 	ShowMsg "Saving to: $file"
+	Notify "Downloading:" "Downloading $file"
 	curl -L -O -# "$get"
 	if [ -f "$WORKINGDIR/$file" ]; then
 		ShowMsg "Download successful!"
