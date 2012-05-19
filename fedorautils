@@ -73,8 +73,8 @@ trap Terminate INT
 
 CheckArgs	# Check any supplied arguments and run the suitable function
 ShowLicense	# Show the License when starting the script
-EnableLog	# Enable logging if --enable-log argument is given
 CheckRoot	# Check if running as root
+EnableLog	# Enable logging if --enable-log argument is given
 CheckLock	# Check if any other instances running and exit
 CheckReq	# Check the minimum requirements for running the script
 Initialize	# Initialize the script
