@@ -1,12 +1,14 @@
 function ErrorMsg()
 {
 echo -e $RED"$@"$ENDCOLOR
+sudo -u "$USER" notify-send -i "fedorautils" -u "critical" "Error:" "$@"
 return 1
 }
 
 function WarnMsg()
 {
 echo -e $YELLOW"$@"$ENDCOLOR
+sudo -u "$USER" notify-send -i "fedorautils" -u "normal" "Warning:" "$@"
 }
 
 function StatusMsg()

@@ -10,7 +10,7 @@ if [ ! -f "$WORKINGDIR/$file" ] || [ "$FORCE" = "YES" ]; then
 			cp -f "$file" "$DOWNLOADSDIR"
 		fi
 	else
-		ErrorMsg "Error in download!"
+		ErrorMsg "Error downloading $file!"
 	fi
 else
 	ShowMsg "$file already present, skipping download"
