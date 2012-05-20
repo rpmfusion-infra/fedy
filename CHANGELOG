@@ -1,3 +1,10 @@
+Changelog 2.0.6 (20-05-2012)
+
+1. Added support for Fedora remixes
+2. Improved logging information
+3. Added notifications
+4. Minor fixes and enhancements
+
 Changelog 2.0.5 (12-05-2012)
 
 1. Fixed Arista plugin
