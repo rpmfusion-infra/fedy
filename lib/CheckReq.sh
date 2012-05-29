@@ -30,7 +30,7 @@ else
 fi
 # Check Connection
 i=`ping -c 1 www.google.com > "/dev/null" 2>&1` ;
-if [ $? = 0 ]; then
+if [ $? = "0" ]; then
 	StatusMsg "Internet connection verified"
 else
 	WarnMsg "No working internet connection found"

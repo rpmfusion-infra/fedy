@@ -11,7 +11,7 @@ StatusMsg "Unico Theme Engine already installed"
 else
 InstallBZR
 InstallGTKDev
-	if [ "$fver" = "16" ]; then
+	if [ "$fver" = "17" ]; then
 	WarnMsg "We need to compile Unico Theme Engine from source. It may take a while. Please be patient"
 	bzr branch lp:unico
 	cd unico

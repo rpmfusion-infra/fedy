@@ -12,7 +12,7 @@ fi
 # Delete lockfile
 if [ $(whoami) = "root" ]; then
 	rm -f "$LOCKFILE"
-	if [ $? != 0 ]; then
+	if [ ! $? = "0" ]; then
 	   exit 1;
 	fi
 fi
