@@ -1,4 +1,4 @@
-function I_T_Cinnamon # Install Cinnamon Shell
+function I_F_InstallCinnamon # Install Cinnamon Shell
 {
 InstallCinnamon
 }

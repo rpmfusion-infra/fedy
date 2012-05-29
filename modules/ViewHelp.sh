@@ -5,7 +5,7 @@ REPOTEXT="Remove"
 else
 REPOTEXT="Add"
 fi
-shell=$(zenity --list --width=300 --height=300 --title="$PROGRAM Help" --text="$PROGRAM $VERSION (C) Satyajit Sahoo\nhttp:\/\/fedorautils.sf.net" --radiolist  --column "Select" --column "Options" TRUE "$REPOTEXT Fedora Utils repo" FALSE "Report a issue" FALSE "Visit wiki" FALSE "View changelog" FALSE "View logfile" --ok-label="Select" --hide-header --cancel-label="Back")
+shell=$(zenity --list --width=300 --height=300 --title="$PROGRAM Help" --text="$PROGRAM $VERSION (C) Satyajit Sahoo\nhttp:\/\/fedorautils.sf.net" --radiolist  --column "Select" --column "Options" TRUE "$REPOTEXT Fedora Utils repo" FALSE "Report an issue" FALSE "Visit the wiki" FALSE "View changelog" FALSE "View logfile" --ok-label="Select" --hide-header --cancel-label="Back")
 if [ ! $? = "1" ]; then
 	arr=$(echo $shell | tr "\:" "\n")
 	for x in $arr

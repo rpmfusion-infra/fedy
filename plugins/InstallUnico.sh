@@ -1,4 +1,4 @@
-function I_T_InstallUnico # Install Unico theme engine
+function I_F_InstallUnico # Install Unico theme engine
 {
 InstallUnico
 }

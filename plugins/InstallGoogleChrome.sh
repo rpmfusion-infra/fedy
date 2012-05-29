@@ -1,4 +1,4 @@
-function I_T_GoogleChrome # Install Google Chrome
+function I_F_InstallGoogleChrome # Install Google Chrome
 {
 InstallGoogleChrome
 }
