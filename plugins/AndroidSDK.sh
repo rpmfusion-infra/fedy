@@ -10,8 +10,8 @@ ShowFunc "Installing Android SDK"
 if [ -e /opt/android-sdk-linux/tools/android ]; then
 StatusMsg "Android SDK already installed"
 else
-file="android-sdk_r16-linux.tgz"
-get="http://dl.google.com/android/android-sdk_r16-linux.tgz"
+file="android-sdk_r18-linux.tgz"
+get="http://dl.google.com/android/android-sdk_r18-linux.tgz"
 GetFile
 tar xvf "$file"
 mv android-sdk-linux /opt/
