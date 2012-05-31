@@ -124,8 +124,8 @@ else
 # Add Parsidora Repo
 cat <<EOF | tee /etc/yum.repos.d/parsidora.repo
 [parsidora] 
-name=Parsidora \$releasever – \$basearch
-baseurl=http://parsidora.sourceforge.net/releases/\$releasever/repos/parsidora/\$basearch
+name=Parsidora 16 – \$basearch
+baseurl=http://parsidora.sourceforge.net/releases/16/repos/parsidora/\$basearch
 enabled=0
 gpgcheck=0
 EOF
