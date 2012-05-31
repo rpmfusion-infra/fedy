@@ -1,3 +1,8 @@
+Changelog 2.0.8 (31-05-2012)
+
+1. Install java using a cookie (Thanks Andrew)
+2. Switched to Parsidora 16 repo for installation of Jockey till Parsidora 17 repo becomes available
+
 Changelog 2.0.7 (30-05-2012)
 
 1. Fixed fedorautils could not run in Fedora 17
