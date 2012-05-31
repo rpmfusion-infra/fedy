@@ -9,15 +9,15 @@ ShowFunc "Installing Java runtime Environment"
 if [ -e /usr/java/jre1.7.0_*/bin/java ]; then
 StatusMsg "Java already installed"
 else
-# we need to get the cookie to download Java
-curl -s "http://launchpadlibrarian.net/98645053/cookie.txt" -o "cookie.txt"
 if [ $(uname -i) = "i386" ]; then
-curl -L -O -# --cookie cookie.txt "http://download.oracle.com/otn-pub/java/jdk/7u4-b20/jre-7u4-linux-i586.rpm"
-InstallLocalPkg "jre-7u4-linux-i586.rpm"
+file="jre-7u4-linux-i586.rpm"
+get="http://download.oracle.com/otn-pub/java/jdk/7u4-b20/jre-7u4-linux-i586.rpm"
 elif [ $(uname -i) = "x86_64" ]; then
-curl -L -O -# --cookie cookie.txt "http://download.oracle.com/otn-pub/java/jdk/7u4-b20/jre-7u4-linux-x64.rpm"
-InstallLocalPkg "jre-7u4-linux-x64.rpm"
+file="jre-7u4-linux-x64.rpm"
+get="http://download.oracle.com/otn-pub/java/jdk/7u4-b20/jre-7u4-linux-x64.rpm"
 fi
+JavaDown
+InstallLocalPkg "$file"
 fi
 echo -e "Setting up Oracle Java..."
 alternatives --install /usr/bin/java java /usr/java/default/bin/java 20000
@@ -31,5 +31,27 @@ if [ -e /usr/java/jre1.7.0_*/bin/java ]; then
 Success
 else
 Failure
+fi
+}
+
+function JavaDown()
+{
+if [ ! -f "$WORKINGDIR/$file" ] || [ "$FORCE" = "YES" ]; then
+	ShowMsg "Downloading from: $get"
+	ShowMsg "Saving to: $file"
+	Notify "Downloading:" "Downloading $file, it may take some time depending on your connection"
+	# we need to get the cookie to download Java
+	curl -s "http://launchpadlibrarian.net/98645053/cookie.txt" -o "cookie.txt"
+	curl -L -O -# --cookie cookie.txt "$get"
+	if [ -f "$WORKINGDIR/$file" ]; then
+		ShowMsg "Download successful!"
+		if [ "$KEEPDOWNLOADS" = "YES" ]; then
+			cp -f "$file" "$DOWNLOADSDIR"
+		fi
+	else
+		ErrorMsg "Error downloading $file!"
+	fi
+else
+	ShowMsg "$file already present, skipping download"
 fi
 }

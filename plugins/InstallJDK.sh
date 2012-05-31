@@ -9,15 +9,15 @@ ShowFunc "Installing Oracle JDK"
 if [ -e /usr/java/jdk1.7.0_*/bin/java ]; then
 StatusMsg "Oracle JDK already installed"
 else
-# we need to get the cookie to download Java
-curl -s "http://launchpadlibrarian.net/98645053/cookie.txt" -o "cookie.txt"
 if [ $(uname -i) = "i386" ]; then
-curl -L -O -# --cookie cookie.txt "http://download.oracle.com/otn-pub/java/jdk/7u4-b20/jdk-7u4-linux-i586.rpm"
-InstallLocalPkg "jdk-7u4-linux-i586.rpm"
+file="jdk-7u4-linux-i586.rpm"
+get="http://download.oracle.com/otn-pub/java/jdk/7u4-b20/jdk-7u4-linux-i586.rpm"
 elif [ $(uname -i) = "x86_64" ]; then
-curl -L -O -# --cookie cookie.txt "http://download.oracle.com/otn-pub/java/jdk/7u4-b20/jdk-7u4-linux-x64.rpm"
-InstallLocalPkg "jdk-7u4-linux-x64.rpm"
+file="jdk-7u4-linux-x64.rpm"
+get="http://download.oracle.com/otn-pub/java/jdk/7u4-b20/jdk-7u4-linux-x64.rpm"
 fi
+JavaDown
+InstallLocalPkg "$file"
 fi
 echo -e "Setting up Oracle JDK..."
 mkdir -p /usr/lib/jvm /usr/lib/jvm-exports
