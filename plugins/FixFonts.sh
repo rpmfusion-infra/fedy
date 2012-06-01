@@ -6,24 +6,16 @@ FixFonts
 function FixFonts()
 {
 ShowFunc "Fixing font smoothing"
-if [ ! -e /etc/fonts/conf.d/10-autohint.conf ]; then
-ln -s /etc/fonts/conf.avail/10-autohint.conf /etc/fonts/conf.d/
+sudo -u "$USER" gsettings "set" "org.gnome.settings-daemon.plugins.xsettings" "antialiasing" "rgba"
+sudo -u "$USER" gsettings "set" "org.gnome.settings-daemon.plugins.xsettings" "hinting" "slight"
+echo "Xft.lcdfilter: lcddefault" > "$HOMEDIR/.Xresources"
+if [ -d /usr/share/doc/freetype-freeworld* ]; then
+StatusMsg "Freetype font rendering engine already installed"
+else
+InstallPkg freetype-freeworld
 fi
-if [ ! -e /etc/fonts/conf.d/10-sub-pixel-rgb.conf ]; then
-ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/
-fi
-cat <<EOF | tee "$HOMEDIR/.fonts.conf"
-<?xml version="1.0"?>
-<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-<fontconfig>
- <match target="font">
- <edit name="autohint" mode="assign">
- <bool>true</bool>
- </edit>
- </match>
-</fontconfig>
-EOF
-if [ -e "$HOMEDIR/.fonts.conf" ]; then
+f=`cat "$HOMEDIR/.Xresources" | grep "Xft.lcdfilter: lcddefault"`
+if [ -n "$f" ] && [ -d /usr/share/doc/freetype-freeworld* ]; then
 Success
 else
 Failure
