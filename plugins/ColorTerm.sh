@@ -6,7 +6,7 @@ ColorTerm
 function ColorTerm()
 {
 ShowFunc "Enabling colours in Terminal"
-s=`cat /etc/bashrc | grep -i "# Colors in Terminal"`
+s=`cat /etc/bashrc | grep "# Colors in Terminal"`
 if [ -n "$s" ]; then
 StatusMsg "Colors already added"
 else
@@ -22,7 +22,7 @@ else
 fi
 EOF
 fi
-s=`cat /etc/bashrc | grep -i "# Colors in Terminal"`
+s=`cat /etc/bashrc | grep "# Colors in Terminal"`
 if [ -n "$s" ]; then
 Success
 else

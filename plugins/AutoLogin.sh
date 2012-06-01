@@ -6,7 +6,7 @@ AutoLogin
 function AutoLogin()
 {
 ShowFunc "Enabling autologin"
-s=`cat /etc/gdm/custom.conf | grep -i "AutomaticLoginEnable=True"`
+s=`cat /etc/gdm/custom.conf | grep "AutomaticLoginEnable=True"`
 if [ -n "$s" ]; then
 StatusMsg "Autologin already enabled"
 else
@@ -16,7 +16,7 @@ AutomaticLogin=$USER
 AutomaticLoginEnable=True
 EOF
 fi
-s=`cat /etc/gdm/custom.conf | grep -i "AutomaticLoginEnable=True"`
+s=`cat /etc/gdm/custom.conf | grep "AutomaticLoginEnable=True"`
 if [ -n "$s" ]; then
 Success
 else

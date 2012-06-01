@@ -10,7 +10,7 @@ RPMFusion
 if [ ! -e /usr/bin/fortune ]; then
 InstallPkg fortune-mod
 fi
-s=`cat /etc/bashrc | grep -i "# Display Fortune"`
+s=`cat /etc/bashrc | grep "# Display Fortune"`
 if [ -n "$s" ]; then
 StatusMsg "Fortune already installed"
 else
@@ -24,7 +24,7 @@ fortune
 fi
 EOF
 fi
-s=`cat /etc/bashrc | grep -i "# Display Fortune"`
+s=`cat /etc/bashrc | grep "# Display Fortune"`
 if [ -n "$s" ] && [ -e /usr/bin/fortune ]; then
 Success
 else
