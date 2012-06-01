@@ -10,7 +10,12 @@ if [ -d /usr/share/doc/gstreamer-plugins-ugly* ]; then
 StatusMsg "GStreamer plugins already installed"
 else
 RPMFusion
-InstallPkg gnome-mplayer gstreamer-plugins-good gstreamer-plugins-bad gstreamer-plugins-bad-free gstreamer-plugins-bad-nonfree gstreamer-plugins-ugly gstreamer-ffmpeg faac faad2 libdca libmad libmatroska xvidcore
+InstallPkg gstreamer-plugins-good gstreamer-plugins-bad gstreamer-plugins-bad-free gstreamer-plugins-bad-nonfree gstreamer-plugins-ugly gstreamer-ffmpeg faac faad2 libdca libmad libmatroska xvidcore
+fi
+if ( [ "$(pidof ksmserver)" ] ); then
+InstallPkg vlc phonon-backend-vlc
+else
+InstallPkg gnome-mplayer
 fi
 # Install MPlayer Codecs if Architecture is 32-bit
 if [ $(uname -i) = "i386" ]; then
