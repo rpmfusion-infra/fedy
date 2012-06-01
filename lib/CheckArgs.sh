@@ -6,6 +6,7 @@ case "$ARG" in
 "--redownload") FORCE="YES";;
 "--force-distro") FORCEDISTRO="YES";;
 "--nobakup") KEEPBACKUP="NO";;
+"--use-tts") TTS="YES";;
 "--debug") ShowLogfile
 		exit;;
 "--help") ShowLicense

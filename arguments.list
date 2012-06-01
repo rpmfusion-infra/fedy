@@ -2,5 +2,6 @@
 --redownload,force redownload of files
 --force-distro,run with unsupported distro
 --nobakup,do not keep backups
+--use-tts,use text-to-speech
 --debug,show last logfile and exit
 --help,show this help message and exit

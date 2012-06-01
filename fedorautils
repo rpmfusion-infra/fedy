@@ -45,6 +45,7 @@ FORCEDISTRO="NO"			# If you want to run the script with unsupported distro, chan
 KEEPBACKUP="YES"			# If you don't want to backup previous configurations, change "YES" to "NO"
 KEEPDOWNLOADS="YES"			# If you don't intend to save downloads, change "YES" to "NO"
 DOWNLOADSDIR="$HOMEDIR/FedoraUtils"	# All downloaded files are saved in this directory
+TTS="NO"				# If you want fedorautils to speak, change "NO" to "YES"
 
 # Set Colors
 

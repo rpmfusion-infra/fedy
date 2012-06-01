@@ -1,3 +1,10 @@
+function Speak()
+{
+if [ "$TTS" = "YES" ]; then
+echo "$@" | festival --tts
+fi
+}
+
 function Notify()
 {
 sudo -u "$USER" notify-send -i "fedorautils" "$@"
@@ -7,6 +14,7 @@ function ErrorMsg()
 {
 echo -e $RED"$@"$ENDCOLOR
 Notify "Error:" "$@"
+Speak "$@"
 return 1
 }
 
@@ -14,6 +22,7 @@ function WarnMsg()
 {
 echo -e $YELLOW"$@"$ENDCOLOR
 Notify "Warning:" "$@"
+Speak "$@"
 }
 
 function StatusMsg()

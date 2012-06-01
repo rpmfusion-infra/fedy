@@ -1,8 +1,7 @@
 [Desktop Entry]
 Name=Fedora Utils
-GenericName=Post-install Script
+GenericName=Tweak Fedora
 Comment=Software, Codec Installs & System Tweaks
-TryExec=fedorautils
 Exec=fedorautils
 Terminal=true
 Type=Application
