@@ -19,11 +19,11 @@ if [ "$KEEPLOG" = "YES" ]; then
 	fi
 	# Create logfile
 	touch "$LOGFILE"
-	echo "[$(date)]"  | tee -a "$LOGFILE"
-	echo ""  | tee -a "$LOGFILE"
-	echo "$PROGRAM - $VERSION"  | tee -a "$LOGFILE"
-	echo $(cat /etc/system-release)  | tee -a "$LOGFILE"
-	echo $(uname -irs)  | tee -a "$LOGFILE"
+	echo "[$(date)]" | tee -a "$LOGFILE"
+	echo "" | tee -a "$LOGFILE"
+	echo "$PROGRAM - $VERSION" | tee -a "$LOGFILE"
+	echo $(cat /etc/system-release) | tee -a "$LOGFILE"
+	echo $(uname -irs) | tee -a "$LOGFILE"
 	echo "" | tee -a "$LOGFILE"
 	echo "[Variables]" >> "$LOGFILE"
 	echo "" >> "$LOGFILE"
@@ -56,5 +56,6 @@ if [ "$KEEPLOG" = "YES" ]; then
 	echo "[Outputs]" >> "$LOGFILE"
 	echo "" >> "$LOGFILE"
 	exec &>> "$LOGFILE"
+	tail -f -n +7 "$LOGFILE" >/dev/tty &
 fi
 }
