@@ -6,7 +6,7 @@ mkdir -p "$DOWNLOADSDIR"
 StatusMsg "Temporary directory $WORKINGDIR created. Synchronizing files..."
 rsync -r -u "$DOWNLOADSDIR/" "$WORKINGDIR"
 if [ "$FORCEDOWN" = "YES" ]; then
-ShowMsg "Forced mode, $PROGRAM will redownload files even if already downloaded"
+WarnMsg "$PROGRAM will force redownload of files even if already downloaded"
 fi
 cd "$WORKINGDIR"
 }
