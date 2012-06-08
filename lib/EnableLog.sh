@@ -2,6 +2,8 @@ function EnableLog()
 {
 # Enable logging
 if [ "$KEEPLOG" = "YES" ]; then
+	ShowMsg "Logging is enabled"
+	echo ""
 	# Unset Colors
 	unset BOLD
 	unset RED
@@ -38,7 +40,7 @@ if [ "$KEEPLOG" = "YES" ]; then
 	echo "Force redownload: $FORCE" >> "$LOGFILE"
 	echo "Force distro: $FORCEDISTRO" >> "$LOGFILE"	
 	echo "Backup configs: $KEEPBACKUP" >> "$LOGFILE"
-	echo "Save downloads? $KEEPDOWNLOADS" >> "$LOGFILE"
+	echo "Save downloads: $KEEPDOWNLOADS" >> "$LOGFILE"
 	echo "Downloads directory: $DOWNLOADSDIR" >> "$LOGFILE"
 	echo "" >> "$LOGFILE"
 	echo "[Libraries]" >> "$LOGFILE"
