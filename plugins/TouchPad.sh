@@ -9,7 +9,6 @@ ShowFunc "Enabling systemwide touchpad tap"
 if [ -f /etc/X11/xorg.conf.d/00-enable-taps.conf ]; then
 StatusMsg "Touchpad tap already enabled"
 else
-InstallPkg xorg-x11-drv-synaptics
 cat <<EOF | tee /etc/X11/xorg.conf.d/00-enable-taps.conf
 Section "InputClass"
        Identifier "tap-by-default"
@@ -17,7 +16,10 @@ Section "InputClass"
        Option "TapButton1" "1"
 EndSection
 EOF
+StatusMsg "Touchpad tap already enabled"
 fi
+ShowMsg "Enabling touchpad tap for current user"
+sudo -u "$USER" gsettings set org.gnome.settings-daemon.peripherals.touchpad tap-to-click true
 if [ -f /etc/X11/xorg.conf.d/00-enable-taps.conf ]; then
 Success
 else
