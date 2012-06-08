@@ -37,7 +37,7 @@ if [ "$KEEPLOG" = "YES" ]; then
 	echo "Work directory: $WORKINGDIR" >> "$LOGFILE"
 	echo "Lock file: $LOCKFILE" >> "$LOGFILE"
 	echo "Log file: $LOGFILE" >> "$LOGFILE"
-	echo "Force redownload: $FORCE" >> "$LOGFILE"
+	echo "Force redownload: $FORCEDOWN" >> "$LOGFILE"
 	echo "Force distro: $FORCEDISTRO" >> "$LOGFILE"	
 	echo "Backup configs: $KEEPBACKUP" >> "$LOGFILE"
 	echo "Save downloads: $KEEPDOWNLOADS" >> "$LOGFILE"

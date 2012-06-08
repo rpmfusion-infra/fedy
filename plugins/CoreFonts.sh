@@ -39,7 +39,7 @@ function ProcessFont()
 {
 font="$1"
 fontfile="$WORKINGDIR/corefonts/$font"
-if [ ! -f "$fontfile" ] || [ $FORCE = "YES" ]; then
+if [ ! -f "$fontfile" ] || [ "$FORCEDOWN" = "YES" ]; then
 ShowMsg "Downloading $font..."
 curl -L -# "http://downloads.sourceforge.net/corefonts/$font" -o "$fontfile"
 fi

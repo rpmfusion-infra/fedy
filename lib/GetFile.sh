@@ -1,6 +1,6 @@
 function GetFile()
 {
-if [ ! -f "$WORKINGDIR/$file" ] || [ "$FORCE" = "YES" ]; then
+if [ ! -f "$WORKINGDIR/$file" ] || [ "$FORCEDOWN" = "YES" ]; then
 	ShowMsg "Downloading from: $get"
 	ShowMsg "Saving to: $file"
 	Notify "Downloading:" "Downloading $file, it may take some time depending on your connection"

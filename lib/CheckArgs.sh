@@ -3,7 +3,7 @@ function CheckArgs()
 case "$ARG" in
 "") ;;
 "--enable-log") KEEPLOG="YES";;
-"--redownload") FORCE="YES";;
+"--redownload") FORCEDOWN="YES";;
 "--force-distro") FORCEDISTRO="YES";;
 "--nobakup") KEEPBACKUP="NO";;
 "--use-tts") TTS="YES";;
