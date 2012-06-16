@@ -4,7 +4,11 @@ if [ ! -f "$WORKINGDIR/$file" ] || [ "$FORCEDOWN" = "YES" ]; then
 	ShowMsg "Downloading from: $get"
 	ShowMsg "Saving to: $file"
 	Notify "Downloading:" "Downloading $file, it may take some time depending on your connection"
-	curl -L -O -# "$get"
+	if [ "$DOWNAGENT" = "WGET" ]; then
+		wget -c "$get" -O "$file"
+	else
+		curl -L -# "$get" -o "$file"
+	fi
 	if [ -f "$WORKINGDIR/$file" ]; then
 		ShowMsg "Download successful!"
 		if [ "$KEEPDOWNLOADS" = "YES" ]; then
