@@ -40,9 +40,14 @@ if [ ! -f "$WORKINGDIR/$file" ] || [ "$FORCEDOWN" = "YES" ]; then
 	ShowMsg "Downloading from: $get"
 	ShowMsg "Saving to: $file"
 	Notify "Downloading:" "Downloading $file, it may take some time depending on your connection"
-	# we need to get the cookie to download Java
-	curl -s "http://launchpadlibrarian.net/98645053/cookie.txt" -o "cookie.txt"
-	curl -L -O -# --cookie cookie.txt "$get"
+	if [ "$DOWNAGENT" = "WGET" ]; then
+		# we need to get the cookie to download Java
+		wget "http://launchpadlibrarian.net/98645053/cookie.txt" -O "cookie.txt"
+		wget --load-cookies cookie.txt -c "$get" -O "$file"
+	else
+		curl -s "http://launchpadlibrarian.net/98645053/cookie.txt" -o "cookie.txt"
+		curl -L -O -# --cookie cookie.txt "$get" -o "$file"
+	fi
 	if [ -f "$WORKINGDIR/$file" ]; then
 		ShowMsg "Download successful!"
 		if [ "$KEEPDOWNLOADS" = "YES" ]; then
