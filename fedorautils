@@ -37,6 +37,8 @@ LIBS="$SCRIPTDIR/lib/*.sh"		# Provides core functionality, change only if you kn
 MODULES="$SCRIPTDIR/modules/*.sh"	# Provides the main menu module
 PLUGINS="$SCRIPTDIR/plugins/*.sh"	# The directory where are containing all the plugins
 WORKINGDIR="/tmp/fedorautils"		# A temporary directory where everything is done, automatically created as needed
+SYSCONF="/etc/fedorautilsrc"		# System wide configuration file for fedorautils
+USERCONF="$HOMEDIR/.fedorautilsrc"	# User specific configuration file for fedorautils
 LOCKFILE="/var/run/fedorautils.pid"	# The lockfile used to prevent running of multiple instances
 LOGFILE="/var/log/fedorautils.log"	# Outputs will be redirected to this file if logging is enabled
 KEEPLOG="NO"				# If you want to enable logging, change "NO" to "YES"
@@ -66,6 +68,14 @@ ENDCOLOR="\033[0m"
 for lib in $LIBS; do source "$lib"; done
 for module in $MODULES; do source "$module"; done
 for plug in $PLUGINS; do source "$plug"; done
+
+# Source config filez
+
+if [ -f "$USERCONF" ]; then
+	source "$USERCONF"
+elif [ -f "$SYSCONF" ]; then
+	source "$SYSCONF"
+fi
 
 # Additional Parameters
 
