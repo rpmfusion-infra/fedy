@@ -1,3 +1,20 @@
+Changelog 2.1.0 (16-06-2012)
+
+1. Display outputs  in Terminal when logging is enabled
+2. Ability to use wget for downloads
+3. Ability to use a configuration file
+4. Minor fixes and improvements
+
+Changelog 2.0.9 (01-06-2012)
+
+1. Completely switched to PolicyKit for authentication
+2. Fedora Utils can now speak the errors and warnings (optional, see --help)
+3. Install VLC instead of Gnome Mplayer if KDE is running
+4. Improved "Fix font rendering" plugin
+5. Updated Android SDK
+6. Save downloaded files and reuse them during Java installation
+7. Removed Unico engine as it is now available in official repos
+
 Changelog 2.0.9 (01-06-2012)
 
 1. Completely switched to PolicyKit for authentication
