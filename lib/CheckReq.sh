@@ -62,7 +62,7 @@ fi
 # Check Wget
 if [ -e /usr/bin/wget ]; then
 	StatusMsg "wget verified"
-	if [ -e /usr/bin/wget ] && [ "$PREFWGET" = "YES" ]; then
+	if [ "$PREFWGET" = "YES" ] || [ "$DOWNAGENT" = "WGET" ]; then
 		ShowMsg "Using wget"
 		DOWNAGENT="WGET"
 	fi

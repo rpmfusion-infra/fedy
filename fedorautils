@@ -70,7 +70,7 @@ for lib in $LIBS; do source "$lib"; done
 for module in $MODULES; do source "$module"; done
 for plug in $PLUGINS; do source "$plug"; done
 
-# Source config filez
+# Source config files if present
 
 if [ -f "$USERCONF" ]; then
 	source "$USERCONF"
