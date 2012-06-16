@@ -38,14 +38,8 @@ fi
 function ProcessFont()
 {
 font="$1"
-fontfile="$WORKINGDIR/corefonts/$font"
-if [ ! -f "$fontfile" ] || [ "$FORCEDOWN" = "YES" ]; then
-ShowMsg "Downloading $font..."
-curl -L -# "http://downloads.sourceforge.net/corefonts/$font" -o "$fontfile"
-fi
-cabextract -L -d "$WORKINGDIR/msttcorefonts" "$fontfile"
-if [ "$KEEPDOWNLOADS" = "YES" ]; then
-mkdir -p "$DOWNLOADSDIR/corefonts/"
-cp -f "$fontfile" "$DOWNLOADSDIR/corefonts/"
-fi
+get="http://downloads.sourceforge.net/corefonts/$font"
+file="corefonts/$font"
+GetFile
+cabextract -L -d "$WORKINGDIR/msttcorefonts" "$file"
 }
