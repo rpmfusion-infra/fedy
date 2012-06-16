@@ -43,8 +43,7 @@ function GoogleRepo()
 if [ -f /etc/yum.repos.d/google.repo ]; then
 StatusMsg "Google repo already present"
 else
-curl -s https://dl-ssl.google.com/linux/linux_signing_key.pub -o linux_signing_key.pub
-rpm --import linux_signing_key.pub
+rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub -o linux_signing_key.pub
 rm -f linux_signing_key.pub
 cat <<EOF | tee /etc/yum.repos.d/google.repo
 [Google] 
