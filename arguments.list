@@ -1,4 +1,5 @@
 --enable-log,start with logging enabled
+--pref-wget,prefer wget over curl if present
 --use-wget,use wget for download instead of curl
 --redownload,force redownload of files
 --force-distro,run with unsupported distro

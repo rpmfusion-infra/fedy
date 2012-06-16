@@ -3,6 +3,7 @@ function CheckArgs()
 case "$ARG" in
 "") ;;
 "--enable-log") KEEPLOG="YES";;
+"--pref-wget") PREFWGET="YES";;
 "--use-wget") DOWNAGENT="WGET";;
 "--redownload") FORCEDOWN="YES";;
 "--force-distro") FORCEDISTRO="YES";;
