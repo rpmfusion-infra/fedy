@@ -60,18 +60,19 @@ else
 	fi
 fi
 # Check Wget
-if [ -e /usr/bin/wget ]; then
-	StatusMsg "wget verified"
-	if [ "$PREFWGET" = "YES" ] || [ "$DOWNAGENT" = "WGET" ]; then
-		ShowMsg "Using wget"
-		DOWNAGENT="WGET"
-	fi
-elif [ "$DOWNAGENT" = "WGET" ] && [ ! -e /usr/bin/wget ]; then
-	ErrorMsg "wget is not present in the system. Installing wget"
-	InstallPkg wget
+if [ "$PREFWGET" = "YES" ] && [ -e /usr/bin/wget ]; then
+	DOWNAGENT="WGET"
+fi
+if [ "$DOWNAGENT" = "WGET" ]; then
 	if [ ! -e /usr/bin/wget ]; then
-		ErrorMsg "Installation of wget failed. Using curl"
-		DOWNAGENT="CURL"
+		ErrorMsg "wget is not present in the system. Installing wget"
+		InstallPkg wget
+		if [ ! -e /usr/bin/wget ]; then
+			ErrorMsg "Installation of wget failed. Using curl"
+			DOWNAGENT="CURL"
+		fi
+	elif [ -e /usr/bin/wget ]; then
+		StatusMsg "wget verified. Using wget"
 	fi
 fi
 }
