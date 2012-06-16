@@ -42,7 +42,7 @@ if [ -e /usr/bin/zenity ]; then
 	StatusMsg "zenity verified"
 else
 	ErrorMsg "zenity is needed for $PROGRAM to run properly. Installing zenity"
-	sudo InstallPkg zenity
+	InstallPkg zenity
 	if [ ! -e /usr/bin/zenity ]; then
 		ErrorMsg "Installation of zenity failed"
 		Terminate
@@ -53,7 +53,7 @@ if [ -e /usr/bin/curl ]; then
 	StatusMsg "curl verified"
 else
 	ErrorMsg "curl is needed for $PROGRAM to run properly. Installing curl"
-	sudo InstallPkg curl
+	InstallPkg curl
 	if [ ! -e /usr/bin/curl ]; then
 		ErrorMsg "Installation of curl failed"
 		Terminate
@@ -68,7 +68,7 @@ if [ -e /usr/bin/wget ]; then
 	fi
 elif [ "$DOWNAGENT" = "WGET" ] && [ ! -e /usr/bin/wget ]; then
 	ErrorMsg "wget is not present in the system. Installing wget"
-	sudo InstallPkg wget
+	InstallPkg wget
 	if [ ! -e /usr/bin/wget ]; then
 		ErrorMsg "Installation of wget failed. Using curl"
 		DOWNAGENT="CURL"
