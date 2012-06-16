@@ -15,16 +15,6 @@ Changelog 2.0.9 (01-06-2012)
 6. Save downloaded files and reuse them during Java installation
 7. Removed Unico engine as it is now available in official repos
 
-Changelog 2.0.9 (01-06-2012)
-
-1. Completely switched to PolicyKit for authentication
-2. Fedora Utils can now speak the errors and warnings (optional, see --help)
-3. Install VLC instead of Gnome Mplayer if KDE is running
-4. Improved "Fix font rendering" plugin
-5. Updated Android SDK
-6. Save downloaded files and reuse them during Java installation
-7. Removed Unico engine as it is now available in official repos
-
 Changelog 2.0.8 (31-05-2012)
 
 1. Install java using a cookie (Thanks Andrew)
