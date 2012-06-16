@@ -43,6 +43,7 @@ LOCKFILE="/var/run/fedorautils.pid"	# The lockfile used to prevent running of mu
 LOGFILE="/var/log/fedorautils.log"	# Outputs will be redirected to this file if logging is enabled
 KEEPLOG="NO"				# If you want to enable logging, change "NO" to "YES"
 DOWNAGENT="CURL"			# If you prefer wget over curl, change "CURL" to "WGET"
+PREFWGET="NO"				# To use wget instead of curl only if available, change "NO" to "YES"
 FORCEDOWN="NO"				# If you want to force redownload of files, change "NO" to "YES"
 FORCEDISTRO="NO"			# If you want to run the script with unsupported distro, change "NO" to "YES"
 KEEPBACKUP="YES"			# If you don't want to backup previous configurations, change "YES" to "NO"

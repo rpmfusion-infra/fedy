@@ -14,7 +14,7 @@ else
 	fi
 fi
 if [ -e /etc/system-release ]; then
-StatusMsg "$(cat /etc/system-release) detected"
+ShowMsg "$(cat /etc/system-release) detected"
 fver="$(cat /etc/system-release | cut -c16-17)"
 else
 WarnMsg "Could not detect Fedora version"
@@ -57,6 +57,21 @@ else
 	if [ ! -e /usr/bin/curl ]; then
 		ErrorMsg "Installation of curl failed"
 		Terminate
+	fi
+fi
+# Check Wget
+if [ -e /usr/bin/wget ]; then
+	StatusMsg "wget verified"
+	if [ -e /usr/bin/wget ] && [ "$PREFWGET" = "YES" ]; then
+		ShowMsg "Using wget"
+		DOWNAGENT="WGET"
+	fi
+elif [ "$DOWNAGENT" = "WGET" ] && [ ! -e /usr/bin/wget ]; then
+	ErrorMsg "wget is not present in the system. Installing wget"
+	sudo InstallPkg wget
+	if [ ! -e /usr/bin/wget ]; then
+		ErrorMsg "Installation of wget failed. Using curl"
+		DOWNAGENT="CURL"
 	fi
 fi
 }
