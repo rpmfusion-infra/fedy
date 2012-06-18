@@ -72,7 +72,8 @@ if [ "$DOWNAGENT" = "WGET" ]; then
 			DOWNAGENT="CURL"
 		fi
 	elif [ -e /usr/bin/wget ]; then
-		StatusMsg "wget verified. Using wget"
+		StatusMsg "wget verified"
+		ShowMsg "Using wget"
 	fi
 fi
 }
