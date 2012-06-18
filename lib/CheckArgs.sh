@@ -14,9 +14,9 @@ case "$ARG" in
 "--help") ShowLicense
 		echo -e "Usage:\tfedorautils [argument]"
 		echo -e "\v"
-		awk '{ printf "\t%-35s%-s\n",$1,$2}' FS=\, "$SCRIPTDIR/arguments.list"
+		awk '{ printf "\t%-30s%-s\n",$1,$2}' FS=\, "$SCRIPTDIR/arguments.list"
 		echo -e "\v"
-		echo -e "Run as root with no arguments for the normal GUI. Note that if you run $PROGRAM without root privilleges, it will try to accquire root previlleges first and all arguments will reset and won't work."
+		echo -e "Run as root with no arguments for the normal GUI. Note that if you run $PROGRAM without root privilleges, it will try to accquire root previlleges first and all arguments will reset and won't work. You can also use configuration file to set variables instead of using arguments."
 		exit;;
 *) echo "Invalid argument $ARG. Try --help for list of arguments."
 		exit;;
