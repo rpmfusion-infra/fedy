@@ -72,10 +72,11 @@ for plug in $PLUGINS; do source "$plug"; done
 
 # Source config files if present
 
+if [ -f "$SYSCONF" ]; then
+	source "$SYSCONF"
+fi
 if [ -f "$USERCONF" ]; then
 	source "$USERCONF"
-elif [ -f "$SYSCONF" ]; then
-	source "$SYSCONF"
 fi
 
 # Additional Parameters
