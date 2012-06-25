@@ -1,4 +1,4 @@
-function ViewHelp # View Help
+function ViewHelp # View help
 {
 if [ -e /etc/yum.repos.d/fedorautils.repo ]; then
 REPOTEXT="Remove"
