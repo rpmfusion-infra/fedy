@@ -21,12 +21,24 @@ if [ "$KEEPLOG" = "YES" ]; then
 	fi
 	# Create logfile
 	touch "$LOGFILE"
-	echo "[$(date)]" | tee -a "$LOGFILE"
-	echo "" | tee -a "$LOGFILE"
-	echo "$PROGRAM - $VERSION" | tee -a "$LOGFILE"
-	echo $(cat /etc/system-release) | tee -a "$LOGFILE"
-	echo $(uname -irs) | tee -a "$LOGFILE"
-	echo "" | tee -a "$LOGFILE"
+	echo "[$(date)]" >> "$LOGFILE"
+	echo "" >> "$LOGFILE"
+	echo "$PROGRAM - $VERSION" >> "$LOGFILE"
+	cat /etc/system-release >> "$LOGFILE"
+	echo $(uname -irs) >> "$LOGFILE"
+	echo "" >> "$LOGFILE"
+	if [ -f $USERCONF ]; then
+	echo "[User config]" >> "$LOGFILE"
+	echo "" >> "$LOGFILE"
+	cat "$USERCONF" >> "$LOGFILE" 
+	echo "" >> "$LOGFILE"
+	fi
+	if [ -f $SYSCONF ]; then
+	echo "[Global config]" >> "$LOGFILE"
+	echo "" >> "$LOGFILE"
+	cat "$SYSCONF" >> "$LOGFILE" 
+	echo "" >> "$LOGFILE"
+	fi
 	echo "[Variables]" >> "$LOGFILE"
 	echo "" >> "$LOGFILE"
 	echo "Home directory: $HOMEDIR" >> "$LOGFILE"
@@ -35,13 +47,18 @@ if [ "$KEEPLOG" = "YES" ]; then
 	echo "Modules directory: $MODULES" >> "$LOGFILE"
 	echo "Plugins directory: $PLUGINS" >> "$LOGFILE"
 	echo "Work directory: $WORKINGDIR" >> "$LOGFILE"
+	echo "Global config: $SYSCONF" >> "$LOGFILE"
+	echo "User config: $USERCONF" >> "$LOGFILE"
 	echo "Lock file: $LOCKFILE" >> "$LOGFILE"
 	echo "Log file: $LOGFILE" >> "$LOGFILE"
+	echo "Download agent: $DOWNAGENT" >> "$LOGFILE"
+	echo "Prefer wget: $PREFWGET" >> "$LOGFILE"
 	echo "Force redownload: $FORCEDOWN" >> "$LOGFILE"
 	echo "Force distro: $FORCEDISTRO" >> "$LOGFILE"	
 	echo "Backup configs: $KEEPBACKUP" >> "$LOGFILE"
 	echo "Save downloads: $KEEPDOWNLOADS" >> "$LOGFILE"
 	echo "Downloads directory: $DOWNLOADSDIR" >> "$LOGFILE"
+	echo "Use TTS: $TTS" >> "$LOGFILE"
 	echo "" >> "$LOGFILE"
 	echo "[Libraries]" >> "$LOGFILE"
 	echo "" >> "$LOGFILE"
@@ -58,6 +75,6 @@ if [ "$KEEPLOG" = "YES" ]; then
 	echo "[Outputs]" >> "$LOGFILE"
 	echo "" >> "$LOGFILE"
 	exec &>> "$LOGFILE"
-	tail -f -n +7 "$LOGFILE" >/dev/tty &
+	tail -f -n +1 "$LOGFILE" >/dev/tty &
 fi
 }
