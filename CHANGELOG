@@ -5,6 +5,7 @@ Changelog 2.1.1 (28-06-2012)
 3. Open the browser as logged in user, not root
 4. Prefer wget by default
 5. Added man page
+6. Added a plugin to enable USB modems
 
 Changelog 2.1.0 (16-06-2012)
 
