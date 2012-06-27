@@ -1,2 +1,2 @@
 #!/bin/bash
-pkexec "/usr/share/fedorautils/fedorautils" $*
+pkexec "/usr/share/fedorautils/fedorautils" "$@"
