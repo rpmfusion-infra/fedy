@@ -20,7 +20,7 @@ case "$1" in
 	"--debug") ShowLogfile
 			exit;;
 	"--help") ShowLicense
-			echo -e "Usage:\tfedorautils [argument]"
+			echo -e "Usage:\tfedorautils [ARGUMENT...]"
 			echo -e "\v"
 			awk '{ printf "\t%-30s%-s\n",$1,$2}' FS=\, "$SCRIPTDIR/arguments.list"
 			echo -e "\v"
