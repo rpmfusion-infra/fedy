@@ -8,7 +8,7 @@ if [ ! $(whoami) = "root" ]; then
 		Terminate
 	else
 		AddSudoer
-		WarnMsg "Attempting to run $PROGRAM with root previleges, all arguements will reset"
+		WarnMsg "Attempting to run $PROGRAM with root previleges!"
 		exec sudo $0 "$@"
 		exit;
 	fi
