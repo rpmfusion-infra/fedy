@@ -18,11 +18,11 @@ Documentation is available online. Please visit the [wiki](http://github.com/sat
 
 ### How to install
 
-Please download the latest stable version from the [project page](http://fedorautils.sourceforge.net).
+To install the latest stable version of Fedora Utils in your system, run the following commands in the Terminal and enter your root password when prompted,
 
-After downloading, navigate to the download directory and run the following in the Terminal,
+`su -c "curl http://master.dl.sourceforge.net/project/fedorautils/fedorautils.repo -o /etc/yum.repos.d/fedorautils.repo"`
 
-`su -c "rpm -Uvh fedorautils-*.noarch.rpm"`
+`su -c "yum install fedorautils"`
 
 ### How to use
 

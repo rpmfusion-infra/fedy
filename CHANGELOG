@@ -1,3 +1,11 @@
+Changelog 2.1.1 (28-06-2012)
+
+1. Don't reset arguments if not executed as root
+2. Added support for multiple arguments
+3. Open the browser as logged in user, not root
+4. Prefer wget by default
+5. Added man page
+
 Changelog 2.1.0 (16-06-2012)
 
 1. Display outputs  in Terminal when logging is enabled
