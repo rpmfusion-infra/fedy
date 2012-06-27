@@ -24,8 +24,6 @@ PROGRAM="Fedora Utils"
 VERSION="2.1.1"
 USER="$(logname)"
 REBOOTREQUIRED="NO"
-FORCE="NO"
-FORCEDISTRO="NO"
 ERRORS="0"
 HOMEDIR=`awk -F: -v v="$(logname)" '{if ($1==v) print $6}' /etc/passwd`
 SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
