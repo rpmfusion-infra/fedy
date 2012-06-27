@@ -21,13 +21,13 @@
 # Declare Variables
 
 PROGRAM="Fedora Utils"
-VERSION="2.1.0"
+VERSION="2.1.1"
 USER="$(logname)"
 REBOOTREQUIRED="NO"
 FORCE="NO"
 FORCEDISTRO="NO"
 ERRORS="0"
-ARG="$1"
+ARGS="$*"
 HOMEDIR=`awk -F: -v v="$(logname)" '{if ($1==v) print $6}' /etc/passwd`
 SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -85,7 +85,7 @@ trap Terminate INT
 
 # Run the Program
 
-CheckArgs	# Check any supplied arguments and run the suitable function
+CheckArgs $ARGS	# Check and parse supplied arguments
 ShowLicense	# Show the License when starting the script
 CheckRoot	# Check if running as root
 EnableLog	# Enable logging if --enable-log argument is given
