@@ -19,9 +19,9 @@ if [ ! $? = "1" ]; then
 				FedoraUtilsRepo
 			fi;;
 		"issue") ShowMsg "Opening Browser..."
-				xdg-open "http://github.com/satya164/fedorautils/issues";;
+				sudo -u "$USER"  xdg-open "http://github.com/satya164/fedorautils/issues";;
 		"wiki") ShowMsg "Opening Browser..."
-				xdg-open "http://github.com/satya164/fedorautils/wiki";;
+				sudo -u "$USER"  xdg-open "http://github.com/satya164/fedorautils/wiki";;
 		"changelog") ShowMsg "Fetching changelog..."
 			curl -s http://master.dl.sourceforge.net/project/fedorautils/README -o changelog.txt
 			if [ -e changelog.txt ]; then
