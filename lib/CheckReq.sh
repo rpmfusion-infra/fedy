@@ -2,7 +2,7 @@ function CheckReq()
 {
 ShowFunc "Verifying minimum system requirements"
 # Check Distro
-s=`cat /etc/issue | grep -wf "$SCRIPTDIR/support.list"`
+s=`cat /etc/issue | grep -iw "$(ls support)"`
 if [ -n "$s" ]; then
 	StatusMsg "Distro verified"
 else
