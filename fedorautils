@@ -18,35 +18,34 @@
 # Special credits to Valdur Kana <valdur55@gmail.com> for dynamic way of creating menus
 # And of course, all those users who reported bugs
 
-# Declare Variables
+# Declare variables
 
-PROGRAM="Fedora Utils"
-VERSION="2.1.1"
-USER="$(logname)"
-REBOOTREQUIRED="NO"
-ERRORS="0"
-HOMEDIR=`awk -F: -v v="$(logname)" '{if ($1==v) print $6}' /etc/passwd`
-SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+program="Fedora Utils"
+version="Experimental"
+user="$(logname)"
+errors="0"
+homedir=`awk -F: -v v="$(logname)" '{if ($1==v) print $6}' /etc/passwd`
+scriptdir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Configuration
+# Default configuration
 
-LIBS="$SCRIPTDIR/lib/*.sh"		# Provides core functionality, change only if you know what are you doing
-MODULES="$SCRIPTDIR/modules/*.sh"	# Provides the main menu module
-PLUGINS="$SCRIPTDIR/plugins/*.sh"	# The directory where are containing all the plugins
-WORKINGDIR="/tmp/fedorautils"		# A temporary directory where everything is done, automatically created as needed
-SYSCONF="/etc/fedorautilsrc"		# System wide configuration file for fedorautils
-USERCONF="$HOMEDIR/.fedorautilsrc"	# User specific configuration file for fedorautils
-LOCKFILE="/var/run/fedorautils.pid"	# The lockfile used to prevent running of multiple instances
-LOGFILE="/var/log/fedorautils.log"	# Outputs will be redirected to this file if logging is enabled
-KEEPLOG="NO"				# If you want to enable logging, change "NO" to "YES"
-DOWNAGENT="CURL"			# To use wget instead of curl unless preferred, change "CURL" to "WGET"
-PREFWGET="YES"				# If you prefer curl over wget, change "YES" to "NO"
-FORCEDOWN="NO"				# If you want to force redownload of files, change "NO" to "YES"
-FORCEDISTRO="NO"			# If you want to run the script with unsupported distro, change "NO" to "YES"
-KEEPBACKUP="YES"			# If you don't want to backup previous configurations, change "YES" to "NO"
-KEEPDOWNLOADS="YES"			# If you don't intend to save downloads, change "YES" to "NO"
-DOWNLOADSDIR="$HOMEDIR/FedoraUtils"	# All downloaded files are saved in this directory
-TTS="NO"				# If you want fedorautils to speak, change "NO" to "YES"
+libdir="$scriptdir/lib"			# Provides core functionality, change only if you know what are you doing
+moduledir="$scriptdir/modules"		# Provides the main menu module
+plugindir="$scriptdir/plugins"		# The directory where are containing all the plugins
+workingdir="/tmp/fedorautils"		# A temporary directory where everything is done, automatically created as needed
+sysconf="/etc/fedorautilsrc"		# System wide configuration file for fedorautils
+userconf="$homedir/.fedorautilsrc"	# User specific configuration file for fedorautils
+lockfile="/var/run/fedorautils.pid"	# The lockfile used to prevent running of multiple instances
+logfile="/var/log/fedorautils.log"	# Outputs will be redirected to this file if logging is enabled
+keeplog="no"				# If you want to enable logging, change "no" to "yes"
+downagent="curl"			# To use wget instead of curl unless preferred, change "curl" to "wget"
+prefwget="yes"				# If you prefer curl over wget, change "yes" to "no"
+forcedown="no"				# If you want to force redownload of files, change "no" to "yes"
+forcedistro="no"			# If you want to run the script with unsupported distro, change "no" to "yes"
+keepbackup="yes"			# If you don't want to backup previous configurations, change "yes" to "no"
+keepdownloads="no"			# If you don't intend to save downloads, change "yes" to "no"
+downloadsdir="$homedir/fedorautils_dl"	# All downloaded files are saved in this directory
+tts="no"				# If you want fedorautils to speak, change "no" to "yes"
 
 # Set Colors
 
@@ -61,36 +60,34 @@ BLUE="\033[0;34m"
 BLUEBOLD="\033[1;34m"
 ENDCOLOR="\033[0m"
 
-# Source functions
+# Source libraries
 
-for lib in $LIBS; do source "$lib"; done
-for module in $MODULES; do source "$module"; done
-for plug in $PLUGINS; do source "$plug"; done
+for lib in $libdir/*.sh; do source "$lib"; done
 
 # Source config files if present
 
-if [ -f "$SYSCONF" ]; then
-	source "$SYSCONF"
+if [ -f "$sysconf" ]; then
+	source "$sysconf"
 fi
-if [ -f "$USERCONF" ]; then
-	source "$USERCONF"
+if [ -f "$userconf" ]; then
+	source "$userconf"
 fi
 
-# Additional Parameters
+# Additional parameters
 
-trap Terminate INT
+trap terminate_program INT
 
-# Run the Program
+# Run the program
 
-CheckArgs "$@"	# Check and parse supplied arguments
-ShowLicense	# Show the License when starting the script
-CheckRoot "$@"	# Check if running as root
-EnableLog	# Enable logging if --enable-log argument is given
-CheckLock	# Check if any other instances running and exit
-CheckReq	# Check the minimum requirements for running the script
-Initialize	# Initialize the script
-Main		# Show the main menu
-Complete	# Do all the clean up and other stuff when all tasks are complete
+check_args "$@"
+show_license
+check_root "$@"
+enable_log
+check_lock
+check_req
+initialize_program
+ui_main
+complete_program
 
 # Please report bugs at <http://github.com/satya164/fedorautils/issues>
 # End of the Script
