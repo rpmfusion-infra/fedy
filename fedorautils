@@ -63,7 +63,10 @@ ENDCOLOR="\033[0m"
 
 # Source libraries
 
+SAVEIFS=$IFS
+IFS=$(echo -en "\n\b")
 for lib in $libdir/*.sh; do source "$lib"; done
+IFS=$SAVEIFS
 
 # Source binaries
 

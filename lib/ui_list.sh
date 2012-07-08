@@ -2,6 +2,8 @@ ui_list() {
 section="$1"
 listtype="$2"
 title="$3"
+SAVEIFS=$IFS;
+IFS=$(echo -en "\n\b")
 plugins="$plugindir/*.$section.sh"
 for plug in $plugins; do
 	[[ -f "$plug" ]] || continue
@@ -18,4 +20,5 @@ while list=$(zenity --list $listtype --width=450 --height=650 --title="$title" -
 	done
 done
 unset plugs
+IFS=$SAVEIFS
 }
