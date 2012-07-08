@@ -19,5 +19,5 @@ else
 	fi
 fi
 s=`grep "SELINUX=permissive" /etc/selinux/config`
-[ -n "$s" ]; exit_status
+[ -n "$s" ]; exit_state
 }
