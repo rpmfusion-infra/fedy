@@ -5,17 +5,16 @@
 #
 # Copyright (C) 2012  Satyajit sahoo
 #
-# License: GNU General Public License 3 <http://www.gnu.org/licenses/gpl-3.0.html>
+# License: GNU GPLv3 <http://www.gnu.org/licenses/gpl-3.0.html>
 # Author: Satyajit Sahoo <satyajit.happy@gmail.com>
-# Site: Project Page <http://fedorautils.sorceforge.net>
+# Code: GitHub <https://github.com/satya164/fedorautils>
 #
 # This script benefits both for codes and ideas from
 # AutoPlus by dangermouse <http://www.dnmouse.org/autoten/>
 # easyLife by dulinux <http://easylifeproject.org>
 #
-# I'm grateful to dangermouse for providing RPM pacakge and pointing out the bugs & mistakes
-# Thanks to Andrew <http://webupd8.org> for testing and publishing it in his blog
-# Special credits to Valdur Kana <valdur55@gmail.com> for dynamic way of creating menus
+# Credits to dangermouse for providing RPM pacakge
+# Thanks to Andrew <http://webupd8.org> for testing
 # And of course, all those users who reported bugs
 
 # Declare variables
@@ -68,7 +67,7 @@ IFS=$(echo -en "\n\b")
 for lib in $libdir/*.sh; do source "$lib"; done
 IFS=$SAVEIFS
 
-# Source binaries
+# Add binaries to path
 
 if [ -d "$bindir" ]; then
 	export PATH="$bindir:$PATH"
