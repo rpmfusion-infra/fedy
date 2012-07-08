@@ -32,6 +32,7 @@ scriptdir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 libdir="$scriptdir/lib"			# Provides core functionality, change only if you know what are you doing
 moduledir="$scriptdir/modules"		# Provides the main menu module
 plugindir="$scriptdir/plugins"		# The directory where are containing all the plugins
+bindir="$scriptdir/bin"			# Contains binary executables
 workingdir="/tmp/fedorautils"		# A temporary directory where everything is done, automatically created as needed
 sysconf="/etc/fedorautilsrc"		# System wide configuration file for fedorautils
 userconf="$homedir/.fedorautilsrc"	# User specific configuration file for fedorautils
@@ -63,6 +64,12 @@ ENDCOLOR="\033[0m"
 # Source libraries
 
 for lib in $libdir/*.sh; do source "$lib"; done
+
+# Source binaries
+
+if [ -d "$bindir" ]; then
+	export PATH="$bindir:$PATH"
+fi
 
 # Source config files if present
 
