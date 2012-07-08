@@ -14,5 +14,5 @@ else
 sed -i 's/keepcache=0/keepcache=1/g' /etc/yum.conf
 fi
 s=`grep "keepcache=1" /etc/yum.conf`
-[ -n "$s" ]; exit_state
+[[ -n "$s" ]]; exit_state
 }

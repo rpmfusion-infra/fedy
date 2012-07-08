@@ -36,40 +36,40 @@ else
 	zenity --warning --timeout="5" --text="No working internet connection found. $program requires internet connection to work properly. You may encounter problems."
 fi
 # Check Zenity
-if [ `which zenity` ]; then
+if [[ `which zenity` ]]; then
 	show_status "zenity verified"
 else
 	show_error "zenity is needed for $program to run properly. Installing zenity"
 	install_pkg zenity
-	if [ ! `which zenity` ]; then
+	if [[ ! `which zenity` ]]; then
 		show_error "Installation of zenity failed"
 		terminate_program
 	fi
 fi
 # Check Curl
-if [ `which curl` ]; then
+if [[ `which curl` ]]; then
 	show_status "curl verified"
 else
 	show_error "curl is needed for $program to run properly. Installing curl"
 	install_pkg curl
-	if [ ! `which curl` ]; then
+	if [[ ! `which curl` ]]; then
 		show_error "Installation of curl failed"
 		terminate_program
 	fi
 fi
 # Check Wget
-if [ "$prefwget" = "yes" ] && [ `which wget` ]; then
+if [ "$prefwget" = "yes" ] && [[ `which wget` ]]; then
 	downagent="wget"
 fi
 if [ "$downagent" = "wget" ]; then
-	if [ ! `which wget` ]; then
+	if [[ ! `which wget` ]]; then
 		show_error "wget is not present in the system. Installing wget"
 		install_pkg wget
-		if [ ! `which wget` ]; then
+		if [[ ! `which wget` ]]; then
 			show_error "Installation of wget failed. Using curl"
 			downagent="curl"
 		fi
-	elif [ `which wget` ]; then
+	elif [[ `which wget` ]]; then
 		show_status "wget verified"
 		show_msg "Using wget"
 	fi

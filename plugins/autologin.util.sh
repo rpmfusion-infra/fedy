@@ -15,5 +15,5 @@ AutomaticLoginEnable=True
 EOF
 fi
 s=`grep "AutomaticLoginEnable=True" /etc/gdm/custom.conf`
-[ -n "$s" ]; exit_status
+[[ -n "$s" ]]; exit_state
 }

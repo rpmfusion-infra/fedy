@@ -12,5 +12,5 @@ usbserial
 option
 EOF
 fi
-[ -f /etc/modprobe.d/usb-modem.conf ]; exit_state
+[[ -f /etc/modprobe.d/usb-modem.conf ]]; exit_state
 }
