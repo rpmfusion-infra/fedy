@@ -1,7 +1,7 @@
 check_req() {
 show_func "Verifying minimum system requirements"
 # Check Distro
-s=`grep -iw "$(ls support)" /etc/issue`
+s=`grep -iw "$(ls "$supportdir")" /etc/issue`
 if [ -n "$s" ]; then
 	show_status "Distro verified"
 else
