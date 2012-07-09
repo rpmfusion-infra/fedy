@@ -2,26 +2,26 @@ check_req() {
 show_func "Verifying minimum system requirements"
 # Check Distro
 s=`grep -iw "$(ls "$supportdir")" /etc/issue`
-if [ -n "$s" ]; then
+if [[ `ls "$supportdir"` ]] && [[ -n "$s" ]]; then
 	show_status "Distro verified"
 else
-	if [ "$forcedistro" = "yes" ]; then
+	if [[ "$forcedistro" = "yes" ]]; then
 	show_warn "Unsupported distro, but will continue as instructed"
 	else
 	show_error "Distro not supported"
 	terminate_program
 	fi
 fi
-if [ -e /etc/system-release ]; then
+if [[ -e /etc/system-release ]]; then
 show_msg "$(cat /etc/system-release) detected"
 fver="$(cat /etc/system-release | cut -c16-17)"
 else
 show_warn "Could not detect Fedora version"
 fi
 # Check Architecture
-if [ $(uname -i) = "i386" ]; then
+if [[ $(uname -i) = "i386" ]]; then
 	show_status "Architecture verified (32-bit)"
-elif [ $(uname -i) = "x86_64" ]; then
+elif [[ $(uname -i) = "x86_64" ]]; then
 	show_status "Architecture verified (64-bit)"
 else
 	show_error "Architecture not supported"
@@ -29,7 +29,7 @@ else
 fi
 # Check Connection
 i=`ping -c 1 www.google.com > "/dev/null" 2>&1` ;
-if [ $? = "0" ]; then
+if [[ $? = "0" ]]; then
 	show_status "Internet connection verified"
 else
 	show_warn "No working internet connection found"
@@ -58,10 +58,10 @@ else
 	fi
 fi
 # Check Wget
-if [ "$prefwget" = "yes" ] && [[ `which wget` ]]; then
+if [[ "$prefwget" = "yes" ]] && [[ `which wget` ]]; then
 	downagent="wget"
 fi
-if [ "$downagent" = "wget" ]; then
+if [[ "$downagent" = "wget" ]]; then
 	if [[ ! `which wget` ]]; then
 		show_error "wget is not present in the system. Installing wget"
 		install_pkg wget
