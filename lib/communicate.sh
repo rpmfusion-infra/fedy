@@ -1,5 +1,5 @@
 speak_tts() {
-if [ "$tts" = "yes" ]; then
+if [[ "$tts" = "yes" ]]; then
 echo "$@" | festival --tts
 fi
 }
@@ -37,7 +37,7 @@ echo -e $BLUEBOLD"$@"$ENDCOLOR
 
 exit_state()
 {
-if [ $? = "0" ]; then
+if [[ $? = "0" ]]; then
 echo -e $GREENBOLD"Successfully completed."$ENDCOLOR
 else
 echo -e $REDBOLD"Completed, but with errors!"$ENDCOLOR

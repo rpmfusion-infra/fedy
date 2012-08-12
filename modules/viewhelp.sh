@@ -7,7 +7,7 @@ repotext="Remove"
 else
 repotext="Add"
 fi
-while shell=$(zenity --list --width=300 --height=300 --title="$program Help" --text="$program $version (C) Satyajit Sahoo\nhttp:\/\/satya164.github.com/fedorautils/" --radiolist  --column "Select" --column "Options" TRUE "$repotext fedorautils repo" FALSE "Report an issue" FALSE "Visit the wiki" FALSE "View changelog" FALSE "View logfile" --ok-label="Select" --hide-header --cancel-label="Back"); do
+while shell=$(zenity --list --radiolist --width=300 --height=300 --title="$program Help" --text="$program $version (C) Satyajit Sahoo\nhttp:\/\/satya164.github.com/fedorautils/" --hide-header --hide-column=2 --column "Select" --column "Command" --column "Options" TRUE "repo" "$repotext fedorautils repo" FALSE "issue" "Report an issue" FALSE "wiki" "Visit the wiki" FALSE "changelog" "View changelog" FALSE "logfile" "View logfile" --ok-label="Select" --cancel-label="Back"); do
 	arr=$(echo $shell | tr "|" "\n")
 	for x in $arr; do
 		case $x in
@@ -16,7 +16,7 @@ while shell=$(zenity --list --width=300 --height=300 --title="$program Help" --t
 			rm -f /etc/yum.repos.d/fedorautils.repo
 			else
 			show_func "Adding fedorautils repo"
-				FedoraUtilsRepo
+				fedorautilsrepo
 			fi;;
 		"issue") show_msg "Opening Browser..."
 				sudo -u "$user"  xdg-open "http://github.com/satya164/fedorautils/issues";;

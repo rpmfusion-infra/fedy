@@ -1,5 +1,5 @@
 check_args() {
-while [ $# -gt 0 ]; do
+while [[ $# -gt 0 ]]; do
 case "$1" in
 	"") ;;
 	"--enable-log") keeplog="yes"
@@ -16,7 +16,7 @@ case "$1" in
 			shift;;
 	"--use-tts") tts="yes"
 			shift;;
-	"--debug") if [ -e "$logfile" ]; then
+	"--debug") if [[ -e "$logfile" ]]; then
 			cat "$logfile"
 		else
 			echo -e "No logfile exists. Try running Fedora Utils with logging enabled. Use --help for more details"

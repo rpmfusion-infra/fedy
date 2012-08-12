@@ -5,14 +5,14 @@
 selinuxconf() {
 show_func "Setting SELinux to permissive mode"
 s=`grep "SELINUX=permissive" /etc/selinux/config`
-if [ -n "$s" ]; then
+if [[ -n "$s" ]]; then
 show_status "SELinux is already in permissive mode"
 else
 	s=`grep "SELINUX=disabled" /etc/selinux/config`
-	if [ -n "$s" ]; then
+	if [[ -n "$s" ]]; then
 	show_status "SELinux is disabled, not changing state"
 	else
-		if [ "$keepbackup" = "yes" ]; then
+		if [[ "$keepbackup" = "yes" ]]; then
 		cp /etc/selinux/config /etc/selinux/config.bak
 		fi
 		sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
@@ -20,5 +20,5 @@ else
 fi
 s=`grep "SELINUX=permissive" /etc/selinux/config`
 t=`grep "SELINUX=disabled" /etc/selinux/config`
-[[ -n "$s" ]] || [[ -n "$t" ]]; exit_state
+[[ -n "$s" || -n "$t" ]]; exit_state
 }

@@ -1,6 +1,6 @@
 enable_log() {
 # Enable logging
-if [ "$keeplog" = "yes" ]; then
+if [[ "$keeplog" = "yes" ]]; then
 	show_msg "Logging is enabled"
 	echo ""
 	# Unset Colors
@@ -15,7 +15,7 @@ if [ "$keeplog" = "yes" ]; then
 	unset BLUEBOLD
 	unset ENDCOLOR
 	# Rotate old logfile
-	if [ -e "$logfile" ]; then
+	if [[ -e "$logfile" ]]; then
 		mv "$logfile" ""$logfile"-$(date +"%Y%m%d%H%M%S")"
 	fi
 	# Create logfile
@@ -26,13 +26,13 @@ if [ "$keeplog" = "yes" ]; then
 	cat /etc/system-release >> "$logfile"
 	echo $(uname -irs) >> "$logfile"
 	echo "" >> "$logfile"
-	if [ -f "$userconf" ]; then
+	if [[ -f "$userconf" ]]; then
 	echo "[User config]" >> "$logfile"
 	echo "" >> "$logfile"
 	cat "$userconf" >> "$logfile" 
 	echo "" >> "$logfile"
 	fi
-	if [ -f "$sysconf" ]; then
+	if [[ -f "$sysconf" ]]; then
 	echo "[Global config]" >> "$logfile"
 	echo "" >> "$logfile"
 	cat "$sysconf" >> "$logfile" 

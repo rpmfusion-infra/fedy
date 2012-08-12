@@ -1,6 +1,6 @@
 complete_program() {
-if [ ! "$errors" = "0" ]; then
-	if [ "$keeplog" = "no" ]; then
+if [[ ! "$errors" = "0" ]]; then
+	if [[ "$keeplog" = "no" ]]; then
 	show_error "$program encountered $errors errors. You might want to run $program again with logging enabled and report if there are any bugs."
 	else
 	notify_send "Errors detected:" "$program encountered $errors errors. Please report bugs at http://github.com/satya164/fedorautils/issues. Please also attach the logfile $logfile."
