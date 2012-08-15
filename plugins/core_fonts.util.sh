@@ -10,8 +10,8 @@ else
 [[ -e /usr/bin/cabextract ]] || install_pkg cabextract
 mkdir -p "$workingdir/corefonts"
 process_font andale32.exe
-process_font arialb32.exe
 process_font arial32.exe
+process_font arialb32.exe
 process_font comic32.exe
 process_font courie32.exe
 process_font georgi32.exe
@@ -20,6 +20,7 @@ process_font times32.exe
 process_font trebuc32.exe
 process_font verdan32.exe
 process_font webdin32.exe
+process_font wd97vwr32.exe
 mv "$workingdir/msttcorefonts" "/usr/share/fonts/"
 show_msg "Rebuilding font cache..."
 fc-cache -f -v
