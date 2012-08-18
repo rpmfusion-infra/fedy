@@ -17,13 +17,13 @@ else
 	if [[ $(uname -i) = "i386" ]]; then
 	file="wine_gecko-1.7-x86.msi"
 	get="http://downloads.sourceforge.net/wine/wine_gecko-1.7-x86.msi"
-	GetFile
+	get_file
 	mkdir -p /usr/share/wine/gecko
 	cp "$file" /usr/share/wine/gecko/
 	elif [[ $(uname -i) = "x86_64" ]]; then
 	file="wine_gecko-1.7-x86_64.msi"
 	get="http://downloads.sourceforge.net/wine/wine_gecko-1.7-x86_64.msi"
-	GetFile
+	get_file
 	mkdir -p /usr/share/wine/gecko
 	cp "$file" /usr/share/wine/gecko/
 	fi
