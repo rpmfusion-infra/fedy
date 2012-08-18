@@ -7,15 +7,12 @@ show_func "Installing Oracle JRE"
 if [[ -e /usr/java/jdk1.7.0_*/bin/java ]]; then
 show_status "Oracle JRE already installed"
 else
-if [[ $(uname -i) = "i386" ]]; then
-file="jre-7u5-linux-i586.rpm"
-get="http://download.oracle.com/otn-pub/java/jdk/7u5-b06/jre-7u5-linux-i586.rpm"
-elif [[ $(uname -i) = "x86_64" ]]; then
-file="jre-7u5-linux-x64.rpm"
-get="http://download.oracle.com/otn-pub/java/jdk/7u5-b06/jre-7u5-linux-x64.rpm"
-fi
-get_java
-install_local "$file"
+cookie="$datadir/java.cookie"
+file32="jre-7u5-linux-i586.rpm"
+get32="http://download.oracle.com/otn-pub/java/jdk/7u5-b06/jre-7u5-linux-i586.rpm"
+file64="jre-7u5-linux-x64.rpm"
+get64="http://download.oracle.com/otn-pub/java/jdk/7u5-b06/jre-7u5-linux-x64.rpm"
+process_pkg
 show_msg "Setting up Oracle Java..."
 alternatives --install /usr/bin/java java /usr/java/default/bin/java 20000
 fi

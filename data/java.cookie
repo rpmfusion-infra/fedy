@@ -1,0 +1,11 @@
+# Cookies for domains related to oracle.com.
+# This content may be pasted into a cookies.txt file and used by wget
+# Example:  wget -x --load-cookies cookies.txt http://www.oracle.com/technetwork/java/javase/downloads/jdk-7u3-download-1501626.html
+#
+www.oracle.com	FALSE	/technetwork/java/javase/downloads	FALSE	0	testSessionCookie	Enabled
+.edelivery.oracle.com	TRUE	/	FALSE	1648220805	ARU_LANG	US
+.oracle.com	TRUE	/	FALSE	1587915348	s_nr	1332862548221
+.oracle.com	TRUE	/	FALSE	0	s_cc	true
+www.oracle.com	FALSE	/	FALSE	0	oraclelicensejdk-7u3-oth-JPR	accept-securebackup-cookie
+.oracle.com	TRUE	/	FALSE	0	s_sq	oracleotnlive%2Coracleglobal%3D%2526pid%253Dotn%25253Aen-us%25253A%25252Fjava%25252Fjavase%25252Fdownloads%25252Fjdk-7u3-download-1501626.html%2526pidt%253D1%2526oid%253Dfunctiononclick(event)%25257BacceptAgreement(window.self%25252C'jdk-7u3-oth-JPR')%25253B%25257D%2526oidt%253D2%2526ot%253DRADIO
+.oracle.com	TRUE	/	FALSE	1585387305	gpw_e24	http%3A%2F%2Fwww.oracle.com%2Ftechnetwork%2Fjava%2Fjavase%2Fdownloads%2Fjdk-7u3-download-1501626.html
