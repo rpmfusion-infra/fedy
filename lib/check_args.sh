@@ -24,7 +24,7 @@ case "$1" in
 		exit;;
 	"--help") echo -e "Usage:\tfedorautils [ARGUMENT...]"
 		echo -e "\v"
-		awk '{ printf "\t%-30s%-s\n",$1,$2}' FS=\, "$scriptdir/arguments.list"
+		awk '{ printf "\t%-30s%-s\n",$1,$2}' FS=\, "$scriptdir/data/arguments.list"
 		echo -e "\v"
 		echo -e "See the man page for more help."
 		exit;;
