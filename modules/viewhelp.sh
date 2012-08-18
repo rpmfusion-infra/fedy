@@ -7,12 +7,8 @@ while shell=$(zenity --list --radiolist --width=300 --height=300 --title="$progr
 	arr=$(echo $shell | tr "|" "\n")
 	for x in $arr; do
 		case $x in
-		"repo") if [[ $repotext = "Enable" ]]; then
-			show_func "Enabling fedorautils repo"
-			sed -i 's/enabled=0/enabled=1/g' /etc/yum.repos.d/fedorautils.repo
-			elif [[ $repotext = "Disable" ]]; then
-			show_func "Disabling fedorautils repo"
-			sed -i 's/enabled=1/enabled=0/g' /etc/yum.repos.d/fedorautils.repo
+		"repo") if [[ $repotext = "Remove" ]]; then
+			rm -f /etc/yum.repos.d/fedorautils.repo
 			else
 			fedorautilsrepo
 			fi
@@ -41,12 +37,7 @@ done
 
 detect_repotext() {
 if [[ -e /etc/yum.repos.d/fedorautils.repo ]]; then
-e=`grep "enabled=0" /etc/yum.repos.d/fedorautils.repo`
-	if [[ -n "$e" ]]; then
-	repotext="Enable"
-	else
-	repotext="Disable"
-	fi
+	repotext="Remove"
 else
 	repotext="Add"
 fi
