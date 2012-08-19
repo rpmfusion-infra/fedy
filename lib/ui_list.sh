@@ -7,11 +7,16 @@ IFS=$(echo -en "\n\b")
 plugins="$plugindir/*.$section.sh"
 for plug in $plugins; do
 	[[ -f "$plug" ]] || continue
-	name=$(grep -i "# Name:" "$plug" | sed -e 's/# Name: //')
-	command=$(grep -i "# Command:" "$plug" | sed -e 's/# Command: //')
-	value=$(grep -i "# Value:" "$plug" | sed -e 's/# Value: //')
+	name=$(grep "# Name:" "$plug" | sed -e 's/# Name: //')
+	command=$(grep "# Command:" "$plug" | sed -e 's/# Command: //')
+	value=$(grep "# Value:" "$plug" | sed -e 's/# Value: //')
 	plugs=("${plugs[@]}" "$value" "$command" "$name")
 	source "$plug"
+	s=`grep "# Include:" "$plug"`
+	if [[ -n "$s" ]]; then
+	include=$(grep "# Include:" "$plug" | sed -e 's/# Include: //')
+	source "$plugindir/$include"
+	fi
 done
 while list=$(zenity --list $listtype --width=450 --height=650 --title="$title" --text="" --hide-header --hide-column=2 --column "Select" --column "Command" --column "Plugin" --ok-label="Apply" --cancel-label="Back" "${plugs[@]}"); do
 	fun=$(echo $list | tr "|" "\n")

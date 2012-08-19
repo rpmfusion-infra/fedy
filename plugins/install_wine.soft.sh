@@ -1,6 +1,7 @@
 # Name: Install Wine with Gecko
 # Command: install_wine
 # Value: False
+# Include: add_repo.util.sh
 
 install_wine() {
 show_func "Installing Wine"

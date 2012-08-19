@@ -1,6 +1,7 @@
 # Name: Install Cinnamon desktop
 # Command: install_cinnamon
 # Value: False
+# Include: add_repo.util.sh
 
 install_cinnamon() {
 show_func "Installing Cinnamon desktop"
