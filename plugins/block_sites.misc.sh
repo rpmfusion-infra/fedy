@@ -5,12 +5,10 @@
 block_sites() {
 while blocksites=$(zenity --list --radiolist --width=300 --height=300 --title="Block/unblock websites" --text="Block or unblock a website for all users.\nIt modifies the \"/etc/hosts\" file." --hide-header --hide-column=2 --column "Select" --column "Command" --column "Option" TRUE "block" "Block a website" FALSE "unblock" "Unblock a website" FALSE "view" "View blocked websites" --ok-label="Select" --cancel-label="Back"); do
 	arr=$(echo $blocksites | tr "|" "\n")
-	echo $arr
 	for x in $arr
 	do
 		case $x in
 		"block") site=$(zenity --entry --title="Block a website" --text="Enter the website to be blocked.\nDo not enter http:// or www.")
-			echo "work"
 			if [ "$keepbackup" = "yes" ]; then
 			cp /etc/hosts /etc/hosts.bak
 			fi
