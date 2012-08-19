@@ -1,9 +1,9 @@
-# Name: Optimize boot process
-# Command: optimize_boot
+# Name: Disable system services
+# Command: disable_services
 # Value: FALSE
 
-optimize_boot() {
-while services=$(zenity --list --checklist --width=700 --height=600 --title="$program - Disable System Services (Advanced)" --text="Turning off system services will decrease boot time, but may create problems and break your system.\nThe services along with their functions are listed below. Though the default selection should suit most desktops,\nplease carefully review and select only the services you don't need." --hide-header --column "Select" --column "Daemon" --column "Function" \
+disable_services() {
+while services=$(zenity --list --checklist --width=700 --height=600 --title="$program - Disable system services (Advanced)" --text="Disabling system services will decrease boot time, but may create problems and break your system.\nThe services along with their functions are listed below. Though the default selection should suit most desktops,\nplease carefully review and select only the services you don't need." --hide-header --column "Select" --column "Daemon" --column "Function" \
 TRUE "abrt-ccpp" "Install ABRT coredump hook" \
 TRUE "abrt-vmcore" "Harvest vmcores for ABRT" \
 FALSE "abrtd" "ABRT Automated Bug Reporting tool" \
@@ -41,7 +41,7 @@ TRUE "sendmail" "Sendmail Mail Transport Agent" \
 TRUE "sm-client" "Sendmail Mail Transport Client" \
 TRUE "smolt" "Gather & Send info about your system to Fedora devs on a monthly basis" \
 FALSE "spice-vdagentd" "Agent daemon for Spice guests" \
---ok-label="Turn Off" --cancel-label="Back"); do
+--ok-label="Disable" --cancel-label="Back"); do
 	show_msg "Optimizing boot process..."
 	arr=$(echo $services | tr "|" "\n")
 	for x in $arr
