@@ -1,0 +1,52 @@
+.TH "fedorautils" 1 "28 June 2012" Fedora "User Manual"
+
+.SH NAME
+Fedora Utils - Tweak your Fedora
+
+.SH SYNOPSIS
+.B fedorautils
+[ARGUMENT...]
+
+.SH DESCRIPTION
+Fedora Utils is a post installation script for Fedora. It lets you install codecs and additional software, fix problems, tweak and cleanup your system, view system information and much more with just few clicks.
+
+.PP
+After installation, launch Fedora Utils from
+.B Applications > System Tools
+or type
+.B fedorautils
+in the terminal. Fedora Utils requires root permissions to run.
+
+
+.SH OPTIONS
+
+.SS Arguments
+Fedora Utils supports arguments for temporarily changing different options. This is helpful in case you don't want to change a configuration permanently and want to enable/disable some features just for the session. You can get a list of supported arguments with
+.B fedorautils --help
+
+.SS Configuration
+Fedora Utils supports use of configuration files. The global configuration file is usually
+.B /etc/fedorautilsrc
+and user-specific configuration file is usually
+.B ~/.fedorautilsrc
+(unless overriden in the global configuration file). The user specific configurations will be given more priority than the global configurations. Arguments can override values in configuration files.
+
+.PP
+Configuration files can be used for changing configurations, setting value of shell variables (for example setting the proxy), or running any command before starting the GUI.
+
+.SS Plugins
+Fedora Utils supports plugins for adding more functionality. You can write your own custom plugins for Fedora Utils. The plugin files are usually located under
+.B /usr/share/fedorautils/plugins
+
+.PP
+To have more idea about the plugin structure, see the example plugin included with Fedora Utils.
+
+.SH BUGS
+You can report bugs using the help menu in Fedora Utils. Before reporting a bug, please run Fedora Utils at least once with logging enabled (See
+.B fedorautils --help
+to know how to enable logging) and repeat the actions which cause an error. Submitting the logged information might be helpful for identifying the problem quickly.
+
+.SH SEE ALSO
+curl(1), rpm(8), yum(8)
+
+http://github.com/satya164/fedorautils/wiki
