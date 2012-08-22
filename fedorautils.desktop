@@ -1,10 +1,8 @@
 [Desktop Entry]
 Name=Fedora Utils
-GenericName=Tweak Fedora
+Icon=fedorautils
 Comment=Software, Codec Installs & System Tweaks
 Exec=fedorautils
 Terminal=true
 Type=Application
-Icon=fedorautils
-Categories=System;
-X-Desktop-File-Install-Version=0.18
+Categories=System;X-Fedora;
