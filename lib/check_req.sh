@@ -19,14 +19,15 @@ else
 show_warn "Could not detect Fedora version"
 fi
 # Check Architecture
-if [[ $(uname -i) = "i386" ]]; then
-	show_status "Architecture verified (32-bit)"
-elif [[ $(uname -i) = "x86_64" ]]; then
-	show_status "Architecture verified (64-bit)"
-else
-	show_error "Architecture not supported"
-	terminate_program
-fi
+case `uname -m` in
+	i386|i486|i586|i686)
+		show_status "Architecture verified (32-bit)";;
+	x86_64)
+		show_status "Architecture verified (64-bit)";;
+	*)
+		show_error "Architecture not supported"
+		terminate_program;;
+esac
 # Check Connection
 i=`ping -c 1 www.google.com > "/dev/null" 2>&1` ;
 if [[ $? = "0" ]]; then
