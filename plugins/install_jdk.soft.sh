@@ -94,9 +94,9 @@ alternatives --install /usr/bin/javac javac /usr/java/latest/bin/javac 20000 \
 --slave /usr/share/man/man1/wsimport.1 wsimport.1 /usr/java/latest/man/man1/wsimport.1 \
 --slave /usr/share/man/man1/xjc.1 xjc.1 /usr/java/latest/man/man1/xjc.1
 show_msg "Setting up Java plugin for firefox..."
-if [[ $(uname -i) = "i386" ]]; then
+if [[ "$arch" = "32" ]]; then
 alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so libjavaplugin.so /usr/java/latest/jre/lib/i386/libnpjp2.so 20000
-elif [[ $(uname -i) = "x86_64" ]]; then
+elif [[ "$arch" = "64" ]]; then
 alternatives --install /usr/lib64/mozilla/plugins/libjavaplugin.so libjavaplugin.so.x86_64 /usr/java/latest/jre/lib/amd64/libnpjp2.so 20000
 fi
 fi

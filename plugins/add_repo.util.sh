@@ -46,13 +46,13 @@ fi
 }
 
 adoberepo() {
-if [[ $(uname -i) = "i386" ]]; then
+if [[ "$arch" = "32" ]]; then
 	if [[ -f /etc/yum.repos.d/adobe-linux-i386.repo ]]; then
 	show_status "Adobe repo already present"
 	else
 	install_local http://linuxdownload.adobe.com/adobe-release/adobe-release-i386-1.0-1.noarch.rpm
 	fi
-elif [[ $(uname -i) = "x86_64" ]]; then
+elif [[ "$arch" = "64" ]]; then
 	if [[ -f /etc/yum.repos.d/adobe-linux-x86_64.repo ]]; then
 	show_status "Adobe repo already present"
 	else

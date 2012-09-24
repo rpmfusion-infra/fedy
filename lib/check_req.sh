@@ -21,8 +21,10 @@ fi
 # Check Architecture
 case `uname -m` in
 	i386|i486|i586|i686)
+		arch="32"
 		show_status "Architecture verified (32-bit)";;
 	x86_64)
+		arch="64"
 		show_status "Architecture verified (64-bit)";;
 	*)
 		show_error "Architecture not supported"

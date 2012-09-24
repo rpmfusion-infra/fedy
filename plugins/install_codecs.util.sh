@@ -16,7 +16,7 @@ else
 install_pkg gnome-mplayer
 fi
 # Install MPlayer Codecs if Architecture is 32-bit
-if [[ $(uname -i) = "i386" ]]; then
+if [[ "$arch" = "32" ]]; then
 	if [[ -d /usr/local/lib/codecs ]]; then
 	show_status "MPlayer codecs already installed"
 	else
