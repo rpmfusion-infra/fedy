@@ -5,19 +5,19 @@ fi
 }
 
 notify_send() {
-sudo -u "$user" notify-send -i "fedorautils" "$@"
+sudo -u "$user" notify-send -h int:transient:1 "$@"
 }
 
 show_error() {
 echo -e $RED"$@"$ENDCOLOR
-notify_send "Error:" "$@"
+notify_send -i dialog-error "Error:" "$@"
 speak_tts "$@"
 return 1
 }
 
 show_warn() {
 echo -e $YELLOW"$@"$ENDCOLOR
-notify_send "Warning:" "$@"
+notify_send -i dialog-warning "Warning:" "$@"
 speak_tts "$@"
 }
 
