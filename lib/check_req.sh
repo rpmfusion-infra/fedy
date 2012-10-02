@@ -38,14 +38,20 @@ else
 	show_warn "No working internet connection found"
 	zenity --warning --timeout="5" --text="No working internet connection found. $program requires internet connection to work properly. You may encounter problems."
 fi
-# Check Zenity
-if [[ `which zenity` ]]; then
-	show_status "zenity verified"
+# Update zenity to patched version
+zenver=`rpm -qa | grep zenity`
+if [[ "$zenver"="zenity-3.4.0-3.1.i686" ]]; then
+	show_status "zenity verified and patched"
 else
-	show_error "zenity is needed for $program to run properly. Installing zenity"
-	install_pkg zenity
+	zenityrepo
 	if [[ ! `which zenity` ]]; then
-		show_error "Installation of zenity failed"
+		show_error "zenity is needed for $program to run properly. Installing zenity"
+		install_pkg zenity
+	fi
+	show_status "Patching zenity"
+	yum -y update --nogpgcheck zenity
+	if [[ ! "$zenver"="zenity-3.4.0-3.1.i686" ]]; then
+		show_error "Failed to patch zenity"
 		terminate_program
 	fi
 fi
@@ -76,5 +82,21 @@ if [[ "$downagent" = "wget" ]]; then
 		show_status "wget verified"
 		show_msg "Using wget"
 	fi
+fi
+}
+
+zenityrepo() {
+if [[ -f /etc/yum.repos.d/zenity-fedorautils.repo ]]; then
+show_status "Zenity repo already present"
+else
+cat <<EOF | tee /etc/yum.repos.d/zenity-fedorautils.repo
+[zenity-fedorautils]
+name=GNOME Command Line Dialog Utility (Fedora_17)
+type=rpm-md
+baseurl=http://download.opensuse.org/repositories/home:/satya164:/zenity/Fedora_17/
+gpgcheck=0
+gpgkey=http://download.opensuse.org/repositories/home:/satya164:/zenity/Fedora_17/repodata/repomd.xml.key
+enabled=1
+EOF
 fi
 }
