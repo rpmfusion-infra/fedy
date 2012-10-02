@@ -133,3 +133,19 @@ gpgcheck=0
 EOF
 fi
 }
+
+gtkthemeconfigrepo() {
+if [[ -f /etc/yum.repos.d/gtk-theme-config.repo ]]; then
+show_status "GTK theme preferences repo already present"
+else
+cat <<EOF | tee /etc/yum.repos.d/gtk-theme-config.repo
+[gtk-theme-config]
+name=GTK theme preferences (Fedora_17)
+type=rpm-md
+baseurl=http://download.opensuse.org/repositories/home:/satya164:/gtk-theme-config/Fedora_17/
+gpgcheck=0
+gpgkey=http://download.opensuse.org/repositories/home:/satya164:/gtk-theme-config/Fedora_17/repodata/repomd.xml.key
+enabled=1
+EOF
+fi
+}
