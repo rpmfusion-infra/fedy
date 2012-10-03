@@ -1,7 +1,5 @@
 get_file() {
-if [[ -z "$cookie" ]]; then
-	cookie="$datadir/blank.cookie"
-fi
+[[ -z "$cookie" ]] && cookie="$datadir/blank.cookie"
 if [[ ! -s "$workingdir/$file" || "$forcedown" = "yes" ]]; then
 	show_msg "Downloading from: $get"
 	show_msg "Saving to: $file"
@@ -13,9 +11,7 @@ if [[ ! -s "$workingdir/$file" || "$forcedown" = "yes" ]]; then
 	fi
 	if [[ -s "$workingdir/$file" ]]; then
 		show_msg "Download successful!"
-		if [[ "$keepdownloads" = "yes" ]]; then
-			cp -f "$file" "$downloadsdir"
-		fi
+		[[ "$keepdownloads" = "yes" ]] && cp -f "$file" "$downloadsdir"
 	else
 		show_error "Error downloading $file!"
 	fi

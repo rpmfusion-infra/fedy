@@ -5,7 +5,7 @@
 fix_theme() {
 show_func "Fixing bad theme in root apps"
 if [[ "$keepbackup" = "yes" && -e /root/.themes ]]; then
-mv /root/.themes /root/.themes.bak
+	mv "/root/.themes" "/root/.themes.bak"
 fi
 ln -sf $homedir/.themes/ /root
 ln -sf $homedir/.icons/ /root

@@ -2,7 +2,7 @@ ui_list() {
 section="$1"
 listtype="$2"
 title="$3"
-SAVEIFS=$IFS;
+SAVEIFS="$IFS"
 IFS=$(echo -en "\n\b")
 plugins="$plugindir/*.$section.sh"
 for plug in $plugins; do
@@ -12,11 +12,6 @@ for plug in $plugins; do
 	value=$(grep "# Value:" "$plug" | sed -e 's/# Value: //')
 	plugs=("${plugs[@]}" "$value" "$command" "$name")
 	source "$plug"
-	s=`grep "# Include:" "$plug"`
-	if [[ -n "$s" ]]; then
-	include=$(grep "# Include:" "$plug" | sed -e 's/# Include: //')
-	source "$plugindir/$include"
-	fi
 done
 while list=$(zenity --list $listtype --width=450 --height=650 --title="$title" --text="" --hide-header --hide-column=2 --column "Select" --column "Command" --column "Plugin" --ok-label="Apply" --cancel-label="Back" "${plugs[@]}"); do
 	fun=$(echo $list | tr "|" "\n")
@@ -25,5 +20,5 @@ while list=$(zenity --list $listtype --width=450 --height=650 --title="$title" -
 	done
 done
 unset plugs
-IFS=$SAVEIFS
+IFS="$SAVEIFS"
 }

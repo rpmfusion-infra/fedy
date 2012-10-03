@@ -8,21 +8,27 @@ while clean=$(zenity --list --checklist --width=350 --height=400 --title="Clean 
 	for x in $arr
 	do
 		case $x in
-		"backup") show_msg "Deleting Backup Files..."
-				find /home/ -name '*~' -delete
-				find /home/ -name '*.bak' -delete;;
-		"kernel") show_msg "Removing Old Kernel..."
-				package-cleanup --oldkernels --count=1;;
-		"duplicate") show_msg "Removing Duplicate Packages..."
-				package-cleanup --cleandupes;;
-		"history") show_msg "Erasing Bash History..."
-				rm -f /home/*/.bash_history
-				rm -f /root/*/.bash_history;;
-		"trash") show_msg "Emptying Trash..."
-				rm -rf /home/*/.local/share/Trash/*
-				rm -rf /root/.local/share/Trash/*;;
-		"logfile") show_msg "Deleting Fedora Utils Log Files..."
-				rm -f "$logfile" "$logfile"-*;;
+		"backup")
+			show_msg "Deleting Backup Files..."
+			find /home/ -name '*~' -delete
+			find /home/ -name '*.bak' -delete;;
+		"kernel")
+			show_msg "Removing Old Kernel..."
+			package-cleanup --oldkernels --count=1;;
+		"duplicate")
+			show_msg "Removing Duplicate Packages..."
+			package-cleanup --cleandupes;;
+		"history")
+			show_msg "Erasing Bash History..."
+			rm -f /home/*/.bash_history
+			rm -f /root/*/.bash_history;;
+		"trash")
+			show_msg "Emptying Trash..."
+			rm -rf /home/*/.local/share/Trash/*
+			rm -rf /root/.local/share/Trash/*;;
+		"logfile")
+			show_msg "Deleting Fedora Utils Log Files..."
+			rm -f "$logfile" "$logfile"-*;;
 		esac
 	done
 	exit_state

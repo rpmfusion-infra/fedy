@@ -2,7 +2,6 @@ enable_log() {
 # Enable logging
 if [[ "$keeplog" = "yes" ]]; then
 	show_msg "Logging is enabled"
-	echo ""
 	# Unset Colors
 	unset BOLD
 	unset RED
@@ -20,23 +19,24 @@ if [[ "$keeplog" = "yes" ]]; then
 	fi
 	# Create logfile
 	touch "$logfile"
+	echo ""
 	echo "[$(date)]" >> "$logfile"
 	echo "" >> "$logfile"
 	echo "$program - $version" >> "$logfile"
-	cat /etc/system-release >> "$logfile"
-	echo $(uname -irs) >> "$logfile"
+	cat "/etc/system-release" >> "$logfile"
+	echo "$(uname -irs)" >> "$logfile"
 	echo "" >> "$logfile"
 	if [[ -f "$userconf" ]]; then
-	echo "[User config]" >> "$logfile"
-	echo "" >> "$logfile"
-	cat "$userconf" >> "$logfile" 
-	echo "" >> "$logfile"
+		echo "[User config]" >> "$logfile"
+		echo "" >> "$logfile"
+		cat "$userconf" >> "$logfile" 
+		echo "" >> "$logfile"
 	fi
 	if [[ -f "$sysconf" ]]; then
-	echo "[Global config]" >> "$logfile"
-	echo "" >> "$logfile"
-	cat "$sysconf" >> "$logfile" 
-	echo "" >> "$logfile"
+		echo "[Global config]" >> "$logfile"
+		echo "" >> "$logfile"
+		cat "$sysconf" >> "$logfile" 
+		echo "" >> "$logfile"
 	fi
 	echo "[Variables]" >> "$logfile"
 	echo "" >> "$logfile"
@@ -45,6 +45,9 @@ if [[ "$keeplog" = "yes" ]]; then
 	echo "Library directory: $libdir" >> "$logfile"
 	echo "Modules directory: $moduledir" >> "$logfile"
 	echo "Plugins directory: $plugindir" >> "$logfile"
+	echo "Data directory: $datadir" >> "$logfile"
+	echo "Support directory: $supportdir" >> "$logfile"
+	echo "Binary directory: $bindir" >> "$logfile"
 	echo "Work directory: $workingdir" >> "$logfile"
 	echo "Global config: $sysconf" >> "$logfile"
 	echo "User config: $userconf" >> "$logfile"
@@ -54,7 +57,7 @@ if [[ "$keeplog" = "yes" ]]; then
 	echo "Prefer wget: $prefwget" >> "$logfile"
 	echo "Force redownload: $forcedown" >> "$logfile"
 	echo "Force distro: $forcedistro" >> "$logfile"	
-	echo "Backup configs: $keepbackup" >> "$logfile"
+	echo "Keep backups: $keepbackup" >> "$logfile"
 	echo "Save downloads: $keepdownloads" >> "$logfile"
 	echo "Downloads directory: $downloadsdir" >> "$logfile"
 	echo "Use TTS: $tts" >> "$logfile"
@@ -70,6 +73,18 @@ if [[ "$keeplog" = "yes" ]]; then
 	echo "[Plugins]" >> "$logfile"
 	echo "" >> "$logfile"
 	echo "$(ls $plugindir)" >> "$logfile"
+	echo "" >> "$logfile"
+	echo "[Data]" >> "$logfile"
+	echo "" >> "$logfile"
+	echo "$(ls $datadir)" >> "$logfile"
+	echo "" >> "$logfile"
+	echo "[Support]" >> "$logfile"
+	echo "" >> "$logfile"
+	echo "$(ls $supportdir)" >> "$logfile"
+	echo "" >> "$logfile"
+	echo "[Binaries]" >> "$logfile"
+	echo "" >> "$logfile"
+	echo "$(ls $bindir)" >> "$logfile"
 	echo "" >> "$logfile"
 	echo "[Outputs]" >> "$logfile"
 	echo "" >> "$logfile"

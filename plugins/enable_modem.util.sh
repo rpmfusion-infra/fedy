@@ -5,7 +5,7 @@
 enable_modem() {
 show_func "Enabling USB modems"
 if [[ -f /etc/modprobe.d/usb-modem.conf ]]; then
-show_status "USB modems already enabled"
+	show_status "USB modems already enabled"
 else
 cat <<EOF | tee /etc/modprobe.d/usb-modem.conf
 usbserial

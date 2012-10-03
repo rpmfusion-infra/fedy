@@ -4,8 +4,7 @@ mkdir -p "$workingdir"
 mkdir -p "$downloadsdir"
 show_status "Temporary directory $workingdir created. Synchronizing files..."
 rsync -r -u "$downloadsdir/" "$workingdir"
-if [[ "$forcedown" = "yes" ]]; then
-show_warn "$program will force redownload of files even if already downloaded"
-fi
+[[ "$forcedown" = "yes" ]] && show_warn "$program will force redownload of files even if already downloaded"
 cd "$workingdir"
+[[ $? -eq 0 ]] || terminate_program
 }

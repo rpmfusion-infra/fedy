@@ -13,7 +13,7 @@ FALSE "bluetooth" "Bluetooth Manager" \
 FALSE "cpuspeed" "Set the CPU Speed according to the system load" \
 FALSE "cups" "CUPS Printing Service" \
 TRUE "fcoe" "Fibre channel over ethernet devices" \
-TRUE "firstboot" "Performs certain tasks once upon booting after installation" \
+TRUE "firstboot" "Perform certain tasks once upon booting after installation" \
 FALSE "fedora-storage-init-late" "Initialize storage subsystems (RAID, LVM, etc.)" \
 FALSE "fedora-storage-init" "Initialize storage subsystems (RAID, LVM, etc.)" \
 FALSE "fedora-wait-storage" "Wait for storage scan" \

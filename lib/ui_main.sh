@@ -1,6 +1,6 @@
 ui_main() {
 modules="$moduledir/*.sh"
-SAVEIFS=$IFS;
+SAVEIFS="$IFS"
 IFS=$(echo -en "\n\b")
 for module in $modules; do
 	[[ -f "$module" ]] || continue
@@ -16,5 +16,5 @@ while menu=$(zenity --list --radiolist --width=300 --height=350 --title="$progra
 	done
 done
 unset menulist
-IFS=$SAVEIFS
+IFS="$SAVEIFS"
 }

@@ -4,13 +4,10 @@
 
 colorterm() {
 show_func "Enabling colors in Terminal"
-s=`cat /etc/bashrc | grep "# Colors in Terminal"`
-if [[ -n "$s" ]]; then
-show_status "Colors already added"
+if [[ `grep "# Colors in Terminal" /etc/bashrc` ]]; then
+	show_status "Colors already added"
 else
-	if [ "$keepbackup" = "yes" ]; then
-	cp /etc/bashrc /etc/bashrc.bak
-	fi
+make_backup "/etc/bashrc"
 cat <<EOF | tee -a /etc/bashrc
 # Colors in Terminal
 if [ \$USER = root ]; then
@@ -20,6 +17,5 @@ else
 fi
 EOF
 fi
-s=`cat /etc/bashrc | grep "# Colors in Terminal"`
-[[ -n "$s" ]]; exit_state
+[[ `grep "# Colors in Terminal" /etc/bashrc` ]]; exit_state
 }

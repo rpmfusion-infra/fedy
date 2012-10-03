@@ -1,9 +1,10 @@
---enable-log,start with logging enabled
---pref-curl,prefer curl over wget unless specified
---use-wget,use wget for download instead of curl
---redownload,force redownload of files
---force-distro,run with unsupported distro
---nobakup,do not keep backups
---use-tts,use text-to-speech
---debug,show last logfile and exit
---help,show this help message and exit
+-l, --enable-log:start with logging enabled
+-c, --pref-curl:prefer curl over wget unless specified
+-w, --use-wget:use wget for download instead of curl
+-r, --redownload:force redownload of files
+-f, --force-distro:run with unsupported distro
+-n, --nobakup:do not keep backups
+-t, --use-tts:use text-to-speech
+-e, --exec <function>:execute a command from the plugins
+-d, --debug:show last logfile and exit
+-h, --help:show this help message and exit
