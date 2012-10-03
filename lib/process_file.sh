@@ -14,7 +14,7 @@ elif [[ "$arch" = "64" ]]; then
 	file="$file64"
 	get="$get64"
 fi
-get_file
+get_file "$@"
 install_local "$file"
 }
 

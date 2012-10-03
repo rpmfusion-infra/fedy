@@ -7,12 +7,11 @@ show_func "Installing Oracle JDK"
 if [[ -e /usr/java/jdk1.7.0_*/bin/java ]]; then
 	show_status "Oracle JDK already installed"
 else
-	cookie="$datadir/java.cookie"
 	file32="jdk-7u7-linux-i586.rpm"
 	get32="http://download.oracle.com/otn-pub/java/jdk/7u7-b10/jre-7u7-linux-i586.rpm"
 	file64="jdk-7u7-linux-x64.rpm"
 	get64="http://download.oracle.com/otn-pub/java/jdk/7u7-b10/jre-7u7-linux-x64.rpm"
-	process_pkg
+	process_pkg --header "Cookie: gpw_e24=www.oracle.com"
 	show_msg "Setting up Oracle JDK..."
 	mkdir -p /usr/lib/jvm /usr/lib/jvm-exports
 	alternatives --install /usr/bin/java java /usr/java/latest/bin/java 20000 \
