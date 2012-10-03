@@ -6,4 +6,4 @@ Comment=Software, Codec Installs & System Tweaks
 Exec=fedorautils
 Terminal=true
 Type=Application
-Categories=System;X-Fedora;
+Categories=System;Utility;X-Fedora;

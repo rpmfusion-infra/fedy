@@ -13,14 +13,12 @@ clean:
 
 install: doc
 	$(INSTALL_DIRECTORY) $(DESTDIR)/usr/share/fedorautils/
-	$(INSTALL_DIRECTORY) $(DESTDIR)/usr/share/fedorautils/data
 	$(INSTALL_DIRECTORY) $(DESTDIR)/usr/share/fedorautils/lib
 	$(INSTALL_DIRECTORY) $(DESTDIR)/usr/share/fedorautils/modules
 	$(INSTALL_DIRECTORY) $(DESTDIR)/usr/share/fedorautils/plugins
 	$(INSTALL_DIRECTORY) $(DESTDIR)/usr/share/fedorautils/support
 	$(INSTALL_PROGRAM) fedorautils $(DESTDIR)/usr/share/fedorautils/fedorautils
 	$(INSTALL_PROGRAM) fedorautils.exec $(DESTDIR)/usr/bin/fedorautils
-	$(INSTALL_DATA) data/* $(DESTDIR)/usr/share/fedorautils/data/
 	$(INSTALL_DATA) lib/* $(DESTDIR)/usr/share/fedorautils/lib/
 	$(INSTALL_DATA) modules/* $(DESTDIR)/usr/share/fedorautils/modules/
 	$(INSTALL_DATA) plugins/* $(DESTDIR)/usr/share/fedorautils/plugins/
