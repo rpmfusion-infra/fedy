@@ -7,8 +7,7 @@ show_func "Installing DVD codecs"
 if [[ -d /usr/share/doc/libdvdread* && -d /usr/share/doc/libdvdnav* && -d /usr/share/doc/lsdvd* ]]; then
 	show_status "GStreamer plugins already installed"
 else
-	add_repo "rpmfusion-free.repo"
-	add_repo "rpmfusion-nonfree.repo"
+	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
 	install_pkg libdvdread libdvdnav lsdvd
 fi
 show_func "Installing libdvdcss2"

@@ -1,10 +1,17 @@
 add_repo() {
-repofile="$1"
-if [[ -f "/etc/yum.repos.d/$repofile" ]]; then
-	show_status "$repofile already present"
-else
-	eval "$repofile"
-fi
+while [[ $# -gt 0 ]]; do
+	if [[ $1 =~ .repo$ ]]; then
+		repofile="$1"
+		show_func "Adding $repofile"
+		if [[ -f /etc/yum.repos.d/$repofile ]]; then
+			show_status "$repofile already present"
+		else
+			eval "$repofile"
+		fi
+		[[ -f /etc/yum.repos.d/$repofile ]]; exit_state
+	fi
+	shift
+done
 }
 
 rpmfusion-free.repo() {
@@ -60,16 +67,6 @@ adobe-linux.repo() {
 install_local http://linuxdownload.adobe.com/adobe-release/adobe-release-1.0-0.noarch.rpm
 }
 
-parsidora.repo() {
-cat <<EOF | tee /etc/yum.repos.d/parsidora.repo
-[parsidora] 
-name=Parsidora 16 – \$basearch
-baseurl=http://parsidora.sourceforge.net/releases/16/repos/parsidora/\$basearch
-enabled=0
-gpgcheck=0
-EOF
-}
-
 fedora-cinnamon.repo() {
 cat <<EOF | tee /etc/yum.repos.d/fedora-cinnamon.repo
 [fedora-cinnamon]
@@ -84,6 +81,16 @@ name=Cinnamon provides core user interface functions \for the GNOME 3 desktop - 
 baseurl=http://repos.fedorapeople.org/repos/leigh123linux/cinnamon/fedora-\$releasever/SRPMS
 enabled=0
 skip_if_unavailable=1
+gpgcheck=0
+EOF
+}
+
+parsidora.repo() {
+cat <<EOF | tee /etc/yum.repos.d/parsidora.repo
+[parsidora] 
+name=Parsidora 17 – \$basearch
+baseurl=http://parsidora.sourceforge.net/releases/17/repos/parsidora/\$basearch
+enabled=0
 gpgcheck=0
 EOF
 }

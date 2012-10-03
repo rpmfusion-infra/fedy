@@ -7,8 +7,7 @@ show_func "Installing multimedia codecs"
 if [[ -d /usr/share/doc/gstreamer-plugins-ugly* ]]; then
 	show_status "GStreamer plugins already installed"
 else
-	add_repo "rpmfusion-free.repo"
-	add_repo "rpmfusion-nonfree.repo"
+	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
 	install_pkg gstreamer-plugins-good gstreamer-plugins-bad gstreamer-plugins-bad-free gstreamer-plugins-bad-nonfree gstreamer-plugins-ugly gstreamer-ffmpeg faac faad2 libdca libmad libmatroska xvidcore
 fi
 if [[ "$(pidof ksmserver)" ]]; then

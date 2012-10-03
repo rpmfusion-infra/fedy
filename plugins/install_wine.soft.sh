@@ -7,8 +7,7 @@ show_func "Installing Wine"
 if [[ -d /usr/lib/wine ]]; then
 	show_status "Wine already installed"
 else
-	add_repo "rpmfusion-free.repo"
-	add_repo "rpmfusion-nonfree.repo"
+	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
 	install_pkg wine
 fi
 	show_func "Installing Wine Gecko"
