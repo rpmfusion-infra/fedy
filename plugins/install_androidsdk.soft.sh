@@ -3,7 +3,7 @@
 # Value: False
 
 install_androidsdk() {
-install_jdk
+source "$plugindir/install_jdk.soft.sh " && install_jdk
 show_func "Installing Android SDK"
 if [[ -e /opt/android-sdk-linux/ ]]; then
 	show_status "Android SDK already installed"
