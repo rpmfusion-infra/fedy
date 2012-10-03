@@ -43,7 +43,7 @@ prefwget="yes"				# If you prefer curl over wget, change "yes" to "no"
 forcedown="no"				# If you want to force redownload of files, change "no" to "yes"
 forcedistro="no"			# If you want to run the script with unsupported distro, change "no" to "yes"
 keepbackup="yes"			# If you don't want to backup previous configurations, change "yes" to "no"
-keepdownloads="no"			# If you don't intend to save downloads, change "yes" to "no"
+keepdownloads="yes"			# If you don't intend to save downloads, change "yes" to "no"
 downloadsdir="$homedir/fedorautils_dl"	# All downloaded files are saved in this directory
 tts="no"				# If you want fedorautils to speak, change "no" to "yes"
 

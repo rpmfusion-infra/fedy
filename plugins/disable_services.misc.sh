@@ -44,8 +44,7 @@ FALSE "spice-vdagentd" "Agent daemon for Spice guests" \
 --ok-label="Disable" --cancel-label="Back"); do
 	show_msg "Optimizing boot process..."
 	arr=$(echo $services | tr "|" "\n")
-	for x in $arr
-	do
+	for x in $arr; do
 		case $x in
 		"abrt-ccpp") systemctl disable abrt-ccpp.service;;
 		"abrt-vmcore") systemctl disable abrt-vmcore.service;;

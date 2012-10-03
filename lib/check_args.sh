@@ -44,29 +44,28 @@ case "$1" in
 				done
 				complete_program
 			elif [[ $2 = "list" ]]; then
-				SAVEIFS="$IFS"
-				IFS=$(echo -en "\n\b")
+				echo -e "Usage:\tfedorautils --exec [COMMANDS...]"
+				echo -e "\v"
 				for plug in $plugindir/*.sh; do
 					command=$(cat $plug | grep "# Command: " | sed 's/# Command: //g')
 					name=$(cat $plug | grep "# Name: " | sed 's/# Name: //g')
-					echo -e "$command:$name" >> "commands.list"
+					printf "\t%-30s%-s\n" "$command" "$name"
 				done
-				IFS=$SAVEIFS
-				echo -e "Usage:\tfedorautils --exec [COMMANDS...]"
-				echo -e "\v"
-				awk '{ printf "\t%-30s%-s\n",$1,$2}' FS=\: "commands.list"
 				echo -e "\v"
 				echo -e "The \"--exec\" argument does not accept other arguments with it."
-				rm -f "commands.list"
 				exit
 			else
 				echo -e "Invalid command \"$2\". Try \"--exec list\" for a list of available commands."
 				exit
 			fi;;
 	-h|--help)
+			args=( "-l, --enable-log" "-c, --pref-curl" "-w, --use-wget" "-r, --redownload" "-f, --force-distro" "-n, --nobakup" "-t, --use-tts" "-e, --exec <commands>" "-d, --debug" "-h, --help" )
+			desc=( "start with logging enabled" "prefer curl over wget unless specified" "use wget for download instead of curl" "force redownload of files" "run with unsupported distro" "do not keep backups" "use text-to-speech" "execute commands from the plugins" "show last logfile and exit" "show this help message and exit" )
 			echo -e "Usage:\tfedorautils [ARGUMENT...]"
 			echo -e "\v"
-			awk '{ printf "\t%-30s%-s\n",$1,$2}' FS=\: "$datadir/arguments.list"
+			for ((i=0; i < ${#args[@]}; i++)); do
+				printf "\t%-30s%-s\n" "${args[i]}" "${desc[i]}"
+			done
 			echo -e "\v"
 			echo -e "See the man page for more help."
 			exit;;

@@ -35,7 +35,7 @@ if [[ $? -eq 0 ]]; then
 	show_status "Internet connection verified"
 else
 	show_warn "No working internet connection found"
-	[[ `which zenity` ]] && zenity --warning --timeout="5" --text="No working internet connection found. $program requires internet connection to work properly. You may encounter problems."
+	[[ `which zenity` ]] && [[ "$interactive" = "no" ]] || zenity --warning --timeout="5" --text="No working internet connection found. $program requires internet connection to work properly. You may encounter problems."
 fi
 # Update zenity to patched version
 zenver=`rpm -qa | grep zenity`
