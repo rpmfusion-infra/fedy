@@ -6,7 +6,7 @@ INSTALL_DATA=$(INSTALL) -Dpm 0644
 all: doc
 
 doc: fedorautils.1
-	gzip -c9 fedorautils.1 >> fedorautils.1.gz
+	gzip -c9 fedorautils.1 > fedorautils.1.gz
 
 clean:
 	rm -f fedorautils.1.gz

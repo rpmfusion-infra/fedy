@@ -5,6 +5,6 @@
 -f, --force-distro:run with unsupported distro
 -n, --nobakup:do not keep backups
 -t, --use-tts:use text-to-speech
--e, --exec <function>:execute a command from the plugins
+-e, --exec <command>:execute a command from the plugins
 -d, --debug:show last logfile and exit
 -h, --help:show this help message and exit

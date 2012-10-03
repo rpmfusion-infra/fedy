@@ -4,7 +4,7 @@
  "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
 <policyconfig>
   <vendor>The Fedora Utils Project</vendor>
-  <vendor_url>http://fedorautils.sourceforge.net/</vendor_url>
+  <vendor_url>http://satya164.github.com/fedorautils/</vendor_url>
   <icon_name>fedorautils</icon_name>
 
   <action id="org.freedesktop.policykit.fedorautils.exec">

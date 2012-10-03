@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Fedora Utils
+GenericName=Fedora Utils
 Icon=fedorautils
 Comment=Software, Codec Installs & System Tweaks
 Exec=fedorautils
