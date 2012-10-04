@@ -3,20 +3,20 @@
  "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
  "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
 <policyconfig>
-  <vendor>The Fedora Utils Project</vendor>
+  <vendor>Fedora Utils</vendor>
   <vendor_url>http://satya164.github.com/fedorautils/</vendor_url>
   <icon_name>fedorautils</icon_name>
 
-  <action id="org.freedesktop.policykit.fedorautils.exec">
-    <description>Run Fedora Utils</description>
-    <message>Fedora Utils requires root privileges to install programs and configure the system.</message>
+  <action id="org.freedesktop.pkexec.fedorautils">
+    <description>Tweak Fedora</description>
+    <message>Authentication is required to install programs and configure the system.</message>
     <defaults>
-      <allow_any>no</allow_any>
+      <allow_any>auth_admin</allow_any>
       <allow_inactive>no</allow_inactive>
       <allow_active>auth_admin_keep</allow_active>
     </defaults>
     <annotate key="org.freedesktop.policykit.exec.path">/usr/share/fedorautils/fedorautils</annotate>
-    <annotate key="org.freedesktop.policykit.exec.allow_gui">TRUE</annotate>
+    <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
   </action>
 
 </policyconfig>

@@ -46,7 +46,6 @@ if [[ "$keeplog" = "yes" ]]; then
 	echo "Modules directory: $moduledir" >> "$logfile"
 	echo "Plugins directory: $plugindir" >> "$logfile"
 	echo "Support directory: $supportdir" >> "$logfile"
-	echo "Binary directory: $bindir" >> "$logfile"
 	echo "Work directory: $workingdir" >> "$logfile"
 	echo "Global config: $sysconf" >> "$logfile"
 	echo "User config: $userconf" >> "$logfile"

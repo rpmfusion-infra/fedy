@@ -26,7 +26,7 @@ install: doc
 	$(INSTALL_DATA) fedorautils.desktop $(DESTDIR)/usr/share/applications/fedorautils.desktop
 	$(INSTALL_DATA) fedorautils.1.gz $(DESTDIR)/usr/share/man/man1/fedorautils.1.gz
 	$(INSTALL_DATA) fedorautils.png $(DESTDIR)/usr/share/pixmaps/fedorautils.png
-	$(INSTALL_DATA) fedorautils.policy $(DESTDIR)/usr/share/polkit-1/actions/org.freedesktop.policykit.fedorautils.policy
+	$(INSTALL_DATA) fedorautils.policy $(DESTDIR)/usr/share/polkit-1/actions/org.freedesktop.pkexec.fedorautils.policy
 	$(INSTALL_DATA) fedorautils.repo $(DESTDIR)/etc/yum.repos.d/fedorautils.repo
 
 uninstall:
@@ -35,5 +35,5 @@ uninstall:
 	rm -f $(DESTDIR)/usr/share/applications/fedorautils.desktop
 	rm -f $(DESTDIR)/usr/share/man/man1/fedorautils.1.gz
 	rm -f $(DESTDIR)/usr/share/pixmaps/fedorautils.png
-	rm -f $(DESTDIR)/usr/share/polkit-1/actions/org.freedesktop.policykit.fedorautils.policy
+	rm -f $(DESTDIR)/usr/share/polkit-1/actions/org.freedesktop.pkexec.fedorautils.policy
 	rm -f $(DESTDIR)/etc/yum.repos.d/fedorautils.repo
