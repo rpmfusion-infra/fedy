@@ -35,22 +35,16 @@ if [[ $? -eq 0 ]]; then
 	show_status "Internet connection verified"
 else
 	show_warn "No working internet connection found"
-	[[ `which zenity` ]] && [[ "$interactive" = "no" ]] || zenity --warning --timeout="5" --text="No working internet connection found. $program requires internet connection to work properly. You may encounter problems."
+	[[ `which zenity` ]] && [[ "$interactive" = "no" ]] || zenity --warning --timeout="5" --title="No working internet connection found" --text="$program requires internet connection to work properly.\nYou may encounter problems."
 fi
-# Update zenity to patched version
-zenver=`rpm -qa | grep zenity`
-if [[ "$zenver"="zenity-3.4.0-3.1.i686" ]]; then
-	show_status "zenity verified and patched"
+# Check zenity
+if [[ `which zenity` ]]; then
+	show_status "zenity verified"
 else
-	add_repo zenity-fedorautils.repo
+	show_error "zenity is needed for $program to run properly. Installing zenity"
+	install_pkg zenity
 	if [[ ! `which zenity` ]]; then
-		show_error "zenity is needed for $program to run properly. Installing zenity"
-		install_pkg zenity
-	fi
-	show_status "Patching zenity"
-	yum -y update --nogpgcheck zenity
-	if [[ ! "$zenver"="zenity-3.4.0-3.1.i686" ]]; then
-		show_error "Failed to patch zenity"
+		show_error "Installation of zenity failed"
 		terminate_program
 	fi
 fi
