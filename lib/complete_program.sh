@@ -8,6 +8,6 @@ if [[ ! "$errors" = "0" ]]; then
 fi
 clean_temp
 show_func "Completed."
-[[ "$interactive" = "no" ]] || zenity --info --timeout="5" --text="Completed. Click Ok to exit."
+[[ "$interactive" = "no" ]] || zenity --info --timeout="5" --title="Completed" --text="Completed. Click Ok to exit."
 exit 0
 }
