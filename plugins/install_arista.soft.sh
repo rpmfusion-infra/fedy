@@ -7,6 +7,7 @@ show_func "Installing Arista Transcoder"
 if [[ -e /usr/bin/arista-gtk ]]; then
 	show_status "Arista Transcoder already installed"
 else
+	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
 	install_pkg python2-devel python3-devel python-gudev gstreamer-plugins-bad-nonfree
 	file="arista-0.9.7.tar.gz"
 	get="http://programmer-art.org/media/releases/arista-transcoder/arista-0.9.7.tar.gz"
