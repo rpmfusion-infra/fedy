@@ -9,6 +9,7 @@ while blocksites=$(zenity --list --radiolist --width=300 --height=300 --title="B
 		case $x in
 		"block")
 			site=$(zenity --entry --title="Block a website" --text="Enter the website to be blocked.\nDo not enter http:// or www.")
+			show_func "Blocking $site"
 			make_backup "/etc/hosts"
 			if [ ! "$site" = "" ]; then
 				echo "0.0.0.0 $site" >> "/etc/hosts"
@@ -18,13 +19,15 @@ while blocksites=$(zenity --list --radiolist --width=300 --height=300 --title="B
 			fi;;
 		"unblock")
 			site=$(zenity --entry --title="Unblock a website" --text="Enter the website to be unblocked.\nDo not enter http:// or www.")
+			show_func "Unblocking $site"
 			make_backup "/etc/hosts"
 			if [ ! "$site" = "" ]; then
-				sed -i '/$site/d' "/etc/hosts"
+				sed -i "/$site/d" "/etc/hosts"
 			else
 				show_error "Please enter a website to be unblocked."
 			fi;;
 		"view")
+			show_func "Getting blocked websites"
 			grep "0.0.0.0" "/etc/hosts" >> "sites.txt"
 			zenity --text-info --title="Blocked websites" --filename="sites.txt" --ok-label="Ok" --cancel-label="Back"
 			rm -f "sites.txt";;
