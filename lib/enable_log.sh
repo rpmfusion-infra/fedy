@@ -5,7 +5,7 @@ if [[ "$keeplog" = "yes" ]]; then
 	# Unset Colors
 	unset BOLD RED REDBOLD GREEN GREENBOLD YELLOW YELLOWBOLD BLUE BLUEBOLD ENDCOLOR
 	# Rotate old logfile
-	[[ -e "$logfile" ]] || "$logfile" "$logfile-$(stat -c %Y ${logfile})"
+	[[ -e "$logfile" ]] && mv "$logfile" "$logfile-$(stat -c %Y ${logfile})"
 	# Create logfile
 	touch "$logfile"
 	echo -e "[$(date)]\n" >> "$logfile"
