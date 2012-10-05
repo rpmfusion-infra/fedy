@@ -15,7 +15,7 @@ else
 		curl -C - -L -# "$get" -o "$file" "$@"
 	fi
 fi
-if [[ $? -eq 0 && -s "$workingdir/$file" ]]; then
+if [[ -s "$file" ]]; then
 	show_msg "Download successful!"
 	[[ "$keepdownloads" = "yes" ]] && cp -f "$file" "$downloadsdir"
 else
