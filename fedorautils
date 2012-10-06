@@ -58,10 +58,11 @@ BLUEBOLD="\033[1;34m"
 ENDCOLOR="\033[0m"
 
 # Source libraries
-SAVEIFS=$IFS
-IFS=$(echo -en "\n\b")
+SAVEIFS="$IFS"
+IFS="
+"
 for lib in $libdir/*.sh; do source "$lib"; done
-IFS=$SAVEIFS
+IFS="$SAVEIFS"
 
 # Source config files if present
 [[ -f "$sysconf" ]] && source "$sysconf"

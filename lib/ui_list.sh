@@ -1,24 +1,30 @@
 ui_list() {
-section="$1"
+listsection="$1"
 listtype="$2"
-title="$3"
-SAVEIFS="$IFS"
-IFS=$(echo -en "\n\b")
-plugins="$plugindir/*.$section.sh"
-for plug in $plugins; do
-	[[ -f "$plug" ]] || continue
-	name=$(grep "# Name:" "$plug" | sed -e 's/# Name: //')
-	command=$(grep "# Command:" "$plug" | sed -e 's/# Command: //')
-	value=$(grep "# Value:" "$plug" | sed -e 's/# Value: //')
-	plugs=("${plugs[@]}" "$value" "$command" "$name")
-	source "$plug"
-done
-while list=$(zenity --list $listtype --width=450 --height="$((((${#plugs[@]}/3)*25)+150))" --title="$title" --text="" --hide-header --hide-column=2 --column "Select" --column "Command" --column "Plugin" --ok-label="Apply" --cancel-label="Back" "${plugs[@]}"); do
+listtitle="$3"
+build_list
+while list=$(zenity --list $listtype --width=450 --height="$((((${#plugs[@]}/3)*25)+150))" --title="$listtitle" --text="" --hide-header --hide-column=2 --column "Select" --column "Command" --column "Plugin" --ok-label="Apply" --cancel-label="Back" "${plugs[@]}"); do
 	fun=$(echo $list | tr "|" "\n")
 	for (( i = 0; i < ${#fun[@]} ; i++ )); do
 		eval "${fun[$i]}"
 	done
+	build_list
 done
+}
+
+build_list() {
 unset plugs
+SAVEIFS="$IFS"
+IFS="
+"
+for plug in $plugindir/*.$listsection.sh; do
+	[[ -f "$plug" ]] || continue
+	source "$plug"
+	name=$(grep "# Name:" "$plug" | sed -e 's/# Name: //')
+	command=$(grep "# Command:" "$plug" | sed -e 's/# Command: //')
+	value=$(grep "# Value:" "$plug" | sed -e 's/# Value: //')
+	[[ `grep "${command}_test()" "$plug"` ]] && name="$name ($(${command}_test))"
+	plugs=("${plugs[@]}" "$value" "$command" "$name")
+done
 IFS="$SAVEIFS"
 }
