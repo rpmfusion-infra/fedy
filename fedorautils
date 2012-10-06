@@ -8,14 +8,6 @@
 # License: GNU GPLv3 <http://www.gnu.org/licenses/gpl-3.0.html>
 # Author: Satyajit Sahoo <satyajit.happy@gmail.com>
 # Code: GitHub <https://github.com/satya164/fedorautils>
-#
-# This script benefits both for codes and ideas from
-# AutoPlus by dangermouse <http://www.dnmouse.org/autoten/>
-# easyLife by dulinux <http://easylifeproject.org>
-#
-# Credits to dangermouse for providing RPM pacakge
-# Thanks to Andrew <http://webupd8.org> for testing
-# And of course, all those users who reported bugs
 
 # Declare variables
 program="Fedora Utils"
