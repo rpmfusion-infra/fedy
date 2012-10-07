@@ -13,7 +13,7 @@ fi
 }
 
 essential_soft_test() {
-if [[ `which cabextract` && `which dconf-editor` && `which 7za` && `which 7z` && `which wget` && `which lzma` && `which unrar` && -f /usr/lib/yum-plugins/fastestmirror.py ]]; then
+if [[ -f /usr/bin/cabextract && -f /usr/bin/dconf-editor && -f /usr/bin/7za && -f /usr/bin/7z && -f /usr/bin/wget && -f /usr/bin/lzma && -f /usr/bin/unrar && -f /usr/lib/yum-plugins/fastestmirror.py ]]; then
 	printf "Installed"
 else
 	printf "Not installed"

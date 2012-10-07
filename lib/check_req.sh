@@ -35,43 +35,43 @@ if [[ $? -eq 0 ]]; then
 	show_status "Internet connection verified"
 else
 	show_warn "No working internet connection found"
-	[[ `which zenity` ]] && [[ "$interactive" = "no" ]] || zenity --warning --timeout="5" --title="No working internet connection found" --text="$program requires internet connection to work properly.\nYou may encounter problems."
+	[[ -f /usr/bin/zenity ]] && [[ "$interactive" = "no" ]] || zenity --warning --timeout="5" --title="No working internet connection found" --text="$program requires internet connection to work properly.\nYou may encounter problems."
 fi
 # Check zenity
-if [[ `which zenity` ]]; then
+if [[ -f /usr/bin/zenity ]]; then
 	show_status "zenity verified"
 else
 	show_error "zenity is needed for $program to run properly. Installing zenity"
 	install_pkg zenity
-	if [[ ! `which zenity` ]]; then
+	if [[ ! -f /usr/bin/zenity ]]; then
 		show_error "Installation of zenity failed"
 		terminate_program
 	fi
 fi
 # Check Curl
-if [[ `which curl` ]]; then
+if [[ -f /usr/bin/curl ]]; then
 	show_status "curl verified"
 else
 	show_error "curl is needed for $program to run properly. Installing curl"
 	install_pkg curl
-	if [[ ! `which curl` ]]; then
+	if [[ -f /usr/bin/curl ]]; then
 		show_error "Installation of curl failed"
 		terminate_program
 	fi
 fi
 # Check Wget
-if [[ "$prefwget" = "yes" ]] && [[ `which wget` ]]; then
+if [[ "$prefwget" = "yes" ]] && [[ -f /usr/bin/wget ]]; then
 	downagent="wget"
 fi
 if [[ "$downagent" = "wget" ]]; then
-	if [[ ! `which wget` ]]; then
+	if [[ ! -f /usr/bin/wget ]]; then
 		show_error "wget is not present in the system. Installing wget"
 		install_pkg wget
-		if [[ ! `which wget` ]]; then
+		if [[ ! -f /usr/bin/wget ]]; then
 			show_error "Installation of wget failed. Using curl"
 			downagent="curl"
 		fi
-	elif [[ `which wget` ]]; then
+	elif [[ -f /usr/bin/wget ]]; then
 		show_status "wget verified"
 		show_msg "Using wget"
 	fi
