@@ -1,17 +1,22 @@
 enable_log() {
 # Enable logging
-if [[ "$keeplog" = "yes" ]]; then
-	show_msg "Logging is enabled\n"
-	# Unset Colors
-	unset BOLD RED REDBOLD GREEN GREENBOLD YELLOW YELLOWBOLD BLUE BLUEBOLD ENDCOLOR
-	# Rotate old logfile
-	[[ -f "$logfile" ]] && mv "$logfile" "$logfile-$(stat -c %Y ${logfile})"
-	# Create logfile
-	touch "$logfile"
+if [[ "$enablelog" = "yes" ]]; then
+	show_msg "Logging is enabled"
+	if [[ "$logmode" = "default" ]]; then
+		rm -f "$logfile"
+		touch "$logfile"
+	elif [[ -f "$logfile" && "$logmode" = "buffer" ]]; then
+		mv "$logfile" "$logfile-$(stat -c %Y ${logfile})"
+	fi
 	echo -e "[$(date)]\n" >> "$logfile"
-	echo -e "$program - $version" >> "$logfile"
-	echo -e "$(cat /etc/system-release)" >> "$logfile"
+	echo -e "$program - $version\n" >> "$logfile"
+	echo -e "$(cat /etc/issue | head -n 1)" >> "$logfile"
 	echo -e "$(uname -irs)" >> "$logfile"
+	echo -e "$(grep MemTotal /proc/meminfo | cut -c18-)" >> "$logfile"
+	echo -e "$(lspci | grep VGA | cut -c36-)" >> "$logfile"
+	echo -e "$(lspci | grep Audio | cut -c23-)" >> "$logfile"
+	echo -e "$(lspci | grep Ethernet | cut -c30-)" >> "$logfile"
+	echo -e "$(lspci | grep Network | cut -c29-)" >> "$logfile"
 	if [[ -f "$userconf" ]]; then
 		echo -e "\n[User config]\n" >> "$logfile"
 		cat "$userconf" >> "$logfile"
@@ -21,7 +26,7 @@ if [[ "$keeplog" = "yes" ]]; then
 		cat "$sysconf" >> "$logfile"
 	fi
 	echo -e "\n[Variables]\n" >> "$logfile"
-	log_vars=( "homedir" "scriptdir" "libdir" "moduledir" "plugindir" "supportdir" "workingdir" "sysconf" "userconf" "lockfile" "logfile" "downagent" "prefwget" "forcedown" "forcedistro" "keepbackup" "keepdownloads" "downloadsdir" "tts" )
+	log_vars=( "homedir" "scriptdir" "libdir" "moduledir" "plugindir" "supportdir" "workingdir" "sysconf" "userconf" "lockfile" "logfile" "logmode" "downagent" "prefwget" "forcedown" "forcedistro" "keepbackup" "keepdownloads" "downloadsdir" "tts" )
 	for log_var in "${log_vars[@]}"; do
 		echo -e "$log_var=${!log_var}" >> $logfile
 	done
@@ -34,7 +39,12 @@ if [[ "$keeplog" = "yes" ]]; then
 	echo -e "\n[Support]\n" >> "$logfile"
 	echo -e "$(ls $supportdir)" >> "$logfile"
 	echo -e "\n[Outputs]\n" >> "$logfile"
-	exec &>> "$logfile"
-	tail -f -n +1 "$logfile" >/dev/tty &
+	if [[ "$logmode" = "buffer" ]]; then
+		unset BOLD RED REDBOLD GREEN GREENBOLD YELLOW YELLOWBOLD BLUE BLUEBOLD ENDCOLOR
+		exec &>> "$logfile"
+		tail -f -n +1 "$logfile" >/dev/tty &
+	else
+		exec 1>&2>&>(tee -a >(sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' >> "$logfile"))
+	fi
 fi
 }

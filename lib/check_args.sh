@@ -2,7 +2,8 @@ check_args() {
 while [[ $# -gt 0 ]]; do
 case "$1" in
 	-l|--enable-log)
-			keeplog="yes"
+			enablelog="yes"
+			logmode="buffer"
 			shift;;
 	-c|--pref-curl)
 			prefwget="no"
@@ -60,7 +61,7 @@ case "$1" in
 			fi;;
 	-h|--help)
 			args=( "-l, --enable-log" "-c, --pref-curl" "-w, --use-wget" "-r, --redownload" "-f, --force-distro" "-n, --nobakup" "-t, --use-tts" "-e, --exec <commands>" "-d, --debug" "-h, --help" )
-			desc=( "start with logging enabled" "prefer curl over wget unless specified" "use wget for download instead of curl" "force redownload of files" "run with unsupported distro" "do not keep backups" "use text-to-speech" "execute commands from the plugins" "show last logfile and exit" "show this help message and exit" )
+			desc=( "enable logging with buffered output" "prefer curl over wget unless specified" "use wget for download instead of curl" "force redownload of files" "run with unsupported distro" "do not keep backups" "use text-to-speech" "execute commands from the plugins" "show last logfile and exit" "show this help message and exit" )
 			echo -e "Usage:\tfedorautils [ARGUMENT...]"
 			echo -e "\v"
 			for ((i=0; i < ${#args[@]}; i++)); do

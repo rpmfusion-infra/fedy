@@ -1,14 +1,14 @@
 check_req() {
 show_func "Verifying minimum system requirements"
 # Check Distro
-if [[ -f "/etc/issue" ]]; then
+if [[ -f /etc/issue ]]; then
 	show_msg "$(cat /etc/issue | head -n 1) detected"
 else
 	show_warn "Could not detect distro"
 fi
-if [[ -f "/etc/issue" ]] && [[ -d "$supportdir" ]] && [[ `grep -iw "$(ls $supportdir)" /etc/issue` ]]; then
+if [[ -f /etc/issue ]] && [[ -d $supportdir ]] && [[ `grep -iw "$(ls $supportdir)" /etc/issue` ]]; then
 	show_status "Distro verified"
-	if [[ -f "/etc/fedora-release" ]]; then
+	if [[ -f /etc/fedora-release ]]; then
 		fver="$(grep -ow -E [[:digit:]]+ /etc/fedora-release)"
 		show_msg "Fedora version $fver detected"
 	else
