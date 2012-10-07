@@ -14,10 +14,12 @@ show_func "Installing libdvdcss2"
 if [[ "$(enable_dvd_test)" = "Enabled with libdvdcss2" ]]; then
 	show_status "libdvdcss2 already installed"
 else
-	file32="libdvdcss2-1.2.11-6.fc17.i686.rpm"
-	get32="http://dl.atrpms.net/all/libdvdcss2-1.2.11-6.fc17.i686.rpm"
-	file64="libdvdcss2-1.2.11-6.fc17.x86_64.rpm"
-	get64="http://dl.atrpms.net/all/libdvdcss2-1.2.11-6.fc17.x86_64.rpm"
+	show_msg "Fetching webpage..."
+	get_file_quiet "http://packages.atrpms.net/dist/f17/libdvdcss/" "index.html"
+	get32=$(grep "libdvdcss2" index.html | tr " " "\n" | grep "dl.atrpms.net" | grep "i686" | cut -d\" -f 2)
+	file32=${get32##*/}
+	get64=$(grep "libdvdcss2" index.html | tr " " "\n" | grep "dl.atrpms.net" | grep "x86_64" | cut -d\" -f 2)
+	file64=${get64##*/}
 	process_pkg
 fi
 [[ "$(enable_dvd_test)" = "Enabled with libdvdcss2" ]]; exit_state

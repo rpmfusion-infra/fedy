@@ -9,11 +9,13 @@ if [[ "$(install_arista_test)" = "Installed" ]]; then
 else
 	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
 	install_pkg python2-devel python3-devel python-gudev gstreamer-plugins-bad-nonfree
-	file="arista-0.9.7.tar.gz"
-	get="http://programmer-art.org/media/releases/arista-transcoder/arista-0.9.7.tar.gz"
+	show_msg "Fetching webpage..."
+	get_file_quiet "http://www.transcoder.org/downloads/" "index.html"
+	get=$(grep "class=\"button\"" index.html | tr " " "\n" | grep ".tar.gz" | cut -d\" -f 2 | head -n 1)
+	file=${get##*/}
 	get_file
 	tar -xvf "$file"
-	cd arista-0.9.7
+	cd arista-*
 	python setup.py build
 	python setup.py install
 fi

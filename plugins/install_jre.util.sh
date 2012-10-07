@@ -7,10 +7,14 @@ show_func "Installing Oracle JRE"
 if [[ "$(install_jre_test)" = "Installed" ]]; then
 	show_status "Oracle JRE already installed"
 else
-	file32="jre-7u7-linux-i586.rpm"
-	get32="http://download.oracle.com/otn-pub/java/jdk/7u7-b10/jre-7u7-linux-i586.rpm"
-	file64="jre-7u7-linux-x64.rpm"
-	get64="http://download.oracle.com/otn-pub/java/jdk/7u7-b10/jre-7u7-linux-x64.rpm"
+	show_msg "Fetching webpage..."
+	get_file_quiet "http://www.oracle.com/technetwork/java/javase/downloads/index.html" "index.html"
+	dlurl=$(cat index.html | tr ' ' '\n' | grep "/technetwork/java/javase/downloads/jre7" | head -n 1 | cut -d\" -f 2 | sed -e 's/^/http:\/\/www.oracle.com/')
+	get_file_quiet "$dlurl" "download.html"
+	get32=$(grep "Linux x86" "download.html" | grep ".rpm" | cut -d\" -f 12 | grep -v demos | head -n 1)
+	file32=${get32##*/}
+	get64=$(grep "Linux x64" "download.html" | grep ".rpm" | cut -d\" -f 12 | grep -v demos | head -n 1)
+	file64=${get64##*/}
 	process_pkg --header "Cookie: gpw_e24=www.oracle.com"
 	show_msg "Setting up Oracle Java..."
 	alternatives --install /usr/bin/java java /usr/java/default/bin/java 20000

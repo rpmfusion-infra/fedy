@@ -22,7 +22,7 @@ while shell=$(zenity --list --radiolist --width=300 --height=300 --title="$progr
 			sudo -u "$user"  xdg-open "http://github.com/satya164/fedorautils/wiki";;
 		"changelog")
 			show_msg "Fetching changelog..."
-			curl -s https://raw.github.com/satya164/fedorautils/master/CHANGELOG -o changelog.txt
+			get_file_quiet "https://raw.github.com/satya164/fedorautils/master/CHANGELOG" "changelog.txt"
 			if [[ -f changelog.txt ]]; then
 				zenity --text-info --width=600 --height=600 --title="Changelog" --filename="changelog.txt" --ok-label="Ok" --cancel-label="Back"
 				rm -f changelog.txt
