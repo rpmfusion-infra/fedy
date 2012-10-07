@@ -47,8 +47,8 @@ case "$1" in
 				echo -e "Usage:\tfedorautils --exec [COMMANDS...]"
 				echo -e "\v"
 				for plug in $plugindir/*.sh; do
-					command=$(cat $plug | grep "# Command: " | sed 's/# Command: //g')
-					name=$(cat $plug | grep "# Name: " | sed 's/# Name: //g')
+					command=$(grep "# Command: " "$plug" | sed 's/# Command: //g')
+					name=$(grep "# Name: " "$plug" | sed 's/# Name: //g')
 					printf "\t%-30s%-s\n" "$command" "$name"
 				done
 				echo -e "\v"
