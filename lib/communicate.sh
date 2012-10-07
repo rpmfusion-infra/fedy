@@ -8,6 +8,13 @@ notify_send() {
 sudo -u "$user" notify-send -h int:transient:1 "$@"
 }
 
+show_progress() {
+while true; do
+	printf "."
+	sleep 1
+done
+}
+
 show_error() {
 echo -e $RED"$@"$ENDCOLOR
 notify_send -i dialog-error "Error:" "$@"
