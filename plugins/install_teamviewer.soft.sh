@@ -4,7 +4,7 @@
 
 install_teamviewer() {
 show_func "Installing TeamViewer"
-if [[ -d /opt/teamviewer/teamviewer ]]; then
+if [[ "$(install_teamviewer_test)" = "Installed" ]]; then
 	show_status "TeamViewer already installed"
 else
 	file32="teamviewer_linux.rpm"
@@ -13,5 +13,13 @@ else
 	get64="$get32"
 	process_pkg
 fi
-[[ -d /opt/teamviewer/teamviewer ]]; exit_state
+[[ "$(install_teamviewer_test)" = "Installed" ]]; exit_state
+}
+
+install_teamviewer_test() {
+if [[ -d /opt/teamviewer/teamviewer ]]; then
+	printf "Installed"
+else
+	printf "Not installed"
+fi
 }

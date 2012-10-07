@@ -4,7 +4,7 @@
 
 install_arista() {
 show_func "Installing Arista Transcoder"
-if [[ -e /usr/bin/arista-gtk ]]; then
+if [[ "$(install_arista_test)" = "Installed" ]]; then
 	show_status "Arista Transcoder already installed"
 else
 	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
@@ -17,5 +17,13 @@ else
 	python setup.py build
 	python setup.py install
 fi
-[[ -e /usr/bin/arista-gtk ]]; exit_state
+[[ "$(install_arista_test)" = "Installed" ]]; exit_state
+}
+
+install_arista_test() {
+if [[ -f /usr/bin/arista-gtk ]]; then
+	printf "Installed"
+else
+	printf "Not installed"
+fi
 }

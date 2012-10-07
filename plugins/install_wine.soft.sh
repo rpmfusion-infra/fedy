@@ -4,14 +4,14 @@
 
 install_wine() {
 show_func "Installing Wine"
-if [[ -d /usr/lib/wine ]]; then
+if [[ "$(install_wine_test)" = "Installed with gecko" || "$(install_wine_test)" = "Installed" ]]; then
 	show_status "Wine already installed"
 else
 	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
 	install_pkg wine
 fi
 	show_func "Installing Wine Gecko"
-if [[ -f /usr/share/wine/gecko/wine_gecko* ]]; then
+if [[ "$(install_wine_test)" = "Installed with gecko" ]]; then
 	show_status "Wine Gecko already installed"
 else
 	if [[ "$arch" = "32" ]]; then
@@ -28,5 +28,15 @@ else
 		cp "$file" /usr/share/wine/gecko/
 	fi
 fi
-[[ -d /usr/lib/wine && -f /usr/share/wine/gecko/wine_gecko* ]]; exit_state
+[[ "$(install_wine_test)" = "Installed with gecko" ]]; exit_state
+}
+
+install_wine_test() {
+if [[ -f /usr/lib/wine/libwine.so && -d /usr/share/wine/gecko ]]; then
+	printf "Installed with gecko"
+elif [[ -f /usr/lib/wine/libwine.so ]]; then
+	printf "Installed"
+else
+	printf "Not installed"
+fi
 }

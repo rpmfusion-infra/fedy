@@ -4,20 +4,16 @@
 
 install_codecs() {
 show_func "Installing multimedia codecs"
-if [[ -d /usr/share/doc/gstreamer-plugins-ugly* ]]; then
+if [[ "$(install_codecs_test)" = "Installed" || "$(install_codecs_test)" = "Partial" ]]; then
 	show_status "GStreamer plugins already installed"
 else
 	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
-	install_pkg gstreamer-plugins-good gstreamer-plugins-bad gstreamer-plugins-bad-free gstreamer-plugins-bad-nonfree gstreamer-plugins-ugly gstreamer-ffmpeg faac faad2 libdca libmad libmatroska xvidcore
-fi
-if [[ "$(pidof ksmserver)" ]]; then
-	install_pkg vlc phonon-backend-vlc
-else
-	install_pkg gnome-mplayer
+	install_pkg gstreamer-plugins-good gstreamer-plugins-bad gstreamer-plugins-bad-free gstreamer-plugins-bad-nonfree gstreamer-plugins-ugly faac faad2 libdca libmad libmatroska xvidcore
 fi
 # Install MPlayer Codecs if Architecture is 32-bit
 if [[ "$arch" = "32" ]]; then
-	if [[ -d /usr/local/lib/codecs ]]; then
+	show_func "Installing MPlayer codecs"
+	if [[ "$(install_codecs_test)" = "Installed" ]]; then
 		show_status "MPlayer codecs already installed"
 	else
 		file="all-20110131.tar.bz2"
@@ -33,5 +29,15 @@ else
 fi
 # Remove possible defective thumbnails
 rm -rf "$homedir/.thumbnails/*"
-[[ -d /usr/share/doc/gstreamer-plugins-ugly* && -d /usr/local/lib/codecs ]]; exit_state
+[[ "$(install_codecs_test)" = "Installed" || "$(install_codecs_test)" = "Partial" ]]; exit_state
+}
+
+install_codecs_test() {
+if [[ -d /usr/lib/gstreamer-0.10 && -d /usr/local/lib/codecs ]]; then
+	printf "Installed"
+elif [[ -d /usr/lib/gstreamer-0.10 && ! -d /usr/local/lib/codecs ]]; then
+	printf "Partial"
+else
+	printf "Not installed"
+fi
 }

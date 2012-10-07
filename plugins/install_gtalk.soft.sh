@@ -4,7 +4,7 @@
 
 install_gtalk() {
 show_func "Installing GTalk plugin"
-if [[ -d /opt/google/talkpluginh ]]; then
+if [[ "$(install_gtalk_test)" = "Installed" ]]; then
 	show_status "GTalk plugin already installed"
 else
 	file32="google-talkplugin_current_i386.rpm"
@@ -13,5 +13,13 @@ else
 	get64="http://dl.google.com/linux/direct/google-talkplugin_current_x86_64.rpm"
 	process_pkg
 fi
-[[ -d /opt/google/talkplugin ]]; exit_state
+[[ "$(install_gtalk_test)" = "Installed" ]]; exit_state
+}
+
+install_gtalk_test() {
+if [[ -f /opt/google/talkplugin/GoogleTalkPlugin ]]; then
+	printf "Installed"
+else
+	printf "Not installed"
+fi
 }

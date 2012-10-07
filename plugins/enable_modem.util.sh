@@ -4,7 +4,7 @@
 
 enable_modem() {
 show_func "Enabling USB modems"
-if [[ -f /etc/modprobe.d/usb-modem.conf ]]; then
+if [[ "$(enable_modem_test)" = "Enabled" ]]; then
 	show_status "USB modems already enabled"
 else
 cat <<EOF | tee /etc/modprobe.d/usb-modem.conf
@@ -12,5 +12,13 @@ usbserial
 option
 EOF
 fi
-[[ -f /etc/modprobe.d/usb-modem.conf ]]; exit_state
+[[ "$(enable_modem_test)" = "Enabled" ]]; exit_state
+}
+
+enable_modem_test() {
+if [[ -f /etc/modprobe.d/usb-modem.conf ]]; then
+	printf "Enabled"
+else
+	printf "Not enabled"
+fi
 }

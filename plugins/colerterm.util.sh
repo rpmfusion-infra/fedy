@@ -4,7 +4,7 @@
 
 colorterm() {
 show_func "Enabling colors in Terminal"
-if [[ `grep "# Colors in Terminal" /etc/bashrc` ]]; then
+if [[ "$(colorterm_test)" = "Added" ]]; then
 	show_status "Colors already added"
 else
 make_backup "/etc/bashrc"
@@ -17,5 +17,13 @@ else
 fi
 EOF
 fi
-[[ `grep "# Colors in Terminal" /etc/bashrc` ]]; exit_state
+[[ "$(colorterm_test)" = "Added" ]]; exit_state
+}
+
+colorterm_test() {
+if [[ `grep "# Colors in Terminal" /etc/bashrc` ]]; then
+	printf "Added"
+else
+	printf "Not added"
+fi
 }

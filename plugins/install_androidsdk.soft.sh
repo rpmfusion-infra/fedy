@@ -3,11 +3,11 @@
 # Value: False
 
 install_androidsdk() {
-source "$plugindir/install_jdk.soft.sh" && install_jdk
 show_func "Installing Android SDK"
-if [[ -e /opt/android-sdk-linux/ ]]; then
+if [[ "$(install_androidsdk_test)" = "Installed" ]]; then
 	show_status "Android SDK already installed"
 else
+	source "$plugindir/install_jdk.soft.sh" && install_jdk
 	file="android-sdk_r20.0.3-linux.tgz"
 	get="http://dl.google.com/android/android-sdk_r20.0.3-linux.tgz"
 	get_file
@@ -15,5 +15,13 @@ else
 	mv android-sdk-linux /opt/
 	chmod -R 775 "/opt/android-sdk-linux/"
 fi
-[[ -e /opt/android-sdk-linux/ ]]; exit_state
+[[ "$(install_androidsdk_test)" = "Installed" ]]; exit_state
+}
+
+install_androidsdk_test() {
+if [[ -d /opt/android-sdk-linux/ ]]; then
+	printf "Installed"
+else
+	printf "Not installed"
+fi
 }

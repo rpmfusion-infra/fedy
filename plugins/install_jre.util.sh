@@ -4,7 +4,7 @@
 
 install_jre() {
 show_func "Installing Oracle JRE"
-if [[ -e /usr/java/jdk1.7.0_*/bin/java ]]; then
+if [[ "$(install_jre_test)" = "Installed" ]]; then
 	show_status "Oracle JRE already installed"
 else
 	file32="jre-7u7-linux-i586.rpm"
@@ -21,5 +21,13 @@ else
 		alternatives --install /usr/lib64/mozilla/plugins/libjavaplugin.so libjavaplugin.so.x86_64 /usr/java/default/lib/amd64/libnpjp2.so 20000
 	fi
 fi
-[[ -e /usr/java/jdk1.7.0_*/bin/java ]]; exit_state
+[[ "$(install_jre_test)" = "Installed" ]]; exit_state
+}
+
+install_jre_test() {
+if [[ -f /usr/java/jdk1.7.0_*/bin/java ]]; then
+	printf "Installed"
+else
+	printf "Not installed"
+fi
 }

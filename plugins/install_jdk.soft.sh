@@ -4,13 +4,13 @@
 
 install_jdk() {
 show_func "Installing Oracle JDK"
-if [[ -e /usr/java/jdk1.7.0_*/bin/java ]]; then
+if [[ "$(install_jdk_test)" = "Installed" ]]; then
 	show_status "Oracle JDK already installed"
 else
 	file32="jdk-7u7-linux-i586.rpm"
-	get32="http://download.oracle.com/otn-pub/java/jdk/7u7-b10/jre-7u7-linux-i586.rpm"
+	get32="http://download.oracle.com/otn-pub/java/jdk/7u7-b10/jdk-7u7-linux-i586.rpm"
 	file64="jdk-7u7-linux-x64.rpm"
-	get64="http://download.oracle.com/otn-pub/java/jdk/7u7-b10/jre-7u7-linux-x64.rpm"
+	get64="http://download.oracle.com/otn-pub/java/jdk/7u7-b10/jdk-7u7-linux-x64.rpm"
 	process_pkg --header "Cookie: gpw_e24=www.oracle.com"
 	show_msg "Setting up Oracle JDK..."
 	mkdir -p /usr/lib/jvm /usr/lib/jvm-exports
@@ -99,5 +99,13 @@ else
 		alternatives --install /usr/lib64/mozilla/plugins/libjavaplugin.so libjavaplugin.so.x86_64 /usr/java/latest/jre/lib/amd64/libnpjp2.so 20000
 	fi
 fi
-[[ -e /usr/java/jdk1.7.0_*/bin/java ]]; exit_state
+[[ "$(install_jdk_test)" = "Installed" ]]; exit_state
+}
+
+install_jdk_test() {
+if [[ -f /usr/java/jdk1.7.0_*/bin/java ]]; then
+	printf "Installed"
+else
+	printf "Not installed"
+fi
 }

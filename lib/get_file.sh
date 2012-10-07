@@ -1,7 +1,7 @@
 get_file() {
 show_msg "Downloading from: $get"
 show_msg "Saving to: $file"
-notify_send "Downloading:" "Downloading $file, it may take some time depending on your connection"
+notify_send -i gtk-save "Downloading:" "Downloading $file, it may take some time depending on your connection"
 if [[ "$downagent" = "wget" ]]; then
 	if [[ "$forcedown" = "yes" ]]; then
 		wget --no-cookies "$get" -O "$file" "$@"

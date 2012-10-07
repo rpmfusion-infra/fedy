@@ -11,7 +11,7 @@ else
 		terminate_program
 	fi
 fi
-if [[ -e "/etc/system-release" ]]; then
+if [[ -f "/etc/system-release" ]]; then
 	show_msg "$(cat /etc/system-release) detected"
 	fver="$(cat /etc/system-release | cut -c16-17)"
 else

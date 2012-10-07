@@ -8,5 +8,5 @@ show_func "Fixing bad theme in root apps"
 [[ -d /root/.icons ]] && make_backup "/root/.icons"
 ln -sf $homedir/.themes/ /root
 ln -sf $homedir/.icons/ /root
-[[ -e /root/.themes ]]; exit_state
+[[ -L /root/.themes ]]; exit_state
 }

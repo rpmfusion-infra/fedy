@@ -23,14 +23,14 @@ while shell=$(zenity --list --radiolist --width=300 --height=300 --title="$progr
 		"changelog")
 			show_msg "Fetching changelog..."
 			curl -s https://raw.github.com/satya164/fedorautils/master/CHANGELOG -o changelog.txt
-			if [[ -e changelog.txt ]]; then
+			if [[ -f changelog.txt ]]; then
 				zenity --text-info --width=600 --height=600 --title="Changelog" --filename="changelog.txt" --ok-label="Ok" --cancel-label="Back"
 				rm -f changelog.txt
 			else
 				show_error "Error fetching changelog! Do you have an active internet connection?"
 			fi;;
 		"logfile")
-			if [[ -e "$logfile" ]]; then
+			if [[ -f "$logfile" ]]; then
 				zenity --text-info --width=600 --height=600 --title="Logfile" --filename="$logfile" --ok-label="Ok" --cancel-label="Back"
 			else
 				show_error "No logfile exists. Try running fedorautils with logging enabled. Use --help for more details"
@@ -41,7 +41,7 @@ done
 }
 
 detect_repotext() {
-if [[ -e /etc/yum.repos.d/fedorautils.repo ]]; then
+if [[ -f /etc/yum.repos.d/fedorautils.repo ]]; then
 	repotext="Remove"
 else
 	repotext="Add"

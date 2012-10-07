@@ -4,7 +4,7 @@
 
 install_tidycache() {
 show_func "Installing tidy-cache plugin for yum"
-if [[ -f /usr/lib/yum-plugins/tidy-cache.py ]]; then
+if [[ "$(install_tidycache_test)" = "Installed" ]]; then
 	show_status "tidy-cache plugin for yum is already installed"
 else
 	file="tidy-cache-LATEST.tar.gz"
@@ -14,5 +14,13 @@ else
 	cp tidy-cache/tidy-cache.py /usr/lib/yum-plugins/
 	cp tidy-cache/tidy-cache.conf /etc/yum/pluginconf.d/
 fi
-[[ -f /usr/lib/yum-plugins/tidy-cache.py ]]; exit_state
+[[ "$(install_tidycache_test)" = "Installed" ]]; exit_state
+}
+
+install_tidycache_test() {
+if [[ -f /usr/lib/yum-plugins/tidy-cache.py ]]; then
+	printf "Installed"
+else
+	printf "Not installed"
+fi
 }

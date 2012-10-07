@@ -4,7 +4,7 @@
 
 install_skype() {
 show_func "Installing Skype"
-if [[ -e /usr/bin/skype ]]; then
+if [[ "$(install_skype_test)" = "Installed" ]]; then
 	show_status "Skype already installed"
 else
 	install_pkg qt.i686 qt-x11.i686 libXv.i686 libXScrnSaver.i686
@@ -14,5 +14,13 @@ else
 	get64="$get32"
 	process_pkg
 fi
-[[ -e /usr/bin/skype ]]; exit_state
+[[ "$(install_skype_test)" = "Installed" ]]; exit_state
+}
+
+install_skype_test() {
+if [[ -f /usr/bin/skype ]]; then
+	printf "Installed"
+else
+	printf "Not installed"
+fi
 }

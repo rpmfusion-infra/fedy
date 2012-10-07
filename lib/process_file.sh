@@ -19,5 +19,5 @@ install_local "$file"
 }
 
 make_backup() {
-[[ "$keepbackup" = "yes" ]] && cp "$1" "$1".bak
+[[ "$keepbackup" = "yes" ]] && cp -rf "$1" "$1".bak
 }
