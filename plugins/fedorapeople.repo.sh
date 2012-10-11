@@ -30,7 +30,7 @@ for repourl in ${repourls[@]}; do
 	fi
 	repolist=( "${repolist[@]}" FALSE "$repourl" "$reponame" "$repodesc" "$repostat" )
 done
-while repos=$(zenity --list --checklist --width=850 --height=600 --title="Fedora People repositories" --text="The following repositories are listed from repos.fedorapeople.org and are unofficial. Add them at your own risk." --hide-header --column "Select" --column "URL" --column "Name" --column "Description" --column "Status" --hide-column="2" --ok-label="Add selected" --cancel-label="Back" "${repolist[@]}"); do
+while repos=$(zenity --list --checklist --width=900 --height=600 --title="Fedora People repositories" --text="The following repositories are listed from repos.fedorapeople.org and are unofficial. Add them at your own risk." --hide-header --column "Select" --column "URL" --column "Name" --column "Description" --column "Status" --hide-column="2" --ok-label="Add selected" --cancel-label="Back" "${repolist[@]}"); do
 	selrepo=$(echo $repos | tr "|" "\n")
 	for repourl in $selrepo; do
 		repofile=${repourl##*/}
