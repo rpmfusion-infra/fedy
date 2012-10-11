@@ -25,8 +25,8 @@ fi
 
 get_file_quiet() {
 if [[ "$downagent" = "wget" ]]; then
-		wget -q "$1" -O "$2"
+	wget -q "$1" -O "$2"
 else
-		curl -L -S "$1" -o "$2"
+	curl -L -S "$1" -o "$2"
 fi
 }

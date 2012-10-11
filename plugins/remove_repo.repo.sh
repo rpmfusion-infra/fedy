@@ -2,18 +2,14 @@
 # Command: list_repos
 # Value: False
 
-remove_repo() {
-show_msg "Removing $repofile"
-rm -f /etc/yum.repos.d/$repofile
-[[ ! -f /etc/yum.repos.d/$repofile ]]; exit_state
-}
-
 list_repos() {
 build_repolist
-while repos=$(zenity --list --checklist --width=850 --height=600 --title="Fedora People repositories" --text="The following repositories are present on your system." --column "Select" --column "Name" --column "Description" --ok-label="Remove selected" --cancel-label="Back" "${repolist[@]}"); do
+while repos=$(zenity --list --checklist --width=850 --height=600 --title="Remove repositories" --text="Removing a repo will delete the repo from the system. It does not affect installed packages." --hide-header --column "Select" --column "Name" --column "Description" --ok-label="Remove selected" --cancel-label="Back" "${repolist[@]}"); do
 	selrepo=$(echo $repos | tr "|" "\n")
 	for repofile in $selrepo; do
-		remove_repo
+		show_msg "Removing $repofile"
+		rm -f /etc/yum.repos.d/$repofile
+		[[ ! -f /etc/yum.repos.d/$repofile ]]; exit_state
 		build_repolist
 	done
 done

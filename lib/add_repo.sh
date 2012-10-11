@@ -52,24 +52,6 @@ adobe-linux.repo() {
 install_local http://linuxdownload.adobe.com/adobe-release/adobe-release-1.0-0.noarch.rpm
 }
 
-fedora-chromium-stable.repo() {
-cat <<EOF | tee /etc/yum.repos.d/fedora-chromium-stable.repo
-[fedora-chromium-stable]
-name=Builds of the "stable" tag of the Chromium Web Browser
-baseurl=http://repos.fedorapeople.org/repos/spot/chromium-stable/fedora-\$releasever/\$basearch/
-enabled=1
-skip_if_unavailable=1
-gpgcheck=0
-
-[fedora-chromium-stable-source]
-name=Builds of the "stable" tag of the Chromium Web Browser - Source
-baseurl=http://repos.fedorapeople.org/repos/spot/chromium-stable/fedora-\$releasever/SRPMS
-enabled=0
-skip_if_unavailable=1
-gpgcheck=0
-EOF
-}
-
 fedora-cinnamon.repo() {
 cat <<EOF | tee /etc/yum.repos.d/fedora-cinnamon.repo
 [fedora-cinnamon]
