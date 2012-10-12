@@ -10,8 +10,8 @@ while repos=$(zenity --list --checklist --width=900 --height=600 --title="Remove
 		show_msg "Removing $repofile"
 		rm -f /etc/yum.repos.d/$repofile
 		[[ ! -f /etc/yum.repos.d/$repofile ]]; exit_state
-		build_repolist
 	done
+	build_repolist
 done
 }
 
