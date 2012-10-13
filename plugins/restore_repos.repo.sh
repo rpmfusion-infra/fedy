@@ -6,13 +6,9 @@ restore_repos() {
 unset repolist
 backupfile=$(zenity --title="Select backup file to restore" --file-selection --file-filter="*.tgz")
 mkdir -p "repos"
-tar -xzf $backupfile --directory="repos"
-repofiles=($(ls repos))
-for repofile in ${repofiles[@]}; do
-	repodesc=$(grep "name=" "repos/$repofile" | head -n 1 | sed -e 's/^name=//g' -e s/\$releasever/$fver/g -e s/\$basearch/$(uname -i)/g)
-	repolist=( "${repolist[@]}" TRUE "$repofile" "$repodesc" )
-done
-repos=$(zenity --list --checklist --width=900 --height=600 --title="Restore repositories" --text="Select repositories to restore." --hide-header --column "Select" --column "Name" --column "Description" --ok-label="Restore" --cancel-label="Cancel" "${repolist[@]}")
+tar -xzf "$backupfile" --directory="repos"
+build_repolist "repos" "true"
+repos=$(zenity --list --checklist --width=900 --height=600 --title="Restore repositories" --text="Select repositories to restore." --hide-header --column "Select" --column "Name" --column "Description" --column "Status" --ok-label="Restore" --cancel-label="Cancel" "${repolist[@]}")
 if [[ $? -eq 0 ]]; then
 	selrepo=$(echo $repos | tr "|" "\n")
 	for repo in $selrepo; do
