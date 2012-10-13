@@ -2,17 +2,6 @@
 # Command: list_fedorapeople
 # Value: False
 
-add_fedorapeople() {
-show_msg "Adding $repofile"
-if [[ -f /etc/yum.repos.d/$repofile ]]; then
-	show_status "$repofile already present"
-else
-	get_file_quiet "$repourl" "$repofile"
-	mv -f "$repofile" /etc/yum.repos.d/
-fi
-[[ -f /etc/yum.repos.d/$repofile ]]; exit_state
-}
-
 list_fedorapeople() {
 unset repolist
 show_msg "Fetching repo list..."
@@ -32,9 +21,19 @@ for repourl in ${repourls[@]}; do
 done
 while repos=$(zenity --list --checklist --width=900 --height=600 --title="Fedora People repositories" --text="The following repositories are listed from repos.fedorapeople.org and are unofficial. Add them at your own risk." --hide-header --column "Select" --column "URL" --column "Name" --column "Description" --column "Status" --hide-column="2" --ok-label="Add selected" --cancel-label="Back" "${repolist[@]}"); do
 	selrepo=$(echo $repos | tr "|" "\n")
-	for repourl in $selrepo; do
-		repofile=${repourl##*/}
-		add_fedorapeople
-	done
+	zenity --question --title="Add repositories?" --text="The repositories are not verified and no gurrantee is provided for the packages in the repos. We take no responsibility if they break your system. Add them anyways?" --ok-label "Add repos" --cancel-label "Cancel"
+	if [[ $? -eq 0 ]]; then
+		for repourl in $selrepo; do
+			repofile=${repourl##*/}
+			show_msg "Adding $repofile"
+			if [[ -f /etc/yum.repos.d/$repofile ]]; then
+				show_status "$repofile already present"
+			else
+				get_file_quiet "$repourl" "$repofile"
+				mv -f "$repofile" /etc/yum.repos.d/
+			fi
+			[[ -f /etc/yum.repos.d/$repofile ]]; exit_state
+		done
+	fi
 done
 }
