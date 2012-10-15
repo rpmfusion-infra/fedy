@@ -5,7 +5,7 @@ Fedora Utils - Tweak your Fedora
 
 .SH SYNOPSIS
 .B fedorautils
-[ARGUMENT...]
+[options...]
 
 .SH DESCRIPTION
 Fedora Utils is a post installation script for Fedora. It lets you install codecs and additional software, fix problems, tweak and cleanup your system, view system information and much more with just few clicks.
@@ -19,12 +19,12 @@ in the terminal. Fedora Utils requires root permissions to run.
 
 
 .SH OPTIONS
-
-.SS Arguments
-Fedora Utils supports arguments for temporarily changing different options and executing various commands, helpful in case you don't want to change a configuration permanently and want to enable/disable some features just for the session, or execute certain commands without launching the full interface. You can get a list of supported arguments with
+Fedora Utils supports specifying options for temporarily changing different configuration variables and executing various commands, helpful in case you don't want to change a configuration permanently and want to enable/disable some features just for the session, or execute certain commands without launching the full interface. You can get a list of supported arguments with
 .B fedorautils --help
 
-.SS Configuration
+.SH FILES
+
+.SS Configuration files
 Fedora Utils supports use of configuration files. The global configuration file is usually
 .B /etc/fedorautilsrc
 and user-specific configuration file is usually
@@ -33,6 +33,15 @@ and user-specific configuration file is usually
 
 .PP
 Configuration files can be used for changing configurations, setting value of shell variables (for example setting the proxy), or running any command before starting the GUI.
+
+.SS Support files
+Support files represent the supported distro. They are typically named after the distro name specified in
+.B /etc/issue
+in lowercase letters.
+
+.PP
+The support files are usually located under
+.B /usr/share/fedorautils/support
 
 .SS Plugins
 Fedora Utils supports plugins for adding more functionality. You can write your own custom plugins for Fedora Utils. The plugin files are usually located under
