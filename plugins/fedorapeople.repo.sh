@@ -10,7 +10,7 @@ repourls=($(cat "index.html" | tr ' ' '\n' | grep "fedora-$fver" | grep .*http\:
 for repourl in ${repourls[@]}; do
 	repoup=${repourl%/*.repo}
 	repofile=${repourl##*/}
-	reponame=$(grep "\"$repoup\"" index.html | tail -n 1 | cut -d\" -f 3  | sed -e 's/^>//g' -e 's/<\/a>//g' -e 's/<\/td>//g')
+	reponame=$(grep "\"$repoup\"" index.html | tail -n 1 | cut -d\" -f 3 | sed -e 's/^>//g' -e 's/<\/a>//g' -e 's/<\/td>//g')
 	repodesc=$(grep -A1 "\"$repoup\"" index.html | tail -n 1 | sed -e 's/^[ \t]*//' -e 's/<td>//g' -e 's/<\/td>//g')
 	if [[ -f /etc/yum.repos.d/$repofile ]]; then
 		repostat="Added"

@@ -60,7 +60,7 @@ if [[ -f /usr/bin/curl ]]; then
 else
 	show_error "curl is needed for $program to run properly. Installing curl"
 	install_pkg curl
-	if [[ -f /usr/bin/curl ]]; then
+	if [[ ! -f /usr/bin/curl ]]; then
 		show_error "Installation of curl failed"
 		terminate_program
 	fi

@@ -29,7 +29,7 @@ fi
 }
 
 install_jre_test() {
-if [[ -f /usr/java/jdk1.7.0_*/bin/java ]]; then
+if [[ `java -version 2>&1 | grep "Client"` ]]; then
 	printf "Installed"
 else
 	printf "Not installed"
