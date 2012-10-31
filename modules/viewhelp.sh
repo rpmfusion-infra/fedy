@@ -33,7 +33,7 @@ while shell=$(zenity --list --radiolist --width=300 --height=300 --title="$progr
 			fi;;
 		"issue")
 			show_msg "Opening Browser..."
-			sudo -u "$user"  xdg-open "http://github.com/satya164/fedorautils/issues";;
+			sudo -u "$user"  xdg-open "http://github.com/satya164/fedorautils/issues/new";;
 		"wiki")
 			show_msg "Opening Browser..."
 			sudo -u "$user"  xdg-open "http://github.com/satya164/fedorautils/wiki";;

@@ -1,6 +1,6 @@
 check_req() {
 show_func "Verifying minimum system requirements"
-# Check Distro
+# Check distro
 if [[ -f /etc/issue ]]; then
 	show_msg "$(cat /etc/issue | head -n 1) detected"
 else
@@ -23,7 +23,7 @@ else
 	fi
 fi
 
-# Check Architecture
+# Check architecture
 case `uname -m` in
 	i386|i486|i586|i686)
 		arch="32"
@@ -35,7 +35,7 @@ case `uname -m` in
 		show_error "Architecture not supported"
 		terminate_program;;
 esac
-# Check Connection
+# Check connection
 ping -c 1 www.google.com > /dev/null 2>&1
 if [[ $? -eq 0 ]]; then
 	show_status "Internet connection verified"
@@ -47,39 +47,52 @@ fi
 if [[ -f /usr/bin/zenity ]]; then
 	show_status "zenity verified"
 else
-	show_error "zenity is needed for $program to run properly. Installing zenity"
+	show_error "zenity is required for $program to run properly, installing zenity"
 	install_pkg zenity
 	if [[ ! -f /usr/bin/zenity ]]; then
 		show_error "Installation of zenity failed"
 		terminate_program
 	fi
 fi
-# Check Curl
+# Check curl
 if [[ -f /usr/bin/curl ]]; then
 	show_status "curl verified"
 else
-	show_error "curl is needed for $program to run properly. Installing curl"
+	show_error "curl is required for $program to run properly, installing curl"
 	install_pkg curl
 	if [[ ! -f /usr/bin/curl ]]; then
 		show_error "Installation of curl failed"
 		terminate_program
 	fi
 fi
-# Check Wget
+# Check wget
 if [[ "$prefwget" = "yes" ]] && [[ -f /usr/bin/wget ]]; then
 	downagent="wget"
 fi
 if [[ "$downagent" = "wget" ]]; then
-	if [[ ! -f /usr/bin/wget ]]; then
-		show_error "wget is not present in the system. Installing wget"
-		install_pkg wget
-		if [[ ! -f /usr/bin/wget ]]; then
-			show_error "Installation of wget failed. Using curl"
-			downagent="curl"
-		fi
-	elif [[ -f /usr/bin/wget ]]; then
+	if [[ -f /usr/bin/wget ]]; then
 		show_status "wget verified"
 		show_msg "Using wget"
+	else
+		show_error "wget is not present in the system, installing wget"
+		install_pkg wget
+		if [[ ! -f /usr/bin/wget ]]; then
+			show_error "Installation of wget failed, using curl"
+			downagent="curl"
+		fi
+	fi
+fi
+# Check festival tts engine
+if [[ "$tts" = "yes" ]]; then
+	if [[ -f /usr/bin/festival ]]; then
+		show_status "festival tts engine verified"
+	else
+		show_error "festival tts engine is required for speech synthesis, installing festival"
+		install_pkg festival
+		if [[ ! -f /usr/bin/festival ]]; then
+			show_error "Installation of festival failed, tts will not be used"
+			tts="no"
+		fi
 	fi
 fi
 }
