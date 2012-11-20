@@ -32,8 +32,11 @@
 </div>
 <div class="description"><p>Fedora Utils lets you install codecs and additional software, fix problems, tweak and cleanup your system, view system information and much more with just few clicks.</p>
 <p>Installing Fedora Utils is as easy as running a single command. To install the latest version of Fedora Utils in your system, just run the following in the Terminal and enter your root password when prompted.</p>
-<P><code>su -c "curl http://master.dl.sourceforge.net/project/fedorautils/fedorautils.repo -o /etc/yum.repos.d/fedorautils.repo && yum install fedorautils"</code></p>
-<p>Adding the Fedora Utils repo to your system to ensures that Fedora Utils up-to-date and all the new features and bug fixes are delivered to you. If you don't want the repo, you can remove it from the "Help" menu in Fedora Utils.</p>
+<p><b>Note:</b> Though the address below specifies Fedora 17, fedorautils isn't limited to Fedora 17.</p>
+<P><code>su -c "curl http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_17/home:satya164:fedorautils.repo -o /etc/yum.repos.d/fedorautils.repo && yum install fedorautils"</code></p>
+<p>Adding the Fedora Utils repo to your system ensures that Fedora Utils up-to-date and all the new features and bug fixes are delivered to you.</p>
+<p>If you are using Fedora 17, then you will also need to install the patched zenity.</p>
+<P><code>su -c "curl http://download.opensuse.org/repositories/home:/satya164:/zenity/Fedora_17/home:satya164:zenity.repo -o /etc/yum.repos.d/zenity.repo && yum update zenity"</code></p>
 <p>Fedora Utils saves the downloaded files for so that you can reuse them. It also takes backups before modifying system files for easy recovery. Unlike others, it can perform batch operations too.</p>
 <p>You can also extend the functionality of Fedora Utils by plugins. Writing a plugin is easy and fun. Refer <a href="https://github.com/satya164/fedorautils/wiki/Plugins-support" title="Plugins Support">this page</a> to have an idea.</p>
 <p>Feel free to make modifications and contributions. Fedora Utils is released under GNU GPL V3.0 and the source code is publicly available. You can access the public repository on <a href="https://github.com/satya164/fedorautils" title="Public repository">github</a>.</p>
