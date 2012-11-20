@@ -11,7 +11,7 @@
 
 # Declare variables
 program="Fedora Utils"
-version="Experimental"
+version="2.3.0"
 user="$(logname)"
 errors="0"
 homedir=`awk -F: -v v="$(logname)" '{if ($1==v) print $6}' /etc/passwd`
