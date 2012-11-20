@@ -1,3 +1,15 @@
+Changelog 2.3.0 (21-11-2012)
+
+1. Complete rewrite with improved plugin system
+2. Ability to browse and add repos from repos.fedorapeople.org
+3. Ability to manage repositories
+4. Automatically determine latest download url in some plugins
+5. Plugins can now show their current state
+6. Dropped some outdated plugins and added many new plugins
+7. Enable logging by default with improved logging
+8. Better argument support
+9. Many bugfixes and under the hood enhancements
+
 Changelog 2.1.1 (28-06-2012)
 
 1. Don't reset arguments if not executed as root
