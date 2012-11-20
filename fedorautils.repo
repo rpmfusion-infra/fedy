@@ -1,7 +1,9 @@
 [fedorautils]
 name=Fedora Utils
-baseurl=http://master.dl.sourceforge.net/project/fedorautils/
+type=rpm-md
+baseurl=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_17/
+gpgcheck=1
+gpgkey=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_17/repodata/repomd.xml.key
 enabled=1
 metadata_expire=1d
 skip_if_unavailable=1
-gpgcheck=0
