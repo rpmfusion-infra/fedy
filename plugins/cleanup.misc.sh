@@ -3,21 +3,29 @@
 # Value: False
 
 cleanup() {
-while clean=$(zenity --list --checklist --width=350 --height=400 --title="Clean up system" --text="Clean up your system and free up space.\nThese options affect all users. Use at your own risk." --hide-header --hide-column=2 --column "Select" --column "Command" --column "Option" FALSE "backup" "Delete Backup Files" FALSE "kernel" "Remove Old Kernels" FALSE "duplicate" "Remove Duplicate Packages" FALSE "history" "Erase Bash History" FALSE "trash" "Empty Trash" FALSE "logfile" "Delete Fedora Utils Logs" --hide-header --ok-label="Select" --cancel-label="Back"); do
+while clean=$(zenity --list --checklist --width=350 --height=400 --title="Clean up system" --text="Clean up your system to free up space.\nThese options affect all users. Use at your own risk." --hide-header --hide-column=2 --column "Select" --column "Command" --column "Option" FALSE "kernel" "Remove Old Kernels" FALSE "duplicate" "Remove Duplicate Packages" FALSE "junk" "Delete Junk Files" FALSE "backup" "Delete Backup Files" FALSE "bash" "Erase Bash History" FALSE "trash" "Empty Trash" FALSE "logfile" "Delete Fedora Utils Logs" --hide-header --ok-label="Select" --cancel-label="Back"); do
 	arr=$(echo $clean | tr "|" "\n")
 	for x in $arr; do
 		case $x in
-		"backup")
-			show_msg "Deleting Backup Files..."
-			find /home/ -name '*~' -delete
-			find /home/ -name '*.bak' -delete;;
 		"kernel")
 			show_msg "Removing Old Kernel..."
 			package-cleanup --oldkernels --count=1;;
 		"duplicate")
 			show_msg "Removing Duplicate Packages..."
 			package-cleanup --cleandupes;;
-		"history")
+		"junk")
+			show_msg "Deleting desktop.ini..."
+			find /home/ -name 'desktop.ini' -delete
+			show_msg "Deleting Thumbs.db..."
+			find /home/ -name 'Thumbs.db' -delete
+			show_msg "Deleting .DS_Store..."
+			find /home/ -name '.DS_Store' -delete;;
+		"backup")
+			show_msg "Deleting Backup Files..."
+			find /home/ -name '*~' -delete
+			find /home/ -name '*.bak' -delete
+			find /home/ -name '*.BAK' -delete;;
+		"bash")
 			show_msg "Erasing Bash History..."
 			rm -f /home/*/.bash_history
 			rm -f /root/*/.bash_history;;
