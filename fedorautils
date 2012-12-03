@@ -12,9 +12,9 @@
 # Declare variables
 program="Fedora Utils"
 version="2.3.0"
-user="$(logname)"
+user=`who | grep $(echo "$DISPLAY" | cut -d '.' -f 1) | cut -d ' ' -f 1 | tail -1`
 errors="0"
-homedir=`awk -F: -v v="$(logname)" '{if ($1==v) print $6}' /etc/passwd`
+homedir=`awk -F: -v v="$user" '{if ($1==v) print $6}' /etc/passwd`
 scriptdir=`cd $(dirname "${BASH_SOURCE[0]}") && pwd`
 
 # Default configuration
