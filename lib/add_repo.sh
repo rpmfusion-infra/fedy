@@ -70,16 +70,6 @@ gpgcheck=0
 EOF
 }
 
-parsidora.repo() {
-cat <<EOF | tee /etc/yum.repos.d/parsidora.repo
-[parsidora] 
-name=Parsidora 17 – \$basearch
-baseurl=http://parsidora.sourceforge.net/releases/17/repos/parsidora/\$basearch
-enabled=0
-gpgcheck=0
-EOF
-}
-
 gtk-theme-config.repo() {
 cat <<EOF | tee /etc/yum.repos.d/gtk-theme-config.repo
 [gtk-theme-config]
@@ -94,12 +84,13 @@ EOF
 
 fedorautils.repo() {
 cat <<EOF | tee /etc/yum.repos.d/fedorautils.repo
-[fedorautils]
 name=Fedora Utils
-baseurl=http://master.dl.sourceforge.net/project/fedorautils/
+type=rpm-md
+baseurl=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_17/
+gpgcheck=1
+gpgkey=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_17/repodata/repomd.xml.key
 enabled=1
 metadata_expire=1d
 skip_if_unavailable=1
-gpgcheck=0
 EOF
 }
