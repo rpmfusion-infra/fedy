@@ -24,7 +24,7 @@ for plug in $plugindir/*.$listsection.sh; do
 	command=$(grep "# Command:" "$plug" | sed -e 's/# Command: //')
 	value=$(grep "# Value:" "$plug" | sed -e 's/# Value: //')
 	[[ `grep "${command}_test()" "$plug"` ]] && name="$name ($(${command}_test))"
-	plugs=("${plugs[@]}" "$value" "$command" "$name")
+	[[ `grep "${command}_hide()" "$plug"` && `${command}_hide` ]] || plugs=("${plugs[@]}" "$value" "$command" "$name")
 done
 IFS="$SAVEIFS"
 }
