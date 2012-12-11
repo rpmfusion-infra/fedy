@@ -11,23 +11,26 @@ if [[ "$(install_nvidia_test)" = "Installed" ]]; then
 	show_status "nVidia driver seems to be already installed"
 else
 	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
-	nvidiaarr=( ${nvidia[@]} ${nvidia173xx[@]} ${nvidia96xx[@]} )
-	card="$(lspci -nn | grep VGA | grep -i nvidia)"
-	for id in ${nvidiaarr[@]}; do
-		if [[ `echo "$card" | grep "$id"` ]]; then
-			for id in ${nvidia[@]}; do
-				[[ `rpm -qa kernel-PAE*` ]] && install_pkg kernel-PAE-devel
-				install_pkg akmod-nvidia xorg-x11-drv-nvidia-libs.i686
-				break
-			done
-			for id in ${nvidia173xx[@]}; do
-				install_pkg akmod-nvidia-173xx xorg-x11-drv-nvidia-173xx-libs.i686
-				break
-			done
-			for id in ${nvidia96xx[@]}; do
-				install_pkg akmod-nvidia-96xx xorg-x11-drv-nvidia-96xx-libs.i686
-				break
-			done
+	[[ `rpm -qa kernel-PAE` ]] && install_pkg kernel-PAE-devel
+	for id in ${nvidia[@]}; do
+		if [[ `lspci -d 10de:$id` ]]; then
+			show_msg "Installing driver for GeForce and Quadro GPUs..."
+			install_pkg akmod-nvidia xorg-x11-drv-nvidia-libs.i686
+			break
+		fi
+	done
+	for id in ${nvidia173xx[@]}; do
+		if [[ `lspci -d 10de:$id` ]]; then
+			show_msg "Installing 173.14.xx driver for Legacy GPUs..."
+			install_pkg akmod-nvidia-173xx xorg-x11-drv-nvidia-173xx-libs.i686
+			break
+		fi
+	done
+	for id in ${nvidia96xx[@]}; do
+		if [[ `lspci -d 10de:$id` ]]; then
+			show_msg "Installing 96.43.xx driver for Legacy GPUs..."
+			install_pkg akmod-nvidia-96xx xorg-x11-drv-nvidia-96xx-libs.i686
+			break
 		fi
 	done
 fi
