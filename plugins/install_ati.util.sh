@@ -1,11 +1,11 @@
-# Name: Install ATI driver
+# Name: Install ATI video driver
 # Command: install_ati
 # Value: False
 
 install_ati() {
-show_func "Installing ATI driver"
+show_func "Installing ATI video driver"
 if [[ "$(install_ati_test)" = "Installed" ]]; then
-	show_status "ATI driver seems to be already installed"
+	show_status "ATI video driver seems to be already installed"
 else
 	install_pkg kernel-devel kernel-headers akmod-catalyst xorg-x11-drv-catalyst xorg-x11-drv-catalyst-libs.i686
 fi

@@ -21,8 +21,8 @@ rpmfusion-nonfree.repo() {
 install_local http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm
 }
 
-infinality.repo() {
-install_local http://www.infinality.net/fedora/linux/infinality-repo-1.0-1.noarch.rpm
+bumblebee.repo() {
+install_local http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee-nonfree/fedora${fver}/noarch/bumblebee-nonfree-release-1.0-1.noarch.rpm
 }
 
 google.repo() {
