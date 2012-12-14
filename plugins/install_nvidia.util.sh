@@ -21,6 +21,7 @@ else
 				add_repo "bumblebee.repo"
 				install_pkg bumblebee-nvidia
 			fi
+			nvidiasupported="yes"
 			break
 		fi
 	done
@@ -28,6 +29,7 @@ else
 		if [[ `lspci -d 10de:$id` ]]; then
 			show_msg "Installing 173.14.xx driver for Legacy GPUs..."
 			install_pkg akmod-nvidia-173xx xorg-x11-drv-nvidia-173xx-libs.i686
+			nvidiasupported="yes"
 			break
 		fi
 	done
@@ -35,15 +37,20 @@ else
 		if [[ `lspci -d 10de:$id` ]]; then
 			show_msg "Installing 96.43.xx driver for Legacy GPUs..."
 			install_pkg akmod-nvidia-96xx xorg-x11-drv-nvidia-96xx-libs.i686
+			nvidiasupported="yes"
 			break
 		fi
 	done
+fi
+if [[ ! "$nvidiasupported" = "yes" ]]; then
+	show_error "Your video card is not supported!"
 fi
 [[ "$(install_nvidia_test)" = "Installed" ]]; exit_state
 }
 
 install_nvidia_test() {
-if [[ `rpm -qa *kmod-nvidia*` ]]; then
+ls /usr/lib/modules/*/extra/nvidia/nvidia.ko > /dev/null 2>&1
+if [[ $? -eq 0 ]]; then
 	printf "Installed"
 else
 	printf "Not installed"
