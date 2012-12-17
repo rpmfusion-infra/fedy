@@ -11,36 +11,42 @@ if [[ "$(install_nvidia_test)" = "Installed" ]]; then
 	show_status "nVidia video driver seems to be already installed"
 else
 	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
-	[[ `rpm -qa kernel-PAE` ]] && install_pkg kernel-PAE-devel
-	for id in ${nvidia[@]}; do
-		if [[ `lspci -d 10de:$id` ]]; then
-			show_msg "Installing driver for GeForce and Quadro GPUs..."
-			install_pkg akmod-nvidia xorg-x11-drv-nvidia-libs.i686
-			if [[ `lspci | grep VGA | grep Intel` ]]; then
-				show_msg "Optimus Graphics detected, installing Bumblebee..."
-				add_repo "bumblebee.repo"
-				install_pkg bumblebee-nvidia
+	show_msg "Updating required packages..."
+	yum -y update kernel kernel-PAE selinux-policy
+	yum check-update kernel kernel-PAE selinux-policy > /dev/null 2>&1
+	if [[ $? -eq 100 ]] || [[ "kernel-$(uname -r)" = "$(rpm -q kernel | sort | tail -1)" ]]; then
+		for id in ${nvidia[@]}; do
+			if [[ `lspci -d 10de:$id` ]]; then
+				show_msg "Installing driver for GeForce and Quadro GPUs..."
+				install_pkg akmod-nvidia xorg-x11-drv-nvidia-libs.i686
+				if [[ `lspci | grep VGA | grep Intel` ]]; then
+					show_msg "Optimus Graphics detected, installing Bumblebee..."
+					add_repo "bumblebee.repo"
+					install_pkg bumblebee-nvidia
+				fi
+				nvidiasupported="yes"
+				break
 			fi
-			nvidiasupported="yes"
-			break
-		fi
-	done
-	for id in ${nvidia173xx[@]}; do
-		if [[ `lspci -d 10de:$id` ]]; then
-			show_msg "Installing 173.14.xx driver for Legacy GPUs..."
-			install_pkg akmod-nvidia-173xx xorg-x11-drv-nvidia-173xx-libs.i686
-			nvidiasupported="yes"
-			break
-		fi
-	done
-	for id in ${nvidia96xx[@]}; do
-		if [[ `lspci -d 10de:$id` ]]; then
-			show_msg "Installing 96.43.xx driver for Legacy GPUs..."
-			install_pkg akmod-nvidia-96xx xorg-x11-drv-nvidia-96xx-libs.i686
-			nvidiasupported="yes"
-			break
-		fi
-	done
+		done
+		for id in ${nvidia173xx[@]}; do
+			if [[ `lspci -d 10de:$id` ]]; then
+				show_msg "Installing 173.14.xx driver for Legacy GPUs..."
+				install_pkg akmod-nvidia-173xx xorg-x11-drv-nvidia-173xx-libs.i686
+				nvidiasupported="yes"
+				break
+			fi
+		done
+		for id in ${nvidia96xx[@]}; do
+			if [[ `lspci -d 10de:$id` ]]; then
+				show_msg "Installing 96.43.xx driver for Legacy GPUs..."
+				install_pkg akmod-nvidia-96xx xorg-x11-drv-nvidia-96xx-libs.i686
+				nvidiasupported="yes"
+				break
+			fi
+		done
+	else
+		show_warn "Please reboot to the latest kernel before installing drivers..."
+	fi
 fi
 if [[ ! "$nvidiasupported" = "yes" ]]; then
 	show_error "Your video card is not supported!"
