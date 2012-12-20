@@ -72,6 +72,7 @@ enable_log
 check_lock
 check_req
 initialize_program
+show_update &
 ui_main
 complete_program
 

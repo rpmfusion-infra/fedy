@@ -6,29 +6,14 @@ while shell=$(zenity --list --radiolist --width=300 --height=300 --title="$progr
 	arr=$(echo $shell | tr "|" "\n")
 	for x in $arr; do
 		case $x in
-		"update")			
+		"update")
 			show_msg "Checking update..."
-			get_file_quiet "https://github.com/satya164/fedorautils/tags" "tags.html"
-			dlurl=$(grep "/satya164/fedorautils/tarball/" "tags.html" | cut -d\" -f 2 | head -n 1)
-			dlver=${dlurl##*/v}
-			if [[ $dlver > $version ]]; then
-				get_file_quiet "https://github.com/satya164/fedorautils/raw/v${dlver}/CHANGELOG" "changelog-${dlver}.txt"
-				prevdate=$(grep '^Changelog.*' "changelog-${dlver}.txt" | sed -n 2p)
-				changelog=$(sed -e /"$prevdate"/q "changelog-${dlver}.txt" | head -n -2)
-				show_msg "Update available!"
-				zenity --question --title="Update available" --text="$changelog" --ok-label "Install update" --cancel-label "Ignore"
-				if [[ $? -eq 0 ]]; then
-					get="https://github.com${dlurl}"
-					file="fedorautils.tar.gz"
-					get_file
-					tar -xzf "$file"
-					make install -C satya164-fedorautils-*
-				fi
-			elif [[ $dlver = $version ]]; then
+			show_update
+			if [[ "$updatestat" = "uptodate" ]]; then
 				show_msg "Fedora Utils is up-to-date"
 				zenity --info --timeout="5" --title="Fedora Utils is up-to-date" --text="Fedora Utils is already the latest stable version."
-			else
-				show_msg "Could not check update"
+			elif [[ ! "$updatestat" = "available" ]]; then
+				show_warn "Could not check update"
 				zenity --error --title="Could not check update" --text="An error occured and Fedora Utils was unable to check for update."
 			fi;;
 		"issue")
