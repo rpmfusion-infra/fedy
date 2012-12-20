@@ -1,6 +1,6 @@
 complete_program() {
 if [[ ! "$errors" = "0" ]]; then
-	if [[ "$enablelog" = "yes" && -f "$logfile" ]]; then
+	if [[ $(whoami) = "root" && "$enablelog" = "yes" && -f "$logfile" ]]; then
 		show_error "$program encountered $errors errors. Please report bugs at http://github.com/satya164/fedorautils/issues along with the logfile $logfile."
 	else
 		show_error "$program encountered $errors errors. You might want to run $program again with logging enabled and report if there are any bugs."
