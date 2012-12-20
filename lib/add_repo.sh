@@ -21,6 +21,10 @@ rpmfusion-nonfree.repo() {
 install_local http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm
 }
 
+livna.repo() {
+install_local http://rpm.livna.org/livna-release.rpm http://ftp-stud.fht-esslingen.de/pub/Mirrors/rpm.livna.org/livna-release.rpm
+}
+
 bumblebee.repo() {
 install_local http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee-nonfree/fedora${fver}/noarch/bumblebee-nonfree-release-1.0-1.noarch.rpm
 }
