@@ -25,6 +25,16 @@ bumblebee.repo() {
 install_local http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee-nonfree/fedora${fver}/noarch/bumblebee-nonfree-release-1.0-1.noarch.rpm
 }
 
+adobe-linux-i386.repo() {
+install_local http://linuxdownload.adobe.com/adobe-release/adobe-release-i386-1.0-1.noarch.rpm
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
+}
+
+adobe-linux-x86_64.repo() {
+install_local http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
+}
+
 google.repo() {
 rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub
 cat <<EOF | tee /etc/yum.repos.d/google.repo
@@ -46,10 +56,6 @@ gpgkey=http://www.skype.com/products/skype/linux/rpm-public-key.asc
 enabled=1
 gpgcheck=0
 EOF
-}
-
-adobe-linux.repo() {
-install_local http://linuxdownload.adobe.com/adobe-release/adobe-release-1.0-0.noarch.rpm
 }
 
 fedora-cinnamon.repo() {
