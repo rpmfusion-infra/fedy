@@ -1,3 +1,12 @@
+Changelog 2.3.1 (26-12-2012)
+
+1. Added option to install video drivers for nVidia and ATI
+2. Updated the codec installation plugins
+3. Automatically check for new versions on startup
+4. Dropped some plugins as no longer maintained
+5. Added keywords to the .desktop file
+6. Minor bug fixes and enhancements
+
 Changelog 2.3.0 (21-11-2012)
 
 1. Complete rewrite with improved plugin system
