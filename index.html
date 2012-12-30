@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Fedora Utils</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/nivo-slider/nivo-slider.css" rel="stylesheet">
+    <link href="assets/nivo-slider/themes/default/default.css" rel="stylesheet">     
+    <link href="assets/styles.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+   
+   
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png"> -->
+                                   <link rel="shortcut icon" href="assets/favicon.png"> 
+  </head>
+
+  <body>
+	<!-- FACEBOOK -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#"><img src="assets/fedorautils.png">Fedora Utils</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="https://github.com/satya164/fedorautils/wiki">Wiki</a></li>
+              <li><a href="https://github.com/satya164/fedorautils/issues">Issues</a></li>              
+              <li><a href="https://github.com/satya164/fedorautils/blob/master/CHANGELOG">Changelog</a></li>			  		  
+            </ul>  
+			<a class="btn btn-info btn-small forkme" href="https://github.com/satya164/fedorautils/"> <i class="mygithub">Fork me on GitHub!</i></a>
+			          
+            <div class="pull-right">
+				<ul class="nav myshare">
+            	<li><g:plusone size="medium"></g:plusone></li>
+				<li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://fedorautils.sourceforge.net" data-text="Tweak your Fedora" data-via="satya164" data-hashtags="fedorautils">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></li>
+			<li><div class="fb-like" data-layout="button_count" data-send="false" data-width="300" data-colorscheme="light" data-show-faces="false"></div></li>
+            </ul> 
+							
+            </div>
+			</div>
+          </div><!--/.nav-collapse -->			
+        </div>     
+    </div>
+
+    <div class="container">
+    	
+    	
+		
+		<div class="slider-wrapper theme-default">
+            <div id="slider" class="nivoSlider">
+                <img src="images/fu-main.png" data-thumb="images/fu-main.png" title="#htmlcaption1" alt="" />
+                 <img src="images/fu-plugins.png" data-thumb="images/fu-repos.png" title="#htmlcaption2" alt="" />
+                 <img src="images/fu-repos.png" data-thumb="images/fu-repos.png" title="#htmlcaption3" alt="" />                 
+                 <img src="images/fu-software.png" data-thumb="images/fu-software.png" title="#htmlcaption4" alt="" />
+                 <img src="images/fu-tweaks.png" data-thumb="images/fu-tweaks.png"  title="#htmlcaption5" alt="" />
+               
+            </div>
+            <div id="htmlcaption1" class="nivo-html-caption">
+                The first screen. It uses Zenity Toolkit
+            </div>
+            <div id="htmlcaption2" class="nivo-html-caption">
+                Fedora Utils is expandable with Plugins. You can <a href="https://github.com/satya164/fedorautils/wiki/Plugins-support">write your own plugin</a>
+            </div>
+            <div id="htmlcaption3" class="nivo-html-caption">
+                You can manage easily several third party repositories
+            </div>
+            <div id="htmlcaption4" class="nivo-html-caption">
+                Install many popular software just with one click! 
+            </div>
+            <div id="htmlcaption5" class="nivo-html-caption">
+               Install codecs that Fedora 
+               <a href="https://fedoraproject.org/wiki/Forbidden_items?rd=ForbiddenItems" >doesn't want to ship</a>. 
+            </div>
+        </div>
+
+    	<div class="row">
+     	<h3>Whats</h3>
+     	<table class="table">
+     		<tr>
+     			<td style="vertical-align: middle;">
+     				
+     				<p>Fedora Utils lets you install codecs and additional software that 
+     					<a href="https://fedoraproject.org/wiki/Forbidden_items?rd=ForbiddenItems" >Fedora don't want to ship</a>, 
+     					like mp3 codecs, Adobe Flash, Oracle Java etc. 
+     					Fedora Utils also will fix problems, tweak and cleanup your system, view system 
+  						information and much more with just few clicks.</p>
+
+		<p>Installing Fedora Utils is as easy as running a single command. To install the latest version of Fedora Utils in your system, 
+		just follow the instructions bellow and enter your root password when prompted.</p>
+
+     			</td>
+     			<td>
+     				<img src="images/screenshot.png" />
+     			</td>
+     		</tr>
+     	</table>
+  		
+		<h3>Install</h3>
+		<p>This will download Fedora Utils, will set up the repository and will install Fedora Utils in your system.	</p>	
+		<pre>$ su -c "curl http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_17/home:satya164:fedorautils.repo -o /etc/yum.repos.d/fedorautils.repo && yum install fedorautils"</pre>
+<p>Adding the Fedora Utils repo to your system ensures that Fedora Utils up-to-date and all the new features and bug fixes are delivered to you.</p>
+		<div class="alert alert-info"><i class="icon-info-sign"> </i> Though the address above specifies Fedora 17, fedorautils isn't limited to Fedora 17</div>
+
+		
+		
+	
+	<h3>Fedora 17</h3>
+	<p>If you are using Fedora 17, then you will also need to install the patched zenity.</p>
+	<pre>$ su -c "curl http://download.opensuse.org/repositories/home:/satya164:/zenity/Fedora_17/home:satya164:zenity.repo -o /etc/yum.repos.d/zenity.repo && yum update zenity" </pre>
+		<h3>More Info</h3>
+	<p>Fedora Utils saves the downloaded files for so that you can reuse them. It also takes backups before modifying system files for easy recovery. 
+		Unlike others, it can perform batch operations too.
+
+You can also extend the functionality of Fedora Utils by plugins. Writing a plugin is easy and fun. Refer 
+<a href="https://github.com/satya164/fedorautils/wiki/Plugins-support">this page</a> 
+to have an idea.
+Feel free to make modifications and contributions. Fedora Utils is released under GNU GPL V3.0 and the source code is publicly available. You can access the public repository on github.</p>
+
+
+<p>If you like Fedora Utils, please support us by spreading the word.
+
+	You can catch me on 
+	<a href="http://plus.google.com/114564489020097923600">Google+</a> or 
+	<a href="http://www.facebook.com/satya164">Facebook</a>. Also check my 
+	<a href ="http://funsurf-blog.blogspot.com/">blog</a> and 
+	<a href="http://satya164.deviantart.com/">deviantArt</a> page :)</p>
+
+</div>      
+
+      <hr>
+      
+      <footer>
+        <p class="copyrights">Fedora Utils © 2012 Satyajit Sahoo. <a href="http://fedoraproject.org/" target="_blank">Fedora™ </a>is a trademark of 
+        	<a href="http://redhat.com/" target="_blank">Red Hat</a>. All rights reserved.</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+   
+    <script type="text/javascript">
+	  (function() {
+	    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+	    po.src = 'https://apis.google.com/js/plusone.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	  })();
+	</script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/nivo-slider/jquery.nivo.slider.pack.js"></script>
+	<script src="assets/js.js"></script>
+	
+
+  </body>
+</html>
