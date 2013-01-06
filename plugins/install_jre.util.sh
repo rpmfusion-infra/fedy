@@ -29,7 +29,7 @@ fi
 }
 
 install_jre_test() {
-if [[ `java -version 2>&1 | grep "Client"` ]]; then
+if [[ `java -version 2>&1 | grep "Java Hotsot(TM)" | grep "Client"` ]]; then
 	printf "Installed"
 else
 	printf "Not installed"
