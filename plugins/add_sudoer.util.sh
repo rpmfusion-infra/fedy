@@ -3,7 +3,7 @@
 # Value: True
 
 add_sudoer_test() {
-if [[ `sudo -l 2>&1 | grep "ALL"` ]]; then
+if [[ `sudo -l -U "$user" 2>&1 | grep "ALL"` ]]; then
 	printf "Configured"
 else
 	printf "Not configured"
