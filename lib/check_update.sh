@@ -18,6 +18,7 @@ get="https://github.com/satya164/fedorautils/archive/v${dlver}.tar.gz"
 file="fedorautils.tar.gz"
 get_file
 tar -xzf "$file"
+make uninstall -C fedorautils-${dlver}
 make install -C fedorautils-${dlver}
 }
 

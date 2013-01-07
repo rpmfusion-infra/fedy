@@ -107,7 +107,7 @@ fi
 }
 
 install_jdk_test() {
-if [[ `java -version 2>&1 | grep "Java Hotsot(TM)" | grep "Server"` ]]; then
+if [[ `java -version 2>&1 | grep "Java HotSpot(TM)" | grep "Server"` ]]; then
 	printf "Installed"
 else
 	printf "Not installed"
