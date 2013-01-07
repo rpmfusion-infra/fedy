@@ -89,66 +89,44 @@
                
             </div>
             <div id="htmlcaption1" class="nivo-html-caption">
-                The first screen. It uses Zenity Toolkit
+                Start screen using zenity
             </div>
             <div id="htmlcaption2" class="nivo-html-caption">
-                Fedora Utils is expandable with Plugins. You can <a href="https://github.com/satya164/fedorautils/wiki/Plugins-support">write your own plugin</a>
+                Fedora Utils is extensible with plugins. You can <a href="https://github.com/satya164/fedorautils/wiki/Plugins-support">write your own plugin</a>
             </div>
             <div id="htmlcaption3" class="nivo-html-caption">
-                You can manage easily several third party repositories
+                Easily manage your repositories and even add several third party repositories from <a href="http://repos.fedorapeople.org/">repos.fedorapeople.org</a>
             </div>
             <div id="htmlcaption4" class="nivo-html-caption">
                 Install many popular software just with one click! 
             </div>
             <div id="htmlcaption5" class="nivo-html-caption">
-               Install codecs that Fedora 
-               <a href="https://fedoraproject.org/wiki/Forbidden_items?rd=ForbiddenItems" >doesn't want to ship</a>. 
+                Tweak your system, install codecs and additional software that
+		Fedora <a href="https://fedoraproject.org/wiki/Forbidden_items?rd=ForbiddenItems" >doesn't want to ship</a>
             </div>
         </div>
 
     	<div class="row">
-     	<h3>Whats</h3>
-     	<table class="table">
-     		<tr>
-     			<td style="vertical-align: middle;">
-     				
-     				<p>Fedora Utils lets you install codecs and additional software that 
-     					<a href="https://fedoraproject.org/wiki/Forbidden_items?rd=ForbiddenItems" >Fedora don't want to ship</a>, 
-     					like mp3 codecs, Adobe Flash, Oracle Java etc. 
-     					Fedora Utils also will fix problems, tweak and cleanup your system, view system 
-  						information and much more with just few clicks.</p>
-
-		<p>Installing Fedora Utils is as easy as running a single command. To install the latest version of Fedora Utils in your system, 
-		just follow the instructions bellow and enter your root password when prompted.</p>
-
-     			</td>
-     			<td>
-     				<img src="images/screenshot.png" />
-     			</td>
-     		</tr>
-     	</table>
+     	<h3>What is Fedora Utils?</h3>
+     	<p>Fedora Utils lets you install codecs and additional software that
+	Fedora <a href="https://fedoraproject.org/wiki/Forbidden_items?rd=ForbiddenItems" >doesn't want to ship</a>, like MP3 codecs, Adobe Flash, Oracle Java etc. 		It can also fix problems, tweak and cleanup your system, show system information and much more with just few clicks.</p>
   		
-		<h3>Install</h3>
-		<p>This will download Fedora Utils, will set up the repository and will install Fedora Utils in your system.	</p>	
-		<pre>$ su -c "curl http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_17/home:satya164:fedorautils.repo -o /etc/yum.repos.d/fedorautils.repo && yum install fedorautils"</pre>
-<p>Adding the Fedora Utils repo to your system ensures that Fedora Utils up-to-date and all the new features and bug fixes are delivered to you.</p>
-		<div class="alert alert-info"><i class="icon-info-sign"> </i> Though the address above specifies Fedora 17, fedorautils isn't limited to Fedora 17</div>
-
-		
-		
-	
-	<h3>Fedora 17</h3>
+	<h3>Installation</h3>
+	<p>Installing Fedora Utils is as easy as running a single command. To install the latest version of Fedora Utils in your system, 
+	just follow the instructions bellow and enter your root password when prompted.</p>
+	<pre>su -c "curl http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_17/home:satya164:fedorautils.repo -o /etc/yum.repos.d/fedorautils.repo && yum install fedorautils"</pre>
+	<p>The above command will set up the Fedora Utils repository and will install Fedora Utils in your system.
+	Adding the repo to your system ensures that Fedora Utils is always up-to-date and all the new features and bug fixes are delivered to you automatically.</p>
+	<div class="alert alert-info"><i class="icon-info-sign"> </i> Though the address above specifies Fedora 17, fedorautils isn't limited to Fedora 17</div>
 	<p>If you are using Fedora 17, then you will also need to install the patched zenity.</p>
-	<pre>$ su -c "curl http://download.opensuse.org/repositories/home:/satya164:/zenity/Fedora_17/home:satya164:zenity.repo -o /etc/yum.repos.d/zenity.repo && yum update zenity" </pre>
-		<h3>More Info</h3>
+	<pre>su -c "curl http://download.opensuse.org/repositories/home:/satya164:/zenity/Fedora_17/home:satya164:zenity.repo -o /etc/yum.repos.d/zenity.repo && yum update zenity"</pre>
+
+	<h3>More Info</h3>
 	<p>Fedora Utils saves the downloaded files for so that you can reuse them. It also takes backups before modifying system files for easy recovery. 
-		Unlike others, it can perform batch operations too.
-
-You can also extend the functionality of Fedora Utils by plugins. Writing a plugin is easy and fun. Refer 
-<a href="https://github.com/satya164/fedorautils/wiki/Plugins-support">this page</a> 
-to have an idea.
-Feel free to make modifications and contributions. Fedora Utils is released under GNU GPL V3.0 and the source code is publicly available. You can access the public repository on github.</p>
-
+	It can perform batch operations too. You can also extend the functionality of Fedora Utils by plugins. Writing a plugin is easy and fun. Refer 
+	<a href="https://github.com/satya164/fedorautils/wiki/Plugins-support">this page</a> 
+	to have an idea. Fedora Utils is released under GNU GPL V3.0 and the source code is publicly available.
+	Feel free to make modifications and contributions.</p>
 
 <p>If you like Fedora Utils, please support us by spreading the word.
 
