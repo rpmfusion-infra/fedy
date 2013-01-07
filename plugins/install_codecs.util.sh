@@ -16,7 +16,8 @@ rm -rf "$homedir/.thumbnails/*"
 }
 
 install_codecs_test() {
-if [[ -d /usr/lib/gstreamer-0.10 ]]; then
+ls /usr/share/doc/gstreamer1-plugins* > /dev/null 2>&1 && ls /usr/share/doc/gstreamer-plugins-bad* > /dev/null 2>&1 && ls /usr/share/doc/gstreamer-plugins-base* > /dev/null 2>&1 && ls /usr/share/doc/gstreamer-plugins-good* > /dev/null 2>&1 && ls /usr/share/doc/gstreamer-plugins-ugly* > /dev/null 2>&1
+if [[ $? -eq 0 ]]; then
 	printf "Installed"
 else
 	printf "Not installed"
