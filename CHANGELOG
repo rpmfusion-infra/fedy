@@ -1,3 +1,10 @@
+Changelog 2.3.2 (08-01-2013)
+
+1. Fix codec installation
+2. Fix Oracle Java installation
+3. Fix Arista installation
+4. Fix add-sudoer plugin showing wrong status
+
 Changelog 2.3.1 (26-12-2012)
 
 1. Added option to install video drivers for nVidia and ATI
