@@ -3,12 +3,14 @@
 # Value: True
 
 add_sudoer() {
-show_msg "Checking sudo access for $user"
-if [[ "$(core_fonts_test)" = "Configured" ]]; then
+show_func "Setting up sudo access for $user"
+if [[ "$(add_sudoer_test)" = "Configured" ]]; then
 	show_status "Sudo access exists"
 else
+	make_backup "/etc/sudoers"
 	su -c "echo '$user ALL=(ALL) ALL' >> /etc/sudoers"
 fi
+[[ "$(add_sudoer_test)" = "Configured" ]]; exit_state
 }
 
 add_sudoer_test() {
