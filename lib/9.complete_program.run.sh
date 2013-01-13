@@ -1,3 +1,5 @@
+# Run: complete_program
+
 complete_program() {
 if [[ ! "$errors" = "0" ]]; then
 	if [[ $(whoami) = "root" && "$enablelog" = "yes" && -f "$logfile" ]]; then

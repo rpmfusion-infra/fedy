@@ -1,3 +1,5 @@
+# Run: check_req
+
 check_req() {
 show_func "Verifying minimum system requirements"
 # Check distro

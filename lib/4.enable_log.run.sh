@@ -1,3 +1,5 @@
+# Run: enable_log
+
 enable_log() {
 # Enable logging
 if [[ "$enablelog" = "yes" ]]; then

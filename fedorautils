@@ -50,31 +50,26 @@ BLUE="\033[0;34m"
 BLUEBOLD="\033[1;34m"
 ENDCOLOR="\033[0m"
 
-# Source libraries
-SAVEIFS="$IFS"
-IFS="
-"
-for lib in $libdir/*.sh; do source "$lib"; done
-IFS="$SAVEIFS"
+# Additional parameters
+trap terminate_program INT
 
 # Source config files if present
 [[ -f "$sysconf" ]] && source "$sysconf"
 [[ -f "$userconf" ]] && source "$userconf"
 
-# Additional parameters
-trap terminate_program INT
+# Source libraries
+SAVEIFS="$IFS"
+IFS="
+"
+for lib in $libdir/*.sh; do source "$lib"; done
 
 # Run the program
-check_args "$@"
-show_license
-check_root "$@"
-enable_log
-check_lock
-check_req
-initialize_program
-show_update &
-ui_main
-complete_program
+for run in $libdir/*.run.sh; do
+	[[ -f "$run" ]] || continue
+	runcommand=$(grep "# Run:" "$run" | sed -e 's/# Run: //')
+	eval "$runcommand $@"
+done
+IFS="$SAVEIFS"
 
 # Please report bugs at <http://github.com/satya164/fedorautils/issues>
 # End of the Script

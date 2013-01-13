@@ -1,4 +1,8 @@
+# Run: initialize_program
+
 initialize_program() {
+# Check for updates
+show_update &
 # Create Additional Directories
 mkdir -p "$workingdir"
 mkdir -p "$downloadsdir"

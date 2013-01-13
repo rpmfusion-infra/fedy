@@ -1,3 +1,5 @@
+# Run: check_args
+
 check_args() {
 while [[ $# -gt 0 ]]; do
 	case "$1" in

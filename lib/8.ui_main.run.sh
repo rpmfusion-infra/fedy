@@ -1,3 +1,5 @@
+# Run: ui_main
+
 ui_main() {
 build_main
 while menu=$(zenity --list --radiolist --width=300 --height="$((((${#menulist[@]}/3)*25)+200))" --title="$program $version" --text="Welcome to $program. Please select an option." --hide-header --hide-column=2 --column "Select" --column "Command" --column "Section" --ok-label="Select" --cancel-label="Close" "${menulist[@]}"); do

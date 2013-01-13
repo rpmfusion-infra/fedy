@@ -1,3 +1,5 @@
+# Run: show_license
+
 show_license() {
 echo -e $BOLD"$program $version Copyright (C) 2012 Satyajit Sahoo"$ENDCOLOR
 echo -e ""

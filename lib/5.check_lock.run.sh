@@ -1,3 +1,5 @@
+# Run: check_lock
+
 check_lock() {
 # Check for existing lockfile
 if [[ -e "$lockfile" ]]; then
