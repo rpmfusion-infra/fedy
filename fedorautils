@@ -11,7 +11,7 @@
 
 # Declare variables
 program="Fedora Utils"
-version="2.3.2"
+version="3.0.0"
 user=`who | grep $(echo "$DISPLAY" | cut -d '.' -f 1) | cut -d ' ' -f 1 | tail -1`
 errors="0"
 homedir=`awk -F: -v v="$user" '{if ($1==v) print $6}' /etc/passwd`
@@ -61,15 +61,22 @@ trap terminate_program INT
 SAVEIFS="$IFS"
 IFS="
 "
-for lib in $libdir/*.sh; do source "$lib"; done
-
-# Run the program
-for run in $libdir/*.run.sh; do
-	[[ -f "$run" ]] || continue
-	runcommand=$(grep "# Run:" "$run" | sed -e 's/# Run: //')
-	eval "$runcommand $@"
+unset runcommands
+for lib in $libdir/*.sh; do
+	[[ -f "$lib" ]] || continue
+	source "$lib"
+	# List commands to run
+	if [[ "$lib" =~ .run.sh$ ]]; then
+		runcommand=$(grep "# Run:" "$lib" | sed -e 's/# Run: //')
+		runcommands=("${runcommands[@]}" "$runcommand")
+	fi
 done
 IFS="$SAVEIFS"
+
+# Run the program
+for (( i = 0; i < ${#runcommands[@]} ; i++ )); do
+	eval "${runcommands[$i]}" "$@"
+done
 
 # Please report bugs at <http://github.com/satya164/fedorautils/issues>
 # End of the Script

@@ -1,6 +1,6 @@
 check_update() {
 get_file_quiet "https://github.com/satya164/fedorautils/tags" "tags.html"
-dlurl=$(grep "/satya164/fedorautils/archive/" "tags.html" | cut -d\" -f 2 | head -n 1)
+dlurl=$(grep -s "/satya164/fedorautils/archive/" "tags.html" | cut -d\" -f 2 | head -n 1)
 dlarc=${dlurl##*/v}
 dlver=${dlarc%.*}
 if [[ $dlver > $version ]]; then
