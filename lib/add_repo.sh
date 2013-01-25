@@ -62,24 +62,6 @@ gpgcheck=0
 EOF
 }
 
-fedora-cinnamon.repo() {
-cat <<EOF | tee /etc/yum.repos.d/fedora-cinnamon.repo
-[fedora-cinnamon]
-name=Cinnamon provides core user interface functions \for the GNOME 3 desktop
-baseurl=http://repos.fedorapeople.org/repos/leigh123linux/cinnamon/fedora-\$releasever/\$basearch/
-enabled=1
-skip_if_unavailable=1
-gpgcheck=0
-
-[fedora-cinnamon-source]
-name=Cinnamon provides core user interface functions \for the GNOME 3 desktop - Source
-baseurl=http://repos.fedorapeople.org/repos/leigh123linux/cinnamon/fedora-\$releasever/SRPMS
-enabled=0
-skip_if_unavailable=1
-gpgcheck=0
-EOF
-}
-
 gtk-theme-config.repo() {
 cat <<EOF | tee /etc/yum.repos.d/gtk-theme-config.repo
 [gtk-theme-config]
