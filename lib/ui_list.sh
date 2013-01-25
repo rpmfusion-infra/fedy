@@ -14,17 +14,12 @@ done
 
 build_list() {
 unset plugs
-SAVEIFS="$IFS"
-IFS="
-"
-for plug in $plugindir/*.$listsection.sh; do
-	[[ -f "$plug" ]] || continue
+while read plug; do
 	source "$plug"
 	name=$(grep "# Name:" "$plug" | sed -e 's/# Name: //')
 	command=$(grep "# Command:" "$plug" | sed -e 's/# Command: //')
 	value=$(grep "# Value:" "$plug" | sed -e 's/# Value: //')
 	[[ `grep "${command}_test()" "$plug"` ]] && name="$name ($(${command}_test))"
 	[[ `grep "${command}_hide()" "$plug"` && "$(eval ${command}_hide)" = "true" ]] || plugs=("${plugs[@]}" "$value" "$command" "$name")
-done
-IFS="$SAVEIFS"
+done < <(find "$plugindir/" -name *.$listsection.sh | sort -u)
 }

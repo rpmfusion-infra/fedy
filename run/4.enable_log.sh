@@ -32,14 +32,6 @@ if [[ "$enablelog" = "yes" ]]; then
 	for log_var in "${log_vars[@]}"; do
 		echo -e "$log_var=${!log_var}" >> $logfile
 	done
-	echo -e "\n[Libraries]\n" >> "$logfile"
-	echo -e "$(ls $libdir)" >> "$logfile"
-	echo -e "\n[Modules]\n" >> "$logfile"
-	echo -e "$(ls $moduledir)" >> "$logfile"
-	echo -e "\n[Plugins]\n" >> "$logfile"
-	echo -e "$(ls $plugindir)" >> "$logfile"
-	echo -e "\n[Support]\n" >> "$logfile"
-	echo -e "$(ls $supportdir)" >> "$logfile"
 	echo -e "\n[Outputs]\n" >> "$logfile"
 	if [[ "$logmode" = "buffer" ]]; then
 		unset BOLD RED REDBOLD GREEN GREENBOLD YELLOW YELLOWBOLD BLUE BLUEBOLD ENDCOLOR

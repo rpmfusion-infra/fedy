@@ -13,15 +13,10 @@ done
 
 build_main() {
 unset menulist
-SAVEIFS="$IFS"
-IFS="
-"
-for module in $moduledir/*.sh; do
-	[[ -f "$module" ]] || continue
+while read module; do
 	source "$module"
 	name=$(grep -i "# Name:" "$module" | sed -e 's/# Name: //')
 	command=$(grep -i "# Command:" "$module" | sed -e 's/# Command: //')
 	menulist=("${menulist[@]}" "FALSE" "$command" "$name")
-done
-IFS="$SAVEIFS"
+done < <(find "$moduledir/" -name *.sh | sort -u)
 }

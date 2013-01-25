@@ -3,19 +3,9 @@
 check_req() {
 show_func "Verifying minimum system requirements"
 # Check distro
-if [[ -f /etc/issue ]]; then
-	show_msg "$(cat /etc/issue | head -n 1) detected"
-else
-	show_warn "Could not detect distro"
-fi
-if [[ -f /etc/issue ]] && [[ -d $supportdir ]] && [[ `grep -iw "$(ls $supportdir)" /etc/issue` ]]; then
-	show_status "Distro verified"
-	if [[ -f /etc/fedora-release ]]; then
-		fver="$(grep -ow -E [[:digit:]]+ /etc/fedora-release)"
-		show_msg "Fedora version $fver detected"
-	else
-		show_warn "Could not detect Fedora version"
-	fi
+if [[ -f /etc/fedora-release ]]; then
+	fver="$(grep -ow -E [[:digit:]]+ /etc/fedora-release)"
+	show_msg "Fedora version $fver detected"
 else
 	if [[ "$forcedistro" = "yes" ]]; then
 		show_warn "Unsupported distro, but will continue as instructed"
@@ -24,7 +14,6 @@ else
 		terminate_program
 	fi
 fi
-
 # Check architecture
 case `uname -m` in
 	i386|i486|i586|i686)

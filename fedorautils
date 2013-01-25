@@ -19,9 +19,9 @@ scriptdir=`cd $(dirname "${BASH_SOURCE[0]}") && pwd`
 
 # Default configuration
 libdir="$scriptdir/lib"			# Provides core functionality, change only if you know what are you doing
+rundir="$scriptdir/run"			# Contains scripts to run at startup
 moduledir="$scriptdir/modules"		# Provides the main menu module
 plugindir="$scriptdir/plugins"		# The directory where are containing all the plugins
-supportdir="$scriptdir/support"		# Contains files representing supported distros
 workingdir="/tmp/fedorautils"		# A temporary directory where everything is done, automatically created as needed
 sysconf="/etc/fedorautilsrc"		# System wide configuration file for fedorautils
 userconf="$homedir/.fedorautilsrc"	# User specific configuration file for fedorautils
@@ -58,25 +58,16 @@ trap terminate_program INT
 [[ -f "$userconf" ]] && source "$userconf"
 
 # Source libraries
-SAVEIFS="$IFS"
-IFS="
-"
-unset runcommands
-for lib in $libdir/*.sh; do
-	[[ -f "$lib" ]] || continue
+while read lib; do
 	source "$lib"
-	# List commands to run
-	if [[ "$lib" =~ .run.sh$ ]]; then
-		runcommand=$(grep "# Run:" "$lib" | sed -e 's/# Run: //')
-		runcommands=("${runcommands[@]}" "$runcommand")
-	fi
-done
-IFS="$SAVEIFS"
+done < <(find "$libdir/" -name *.sh | sort -u)
 
 # Run the program
-for (( i = 0; i < ${#runcommands[@]} ; i++ )); do
-	eval "${runcommands[$i]}" "$@"
-done
+while read run; do
+	source "$run"
+	runcommand=$(grep "# Run:" "$run" | sed -e 's/# Run: //')
+	eval "$runcommand" "$@"
+done < <(find "$rundir/" -name *.sh | sort -u)
 
 # Please report bugs at <http://github.com/satya164/fedorautils/issues>
 # End of the Script
