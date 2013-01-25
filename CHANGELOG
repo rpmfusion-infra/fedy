@@ -1,3 +1,9 @@
+Changelog 3.0.1 (25-01-2013)
+
+1. Rewrite core parts
+2. Added option to install GTK theme engines
+3. Removed cinnamon repo as Cinnamon is now in Fedora repos
+
 Changelog 3.0.0 (14-01-2013)
 
 1. Added new icon (Courtesy: Reda Lazri)
