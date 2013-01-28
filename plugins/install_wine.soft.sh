@@ -10,7 +10,7 @@ else
 	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
 	install_pkg wine
 fi
-	show_func "Installing Wine Gecko"
+show_func "Installing Wine Gecko"
 if [[ "$(install_wine_test)" = "Installed with gecko" ]]; then
 	show_status "Wine Gecko already installed"
 else
@@ -32,9 +32,9 @@ fi
 }
 
 install_wine_test() {
-if [[ -f /usr/lib/wine/libwine.so && -d /usr/share/wine/gecko ]]; then
+if [[ -f /usr/bin/wine && -d /usr/share/wine/gecko ]]; then
 	printf "Installed with gecko"
-elif [[ -f /usr/lib/wine/libwine.so ]]; then
+elif [[ -f /usr/bin/wine ]]; then
 	printf "Installed"
 else
 	printf "Not installed"
