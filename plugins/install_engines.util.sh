@@ -13,7 +13,7 @@ fi
 }
 
 install_engines_test() {
-ls /usr/lib/gtk-3.0/3.0.0/theming-engines/libunico.so > /dev/null 2>&1 && ls /usr/lib/*/gtk-2.0/*/engines/libmurrine.so > /dev/null 2>&1
+ls /usr/lib*/gtk-3.0/3.0.0/theming-engines/libunico.so > /dev/null 2>&1 && ls /usr/lib*/*/gtk-2.0/*/engines/libmurrine.so > /dev/null 2>&1
 if [[ $? -eq 0 ]]; then
 	printf "Installed"
 else
