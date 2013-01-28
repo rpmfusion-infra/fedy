@@ -15,7 +15,7 @@ if [[ "$(enable_dvd_test)" = "Enabled with libdvdcss2" ]]; then
 	show_status "libdvdcss2 already installed"
 else
 	add_repo "livna.repo"
-	install_pkg libdvdcss
+	install_pkg --enablerepo=livna libdvdcss
 fi
 [[ "$(enable_dvd_test)" = "Enabled with libdvdcss2" ]]; exit_state
 }
