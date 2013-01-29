@@ -17,7 +17,8 @@ sudo -u "$user" gsettings set org.gnome.settings-daemon.plugins.xsettings hintin
 }
 
 font_rendering_test() {
-if [[ `grep -s "Xft.lcdfilter: lcddefault" "$homedir/.Xresources"` && -d /usr/lib/freetype-freeworld ]]; then
+ls /usr/lib*/freetype-freeworld > /dev/null 2>&1 && grep -s "Xft.lcdfilter: lcddefault" "$homedir/.Xresources" > /dev/null 2>&1
+if [[ $? -eq 0 ]]; then
 	printf "Improved"
 else
 	printf "Not improved"

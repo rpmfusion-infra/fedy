@@ -18,7 +18,8 @@ fi
 }
 
 install_flash_test() {
-if [[ -f /usr/lib64/mozilla/plugins/libflashplayer.so || -f /usr/lib/mozilla/plugins/libflashplayer.so ]]; then
+ls /usr/lib*/mozilla/plugins/libflashplayer.so > /dev/null 2>&1
+if [[ $? -eq 0 ]]; then
 	printf "Installed"
 else
 	printf "Not installed"

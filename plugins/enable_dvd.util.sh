@@ -21,9 +21,8 @@ fi
 }
 
 enable_dvd_test() {
-if [[ -f /usr/lib/libdvdread.so.4 && -f /usr/lib/libdvdnav.so.4 && -f /usr/bin/lsdvd && -f /usr/lib/libdvdcss.so.2 ]]; then
-	printf "Enabled with libdvdcss2"
-elif [[ -f /usr/lib/libdvdread.so.4 && -f /usr/lib/libdvdnav.so.4 && -f /usr/bin/lsdvd && ! -f /usr/lib/libdvdcss.so.2 ]]; then
+ls /usr/lib*/libdvdread.so.4 > /dev/null 2>&1 && ls /usr/lib*/libdvdnav.so.4 > /dev/null 2>&1 && ls /usr/bin/lsdvd > /dev/null 2>&1 && ls /usr/lib*/libdvdcss.so.2 > /dev/null 2>&1
+if [[ $? -eq 0 ]]; then
 	printf "Enabled"
 else
 	printf "Not enabled"

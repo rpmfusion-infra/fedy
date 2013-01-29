@@ -55,7 +55,7 @@ fi
 }
 
 install_nvidia_test() {
-ls /usr/lib/modules/*/extra/nvidia/nvidia.ko > /dev/null 2>&1
+ls /usr/lib*/modules/*/extra/nvidia/nvidia.ko > /dev/null 2>&1
 if [[ $? -eq 0 ]]; then
 	printf "Installed"
 else
