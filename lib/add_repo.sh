@@ -64,6 +64,17 @@ gpgcheck=0
 EOF
 }
 
+steam.repo() {
+cat <<EOF | tee /etc/yum.repos.d/steam.repo
+[steam]
+name=Steam RPM packages and dependencies
+baseurl=http://spot.fedorapeople.org/steam/fedora-$releasever/
+enabled=1
+skip_if_unavailable=1
+gpgcheck=0
+EOF
+}
+
 gtk-theme-config.repo() {
 cat <<EOF | tee /etc/yum.repos.d/gtk-theme-config.repo
 [gtk-theme-config]
