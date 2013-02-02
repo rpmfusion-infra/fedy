@@ -80,9 +80,9 @@ cat <<EOF | tee /etc/yum.repos.d/elegance-colors.repo
 [elegance-colors]
 name=Elegance Colors Gnome Shell theme
 type=rpm-md
-baseurl=http://download.opensuse.org/repositories/home:/satya164:/elegance-colors/Fedora_$releasever/
+baseurl=http://download.opensuse.org/repositories/home:/satya164:/elegance-colors/Fedora_18/
 gpgcheck=1
-gpgkey=http://download.opensuse.org/repositories/home:/satya164:/elegance-colors/Fedora_$releasever/repodata/repomd.xml.key
+gpgkey=http://download.opensuse.org/repositories/home:/satya164:/elegance-colors/Fedora_18/repodata/repomd.xml.key
 enabled=1
 skip_if_unavailable=1
 EOF
@@ -93,9 +93,9 @@ cat <<EOF | tee /etc/yum.repos.d/gtk-theme-config.repo
 [gtk-theme-config]
 name=GTK theme preferences
 type=rpm-md
-baseurl=http://download.opensuse.org/repositories/home:/satya164:/gtk-theme-config/Fedora_$releasever/
+baseurl=http://download.opensuse.org/repositories/home:/satya164:/gtk-theme-config/Fedora_18/
 gpgcheck=1
-gpgkey=http://download.opensuse.org/repositories/home:/satya164:/gtk-theme-config/Fedora_$releasever/repodata/repomd.xml.key
+gpgkey=http://download.opensuse.org/repositories/home:/satya164:/gtk-theme-config/Fedora_18/repodata/repomd.xml.key
 enabled=1
 skip_if_unavailable=1
 EOF
@@ -105,9 +105,9 @@ fedorautils.repo() {
 cat <<EOF | tee /etc/yum.repos.d/fedorautils.repo
 name=Fedora Utils
 type=rpm-md
-baseurl=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_$releasever/
+baseurl=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_18/
 gpgcheck=1
-gpgkey=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_$releasever/repodata/repomd.xml.key
+gpgkey=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_18/repodata/repomd.xml.key
 enabled=1
 metadata_expire=1d
 skip_if_unavailable=1
