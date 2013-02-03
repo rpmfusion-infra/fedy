@@ -1,3 +1,10 @@
+Changelog 3.0.3 (04-02-2013)
+
+1. Fix error in running custom commands
+2. Fix detection of murrine engine installation
+3. Fix RPMFusion repo not added in font_rendering plugin
+4. Remove unrar from essential software
+
 Changelog 3.0.2 (03-02-2013)
 
 1. Added option to install Steam and Elegance Colors
