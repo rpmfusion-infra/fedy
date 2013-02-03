@@ -28,6 +28,9 @@ while [[ $# -gt 0 ]]; do
 		-e|--exec)			
 				if [[ `grep -w "# Command: $2" $plugindir/*.sh` ]]; then
 					interactive="no"
+					while read run; do
+						source "$run"
+					done < <(find "$rundir/" -name *.sh | sort -u)
 					check_root
 					enable_log
 					check_lock
