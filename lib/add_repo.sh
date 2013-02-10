@@ -14,11 +14,11 @@ done
 }
 
 rpmfusion-free.repo() {
-install_local http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm
+install_local http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-${fver}.noarch.rpm
 }
 
 rpmfusion-nonfree.repo() {
-install_local http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm
+install_local http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-${fver}.noarch.rpm
 }
 
 livna.repo() {
@@ -68,7 +68,7 @@ steam.repo() {
 cat <<EOF | tee /etc/yum.repos.d/steam.repo
 [steam]
 name=Steam RPM packages and dependencies
-baseurl=http://spot.fedorapeople.org/steam/fedora-$releasever/
+baseurl=http://spot.fedorapeople.org/steam/fedora-\$releasever/
 enabled=1
 skip_if_unavailable=1
 gpgcheck=0
@@ -80,9 +80,9 @@ cat <<EOF | tee /etc/yum.repos.d/elegance-colors.repo
 [elegance-colors]
 name=Elegance Colors Gnome Shell theme
 type=rpm-md
-baseurl=http://download.opensuse.org/repositories/home:/satya164:/elegance-colors/Fedora_18/
+baseurl=http://download.opensuse.org/repositories/home:/satya164:/elegance-colors/Fedora_\$releasever/
 gpgcheck=1
-gpgkey=http://download.opensuse.org/repositories/home:/satya164:/elegance-colors/Fedora_18/repodata/repomd.xml.key
+gpgkey=http://download.opensuse.org/repositories/home:/satya164:/elegance-colors/Fedora_\$releasever/repodata/repomd.xml.key
 enabled=1
 skip_if_unavailable=1
 EOF
@@ -93,9 +93,9 @@ cat <<EOF | tee /etc/yum.repos.d/gtk-theme-config.repo
 [gtk-theme-config]
 name=GTK theme preferences
 type=rpm-md
-baseurl=http://download.opensuse.org/repositories/home:/satya164:/gtk-theme-config/Fedora_18/
+baseurl=http://download.opensuse.org/repositories/home:/satya164:/gtk-theme-config/Fedora_\$releasever/
 gpgcheck=1
-gpgkey=http://download.opensuse.org/repositories/home:/satya164:/gtk-theme-config/Fedora_18/repodata/repomd.xml.key
+gpgkey=http://download.opensuse.org/repositories/home:/satya164:/gtk-theme-config/Fedora_\$releasever/repodata/repomd.xml.key
 enabled=1
 skip_if_unavailable=1
 EOF
@@ -105,9 +105,9 @@ fedorautils.repo() {
 cat <<EOF | tee /etc/yum.repos.d/fedorautils.repo
 name=Fedora Utils
 type=rpm-md
-baseurl=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_18/
+baseurl=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_\$releasever/
 gpgcheck=1
-gpgkey=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_18/repodata/repomd.xml.key
+gpgkey=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_\$releasever/repodata/repomd.xml.key
 enabled=1
 metadata_expire=1d
 skip_if_unavailable=1
