@@ -47,9 +47,9 @@ else
 	else
 		show_warn "Please reboot to the latest kernel before installing drivers..."
 	fi
-fi
-if [[ ! "$nvidiasupported" = "yes" ]]; then
-	show_error "Your video card is not supported!"
+	if [[ ! "$nvidiasupported" = "yes" ]]; then
+		show_error "Your video card is not supported!"
+	fi
 fi
 [[ "$(install_nvidia_test)" = "Installed" ]]; exit_state
 }
