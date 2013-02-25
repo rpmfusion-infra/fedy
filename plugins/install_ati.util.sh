@@ -20,7 +20,7 @@ fi
 [[ "$(install_ati_test)" = "Installed" ]]; exit_state
 }
 
-install_nvidia_test() {
+install_ati_test() {
 if [[ -f /usr/share/ati/fglrx-uninstall.sh ]]; then
 	printf "Installed"
 else
