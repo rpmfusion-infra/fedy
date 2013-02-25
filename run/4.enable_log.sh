@@ -28,7 +28,7 @@ if [[ "$enablelog" = "yes" ]]; then
 		cat "$sysconf" >> "$logfile"
 	fi
 	echo -e "\n[Variables]\n" >> "$logfile"
-	log_vars=( "homedir" "scriptdir" "libdir" "moduledir" "plugindir" "supportdir" "workingdir" "sysconf" "userconf" "lockfile" "logfile" "logmode" "downagent" "prefwget" "forcedown" "forcedistro" "keepbackup" "keepdownloads" "downloadsdir" "tts" )
+	log_vars=( "homedir" "scriptdir" "libdir" "moduledir" "plugindir" "workingdir" "sysconf" "userconf" "lockfile" "logfile" "logmode" "downagent" "prefwget" "forcedown" "forcedistro" "keepbackup" "keepdownloads" "downloadsdir" "tts" )
 	for log_var in "${log_vars[@]}"; do
 		echo -e "$log_var=${!log_var}" >> $logfile
 	done

@@ -1,3 +1,8 @@
+Changelog 3.0.5 (25-02-2013)
+
+1. Fix testing ATI video driver
+2. Fix nVidia card not recognized error
+
 Changelog 3.0.4 (11-02-2013)
 
 1. Fix adding repos
