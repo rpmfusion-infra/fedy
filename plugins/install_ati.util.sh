@@ -11,7 +11,7 @@ else
 	show_msg "Updating required packages..."
 	yum -y update kernel kernel-PAE selinux-policy
 	yum check-update kernel kernel-PAE selinux-policy > /dev/null 2>&1
-	if [[ $? -eq 100 ]] || [[ "kernel-$(uname -r)" = "$(rpm -q kernel | sort | tail -1)" ]]; then
+	if [[ $? -eq 100 ]] || [[ "$(uname -r | cut -d- -f 1,2 | cut -d. -f 1,2,3)" = "$(rpm -q kernel | sort | tail -1 | cut -d- -f 2,3 | cut -d. -f 1,2,3)" ]]; then
 		install_pkg akmod-catalyst xorg-x11-drv-catalyst xorg-x11-drv-catalyst-libs.i686
 	else
 		show_warn "Please reboot to the latest kernel before installing drivers..."

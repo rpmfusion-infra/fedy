@@ -14,7 +14,7 @@ else
 	show_msg "Updating required packages..."
 	yum -y update kernel kernel-PAE selinux-policy
 	yum check-update kernel kernel-PAE selinux-policy > /dev/null 2>&1
-	if [[ $? -eq 100 ]] || [[ "kernel-$(uname -r)" = "$(rpm -q kernel | sort | tail -1)" ]]; then
+	if [[ $? -eq 100 ]] || [[ "$(uname -r | cut -d- -f 1,2 | cut -d. -f 1,2,3)" = "$(rpm -q kernel | sort | tail -1 | cut -d- -f 2,3 | cut -d. -f 1,2,3)" ]]; then
 		for id in ${nvidia[@]}; do
 			if [[ `lspci -d 10de:$id` ]]; then
 				show_msg "Installing driver for GeForce and Quadro GPUs..."
