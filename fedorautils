@@ -60,14 +60,14 @@ trap terminate_program INT
 # Source libraries
 while read lib; do
 	source "$lib"
-done < <(find "$libdir/" -name *.sh | sort -u)
+done < <(find "$libdir/" -name '*.sh' | sort -u)
 
 # Run the program
 while read run; do
 	source "$run"
 	runcommand=$(grep "# Run:" "$run" | sed -e 's/# Run: //')
 	eval "$runcommand" "$@"
-done < <(find "$rundir/" -name *.sh | sort -u)
+done < <(find "$rundir/" -name '*.sh' | sort -u)
 
 # Please report bugs at <http://github.com/satya164/fedorautils/issues>
 # End of the Script
