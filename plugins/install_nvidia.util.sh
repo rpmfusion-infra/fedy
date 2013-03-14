@@ -13,40 +13,35 @@ else
 	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
 	show_msg "Updating required packages..."
 	yum -y update kernel kernel-PAE selinux-policy
-	yum check-update kernel kernel-PAE selinux-policy > /dev/null 2>&1
-	if [[ $? -eq 0 ]] && [[ "$(uname -r | cut -d- -f 1,2 | cut -d. -f 1,2,3)" = "$(rpm -q kernel | sort | tail -1 | cut -d- -f 2,3 | cut -d. -f 1,2,3)" || "$(uname -r | cut -d- -f 1,2 | cut -d. -f 1,2,3)" = "$(rpm -q kernel-PAE | sort | tail -1 | cut -d- -f 3,4 | cut -d. -f 1,2,3)" ]]; then
-		for id in ${nvidia[@]}; do
-			if [[ `lspci -d 10de:$id` ]]; then
-				show_msg "Installing driver for GeForce and Quadro GPUs..."
-				install_pkg akmod-nvidia xorg-x11-drv-nvidia-libs.i686 && setsebool -P allow_execstack on && sed -i '/root=/s|$| rdblacklist=nouveau|' /boot/grub/grub.conf
-				if [[ `lspci | grep VGA | grep Intel` ]]; then
-					show_msg "Optimus Graphics detected, installing Bumblebee..."
-					add_repo "bumblebee.repo"
-					install_pkg bumblebee-nvidia
-				fi
-				nvidiasupported="yes"
-				break
+	for id in ${nvidia[@]}; do
+		if [[ `lspci -d 10de:$id` ]]; then
+			show_msg "Installing driver for GeForce and Quadro GPUs..."
+			install_pkg akmod-nvidia xorg-x11-drv-nvidia-libs.i686 && setsebool -P allow_execstack on && sed -i '/root=/s|$| rdblacklist=nouveau|' /boot/grub/grub.conf
+			if [[ `lspci | grep VGA | grep Intel` ]]; then
+				show_msg "Optimus Graphics detected, installing Bumblebee..."
+				add_repo "bumblebee.repo"
+				install_pkg bumblebee-nvidia
 			fi
-		done
-		for id in ${nvidia173xx[@]}; do
-			if [[ `lspci -d 10de:$id` ]]; then
-				show_msg "Installing 173.14.xx driver for Legacy GPUs..."
-				install_pkg akmod-nvidia-173xx xorg-x11-drv-nvidia-173xx-libs.i686 && setsebool -P allow_execstack on && sed -i '/root=/s|$| rdblacklist=nouveau|' /boot/grub/grub.conf
-				nvidiasupported="yes"
-				break
-			fi
-		done
-		for id in ${nvidia96xx[@]}; do
-			if [[ `lspci -d 10de:$id` ]]; then
-				show_msg "Installing 96.43.xx driver for Legacy GPUs..."
-				install_pkg akmod-nvidia-96xx xorg-x11-drv-nvidia-96xx-libs.i686 && setsebool -P allow_execstack on && sed -i '/root=/s|$| rdblacklist=nouveau|' /boot/grub/grub.conf
-				nvidiasupported="yes"
-				break
-			fi
-		done
-	else
-		show_warn "Please reboot to the latest kernel before installing drivers..."
-	fi
+			nvidiasupported="yes"
+			break
+		fi
+	done
+	for id in ${nvidia173xx[@]}; do
+		if [[ `lspci -d 10de:$id` ]]; then
+			show_msg "Installing 173.14.xx driver for Legacy GPUs..."
+			install_pkg akmod-nvidia-173xx xorg-x11-drv-nvidia-173xx-libs.i686 && setsebool -P allow_execstack on && sed -i '/root=/s|$| rdblacklist=nouveau|' /boot/grub/grub.conf
+			nvidiasupported="yes"
+			break
+		fi
+	done
+	for id in ${nvidia96xx[@]}; do
+		if [[ `lspci -d 10de:$id` ]]; then
+			show_msg "Installing 96.43.xx driver for Legacy GPUs..."
+			install_pkg akmod-nvidia-96xx xorg-x11-drv-nvidia-96xx-libs.i686 && setsebool -P allow_execstack on && sed -i '/root=/s|$| rdblacklist=nouveau|' /boot/grub/grub.conf
+			nvidiasupported="yes"
+			break
+		fi
+	done
 	if [[ ! "$nvidiasupported" = "yes" ]]; then
 		show_error "Your video card is not supported!"
 	fi
