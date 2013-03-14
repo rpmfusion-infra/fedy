@@ -1,3 +1,7 @@
+Changelog 3.0.6 (14-03-2013)
+
+1. Remove check for latest kernel on driver installation
+
 Changelog 3.0.5 (25-02-2013)
 
 1. Fix testing ATI video driver
