@@ -1,8 +1,7 @@
 check_update() {
-get_file_quiet "https://github.com/satya164/fedorautils/tags" "tags.html"
-dlurl=$(grep -s "/satya164/fedorautils/archive/" "tags.html" | cut -d\" -f 2 | head -n 1)
-dlarc=${dlurl##*/v}
-dlver=${dlarc%.*}
+get_file_quiet "https://github.com/satya164/fedorautils/tags.atom" "tags.xml"
+dltag=$(grep "<title>v.*</title>" "tags.xml" | grep -o "v[0-9].[0-9].[0-9]" | head -n 1)
+dlver=${dltag#v}
 if [[ $dlver > $version ]]; then
 	get_file_quiet "https://github.com/satya164/fedorautils/raw/v${dlver}/CHANGELOG" "changelog-${dlver}.txt"
 	prevdate=$(grep '^Changelog.*' "changelog-${dlver}.txt" | sed -n 2p)
