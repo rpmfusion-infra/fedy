@@ -3,7 +3,7 @@
 # Value: False
 
 sys_info() {
-cat <<EOF | tee sysinfo.txt
+cat <<EOF | tee sysinfo.txt > /dev/null 2>&1
 Distribution: $(cat /etc/issue | head -n 1)
 Kernel: $(uname -irs)
 RAM: $(grep MemTotal /proc/meminfo | cut -c18-)

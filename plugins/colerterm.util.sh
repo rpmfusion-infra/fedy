@@ -8,7 +8,7 @@ if [[ "$(colorterm_test)" = "Added" ]]; then
 	show_status "Colors already added"
 else
 make_backup "/etc/bashrc"
-cat <<EOF | tee -a /etc/bashrc
+cat <<EOF | tee -a /etc/bashrc > /dev/null 2>&1
 # Colors in Terminal
 if [ \$USER = root ]; then
 	PS1='\[\033[1;31m\][\u@\h \W]\\$\[\033[0m\] '

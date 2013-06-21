@@ -43,7 +43,7 @@ rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
 
 google.repo() {
 rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub
-cat <<EOF | tee /etc/yum.repos.d/google.repo
+cat <<EOF | tee /etc/yum.repos.d/google.repo > /dev/null 2>&1
 [Google] 
 name=Google - $(uname -i)
 baseurl=http://dl.google.com/linux/rpm/stable/$(uname -i)
@@ -54,7 +54,7 @@ EOF
 }
 
 skype.repo() {
-cat <<EOF | tee /etc/yum.repos.d/skype.repo
+cat <<EOF | tee /etc/yum.repos.d/skype.repo > /dev/null 2>&1
 [skype]
 name=Skype Repository
 baseurl=http://download.skype.com/linux/repos/fedora/updates/i586/
@@ -65,7 +65,7 @@ EOF
 }
 
 steam.repo() {
-cat <<EOF | tee /etc/yum.repos.d/steam.repo
+cat <<EOF | tee /etc/yum.repos.d/steam.repo > /dev/null 2>&1
 [steam]
 name=Steam RPM packages and dependencies
 baseurl=http://spot.fedorapeople.org/steam/fedora-\$releasever/
@@ -76,7 +76,7 @@ EOF
 }
 
 elegance-colors.repo() {
-cat <<EOF | tee /etc/yum.repos.d/elegance-colors.repo
+cat <<EOF | tee /etc/yum.repos.d/elegance-colors.repo > /dev/null 2>&1
 [elegance-colors]
 name=Elegance Colors Gnome Shell theme
 type=rpm-md
@@ -89,7 +89,7 @@ EOF
 }
 
 gtk-theme-config.repo() {
-cat <<EOF | tee /etc/yum.repos.d/gtk-theme-config.repo
+cat <<EOF | tee /etc/yum.repos.d/gtk-theme-config.repo > /dev/null 2>&1
 [gtk-theme-config]
 name=GTK theme preferences
 type=rpm-md
@@ -102,7 +102,7 @@ EOF
 }
 
 fedorautils.repo() {
-cat <<EOF | tee /etc/yum.repos.d/fedorautils.repo
+cat <<EOF | tee /etc/yum.repos.d/fedorautils.repo > /dev/null 2>&1
 name=Fedora Utils
 type=rpm-md
 baseurl=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_\$releasever/

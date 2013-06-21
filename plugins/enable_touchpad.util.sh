@@ -7,7 +7,7 @@ show_func "Enabling systemwide touchpad tap"
 if [[ "$(enable_touchpad_test)" = "Enabled" ]]; then
 	show_status "Touchpad tap already enabled"
 else
-cat <<EOF | tee /etc/X11/xorg.conf.d/00-enable-taps.conf
+cat <<EOF | tee /etc/X11/xorg.conf.d/00-enable-taps.conf > /dev/null 2>&1
 Section "InputClass"
        Identifier "tap-by-default"
        MatchIsTouchpad "on"

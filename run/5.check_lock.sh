@@ -8,7 +8,7 @@ if [[ -e "$lockfile" ]]; then
 		terminate_program
 	fi
 	pid=`cat "$lockfile"`
-	kill -0 "$pid" 2>/dev/null
+	kill -0 "$pid" > /dev/null 2>&1
 	if [[ $? -eq 0 ]]; then
 		show_error "Another instance of $program is already running!"
 		terminate_program
