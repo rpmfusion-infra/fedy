@@ -1,51 +1,46 @@
-# Name: SSD I/O Scheduler
+# Name: Set up SSD I/O scheduler
 # Command: disk_io_scheduler
-# Value: True
-SCHEDULER=noop
-FLAG=false
-UDEV_RULE_FILE=/etc/udev/rules.d/60-io_schedulers.rules
+# Value: False
+
+scheduler="noop"
+ssdfound="false"
+udev_rule_file="/etc/udev/rules.d/60-io_schedulers.rules"
 
 disk_io_scheduler() {
-	show_func "Starting SSD I/O Scheduler plugin"
-	for DISK in `\ls -d /sys/block/sd*` ; do
-		ROT=$DISK/queue/rotational
-		SCHED=$DISK/queue/scheduler
-		if [[ `cat $ROT` -eq 0 ]] ; then
-			if [[ -w $SCHED ]] ; then
-				show_msg "Found SSD disk: $DISK; set scheduler to $SCHEDULER"
-				echo $SCHEDULER > $SCHED
-				FLAG=true
+show_func "Setting up SSD I/O scheduler"
+if [[ -f "$udev_rule_file" ]]; then
+	show_status "SSD I/O scheduler already configured"
+else
+	for disk in `\ls -d /sys/block/sd*`; do
+		rot="$disk/queue/rotational"
+		sched="$disk/queue/scheduler"
+		if [[ `cat $rot` -eq 0 ]]; then
+			if [[ -w "$sched" ]]; then
+				show_msg "Found SSD: $disk"
+				echo $scheduler > $sched && show_msg "Scheduler set to $scheduler"
+				ssdfound="true"
 			fi
 		fi
 	done
-	if [[ $FLAG -eq true ]]; then
-		install_udev_rule_file $UDEV_RULE_FILE
-	fi
-	exit_state
+	[[ "$ssdfound" = "true" ]] && install_udev_rule_file "$udev_rule_file"
+fi
+[[ "$(disk_io_scheduler_test)" = "Configured" ]]; exit_state
 }
 
 install_udev_rule_file() {
-	if [[ ! -f $1 ]]; then
-		create_udev_rule_file $1
-		show_status "udev rules for io schedulers installed at $1"
-  else
-    show_msg "udev rules for io schedulers appears to be already installed; check $1 to verify"
-	fi
-}
-
-create_udev_rule_file() {
-	# based on: https://wiki.archlinux.org/index.php/Solid_State_Drives
-	echo '# set deadline scheduler for non-rotating disks
-ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="noop"
-# set cfq scheduler for rotating disks
-ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="cfq"' > $1
+# Based on: https://wiki.archlinux.org/index.php/Solid_State_Drives
+cat <<EOF | tee "$1" > /dev/null 2>&1
+# Set deadline scheduler for non-rotating disks
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="$scheduler"
+# Set cfq scheduler for rotating disks
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="cfq"
+EOF
 }
 
 disk_io_scheduler_test() {
-if [[ -f $UDEV_RULE_FILE ]]; then
-	printf "Installed"
+if [[ -f "$udev_rule_file" ]]; then
+	printf "Configured"
 else
-	printf "Not installed"
+	printf "Not configured"
 fi
 }
-
