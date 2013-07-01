@@ -8,6 +8,7 @@ if [[ "$(font_rendering_test)" = "Improved" ]]; then
 	show_status "Font rendering already improved"
 else
 	add_repo "rpmfusion-free.repo"
+	add_repo "rpmfusion-nonfree.repo"
 	install_pkg freetype-freeworld
 	echo "Xft.lcdfilter: lcddefault" > "$homedir/.Xresources"
 fi
