@@ -29,8 +29,8 @@ fi
 }
 
 install_jre_test() {
-which java > /dev/null 2>&1
-if [[ $? -eq 0 && `java -version 2>&1 | grep "Java HotSpot(TM)"` ]]; then
+ls /usr/java/jre* > /dev/null 2>&1
+if [[ $? -eq 0 ]]; then
 	printf "Installed"
 else
 	printf "Not installed"

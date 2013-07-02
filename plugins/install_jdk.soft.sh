@@ -107,8 +107,8 @@ fi
 }
 
 install_jdk_test() {
-which javac > /dev/null 2>&1
-if [[ $? -eq 0 && `java -version 2>&1 | grep "Java HotSpot(TM)"` ]]; then
+ls /usr/java/jdk* > /dev/null 2>&1
+if [[ $? -eq 0 ]]; then
 	printf "Installed"
 else
 	printf "Not installed"
