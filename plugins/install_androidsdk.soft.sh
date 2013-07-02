@@ -10,7 +10,7 @@ else
 	source "$plugindir/install_jdk.soft.sh" && install_jdk
 	show_msg "Fetching webpage..."
 	get_file_quiet "http://developer.android.com/sdk/index.html" "index.html"
-	get=$(grep "linux-sdk" index.html | tr " " "\n" | grep ".tgz" | cut -d\" -f 2 | head -n 1)
+	get=$(grep -o "http://dl.google.com/android/android-sdk_r[0-9]*\.[0-9]*\.[0-9]*-linux.tgz" index.html | head -n 1)
 	file=${get##*/}
 	get_file
 	tar xvf "$file"
