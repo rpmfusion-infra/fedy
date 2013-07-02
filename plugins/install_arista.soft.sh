@@ -10,8 +10,8 @@ else
 	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
 	install_pkg gnome-python2-gconf python2-devel python3-devel python-gudev gstreamer-plugins-bad-nonfree
 	show_msg "Fetching webpage..."
-	get_file_quiet "http://www.transcoder.org/downloads/" "index.html"
-	get=$(grep "class=\"button\"" index.html | tr " " "\n" | grep ".tar.gz" | cut -d\" -f 2 | head -n 1)
+	get_file_quiet "https://github.com/danielgtaylor/arista/tags.atom" "tags.atom"
+	get=$(grep "<title>.*</title>" "tags.atom" | grep -o "[0-9].[0-9].[0-9]" | head -n 1)
 	file=${get##*/}
 	get_file
 	tar -xvf "$file"
