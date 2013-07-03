@@ -11,7 +11,8 @@ else
 	install_pkg gnome-python2-gconf python2-devel python3-devel python-gudev gstreamer-plugins-bad-nonfree
 	show_msg "Fetching webpage..."
 	get_file_quiet "https://github.com/danielgtaylor/arista/tags.atom" "tags.atom"
-	get=$(grep "<title>.*</title>" "tags.atom" | grep -o "[0-9].[0-9].[0-9]" | head -n 1)
+	aristaver=$(grep "<title>.*</title>" "tags.atom" | grep -o "[0-9].[0-9].[0-9]" | head -n 1)
+	get="https://github.com/danielgtaylor/arista/archive/${aristaver}.tar.gz"
 	file=${get##*/}
 	get_file
 	tar -xvf "$file"
@@ -23,7 +24,7 @@ fi
 }
 
 install_arista_test() {
-if [[ -f /usr/bin/arista-gtk ]]; then
+if [[ -f /usr/local/bin/arista-gtk ]]; then
 	printf "Installed"
 else
 	printf "Not installed"
