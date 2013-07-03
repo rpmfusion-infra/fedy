@@ -1,3 +1,14 @@
+Changelog 3.0.8 (03-07-2013)
+
+1. Updated skype version
+2. Update arista download link to use GitHub tags
+3. Drop install cinnamon plugin as not compatible with Fedora 19
+4. Fix Android SDK download link
+5. Fixed error after java install
+6. Remove disable_services plugin
+7. Fix bug in font_rendering plugin
+8. Fix false error on enable_dvd plugin 
+
 Changelog 3.0.7 (21-06-2013)
 
 1. Fix Java installation check
