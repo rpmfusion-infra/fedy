@@ -1,4 +1,5 @@
 check_update() {
+show_msg "Checking update..."
 get_file_quiet "https://github.com/satya164/fedorautils/tags.atom" "tags.xml"
 dltag=$(grep "<title>v.*</title>" "tags.xml" | grep -o "v[0-9].[0-9].[0-9]" | head -n 1)
 dlver=${dltag#v}
@@ -13,6 +14,7 @@ fi
 }
 
 install_update() {
+show_msg "Installing update..."
 get="https://github.com/satya164/fedorautils/archive/v${dlver}.tar.gz"
 file="fedorautils.tar.gz"
 get_file
@@ -25,10 +27,12 @@ show_update() {
 check_update
 if [[ "$updatestat" = "available" ]]; then
 	show_msg "Update available!"
-	[[ "$interactive" = "no" ]] || zenity --question --title="Update available" --text="$changelog" --ok-label "Install update" --cancel-label "Ignore"
-	if [[ $? -eq 0 ]]; then
-		install_update
-		zenity --info --title="Update installed" --text="Please restart $program to avoid problems."
+	if [[ ! "$interactive" = "no" ]]; then
+		zenity --question --title="Update available" --text="$changelog" --ok-label "Install update" --cancel-label "Ignore"
+		if [[ $? -eq 0 ]]; then
+			install_update
+			zenity --info --title="Update installed" --text="Please restart $program to avoid problems."
+		fi
 	fi
 fi
 }

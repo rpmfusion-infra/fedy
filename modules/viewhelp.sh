@@ -7,7 +7,6 @@ while shell=$(zenity --list --radiolist --width=300 --height=300 --title="$progr
 	for x in $arr; do
 		case $x in
 		"update")
-			show_msg "Checking update..."
 			show_update
 			if [[ "$updatestat" = "uptodate" ]]; then
 				show_msg "Fedora Utils is up-to-date"

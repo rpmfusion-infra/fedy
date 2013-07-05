@@ -10,5 +10,5 @@ rsync -r -u "$downloadsdir/" "$workingdir"
 cd "$workingdir"
 [[ $? -eq 0 ]] || terminate_program
 # Check for updates
-show_update &
+show_update
 }
