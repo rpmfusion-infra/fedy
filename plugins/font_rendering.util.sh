@@ -12,6 +12,24 @@ else
 	install_pkg freetype-freeworld
 	echo "Xft.lcdfilter: lcddefault" > "$homedir/.Xresources"
 fi
+make_backup "/etc/fonts/local.conf"
+cat <<EOF | tee /etc/fonts/local.conf > /dev/null 2>&1
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+ <match target="font">
+  <edit name="autohint" mode="assign">
+   <bool>true</bool>
+  </edit>
+  <edit name="hinting" mode="assign">
+   <bool>true</bool>
+  </edit>
+  <edit mode="assign" name="hintstyle">
+   <const>hintslight</const>
+  </edit>
+ </match>
+</fontconfig>
+EOF
 show_msg "Changing font settings for current user"
 sudo -u "$user" gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing rgba
 sudo -u "$user" gsettings set org.gnome.settings-daemon.plugins.xsettings hinting slight
