@@ -1,9 +1,9 @@
 [fedorautils]
 name=Fedora Utils
 type=rpm-md
-baseurl=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_18/
+baseurl=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_$releasever/
 gpgcheck=1
-gpgkey=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_18/repodata/repomd.xml.key
+gpgkey=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_$releasever/repodata/repomd.xml.key
 enabled=1
 metadata_expire=1d
 skip_if_unavailable=1
