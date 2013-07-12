@@ -7,7 +7,7 @@ if [[ "$(yum_config_test)" = "Enabled" ]]; then
 	show_status "Yum already configured to keep package cache"
 else
 	make_backup "/etc/yum.conf"
-	sed -i 's/keepcache=0/keepcache=1/g' "/etc/yum.conf"
+	sed -i 's/keepcache=.*$/keepcache=1/g' "/etc/yum.conf"
 fi
 [[ "$(yum_config_test)" = "Enabled" ]]; exit_state
 }

@@ -25,7 +25,7 @@ install_local http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-re
 livna.repo() {
 install_local http://rpm.livna.org/livna-release.rpm http://ftp-stud.fht-esslingen.de/pub/Mirrors/rpm.livna.org/livna-release.rpm
 # Disable Livna repo
-sed -i 's/enabled=1/enabled=0/g' "/etc/yum.repos.d/livna.repo"
+sed -i 's/enabled=.*$/enabled=0/g' "/etc/yum.repos.d/livna.repo"
 }
 
 bumblebee.repo() {

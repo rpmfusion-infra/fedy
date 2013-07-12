@@ -10,7 +10,7 @@ else
 		show_status "SELinux is disabled, not changing state"
 	else
 		make_backup "/etc/selinux/config"
-		sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
+		sed -i 's/SELINUX=.*$/SELINUX=permissive/g' /etc/selinux/config
 	fi
 fi
 [[ "$(selinuxconf_test)" = "Permissive" || "$(selinuxconf_test)" = "Disabled" ]]; exit_state
