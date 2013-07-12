@@ -18,7 +18,7 @@ else
 	process_pkg --header "Cookie: gpw_e24=www.oracle.com"
 	show_msg "Setting up Oracle JDK..."
 	mkdir -p /usr/lib/jvm /usr/lib/jvm-exports
-	alternatives --install /usr/bin/java java /usr/java/latest/bin/java 20000 \
+	alternatives --install /usr/bin/java java /usr/java/latest/bin/java 200000 \
 	--slave /usr/lib/jvm/jre jre /usr/java/latest/jre \
 	--slave /usr/lib/jvm-exports/jre jre_exports /usr/java/latest/jre/lib \
 	--slave /usr/bin/keytool keytool /usr/java/latest/jre/bin/keytool \
@@ -38,7 +38,8 @@ else
 	--slave /usr/share/man/man1/servertool.1 servertool.1 /usr/java/latest/man/man1/servertool.1 \
 	--slave /usr/share/man/man1/tnameserv.1 tnameserv.1 /usr/java/latest/man/man1/tnameserv.1 \
 	--slave /usr/share/man/man1/unpack200.1 unpack200.1 /usr/java/latest/man/man1/unpack200.1
-	alternatives --install /usr/bin/javac javac /usr/java/latest/bin/javac 20000 \
+	alternatives --auto java
+	alternatives --install /usr/bin/javac javac /usr/java/latest/bin/javac 200000 \
 	--slave /usr/lib/jvm/java java_sdk /usr/java/latest \
 	--slave /usr/lib/jvm-exports/java java_sdk_exports /usr/java/latest/lib \
 	--slave /usr/bin/appletviewer appletviewer /usr/java/latest/bin/appletviewer \
@@ -96,11 +97,14 @@ else
 	--slave /usr/share/man/man1/wsgen.1 wsgen.1 /usr/java/latest/man/man1/wsgen.1 \
 	--slave /usr/share/man/man1/wsimport.1 wsimport.1 /usr/java/latest/man/man1/wsimport.1 \
 	--slave /usr/share/man/man1/xjc.1 xjc.1 /usr/java/latest/man/man1/xjc.1
+	alternatives --auto javac
 	show_msg "Setting up Java plugin for firefox..."
 	if [[ "$arch" = "32" ]]; then
-		alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so libjavaplugin.so /usr/java/latest/jre/lib/i386/libnpjp2.so 20000
+		alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so libjavaplugin.so /usr/java/default/lib/i386/libnpjp2.so 200000
+		alternatives --auto libjavaplugin.so
 	elif [[ "$arch" = "64" ]]; then
-		alternatives --install /usr/lib64/mozilla/plugins/libjavaplugin.so libjavaplugin.so.x86_64 /usr/java/latest/jre/lib/amd64/libnpjp2.so 20000
+		alternatives --install /usr/lib64/mozilla/plugins/libjavaplugin.so libjavaplugin.so.x86_64 /usr/java/default/lib/amd64/libnpjp2.so 200000
+		alternatives --auto libjavaplugin.so.x86_64
 	fi
 fi
 [[ "$(install_jdk_test)" = "Installed" ]]; exit_state
