@@ -73,17 +73,4 @@ if [[ "$downagent" = "wget" ]]; then
 		fi
 	fi
 fi
-# Check festival tts engine
-if [[ "$tts" = "yes" ]]; then
-	if [[ -f /usr/bin/festival ]]; then
-		show_status "festival tts engine verified"
-	else
-		show_error "festival tts engine is required for speech synthesis, installing festival"
-		install_pkg festival
-		if [[ ! -f /usr/bin/festival ]]; then
-			show_error "Installation of festival failed, tts will not be used"
-			tts="no"
-		fi
-	fi
-fi
 }
