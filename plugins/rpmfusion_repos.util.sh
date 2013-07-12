@@ -9,7 +9,8 @@ add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
 }
 
 rpmfusion_repos_test() {
-if [[ -f /etc/yum.repos.d/rpmfusion-free.repo && -f /etc/yum.repos.d/rpmfusion-nonfree.repo ]]; then
+yum repolist all 2>&1 | cut -d\  -f1 | cut -d/ -f1 | grep -w "rpmfusion-free" > /dev/null 2>&1 && yum repolist all 2>&1 | cut -d\  -f1 | cut -d/ -f1 | grep -w "rpmfusion-nonfree" > /dev/null 2>&1
+if [[ $? -eq 0 ]]; then
 	printf "Added"
 else
 	printf "Not added"

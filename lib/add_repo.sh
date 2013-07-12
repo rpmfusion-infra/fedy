@@ -3,8 +3,9 @@ while [[ $# -gt 0 ]]; do
 	if [[ $1 =~ .repo$ ]]; then
 		repofile="$1"
 		show_msg "Adding $repofile"
-		if [[ -f /etc/yum.repos.d/$repofile ]]; then
-			show_status "$repofile already present"
+		yum repolist all 2>&1 | cut -d\  -f1 | cut -d/ -f1 | grep -w "${repofile%.repo}" > /dev/null 2>&1
+		if [[ $? -eq 0 ]]; then
+			show_status "$repofile already configured"
 		else
 			eval "$repofile"
 		fi
@@ -103,6 +104,7 @@ EOF
 
 fedorautils.repo() {
 cat <<EOF | tee /etc/yum.repos.d/fedorautils.repo > /dev/null 2>&1
+[fedorautils]
 name=Fedora Utils
 type=rpm-md
 baseurl=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_\$releasever/
