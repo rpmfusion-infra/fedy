@@ -1,6 +1,5 @@
 # Name: Improve font rendering
 # Command: font_rendering
-# Value: True
 
 font_rendering() {
 show_func "Improving font rendering"

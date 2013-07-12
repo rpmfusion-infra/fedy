@@ -1,6 +1,5 @@
 # Name: Setup yum to keep cache
 # Command: yum_config
-# Value: True
 
 yum_config() {
 show_func "Setting up yum to keep package cache"

@@ -1,6 +1,5 @@
 # Name: Power off system when done
 # Command: power_off
-# Value: False
 
 power_off() {
 clean_temp

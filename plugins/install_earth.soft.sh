@@ -1,6 +1,5 @@
 # Name: Install Google Earth
 # Command: install_earth
-# Value: False
 
 install_earth() {
 show_func "Installing Google Earth"

@@ -1,6 +1,5 @@
 # Name: Install essential software
 # Command: essential_soft
-# Value: True
 
 essential_soft() {
 show_func "Installing essential software"

@@ -1,6 +1,5 @@
 # Name: Set up SSD I/O scheduler
 # Command: disk_io_scheduler
-# Value: False
 
 scheduler="noop"
 ssdfound="false"

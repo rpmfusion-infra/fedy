@@ -1,11 +1,10 @@
-# Name: Install GTK theme preferences
+# Name: Install Theme Configuration app
 # Command: install_gtkthemeconfig
-# Value: False
 
 install_gtkthemeconfig() {
-show_func "Installing GTK theme preferences"
+show_func "Installing Theme Configuration app"
 if [[ "$(install_gtkthemeconfig_test)" = "Installed" ]]; then
-	show_status "GTK theme preferences already installed"
+	show_status "Theme Configuration app already installed"
 else
 	add_repo "gtk-theme-config.repo"
 	install_pkg gtk-theme-config

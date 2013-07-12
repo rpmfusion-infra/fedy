@@ -1,6 +1,5 @@
 # Name: Install ATI video driver
 # Command: install_ati
-# Value: False
 
 install_ati() {
 show_func "Installing ATI video driver"

@@ -1,6 +1,5 @@
 # Name: Block/unblock websites
 # Command: block_sites
-# Value: False
 
 block_sites() {
 while blocksites=$(zenity --list --radiolist --width=300 --height=300 --title="Block/unblock websites" --text="Block or unblock a website for all users.\nIt modifies the \"/etc/hosts\" file." --hide-header --hide-column=2 --column "Select" --column "Command" --column "Option" TRUE "block" "Block a website" FALSE "unblock" "Unblock a website" FALSE "view" "View blocked websites" --ok-label="Select" --cancel-label="Back"); do

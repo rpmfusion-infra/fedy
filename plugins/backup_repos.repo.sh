@@ -1,6 +1,5 @@
 # Name: Backup repositories
 # Command: backup_repos
-# Value: False
 
 backup_repos() {
 build_repolist "/etc/yum.repos.d/" "true"

@@ -1,6 +1,5 @@
 # Name: Install Google Chrome
 # Command: install_chrome
-# Value: False
 
 install_chrome() {
 show_func "Installing Google Chrome"

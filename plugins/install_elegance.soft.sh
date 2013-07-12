@@ -1,6 +1,5 @@
 # Name: Install Elegance Colors
 # Command: install_elegance
-# Value: False
 
 install_elegance() {
 show_func "Installing Elegance Colors Gnome Shell theme"

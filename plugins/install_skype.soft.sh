@@ -1,6 +1,5 @@
 # Name: Install Skype
 # Command: install_skype
-# Value: False
 
 install_skype() {
 show_func "Installing Skype"

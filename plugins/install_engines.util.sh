@@ -1,6 +1,5 @@
 # Name: Install GTK theme engines
 # Command: install_engines
-# Value: True
 
 install_engines() {
 show_func "Installing GTK theme engines"

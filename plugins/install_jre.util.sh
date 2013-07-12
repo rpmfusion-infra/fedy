@@ -1,6 +1,5 @@
 # Name: Install Oracle Java
 # Command: install_jre
-# Value: False
 
 install_jre() {
 show_func "Installing Oracle JRE"

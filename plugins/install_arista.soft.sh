@@ -1,6 +1,5 @@
 # Name: Install Arista Transcoder
 # Command: install_arista
-# Value: False
 
 install_arista() {
 show_func "Installing Arista Transcoder"

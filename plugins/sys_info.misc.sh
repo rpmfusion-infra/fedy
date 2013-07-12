@@ -1,6 +1,5 @@
 # Name: Show system info
 # Command: sys_info
-# Value: False
 
 sys_info() {
 cat <<EOF | tee sysinfo.txt > /dev/null 2>&1

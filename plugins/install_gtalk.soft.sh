@@ -1,6 +1,5 @@
 # Name: Install GTalk plugin
 # Command: install_gtalk
-# Value: False
 
 install_gtalk() {
 show_func "Installing GTalk plugin"

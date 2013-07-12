@@ -1,6 +1,5 @@
 # Name: Install Oracle JDK
 # Command: install_jdk
-# Value: False
 
 install_jdk() {
 show_func "Installing Oracle JDK"

@@ -1,6 +1,5 @@
 # Name: Example plugin
 # Command: show_example
-# Value: False
 
 show_example() {
 show_func "Starting example plugin"

@@ -1,6 +1,5 @@
 # Name: Remove repositories
 # Command: list_repos
-# Value: False
 
 list_repos() {
 build_repolist "/etc/yum.repos.d/" "false"

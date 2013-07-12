@@ -1,6 +1,5 @@
 # Name: Install Steam
 # Command: install_steam
-# Value: False
 
 install_steam() {
 show_func "Installing Steam"

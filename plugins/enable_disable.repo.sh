@@ -1,6 +1,5 @@
 # Name: Enable/disable repositories
 # Command: enable_disable
-# Value: False
 
 enable_disable() {
 build_repolist "/etc/yum.repos.d/"

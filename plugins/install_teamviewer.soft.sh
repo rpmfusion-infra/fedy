@@ -1,6 +1,5 @@
 # Name: Install TeamViewer
 # Command: install_teamviewer
-# Value: False
 
 install_teamviewer() {
 show_func "Installing TeamViewer"

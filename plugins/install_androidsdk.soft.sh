@@ -1,6 +1,5 @@
 # Name: Install Android SDK
 # Command: install_androidsdk
-# Value: False
 
 install_androidsdk() {
 show_func "Installing Android SDK"

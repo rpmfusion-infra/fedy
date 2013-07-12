@@ -1,6 +1,5 @@
 # Name: Update GRUB2 config
 # Command: update_grub2
-# Value: False
 
 update_grub2() {
 show_func "Updating GRUB2 configuration"

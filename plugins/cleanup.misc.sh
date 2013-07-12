@@ -1,6 +1,5 @@
 # Name: Clean up system
 # Command: cleanup
-# Value: False
 
 cleanup() {
 while clean=$(zenity --list --checklist --width=350 --height=400 --title="Clean up system" --text="Clean up your system to free up space.\nThese options affect all users. Use at your own risk." --hide-header --hide-column=2 --column "Select" --column "Command" --column "Option" FALSE "kernel" "Remove old kernels" FALSE "duplicate" "Remove duplicate packages" FALSE "junk" "Delete junk files" FALSE "backup" "Delete backup files" FALSE "bash" "Erase bash history" FALSE "trash" "Empty trash" FALSE "logfile" "Delete Fedora Utils logs" --hide-header --ok-label="Select" --cancel-label="Back"); do

@@ -1,6 +1,5 @@
 # Name: Restore repositories from backup
 # Command: restore_repos
-# Value: False
 
 restore_repos() {
 unset repolist

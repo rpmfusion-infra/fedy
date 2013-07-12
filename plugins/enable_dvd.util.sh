@@ -1,6 +1,5 @@
 # Name: Enable DVD playback
 # Command: enable_dvd
-# Value: False
 
 enable_dvd() {
 show_func "Installing DVD codecs"

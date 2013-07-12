@@ -1,6 +1,5 @@
 # Name: Install multimedia codecs
 # Command: install_codecs
-# Value: True
 
 install_codecs() {
 show_func "Installing multimedia codecs"

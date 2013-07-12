@@ -1,6 +1,5 @@
 # Name: Install Adobe flash plugin
 # Command: install_flash
-# Value: False
 
 install_flash() {
 show_func "Installing Adobe flash plugin"

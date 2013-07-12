@@ -1,6 +1,5 @@
 # Name: Add RPM Fusion repositories
 # Command: rpmfusion_repos
-# Value: True
 
 rpmfusion_repos() {
 show_func "Adding RPM Fusion repos"

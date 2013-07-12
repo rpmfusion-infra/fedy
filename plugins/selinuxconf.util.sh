@@ -1,6 +1,5 @@
 # Name: Set SELinux to permissive mode
 # Command: selinuxconf
-# Value: True
 
 selinuxconf() {
 show_func "Setting SELinux to permissive mode"

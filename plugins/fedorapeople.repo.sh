@@ -1,6 +1,5 @@
 # Name: Fedora People repositories
 # Command: list_fedorapeople
-# Value: False
 
 list_fedorapeople() {
 unset repolist

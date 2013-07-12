@@ -1,6 +1,5 @@
 # Name: Install nVidia video driver
 # Command: install_nvidia
-# Value: False
 
 install_nvidia() {
 show_func "Installing nVidia video driver"

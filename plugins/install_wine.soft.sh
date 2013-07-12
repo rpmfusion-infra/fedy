@@ -1,6 +1,5 @@
 # Name: Install Wine with Gecko
 # Command: install_wine
-# Value: False
 
 install_wine() {
 show_func "Installing Wine"

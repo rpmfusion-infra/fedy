@@ -1,6 +1,5 @@
 # Name: Enable systemwide touchpad tap
 # Command: enable_touchpad
-# Value: True
 
 enable_touchpad() {
 show_func "Enabling systemwide touchpad tap"

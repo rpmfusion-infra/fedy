@@ -1,6 +1,5 @@
 # Name: Install Microsoft core fonts
 # Command: core_fonts
-# Value: True
 
 core_fonts() {
 show_func "Installing Microsoft Truetype fonts"

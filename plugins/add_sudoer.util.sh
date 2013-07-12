@@ -1,6 +1,5 @@
 # Name: Setup sudo for current user
 # Command: add_sudoer
-# Value: True
 
 add_sudoer() {
 show_func "Setting up sudo access for $user"

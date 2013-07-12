@@ -1,6 +1,5 @@
 # Name: Add colors to Terminal
 # Command: colorterm
-# Value: True
 
 colorterm() {
 show_func "Enabling colors in Terminal"

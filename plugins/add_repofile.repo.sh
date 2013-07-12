@@ -1,6 +1,5 @@
 # Name: Add a repo file
 # Command: add_repofile
-# Value: False
 
 add_repofile() {
 repofile=$(zenity --title="Select repo file to add" --file-selection --file-filter="*.repo")

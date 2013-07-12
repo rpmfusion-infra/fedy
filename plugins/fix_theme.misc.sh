@@ -1,6 +1,5 @@
 # Name: Fix bad theme in root apps
 # Command: fix_theme
-# Value: False
 
 fix_theme() {
 show_func "Fixing bad theme in root apps"
