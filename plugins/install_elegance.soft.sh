@@ -20,9 +20,3 @@ else
 	printf "Not installed"
 fi
 }
-
-install_elegance_hide() {
-if [[ ! `gnome-shell --version 2>&1 | grep "3.6"` ]]; then
-	printf "true"
-fi
-}
