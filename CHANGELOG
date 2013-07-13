@@ -1,3 +1,12 @@
+Changelog 3.0.9 (14-07-2013)
+
+1. Remove option to use TTS
+2. Install more codecs
+3. Make all options unchecked by default
+4. Set alternatives to automode while installing java
+5. Check for configured repos with yum
+6. Fix font rendering in webkit
+
 Changelog 3.0.8 (03-07-2013)
 
 1. Updated skype version
