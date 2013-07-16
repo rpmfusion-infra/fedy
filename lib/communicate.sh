@@ -24,18 +24,15 @@ show_status() {
 echo -e $GREEN"$@"$ENDCOLOR
 }
 
-show_msg()
-{
+show_msg() {
 echo -e $BLUE"$@"$ENDCOLOR
 }
 
-show_func()
-{
+show_func() {
 echo -e $BLUEBOLD"$@"$ENDCOLOR
 }
 
-exit_state()
-{
+exit_state() {
 if [[ $? -eq 0 ]]; then
 	echo -e $GREENBOLD"Successfully completed."$ENDCOLOR
 else
