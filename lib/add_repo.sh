@@ -45,12 +45,13 @@ rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
 google.repo() {
 rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub
 cat <<EOF | tee /etc/yum.repos.d/google.repo > /dev/null 2>&1
-[Google] 
+[Google]
 name=Google - $(uname -i)
 baseurl=http://dl.google.com/linux/rpm/stable/$(uname -i)
-enabled=1 
-gpgcheck=1 
 gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
+enabled=1
+gpgcheck=1
+skip_if_unavailable=1
 EOF
 }
 
@@ -61,7 +62,8 @@ name=Skype Repository
 baseurl=http://download.skype.com/linux/repos/fedora/updates/i586/
 gpgkey=http://www.skype.com/products/skype/linux/rpm-public-key.asc
 enabled=1
-gpgcheck=0
+gpgcheck=1
+skip_if_unavailable=1
 EOF
 }
 
@@ -71,8 +73,8 @@ cat <<EOF | tee /etc/yum.repos.d/steam.repo > /dev/null 2>&1
 name=Steam RPM packages and dependencies
 baseurl=http://spot.fedorapeople.org/steam/fedora-\$releasever/
 enabled=1
-skip_if_unavailable=1
 gpgcheck=0
+skip_if_unavailable=1
 EOF
 }
 
@@ -82,8 +84,8 @@ cat <<EOF | tee /etc/yum.repos.d/elegance-colors.repo > /dev/null 2>&1
 name=Elegance Colors Gnome Shell theme
 type=rpm-md
 baseurl=http://download.opensuse.org/repositories/home:/satya164:/elegance-colors/Fedora_\$releasever/
-gpgcheck=1
 gpgkey=http://download.opensuse.org/repositories/home:/satya164:/elegance-colors/Fedora_\$releasever/repodata/repomd.xml.key
+gpgcheck=1
 enabled=1
 skip_if_unavailable=1
 EOF
@@ -95,8 +97,8 @@ cat <<EOF | tee /etc/yum.repos.d/gtk-theme-config.repo > /dev/null 2>&1
 name=GTK theme preferences
 type=rpm-md
 baseurl=http://download.opensuse.org/repositories/home:/satya164:/gtk-theme-config/Fedora_\$releasever/
-gpgcheck=1
 gpgkey=http://download.opensuse.org/repositories/home:/satya164:/gtk-theme-config/Fedora_\$releasever/repodata/repomd.xml.key
+gpgcheck=1
 enabled=1
 skip_if_unavailable=1
 EOF
@@ -108,8 +110,8 @@ cat <<EOF | tee /etc/yum.repos.d/fedorautils.repo > /dev/null 2>&1
 name=Fedora Utils
 type=rpm-md
 baseurl=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_\$releasever/
-gpgcheck=1
 gpgkey=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_\$releasever/repodata/repomd.xml.key
+gpgcheck=1
 enabled=1
 metadata_expire=1d
 skip_if_unavailable=1
