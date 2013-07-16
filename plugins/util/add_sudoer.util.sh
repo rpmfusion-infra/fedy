@@ -1,8 +1,8 @@
-# Name: Setup sudo for current user
+# Name: Configure sudo for current user
 # Command: add_sudoer
 
 add_sudoer() {
-show_func "Setting up sudo access for $user"
+show_func "Configuring sudo access for $user"
 if [[ "$(add_sudoer_test)" = "Configured" ]]; then
 	show_status "Sudo access exists"
 else
