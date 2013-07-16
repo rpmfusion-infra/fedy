@@ -18,17 +18,13 @@ Documentation is available online. Please visit the [wiki](http://github.com/sat
 
 ### How to install
 
-To install the latest stable version of Fedora Utils in your system, first add the repo,
-
-`su -c "curl http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_17/home:satya164:fedorautils.repo -o /etc/yum.repos.d/fedorautils.repo && yum install fedorautils"`
-
-Then install Fedora Utils using the following commands,
+To install the latest stable version of Fedora Utils in your system, first add the [repo](http://download.opensuse.org/repositories/home:/satya164:/fedorautils/), and then install the package `fedorautils` through yum,
 
 `su -c "yum install fedorautils"`
 
 ### How to use
 
-After installation, launch Fedora Utils from `Applications > System Tools` or type `fedorautils` in the terminal.
+After installation, search for `Fedora Utils` in the menu/overview or type `fedorautils` in the terminal.
 
 ### Getting the source
 
