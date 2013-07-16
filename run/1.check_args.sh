@@ -24,7 +24,7 @@ while [[ $# -gt 0 ]]; do
 				fi
 				exit;;
 		-e|--exec)			
-				if [[ `grep -w "# Command: $2" $plugindir/*.sh` ]]; then
+				if [[ `grep -w "# Command: $2" $plugindir/*/*.sh` ]]; then
 					interactive="no"
 					while read run; do
 						source "$run"
@@ -34,8 +34,8 @@ while [[ $# -gt 0 ]]; do
 					check_lock
 					check_req
 					initialize_program
-					while [[ $# -gt 1 && `grep -w "# Command: $2" $plugindir/*.sh` ]]; do			
-						for plug in $plugindir/*.sh; do source "$plug"; done
+					while [[ $# -gt 1 && `grep -w "# Command: $2"  $plugindir/*/*.sh` ]]; do			
+						for plug in  $plugindir/*/*.sh; do source "$plug"; done
 						eval "$2"
 						shift
 					done
@@ -43,7 +43,7 @@ while [[ $# -gt 0 ]]; do
 				elif [[ $2 = "list" ]]; then
 					echo -e "Usage:\tfedorautils --exec [commands...]"
 					echo -e "\v"
-					for plug in $plugindir/*.sh; do
+					for plug in  $plugindir/*/*.sh; do
 						command=$(grep "# Command: " "$plug" | sed 's/# Command: //g')
 						name=$(grep "# Name: " "$plug" | sed 's/# Name: //g')
 						printf "\t%-30s%-s\n" "$command" "$name"

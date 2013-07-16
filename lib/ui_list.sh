@@ -20,5 +20,5 @@ while read plug; do
 	command=$(grep "# Command:" "$plug" | sed -e 's/# Command: //')
 	[[ `grep "${command}_test()" "$plug"` ]] && name="$name ($(${command}_test))"
 	[[ `grep "${command}_hide()" "$plug"` && "$(eval ${command}_hide)" = "true" ]] || plugs=("${plugs[@]}" "FALSE" "$command" "$name")
-done < <(find "$plugindir/" -name *.$listsection.sh | sort -u)
+done < <(find "$plugindir/$listsection/" -name *.sh | sort -u)
 }
