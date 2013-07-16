@@ -15,7 +15,7 @@ elif [[ "$arch" = "64" ]]; then
 	get="$get64"
 fi
 get_file "$@"
-install_local "$file"
+[[ -f "$file" ]] && install_local "$file"
 }
 
 make_backup() {
