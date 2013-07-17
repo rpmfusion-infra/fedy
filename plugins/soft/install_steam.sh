@@ -3,7 +3,7 @@
 
 install_steam() {
 show_func "Installing Steam"
-if [[ "$(install_steam_test)" = "Installed" ]]; then
+if [[ "$(install_steam_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 	show_status "Steam already installed"
 else
 	add_repo "steam.repo"

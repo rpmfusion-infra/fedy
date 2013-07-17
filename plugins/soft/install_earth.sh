@@ -3,7 +3,7 @@
 
 install_earth() {
 show_func "Installing Google Earth"
-if [[ "$(install_earth_test)" = "Installed" ]]; then
+if [[ "$(install_earth_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 	show_status "Google Earth already installed"
 else
 	install_pkg mesa-libGL.i686 bitstream-vera-fonts-common libxml2.i686 gtk2.i686 libSM.i686 qt-x11 redhat-lsb-graphics.i686 redhat-lsb-printing.i686 redhat-lsb.i686

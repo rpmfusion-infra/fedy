@@ -3,7 +3,7 @@
 
 install_skype() {
 show_func "Installing Skype"
-if [[ "$(install_skype_test)" = "Installed" ]]; then
+if [[ "$(install_skype_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 	show_status "Skype already installed"
 else
 	add_repo "skype.repo"

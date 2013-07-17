@@ -3,7 +3,7 @@
 
 install_jre() {
 show_func "Installing Oracle JRE"
-if [[ "$(install_jre_test)" = "Installed" ]]; then
+if [[ "$(install_jre_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 	show_status "Oracle JRE already installed"
 else
 	show_msg "Fetching webpage..."

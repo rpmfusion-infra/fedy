@@ -3,7 +3,7 @@
 
 install_ati() {
 show_func "Installing ATI video driver"
-if [[ "$(install_ati_test)" = "Installed" ]]; then
+if [[ "$(install_ati_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 	show_status "ATI video driver seems to be already installed"
 else
 	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"

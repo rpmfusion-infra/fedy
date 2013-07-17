@@ -3,7 +3,7 @@
 
 install_dropbox() {
 show_func "Installing Dropbox"
-if [[ "$(install_dropbox_test)" = "Installed" ]]; then
+if [[ "$(install_dropbox_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 	show_status "Dropbox already installed"
 else
 	show_msg "Fetching webpage..."

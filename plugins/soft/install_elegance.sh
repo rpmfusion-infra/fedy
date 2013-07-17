@@ -3,7 +3,7 @@
 
 install_elegance() {
 show_func "Installing Elegance Colors Gnome Shell theme"
-if [[ "$(install_elegance_test)" = "Installed" ]]; then
+if [[ "$(install_elegance_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 	show_status "Elegance Colors Gnome Shell theme already installed"
 else
 	add_repo "elegance-colors.repo"

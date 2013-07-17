@@ -3,7 +3,7 @@
 
 font_rendering() {
 show_func "Improving font rendering"
-if [[ "$(font_rendering_test)" = "Improved" ]]; then
+if [[ "$(font_rendering_test)" = "Improved" && ! "$reinstall" = "yes" ]]; then
 	show_status "Font rendering already improved"
 else
 	add_repo "rpmfusion-free.repo"

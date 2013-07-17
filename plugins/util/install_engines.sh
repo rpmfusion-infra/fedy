@@ -3,7 +3,7 @@
 
 install_engines() {
 show_func "Installing GTK theme engines"
-if [[ "$(install_engines_test)" = "Installed" ]]; then
+if [[ "$(install_engines_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 	show_status "GTK theme engines already installed"
 else
 	install_pkg gtk-murrine-engine gtk-unico-engine

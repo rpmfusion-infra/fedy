@@ -3,7 +3,7 @@
 
 essential_soft() {
 show_func "Installing essential software"
-if [[ "$(essential_soft_test)" = "Installed" ]]; then
+if [[ "$(essential_soft_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 	show_status "Essential software already installed"
 else
 	install_pkg cabextract cups-pdf dconf-editor nano p7zip p7zip-plugins unrar wget xz-lzma-compat yum-plugin-fastestmirror

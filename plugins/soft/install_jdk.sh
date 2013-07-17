@@ -3,7 +3,7 @@
 
 install_jdk() {
 show_func "Installing Oracle JDK"
-if [[ "$(install_jdk_test)" = "Installed" ]]; then
+if [[ "$(install_jdk_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 	show_status "Oracle JDK already installed"
 else
 	show_msg "Fetching webpage..."

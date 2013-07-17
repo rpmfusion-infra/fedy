@@ -3,7 +3,7 @@
 
 enable_dvd() {
 show_func "Installing DVD codecs"
-if [[ "$(enable_dvd_test)" = "Enabled" ]]; then
+if [[ "$(enable_dvd_test)" = "Enabled" && ! "$reinstall" = "yes" ]]; then
 	show_status "DVD codecs already installed"
 else
 	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"

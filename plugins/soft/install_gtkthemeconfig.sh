@@ -3,7 +3,7 @@
 
 install_gtkthemeconfig() {
 show_func "Installing Theme Configuration app"
-if [[ "$(install_gtkthemeconfig_test)" = "Installed" ]]; then
+if [[ "$(install_gtkthemeconfig_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 	show_status "Theme Configuration app already installed"
 else
 	add_repo "gtk-theme-config.repo"

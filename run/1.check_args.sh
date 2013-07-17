@@ -10,7 +10,9 @@ while [[ $# -gt 0 ]]; do
 				prefwget="no";;
 		-w|--use-wget)
 				downagent="wget";;
-		-r|--redownload)
+		-r|--reinstall)
+				reinstall="yes";;
+		-g|--redownload)
 				forcedown="yes";;
 		-f|--force-distro)
 				forcedistro="yes";;
@@ -54,8 +56,8 @@ while [[ $# -gt 0 ]]; do
 					exit
 				fi;;
 		-h|--help)
-				args=( "-l, --enable-log" "-c, --pref-curl" "-w, --use-wget" "-r, --redownload" "-f, --force-distro" "-n, --nobakup" "-e, --exec <commands>" "-d, --debug" "-h, --help" )
-				desc=( "enable logging with buffered output" "prefer curl over wget unless specified" "use wget for download instead of curl" "force redownload of files" "run with unsupported distro" "do not keep backups" "execute commands from the plugins" "show last logfile and exit" "show this help message and exit" )
+				args=( "-l, --enable-log" "-c, --pref-curl" "-w, --use-wget" "-r, --reinstall" "-g, --redownload" "-f, --force-distro" "-n, --nobakup" "-e, --exec <commands>" "-d, --debug" "-h, --help" )
+				desc=( "enable logging with buffered output" "prefer curl over wget unless specified" "use wget for download instead of curl" "reinstall/redo task" "force redownload of files" "run with unsupported distro" "do not keep backups" "execute commands from the plugins" "show last logfile and exit" "show this help message and exit" )
 				echo -e "Usage:\tfedorautils [options...]"
 				echo -e "\v"
 				for ((i=0; i < ${#args[@]}; i++)); do

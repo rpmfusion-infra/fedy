@@ -5,7 +5,7 @@ codeclist=( "faac" "faad2" "gstreamer1-libav" "gstreamer1-plugins-bad-free" "gst
 
 install_codecs() {
 show_func "Installing multimedia codecs"
-if [[ "$(install_codecs_test)" = "Installed" ]]; then
+if [[ "$(install_codecs_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 	show_status "Multimedia codecs already installed"
 else
 	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"

@@ -3,7 +3,7 @@
 
 install_androidsdk() {
 show_func "Installing Android SDK"
-if [[ "$(install_androidsdk_test)" = "Installed" ]]; then
+if [[ "$(install_androidsdk_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 	show_status "Android SDK already installed"
 else
 	source "$plugindir/install_jdk.soft.sh" && install_jdk

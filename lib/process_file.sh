@@ -20,6 +20,6 @@ get_file "$@"
 
 make_backup() {
 if [[ "$keepbackup" = "yes" ]]; then
-	[[ -f "$1" ]] && cp -rf "$1" "$1".bak
+	[[ -f "$1" && ! -f "$1".bak ]] && cp -rf "$1" "$1".bak
 fi
 }

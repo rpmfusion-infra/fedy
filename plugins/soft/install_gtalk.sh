@@ -3,7 +3,7 @@
 
 install_gtalk() {
 show_func "Installing GTalk plugin"
-if [[ "$(install_gtalk_test)" = "Installed" ]]; then
+if [[ "$(install_gtalk_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 	show_status "GTalk plugin already installed"
 else
 	get32="http://dl.google.com/linux/direct/google-talkplugin_current_i386.rpm"

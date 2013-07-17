@@ -3,7 +3,7 @@
 
 install_teamviewer() {
 show_func "Installing TeamViewer"
-if [[ "$(install_teamviewer_test)" = "Installed" ]]; then
+if [[ "$(install_teamviewer_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 	show_status "TeamViewer already installed"
 else
 	get32="http://www.teamviewer.com/download/teamviewer_linux.rpm"
