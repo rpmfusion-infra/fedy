@@ -8,7 +8,7 @@ add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
 }
 
 rpmfusion_repos_test() {
-yum repolist all 2>&1 | cut -d\  -f1 | cut -d/ -f1 | grep -w "rpmfusion-free" > /dev/null 2>&1 && yum repolist all 2>&1 | cut -d\  -f1 | cut -d/ -f1 | grep -w "rpmfusion-nonfree" > /dev/null 2>&1
+check_repo "rpmfusion-free.repo" && check_repo "rpmfusion-nonfree.repo"
 if [[ $? -eq 0 ]]; then
 	printf "Configured"
 else

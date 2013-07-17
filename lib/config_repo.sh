@@ -1,9 +1,26 @@
+check_repo() {
+yum repolist all 2>&1 | cut -d\  -f1 | cut -d/ -f1 | grep -ix "${1%.repo}" > /dev/null 2>&1
+}
+
+config_repo() {
+repouri="$1"
+repofile=${repouri##*/}
+show_msg "Adding $repofile"
+check_repo "$repofile"
+if [[ $? -eq 0 ]]; then
+	show_status "$repofile already configured"
+else
+	yum-config-manager --add-repo="$repouri"
+	exit_state
+fi
+}
+
 add_repo() {
 while [[ $# -gt 0 ]]; do
 	if [[ $1 =~ .repo$ ]]; then
 		repofile="$1"
 		show_msg "Adding $repofile"
-		yum repolist all 2>&1 | cut -d\  -f1 | cut -d/ -f1 | grep -w "${repofile%.repo}" > /dev/null 2>&1
+		check_repo "$repofile"
 		if [[ $? -eq 0 ]]; then
 			show_status "$repofile already configured"
 		else

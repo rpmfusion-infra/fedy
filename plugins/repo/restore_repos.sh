@@ -12,8 +12,7 @@ if [[ $? -eq 0 ]]; then
 	selrepo=$(echo $repos | tr "|" "\n")
 	for repo in $selrepo; do
 		show_msg "Restoring $repo"
-		mv -u repos/$repo /etc/yum.repos.d/
-		exit_state
+		config_repo "repos/$repo"
 	done
 fi
 }
