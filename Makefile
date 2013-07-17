@@ -23,7 +23,10 @@ install: doc
 	$(INSTALL_DATA) lib/* $(DESTDIR)/usr/share/fedorautils/lib/
 	$(INSTALL_DATA) run/* $(DESTDIR)/usr/share/fedorautils/run/
 	$(INSTALL_DATA) modules/* $(DESTDIR)/usr/share/fedorautils/modules/
-	$(INSTALL_DATA) plugins/* $(DESTDIR)/usr/share/fedorautils/plugins/
+	for dir in plugins/*; do \
+	$(INSTALL_DIRECTORY) $(DESTDIR)/usr/share/fedorautils/$$dir; \
+	$(INSTALL_DATA) $$dir/* $(DESTDIR)/usr/share/fedorautils/$$dir; \
+	done
 	$(INSTALL_DATA) fedorautils.desktop $(DESTDIR)/usr/share/applications/fedorautils.desktop
 	$(INSTALL_DATA) fedorautils.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/fedorautils.svg
 	$(INSTALL_DATA) fedorautils.1.gz $(DESTDIR)/usr/share/man/man1/fedorautils.1.gz
