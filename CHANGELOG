@@ -1,3 +1,12 @@
+Changelog 3.1.0 (17-07-2013)
+
+1. Added option to redo tasks
+2. Use yum-config-manager wherever appropriate
+3. Added plugin to install dropbox
+4. Drop plugin to install wine
+5. Fixed arista install
+6. Usability enhancements
+
 Changelog 3.0.9 (14-07-2013)
 
 1. Remove option to use TTS
