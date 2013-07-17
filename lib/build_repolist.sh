@@ -4,12 +4,12 @@ repodir="$1"
 boolean="$2"
 repofiles=($(ls "$repodir"))
 for repofile in ${repofiles[@]}; do
-	if [[ `grep "enabled=1" "$repodir/$repofile"` ]]; then
-		repostat="Enabled"
-		check="TRUE"
-	else
+	if [[ `grep "enabled=0" "$repodir/$repofile"` ]]; then
 		repostat="Disabled"
 		check="FALSE"
+	else
+		repostat="Enabled"
+		check="TRUE"
 	fi
 	if [[ "$boolean" = "true" ]]; then
 		check="TRUE"
