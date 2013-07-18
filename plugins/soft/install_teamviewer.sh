@@ -16,7 +16,7 @@ fi
 }
 
 install_teamviewer_test() {
-if [[ -d /opt/teamviewer/teamviewer ]]; then
+if [[ -f /usr/bin/teamviewer ]]; then
 	printf "Installed"
 else
 	printf "Not installed"
