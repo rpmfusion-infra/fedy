@@ -6,6 +6,6 @@ if [[ $(whoami) = "root" ]]; then
 		rmdir --ignore-fail-on-non-empty "$downloadsdir"
 	fi
 	rm -rf "$workingdir" "$lockfile"
-	[[ $? -eq 0 ]] && show_status "Temporary directory cleaned!"
+	[[ $? -eq 0 ]] && show_status "Temporary directory cleaned"
 fi
 }

@@ -15,7 +15,7 @@ EndSection
 EOF
 fi
 show_msg "Enabling touchpad tap for current user"
-sudo -u "$user" gsettings set org.gnome.settings-daemon.peripherals.touchpad tap-to-click true
+sudo -u "$user" dbus-launch gsettings set org.gnome.settings-daemon.peripherals.touchpad tap-to-click true
 [[ "$(enable_touchpad_test)" = "Enabled" ]]; exit_state
 }
 

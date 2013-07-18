@@ -6,7 +6,7 @@ show_func "Installing Sublime Text 3"
 if [[ "$(install_sublime_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
   show_status "Sublime Text already installed."
 else
-	show_msg "Fetching script..."
+	show_msg "Fetching script"
 	get_file_quiet "http://commondatastorage.googleapis.com/xenodecdn%2Fsublime3sh.tar.gz" "sublime3sh.tar.gz"
 	tar -xvf sublime3sh.tar.gz
 	if [[ "$arch" = "32" ]]; then

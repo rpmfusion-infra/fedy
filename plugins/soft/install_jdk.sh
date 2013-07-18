@@ -6,7 +6,7 @@ show_func "Installing Oracle JDK"
 if [[ "$(install_jdk_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 	show_status "Oracle JDK already installed"
 else
-	show_msg "Fetching webpage..."
+	show_msg "Fetching webpage"
 	get_file_quiet "http://www.oracle.com/technetwork/java/javase/downloads/index.html" "index.html"
 	dlurl=$(cat index.html | tr ' ' '\n' | grep "/technetwork/java/javase/downloads/jdk7" | head -n 1 | cut -d\" -f 2 | sed -e 's/^/http:\/\/www.oracle.com/')
 	get_file_quiet "$dlurl" "download.html"
@@ -15,7 +15,7 @@ else
 	get64=$(grep "Linux x64" "download.html" | grep ".rpm" | cut -d\" -f 12 | grep -v demos | head -n 1)
 	file64=${get64##*/}
 	process_pkg --header "Cookie: gpw_e24=www.oracle.com"
-	show_msg "Setting up Oracle JDK..."
+	show_msg "Setting up Oracle JDK"
 	mkdir -p /usr/lib/jvm /usr/lib/jvm-exports
 	alternatives --install /usr/bin/java java /usr/java/latest/bin/java 200000 \
 	--slave /usr/lib/jvm/jre jre /usr/java/latest/jre \
@@ -97,7 +97,7 @@ else
 	--slave /usr/share/man/man1/wsimport.1 wsimport.1 /usr/java/latest/man/man1/wsimport.1 \
 	--slave /usr/share/man/man1/xjc.1 xjc.1 /usr/java/latest/man/man1/xjc.1
 	alternatives --auto javac
-	show_msg "Setting up Java plugin for firefox..."
+	show_msg "Setting up Java plugin for firefox"
 	if [[ "$arch" = "32" ]]; then
 		alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so libjavaplugin.so /usr/java/default/lib/i386/libnpjp2.so 200000
 		alternatives --auto libjavaplugin.so

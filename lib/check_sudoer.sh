@@ -8,7 +8,7 @@ else
 		su -c "echo '$user ALL=(ALL) ALL' >> /etc/sudoers"
 #		su -c "echo '$user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers"
 	else
-		show_msg "As you wish, I was just helping..."
+		show_msg "As you wish, I was just helping"
 		terminate_program
 	fi
 fi

@@ -8,7 +8,7 @@ if [[ ! "$errors" = "0" ]]; then
 	else
 		error_msg="You might want to run $program again with logging enabled and report if there are any bugs."
 	fi
-	show_error "$program encountered $errors error(s). $error_msg"
+	show_err "$program encountered $errors error(s). $error_msg"
 	[[ "$interactive" = "no" ]] || zenity --error --title="$errors error(s) occured" --text="$error_msg"
 	exit 1
 else

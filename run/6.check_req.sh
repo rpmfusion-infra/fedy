@@ -10,7 +10,7 @@ else
 	if [[ "$forcedistro" = "yes" ]]; then
 		show_warn "Unsupported distro, but will continue as instructed"
 	else
-		show_error "Distro not supported"
+		show_err "Distro not supported!"
 		terminate_program
 	fi
 fi
@@ -23,7 +23,7 @@ case `uname -m` in
 		arch="64"
 		show_status "Architecture verified (64-bit)";;
 	*)
-		show_error "Architecture not supported"
+		show_err "Architecture not supported!"
 		terminate_program;;
 esac
 # Check connection
@@ -38,10 +38,10 @@ fi
 if [[ -f /usr/bin/zenity ]]; then
 	show_status "zenity verified"
 else
-	show_error "zenity is required for $program to run properly, installing zenity"
+	show_err "zenity is required for $program to run properly, installing zenity"
 	install_pkg zenity
 	if [[ ! -f /usr/bin/zenity ]]; then
-		show_error "Installation of zenity failed"
+		show_err "Installation of zenity failed!"
 		terminate_program
 	fi
 fi
@@ -49,10 +49,10 @@ fi
 if [[ -f /usr/bin/curl ]]; then
 	show_status "curl verified"
 else
-	show_error "curl is required for $program to run properly, installing curl"
+	show_err "curl is required for $program to run properly, installing curl"
 	install_pkg curl
 	if [[ ! -f /usr/bin/curl ]]; then
-		show_error "Installation of curl failed"
+		show_err "Installation of curl failed!"
 		terminate_program
 	fi
 fi
@@ -65,10 +65,10 @@ if [[ "$downagent" = "wget" ]]; then
 		show_status "wget verified"
 		show_msg "Using wget"
 	else
-		show_error "wget is not present in the system, installing wget"
+		show_err "wget is not present in the system, installing wget"
 		install_pkg wget
 		if [[ ! -f /usr/bin/wget ]]; then
-			show_error "Installation of wget failed, using curl"
+			show_err "Installation of wget failed, using curl"
 			downagent="curl"
 		fi
 	fi

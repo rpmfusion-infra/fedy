@@ -8,7 +8,7 @@ if [[ -d /boot/grub2 ]]; then
 elif [[ -d /boot/efi/EFI/fedora ]]; then
 	grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 else
-	show_error "GRUB2 doesn't seem to be installed"
+	show_err "GRUB2 doesn't seem to be installed!"
 fi
 exit_state
 }

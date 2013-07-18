@@ -1,5 +1,5 @@
 check_update() {
-show_msg "Checking update..."
+show_msg "Checking update"
 get_file_quiet "https://github.com/satya164/fedorautils/tags.atom" "tags.xml"
 dltag=$(grep "<title>v.*</title>" "tags.xml" | grep -o "v[0-9].[0-9].[0-9]" | head -n 1)
 dlver=${dltag#v}
@@ -14,7 +14,7 @@ fi
 }
 
 install_update() {
-show_msg "Installing update..."
+show_msg "Installing update"
 get="https://github.com/satya164/fedorautils/archive/v${dlver}.tar.gz"
 file="fedorautils.tar.gz"
 get_file

@@ -10,14 +10,14 @@ if [[ "$(install_nvidia_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 	show_status "nVidia video driver seems to be already installed"
 else
 	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
-	show_msg "Updating required packages..."
+	show_msg "Updating required packages"
 	yum -y update kernel kernel-PAE selinux-policy
 	for id in ${nvidia[@]}; do
 		if [[ `lspci -d 10de:$id` ]]; then
-			show_msg "Installing driver for GeForce and Quadro GPUs..."
+			show_msg "Installing driver for GeForce and Quadro GPUs"
 			install_pkg akmod-nvidia xorg-x11-drv-nvidia-libs.i686 && setsebool -P allow_execstack on && sed -i '/root=/s|$| rdblacklist=nouveau|' /boot/grub/grub.conf
 			if [[ `lspci | grep VGA | grep Intel` ]]; then
-				show_msg "Optimus Graphics detected, installing Bumblebee..."
+				show_msg "Optimus Graphics detected, installing Bumblebee"
 				add_repo "bumblebee.repo"
 				install_pkg bumblebee-nvidia
 			fi
@@ -27,7 +27,7 @@ else
 	done
 	for id in ${nvidia173xx[@]}; do
 		if [[ `lspci -d 10de:$id` ]]; then
-			show_msg "Installing 173.14.xx driver for Legacy GPUs..."
+			show_msg "Installing 173.14.xx driver for Legacy GPUs"
 			install_pkg akmod-nvidia-173xx xorg-x11-drv-nvidia-173xx-libs.i686 && setsebool -P allow_execstack on && sed -i '/root=/s|$| rdblacklist=nouveau|' /boot/grub/grub.conf
 			nvidiasupported="yes"
 			break
@@ -35,14 +35,14 @@ else
 	done
 	for id in ${nvidia96xx[@]}; do
 		if [[ `lspci -d 10de:$id` ]]; then
-			show_msg "Installing 96.43.xx driver for Legacy GPUs..."
+			show_msg "Installing 96.43.xx driver for Legacy GPUs"
 			install_pkg akmod-nvidia-96xx xorg-x11-drv-nvidia-96xx-libs.i686 && setsebool -P allow_execstack on && sed -i '/root=/s|$| rdblacklist=nouveau|' /boot/grub/grub.conf
 			nvidiasupported="yes"
 			break
 		fi
 	done
 	if [[ ! "$nvidiasupported" = "yes" ]]; then
-		show_error "Your video card is not supported!"
+		show_err "Your video card is not supported!"
 	fi
 fi
 [[ "$(install_nvidia_test)" = "Installed" ]]; exit_state

@@ -16,7 +16,7 @@ else
 		cabextract -L -d "$workingdir/msttcorefonts" "$file"
 	done
 	mv "$workingdir/msttcorefonts" "/usr/share/fonts/"
-	show_msg "Rebuilding font cache..."
+	show_msg "Rebuilding font cache"
 	fc-cache -f -v
 fi
 [[ "$(core_fonts_test)" = "Installed" ]]; exit_state

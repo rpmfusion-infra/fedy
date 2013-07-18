@@ -30,8 +30,8 @@ cat <<EOF | tee /etc/fonts/local.conf > /dev/null 2>&1
 </fontconfig>
 EOF
 show_msg "Changing font settings for current user"
-sudo -u "$user" gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing rgba
-sudo -u "$user" gsettings set org.gnome.settings-daemon.plugins.xsettings hinting slight
+sudo -u "$user" dbus-launch gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing rgba
+sudo -u "$user" dbus-launch gsettings set org.gnome.settings-daemon.plugins.xsettings hinting slight
 [[ "$(font_rendering_test)" = "Improved" ]]; exit_state
 }
 
