@@ -16,9 +16,8 @@ else
 	file=${get##*/}
 	get_file
 	tar -xvjf "$file"
-	cp -rf "sublime_text_3" "/opt/sublime_text_3"
+	cp -rf "sublime_text_3" "/opt/"
 	ln -sf "/opt/sublime_text_3/sublime_text" "/usr/bin/subl"
-fi
 show_msg "Creating desktop file"
 cat <<EOF | tee /usr/share/applications/sublime-text-3.desktop > /dev/null 2>&1
 [Desktop Entry]
@@ -34,6 +33,7 @@ StartupNotify=true
 Categories=Development;Utility;TextEditor;
 Keywords=Text;Editor;
 EOF
+fi
 [[ "$(install_sublime_test)" = "Installed" ]]; exit_state
 }
 
