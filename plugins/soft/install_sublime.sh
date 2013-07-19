@@ -4,26 +4,41 @@
 install_sublime() {
 show_func "Installing Sublime Text 3"
 if [[ "$(install_sublime_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
-  show_status "Sublime Text already installed."
+	show_status "Sublime Text 3 already installed."
 else
-	show_msg "Fetching script"
-	get_file_quiet "http://commondatastorage.googleapis.com/xenodecdn%2Fsublime3sh.tar.gz" "sublime3sh.tar.gz"
-	tar -xvf sublime3sh.tar.gz
+	show_msg "Fetching webpage"
+	get_file_quiet "http://www.sublimetext.com/3" "sublime.htm"
 	if [[ "$arch" = "32" ]]; then
-		chmod +x sublime-text-3-i686.sh
-		./sublime-text-3-i686.sh
-		clean_temp
+		get=$(cat "sublime.htm" | tr ' ' '\n' | grep -o "http://.*/sublime_text_3_build_[0-9]*_x32.tar.bz2")
 	elif [[ "$arch" = "64" ]]; then
-		chmod +x sublime-text-3-x86_64.sh
-		./sublime-text-3-x86_64.sh
-		clean_temp
+		get=$(cat "sublime.htm" | tr ' ' '\n' | grep -o "http://.*/sublime_text_3_build_[0-9]*_x32.tar.bz2")
 	fi
+	file=${get##*/}
+	get_file
+	tar -xvjf "$file"
+	cp -rf "sublime_text_3" "/opt/sublime_text_3"
+	ln -sf "/opt/sublime_text_3/sublime_text" "/usr/bin/subl"
 fi
+show_msg "Creating desktop file"
+cat <<EOF | tee /usr/share/applications/sublime-text-3.desktop > /dev/null 2>&1
+[Desktop Entry]
+Name=Sublime Text 3
+GenericName=Text Editor
+Icon=/opt/sublime_text_3/Icon/256x256/sublime-text.png
+Comment=Sophisticated text editor
+Exec=/opt/sublime_text_3/sublime_text %F
+MimeType=text/plain;
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Development;Utility;TextEditor;
+Keywords=Text;Editor;
+EOF
 [[ "$(install_sublime_test)" = "Installed" ]]; exit_state
 }
 
 install_sublime_test() {
-if [[ -f /usr/local/bin/subl ]]; then
+if [[ -f /opt/sublime_text_3/sublime_text ]]; then
 	printf "Installed"
 else
 	printf "Not installed"
