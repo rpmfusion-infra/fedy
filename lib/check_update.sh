@@ -1,7 +1,7 @@
 check_update() {
 show_msg "Checking update"
-get_file_quiet "https://github.com/satya164/fedorautils/tags.atom" "tags.xml"
-dltag=$(grep "<title>v.*</title>" "tags.xml" | grep -o "v[0-9].[0-9].[0-9]" | head -n 1)
+get_file_quiet "https://github.com/satya164/fedorautils/tags.atom" "fedorautils.atom"
+dltag=$(grep "<title>v.*</title>" "fedorautils.atom" | grep -o "v[0-9].[0-9].[0-9]" | head -n 1)
 dlver=${dltag#v}
 if [[ $dlver > $version ]]; then
 	get_file_quiet "https://github.com/satya164/fedorautils/raw/v${dlver}/CHANGELOG" "changelog-${dlver}.txt"

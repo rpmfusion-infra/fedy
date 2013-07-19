@@ -7,8 +7,8 @@ if [[ "$(install_androidsdk_test)" = "Installed" && ! "$reinstall" = "yes" ]]; t
 	show_status "Android SDK already installed"
 else
 	show_msg "Fetching webpage"
-	get_file_quiet "http://developer.android.com/sdk/index.html" "index.html"
-	get=$(grep -o "http://dl.google.com/android/android-sdk_r[0-9]*\.[0-9]*\.[0-9]*-linux.tgz" index.html | head -n 1)
+	get_file_quiet "http://developer.android.com/sdk/index.html" "androidsdk.htm"
+	get=$(grep -o "http://dl.google.com/android/android-sdk_r[0-9]*\.[0-9]*\.[0-9]*-linux.tgz" "androidsdk.htm" | head -n 1)
 	file=${get##*/}
 	get_file
 	tar xvf "$file"

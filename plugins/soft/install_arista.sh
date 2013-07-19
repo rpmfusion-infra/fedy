@@ -8,17 +8,18 @@ if [[ "$(install_arista_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 else
 	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
 	show_msg "Installing dependencies"
-	install_pkg cairo dbus-python gnome-python2-gconf gnome-python2-rsvg gstreamer-ffmpeg gstreamer-plugins-bad gstreamer-plugins-bad-nonfree gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-ugly gstreamer-python nautilus-python notify-python pygtk2 python python2-devel python3-devel python3-gobject python-gudev python-simplejson
+	install_pkg cairo dbus-python gnome-python2-gconf gnome-python2-rsvg gstreamer-ffmpeg gstreamer-plugins-bad gstreamer-plugins-bad-nonfree gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-ugly gstreamer-python nautilus-python notify-python pygtk2 python python-devel python3-devel python3-gobject python-gudev python-simplejson
 	show_msg "Fetching webpage"
-	get_file_quiet "https://github.com/danielgtaylor/arista/tags.atom" "tags.atom"
-	aristaver=$(grep "<title>.*</title>" "tags.atom" | grep -o "[0-9].[0-9].[0-9]" | head -n 1)
+	get_file_quiet "https://github.com/danielgtaylor/arista/tags.atom" "arista.atom"
+	aristaver=$(grep "<title>.*</title>" "arista.atom" | grep -o "[0-9].[0-9].[0-9]" | head -n 1)
 	get="https://github.com/danielgtaylor/arista/archive/${aristaver}.tar.gz"
-	file=${get##*/}
+	file="arista-${aristaver}"
 	get_file
 	tar -xvf "$file"
-	cd arista-*
+	cd "${file%.tar.gz}"
 	python setup.py build
 	python setup.py install
+	cd ..
 fi
 [[ "$(install_arista_test)" = "Installed" ]]; exit_state
 }

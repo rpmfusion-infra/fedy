@@ -4,14 +4,14 @@
 install_sublime() {
 show_func "Installing Sublime Text 3"
 if [[ "$(install_sublime_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
-	show_status "Sublime Text 3 already installed."
+	show_status "Sublime Text 3 already installed"
 else
 	show_msg "Fetching webpage"
 	get_file_quiet "http://www.sublimetext.com/3" "sublime.htm"
 	if [[ "$arch" = "32" ]]; then
 		get=$(cat "sublime.htm" | tr ' ' '\n' | grep -o "http://.*/sublime_text_3_build_[0-9]*_x32.tar.bz2")
 	elif [[ "$arch" = "64" ]]; then
-		get=$(cat "sublime.htm" | tr ' ' '\n' | grep -o "http://.*/sublime_text_3_build_[0-9]*_x32.tar.bz2")
+		get=$(cat "sublime.htm" | tr ' ' '\n' | grep -o "http://.*/sublime_text_3_build_[0-9]*_x64.tar.bz2")
 	fi
 	file=${get##*/}
 	get_file

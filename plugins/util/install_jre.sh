@@ -7,12 +7,12 @@ if [[ "$(install_jre_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 	show_status "Oracle JRE already installed"
 else
 	show_msg "Fetching webpage"
-	get_file_quiet "http://www.oracle.com/technetwork/java/javase/downloads/index.html" "index.html"
-	dlurl=$(cat index.html | tr ' ' '\n' | grep "/technetwork/java/javase/downloads/jre7" | head -n 1 | cut -d\" -f 2 | sed -e 's/^/http:\/\/www.oracle.com/')
-	get_file_quiet "$dlurl" "download.html"
-	get32=$(grep "Linux x86" "download.html" | grep ".rpm" | cut -d\" -f 12 | grep -v demos | head -n 1)
+	get_file_quiet "http://www.oracle.com/technetwork/java/javase/downloads/index.html" "java.htm"
+	dlurl=$(cat "java.htm" | tr ' ' '\n' | grep "/technetwork/java/javase/downloads/jre7" | head -n 1 | cut -d\" -f 2 | sed -e 's/^/http:\/\/www.oracle.com/')
+	get_file_quiet "$dlurl" "jre.htm"
+	get32=$(grep "Linux x86" "jre.htm" | grep ".rpm" | cut -d\" -f 12 | grep -v demos | head -n 1)
 	file32=${get32##*/}
-	get64=$(grep "Linux x64" "download.html" | grep ".rpm" | cut -d\" -f 12 | grep -v demos | head -n 1)
+	get64=$(grep "Linux x64" "jre.htm" | grep ".rpm" | cut -d\" -f 12 | grep -v demos | head -n 1)
 	file64=${get64##*/}
 	process_pkg --header "Cookie: gpw_e24=www.oracle.com"
 	show_msg "Setting up Oracle Java"

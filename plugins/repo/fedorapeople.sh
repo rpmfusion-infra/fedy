@@ -15,8 +15,8 @@ done
 list_fedorapeople_build() {
 unset repolist
 show_msg "Fetching repo list"
-get_file_quiet "http://repos.fedorapeople.org/index.html" "index.html"
-repourls=($(cat "index.html" | tr ' ' '\n' | grep "fedora-$fver" | grep .*http\:\/\/repos.fedorapeople.org\/repos\/.*\.repo.* | cut -d\' -f 2 | uniq))
+get_file_quiet "http://repos.fedorapeople.org/index.html" "fedorapeople.htm"
+repourls=($(cat "fedorapeople.htm" | tr ' ' '\n' | grep "fedora-$fver" | grep .*http\:\/\/repos.fedorapeople.org\/repos\/.*\.repo.* | cut -d\' -f 2 | uniq))
 for repourl in ${repourls[@]}; do
 	repoup=${repourl%/*.repo}
 	repofile=${repourl##*/}
