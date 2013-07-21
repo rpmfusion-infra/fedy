@@ -1,7 +1,7 @@
 # Name: Install multimedia codecs
 # Command: install_codecs
 
-codeclist=( "faac" "faad2" "gstreamer1-libav" "gstreamer1-plugins-bad-free" "gstreamer1-plugins-bad-freeworld" "gstreamer1-plugins-base" "gstreamer1-plugins-fc" "gstreamer1-plugins-good" "gstreamer1-plugins-ugly" "gstreamer-ffmpeg" "gstreamer-plugins-bad" "gstreamer-plugins-bad-free" "gstreamer-plugins-bad-nonfree" "gstreamer-plugins-base" "gstreamer-plugins-entrans" "gstreamer-plugins-espeak" "gstreamer-plugins-fc" "gstreamer-plugins-good" "gstreamer-plugins-ugly" "gstreamer-rtsp" "libdca" "libmad" "libmatroska" "x264" "xvidcore" )
+codeclist=( "amrnb" "amrwb" "faac" "faad2" "flac" "gstreamer1-libav" "gstreamer1-plugins-bad-free" "gstreamer1-plugins-bad-freeworld" "gstreamer1-plugins-base" "gstreamer1-plugins-fc" "gstreamer1-plugins-good" "gstreamer1-plugins-ugly" "gstreamer-ffmpeg" "gstreamer-plugins-bad" "gstreamer-plugins-bad-free" "gstreamer-plugins-bad-nonfree" "gstreamer-plugins-base" "gstreamer-plugins-entrans" "gstreamer-plugins-espeak" "gstreamer-plugins-fc" "gstreamer-plugins-good" "gstreamer-plugins-ugly" "gstreamer-rtsp" "lame" "libdca" "libmad" "libmatroska" "x264" "xvidcore" )
 
 install_codecs() {
 show_func "Installing multimedia codecs"
