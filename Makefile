@@ -31,7 +31,6 @@ install: doc
 	$(INSTALL_DATA) fedorautils.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/fedorautils.svg
 	$(INSTALL_DATA) fedorautils.1.gz $(DESTDIR)/usr/share/man/man1/fedorautils.1.gz
 	$(INSTALL_DATA) fedorautils.policy $(DESTDIR)/usr/share/polkit-1/actions/org.freedesktop.pkexec.fedorautils.policy
-	$(INSTALL_DATA) fedorautils.repo $(DESTDIR)/etc/yum.repos.d/fedorautils.repo
 	@-if test -z $(DESTDIR); then $(GTK_UPDATE_ICON_CACHE) $(DESTDIR)/usr/share/icons/hicolor; fi
 
 uninstall:
@@ -41,5 +40,4 @@ uninstall:
 	rm -f $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/fedorautils.svg
 	rm -f $(DESTDIR)/usr/share/man/man1/fedorautils.1.gz
 	rm -f $(DESTDIR)/usr/share/polkit-1/actions/org.freedesktop.pkexec.fedorautils.policy
-	rm -f $(DESTDIR)/etc/yum.repos.d/fedorautils.repo
 	@-if test -z $(DESTDIR); then $(GTK_UPDATE_ICON_CACHE) $(DESTDIR)/usr/share/icons/hicolor; fi
