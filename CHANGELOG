@@ -1,3 +1,11 @@
+Changelog 3.1.1 (23-07-2013)
+
+1. Added more multimedia codecs
+2. Added plugin to install MobileMediaConverter
+3. Added plugin to install Sublime Text 3
+4. Move the repo file to another package
+5. Minor bug fixes
+
 Changelog 3.1.0 (17-07-2013)
 
 1. Added option to redo tasks
