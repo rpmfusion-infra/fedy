@@ -4,7 +4,7 @@ complete_program() {
 clean_temp
 if [[ ! "$errors" = "0" ]]; then
 	if [[ $(whoami) = "root" && "$enablelog" = "yes" && -f "$logfile" ]]; then
-		error_msg="Please report bugs at http://github.com/satya164/fedorautils/issues along with the logfile $logfile."
+		error_msg="Please report bugs at http://github.com/satya164/fedorautils/issues along with the logfile $logfile. Use http://fpaste.org to post the logfile."
 	else
 		error_msg="You might want to run $program again with logging enabled and report if there are any bugs."
 	fi

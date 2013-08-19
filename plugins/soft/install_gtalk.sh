@@ -7,9 +7,9 @@ if [[ "$(install_gtalk_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 	show_status "GTalk plugin already installed"
 else
 	get32="http://dl.google.com/linux/direct/google-talkplugin_current_i386.rpm"
-	file32="google-talkplugin_current_i386.rpm"
+	file32=${get32##*/}
 	get64="http://dl.google.com/linux/direct/google-talkplugin_current_x86_64.rpm"
-	file64="google-talkplugin_current_x86_64.rpm"
+	file64=${get64##*/}
 	process_pkg
 fi
 [[ "$(install_gtalk_test)" = "Installed" ]]; exit_state
