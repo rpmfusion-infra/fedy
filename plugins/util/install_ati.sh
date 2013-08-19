@@ -10,7 +10,7 @@ else
 	show_msg "Updating required packages"
 	yum -y update kernel kernel-PAE selinux-policy
 	show_msg "Installing drivers"
-	install_pkg akmod-catalyst xorg-x11-drv-catalyst xorg-x11-drv-catalyst-libs.i686 && dracut -f /boot/initrd-$(uname -r).img $(uname -r)
+	install_pkg akmod-catalyst xorg-x11-drv-catalyst xorg-x11-drv-catalyst-libs.i686 && new-kernel-pkg --kernel-args=nomodeset --mkinitrd --dracut --update $(rpm -q --queryformat="%{version}-%{release}.%{arch}\n" kernel | tail -n 1) && aticonfig --initial -f
 fi
 [[ "$(install_ati_test)" = "Installed" ]]; exit_state
 }
