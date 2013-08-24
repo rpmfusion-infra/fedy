@@ -99,10 +99,10 @@ else
 	alternatives --auto javac
 	show_msg "Setting up Java plugin for firefox"
 	if [[ "$arch" = "32" ]]; then
-		alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so libjavaplugin.so /usr/java/default/lib/i386/libnpjp2.so 200000
+		alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so libjavaplugin.so /usr/java/default/jre/lib/i386/libnpjp2.so 200000
 		alternatives --auto libjavaplugin.so
 	elif [[ "$arch" = "64" ]]; then
-		alternatives --install /usr/lib64/mozilla/plugins/libjavaplugin.so libjavaplugin.so.x86_64 /usr/java/default/lib/amd64/libnpjp2.so 200000
+		alternatives --install /usr/lib64/mozilla/plugins/libjavaplugin.so libjavaplugin.so.x86_64 /usr/java/default/jre/lib/amd64/libnpjp2.so 200000
 		alternatives --auto libjavaplugin.so.x86_64
 	fi
 fi
