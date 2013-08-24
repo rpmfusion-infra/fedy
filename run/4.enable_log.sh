@@ -19,6 +19,13 @@ if [[ "$enablelog" = "yes" ]]; then
 	echo -e "$(lspci -nn | grep Audio | cut -c23-)" >> "$logfile"
 	echo -e "$(lspci -nn | grep Ethernet | cut -c30-)" >> "$logfile"
 	echo -e "$(lspci -nn | grep Network | cut -c29-)" >> "$logfile"
+	if [[ -d /boot/grub2 ]]; then
+		echo -e "Using GRUB2" >> "$logfile"
+	elif [[ -d /boot/efi/EFI/fedora ]]; then
+		echo -e "Using GRUB2 EFI" >> "$logfile"
+	else
+		echo -e "Not using GRUB2" >> "$logfile"
+	fi
 	if [[ -f "$userconf" ]]; then
 		echo -e "\n[User config]\n" >> "$logfile"
 		cat "$userconf" >> "$logfile"
