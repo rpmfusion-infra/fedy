@@ -4,7 +4,7 @@ check_req() {
 show_func "Verifying minimum system requirements"
 # Check distro
 if [[ -f /etc/fedora-release ]]; then
-	fver="$(grep -ow -E [[:digit:]]+ /etc/fedora-release)"
+	fver="$(rpm -E %fedora)"
 	show_msg "Fedora version $fver detected"
 else
 	if [[ "$forcedistro" = "yes" ]]; then
