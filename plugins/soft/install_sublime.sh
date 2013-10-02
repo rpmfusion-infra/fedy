@@ -18,14 +18,15 @@ else
 	tar -xvjf "$file"
 	cp -rf "sublime_text_3" "/opt/"
 	ln -sf "/opt/sublime_text_3/sublime_text" "/usr/bin/subl"
+	ln -sf "/opt/sublime_text_3/Icon/256x256/sublime-text.png" "/usr/share/icons/hicolor/256x256/apps/sublime-text.png"
 show_msg "Creating desktop file"
 cat <<EOF | tee /usr/share/applications/sublime-text-3.desktop > /dev/null 2>&1
 [Desktop Entry]
 Name=Sublime Text 3
 GenericName=Text Editor
-Icon=/opt/sublime_text_3/Icon/256x256/sublime-text.png
+Icon=sublime-text
 Comment=Sophisticated text editor
-Exec=/opt/sublime_text_3/sublime_text %F
+Exec=subl %F
 MimeType=text/plain;
 Terminal=false
 Type=Application
