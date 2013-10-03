@@ -8,26 +8,26 @@ repofile=${repouri##*/}
 show_msg "Adding $repofile"
 check_repo "$repofile"
 if [[ $? -eq 0 ]]; then
-	show_status "$repofile already configured"
+    show_status "$repofile already configured"
 else
-	yum-config-manager --add-repo="$repouri"
-	exit_state
+    yum-config-manager --add-repo="$repouri"
+    exit_state
 fi
 }
 
 add_repo() {
 while [[ $# -gt 0 ]]; do
-	if [[ $1 =~ .repo$ ]]; then
-		repofile="$1"
-		show_msg "Adding $repofile"
-		check_repo "$repofile"
-		if [[ $? -eq 0 ]]; then
-			show_status "$repofile already configured"
-		else
-			eval "$repofile"
-		fi
-	fi
-	shift
+    if [[ $1 =~ .repo$ ]]; then
+        repofile="$1"
+        show_msg "Adding $repofile"
+        check_repo "$repofile"
+        if [[ $? -eq 0 ]]; then
+            show_status "$repofile already configured"
+        else
+            eval "$repofile"
+        fi
+    fi
+    shift
 done
 }
 

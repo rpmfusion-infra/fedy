@@ -10,8 +10,8 @@ add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
 rpmfusion_repos_test() {
 check_repo "rpmfusion-free.repo" && check_repo "rpmfusion-nonfree.repo"
 if [[ $? -eq 0 ]]; then
-	printf "Configured"
+    printf "Configured"
 else
-	printf "Not configured"
+    printf "Not configured"
 fi
 }

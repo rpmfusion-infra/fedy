@@ -6,10 +6,10 @@ codeclist=( "amrnb" "amrwb" "faac" "faad2" "flac" "gstreamer1-libav" "gstreamer1
 install_codecs() {
 show_func "Installing multimedia codecs"
 if [[ "$(install_codecs_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
-	show_status "Multimedia codecs already installed"
+    show_status "Multimedia codecs already installed"
 else
-	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
-	install_pkg ${codeclist[@]}
+    add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
+    install_pkg ${codeclist[@]}
 fi
 # Remove possible defective thumbnails
 rm -rf "$homedir/.thumbnails/*"
@@ -18,15 +18,15 @@ rm -rf "$homedir/.thumbnails/*"
 
 install_codecs_test() {
 for codec in ${codeclist[@]}; do
-	ls /usr/share/doc/$codec-* > /dev/null 2>&1
-	if [[ ! $? -eq 0 ]]; then
-		codecinstalled="no"
-		break
-	fi
+    ls /usr/share/doc/$codec-* > /dev/null 2>&1
+    if [[ ! $? -eq 0 ]]; then
+        codecinstalled="no"
+        break
+    fi
 done
 if [[ ! "$codecinstalled" = "no" ]]; then
-	printf "Installed"
+    printf "Installed"
 else
-	printf "Not installed"
+    printf "Not installed"
 fi
 }

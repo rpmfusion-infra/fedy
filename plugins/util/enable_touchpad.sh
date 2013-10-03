@@ -4,7 +4,7 @@
 enable_touchpad() {
 show_func "Enabling systemwide touchpad tap"
 if [[ "$(enable_touchpad_test)" = "Enabled" && ! "$reinstall" = "yes" ]]; then
-	show_status "Touchpad tap already enabled"
+    show_status "Touchpad tap already enabled"
 else
 cat <<EOF | tee /etc/X11/xorg.conf.d/00-enable-taps.conf > /dev/null 2>&1
 Section "InputClass"
@@ -21,8 +21,8 @@ sudo -u "$user" dbus-launch gsettings set org.gnome.settings-daemon.peripherals.
 
 enable_touchpad_test() {
 if [[ -f /etc/X11/xorg.conf.d/00-enable-taps.conf ]]; then
-	printf "Enabled"
+    printf "Enabled"
 else
-	printf "Not enabled"
+    printf "Not enabled"
 fi
 }

@@ -8,11 +8,11 @@ yum -y localinstall --nogpgcheck "$@"
 
 process_pkg() {
 if [[ "$arch" = "32" ]]; then
-	file="$file32"
-	get="$get32"
+    file="$file32"
+    get="$get32"
 elif [[ "$arch" = "64" ]]; then
-	file="$file64"
-	get="$get64"
+    file="$file64"
+    get="$get64"
 fi
 get_file "$@"
 [[ -f "$file" ]] && install_local "$file"
@@ -20,6 +20,6 @@ get_file "$@"
 
 make_backup() {
 if [[ "$keepbackup" = "yes" ]]; then
-	[[ -f "$1" && ! -f "$1".bak ]] && cp -rf "$1" "$1".bak
+    [[ -f "$1" && ! -f "$1".bak ]] && cp -rf "$1" "$1".bak
 fi
 }

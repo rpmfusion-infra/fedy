@@ -4,18 +4,18 @@
 add_sudoer() {
 show_func "Configuring sudo access for $user"
 if [[ "$(add_sudoer_test)" = "Configured" ]]; then
-	show_status "Sudo access exists"
+    show_status "Sudo access exists"
 else
-	make_backup "/etc/sudoers"
-	su -c "echo '$user ALL=(ALL) ALL' >> /etc/sudoers"
+    make_backup "/etc/sudoers"
+    su -c "echo '$user ALL=(ALL) ALL' >> /etc/sudoers"
 fi
 [[ "$(add_sudoer_test)" = "Configured" ]]; exit_state
 }
 
 add_sudoer_test() {
 if [[ `sudo -l -U "$user" 2>&1 | grep "ALL"` ]]; then
-	printf "Configured"
+    printf "Configured"
 else
-	printf "Not configured"
+    printf "Not configured"
 fi
 }

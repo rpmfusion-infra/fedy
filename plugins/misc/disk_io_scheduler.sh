@@ -8,20 +8,20 @@ udev_rule_file="/etc/udev/rules.d/60-io_schedulers.rules"
 disk_io_scheduler() {
 show_func "Setting up SSD I/O scheduler"
 if [[ "$(disk_io_scheduler_test)" = "Configured" && ! "$reinstall" = "yes" ]]; then
-	show_status "SSD I/O scheduler already configured"
+    show_status "SSD I/O scheduler already configured"
 else
-	for disk in `\ls -d /sys/block/sd*`; do
-		rot="$disk/queue/rotational"
-		sched="$disk/queue/scheduler"
-		if [[ `cat $rot` -eq 0 ]]; then
-			if [[ -w "$sched" ]]; then
-				show_msg "Found SSD: $disk"
-				echo $scheduler > $sched && show_msg "Scheduler set to $scheduler"
-				ssdfound="true"
-			fi
-		fi
-	done
-	[[ "$ssdfound" = "true" ]] && install_udev_rule_file "$udev_rule_file"
+    for disk in `\ls -d /sys/block/sd*`; do
+        rot="$disk/queue/rotational"
+        sched="$disk/queue/scheduler"
+        if [[ `cat $rot` -eq 0 ]]; then
+            if [[ -w "$sched" ]]; then
+                show_msg "Found SSD: $disk"
+                echo $scheduler > $sched && show_msg "Scheduler set to $scheduler"
+                ssdfound="true"
+            fi
+        fi
+    done
+    [[ "$ssdfound" = "true" ]] && install_udev_rule_file "$udev_rule_file"
 fi
 [[ "$(disk_io_scheduler_test)" = "Configured" ]]; exit_state
 }
@@ -38,8 +38,8 @@ EOF
 
 disk_io_scheduler_test() {
 if [[ -f "$udev_rule_file" ]]; then
-	printf "Configured"
+    printf "Configured"
 else
-	printf "Not configured"
+    printf "Not configured"
 fi
 }

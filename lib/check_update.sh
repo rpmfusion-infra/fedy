@@ -4,12 +4,12 @@ get_file_quiet "https://github.com/satya164/fedorautils/tags.atom" "fedorautils.
 dltag=$(grep "<title>v.*</title>" "fedorautils.atom" | grep -o "v[0-9].[0-9].[0-9]" | head -n 1)
 dlver=${dltag#v}
 if [[ $dlver > $version ]]; then
-	get_file_quiet "https://github.com/satya164/fedorautils/raw/v${dlver}/CHANGELOG" "changelog-${dlver}.txt"
-	prevdate=$(grep '^Changelog.*' "changelog-${dlver}.txt" | sed -n 2p)
-	changelog=$(sed -e /"$prevdate"/q "changelog-${dlver}.txt" | head -n -2)
-	updatestat="available"
+    get_file_quiet "https://github.com/satya164/fedorautils/raw/v${dlver}/CHANGELOG" "changelog-${dlver}.txt"
+    prevdate=$(grep '^Changelog.*' "changelog-${dlver}.txt" | sed -n 2p)
+    changelog=$(sed -e /"$prevdate"/q "changelog-${dlver}.txt" | head -n -2)
+    updatestat="available"
 elif [[ $dlver = $version ]]; then
-	updatestat="uptodate"
+    updatestat="uptodate"
 fi
 }
 
@@ -26,15 +26,15 @@ make install -C fedorautils-${dlver}
 show_update() {
 check_update
 if [[ "$updatestat" = "available" ]]; then
-	show_msg "Update available!"
-	if [[ ! "$interactive" = "no" ]]; then
-		show_dialog --title="Update available" --text="$changelog" --button="Install update:0" --button="Ignore:1"
-		if [[ $? -eq 0 ]]; then
-			install_update
-			show_dialog --title="Update installed" --text="Please restart $program to continue." --button="Close $program:0"
+    show_msg "Update available!"
+    if [[ ! "$interactive" = "no" ]]; then
+        show_dialog --title="Update available" --text="$changelog" --button="Install update:0" --button="Ignore:1"
+        if [[ $? -eq 0 ]]; then
+            install_update
+            show_dialog --title="Update installed" --text="Please restart $program to continue." --button="Close $program:0"
             clean_temp
             exit
-		fi
-	fi
+        fi
+    fi
 fi
 }

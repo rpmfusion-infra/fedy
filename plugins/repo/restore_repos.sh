@@ -10,11 +10,11 @@ if [[ $? -eq 0 ]]; then
     build_repolist "repos" "true"
     repos=$(show_dialog --list --checklist --width=900 --height=600 --title="Select repositories to restore" --no-headers --print-column="2" --column "Select:CHK" --column "Name" --column "Description" --column "Status" --button="Back:1" --button="Restore selected:0" "${repolist[@]}")
     if [[ $? -eq 0 ]]; then
-	    selrepo=$(echo $repos | tr "|" "\n")
-	    for repo in $selrepo; do
-		    show_msg "Restoring $repo"
-		    config_repo "repos/$repo"
-	    done
+        selrepo=$(echo $repos | tr "|" "\n")
+        for repo in $selrepo; do
+            show_msg "Restoring $repo"
+            config_repo "repos/$repo"
+        done
     fi
 fi
 }

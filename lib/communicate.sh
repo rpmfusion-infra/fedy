@@ -25,9 +25,9 @@ yad --name="$program" --class="fedorautils" --window-icon="fedorautils" --border
 
 exit_state() {
 if [[ $? -eq 0 ]]; then
-	echo -e $GREENBOLD"Successfully completed!"$ENDCOLOR
+    echo -e $GREENBOLD"Successfully completed!"$ENDCOLOR
 else
-	echo -e $REDBOLD"Completed, but with errors!"$ENDCOLOR
-	errors=$((errors+1))
+    echo -e $REDBOLD"Completed, but with errors!"$ENDCOLOR
+    errors=$((errors+1))
 fi
 }

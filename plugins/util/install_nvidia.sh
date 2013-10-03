@@ -7,45 +7,45 @@ nvidia=( "0040" "0041" "0042" "0043" "0044" "0045" "0046" "0047" "0048" "004e" "
 nvidia173xx=( "00fa" "00fb" "00fc" "00fd" "00fe" "0301" "0302" "0308" "0309" "0311" "0312" "0314" "031a" "031b" "031c" "0320" "0321" "0322" "0323" "0324" "0325" "0326" "0327" "0328" "032a" "032b" "032c" "032d" "0330" "0331" "0332" "0333" "0334" "0338" "033f" "0341" "0342" "0343" "0344" "0347" "0348" "034c" "034e" )
 nvidia96xx=( "0110" "0111" "0112" "0113" "0170" "0171" "0172" "0173" "0174" "0175" "0176" "0177" "0178" "0179" "017A" "017C" "017D" "0181" "0182" "0183" "0185" "0188" "018A" "018B" "018C" "01A0" "01F0" "0200" "0201" "0202" "0203" "0250" "0251" "0253" "0258" "0259" "025B" "0280" "0281" "0282" "0286" "0288" "0289" "028C" )
 if [[ "$(install_nvidia_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
-	show_status "nVidia video driver seems to be already installed"
+    show_status "nVidia video driver seems to be already installed"
 else
-	add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
-	show_msg "Updating required packages"
-	yum -y update kernel kernel-PAE selinux-policy
-	for id in ${nvidia[@]}; do
-		if [[ `lspci -d 10de:$id` ]]; then
-			show_msg "Installing driver for GeForce and Quadro GPUs"
-			install_pkg akmod-nvidia xorg-x11-drv-nvidia-libs.i686 && setsebool -P allow_execstack on
-			show_msg "Enabling video acceleration support"
-			install_pkg vdpauinfo libva-vdpau-driver libva-utils
-			if [[ `lspci | grep VGA | grep Intel` ]]; then
-				show_msg "Optimus Graphics detected, installing Bumblebee"
-				add_repo "bumblebee.repo"
-				install_pkg bumblebee-nvidia
-			fi
-			nvidiasupported="yes"
-			break
-		fi
-	done
-	for id in ${nvidia173xx[@]}; do
-		if [[ `lspci -d 10de:$id` ]]; then
-			show_msg "Installing 173.14.xx driver for Legacy GPUs"
-			install_pkg akmod-nvidia-173xx xorg-x11-drv-nvidia-173xx-libs.i686 && setsebool -P allow_execstack on
-			nvidiasupported="yes"
-			break
-		fi
-	done
-	for id in ${nvidia96xx[@]}; do
-		if [[ `lspci -d 10de:$id` ]]; then
-			show_msg "Installing 96.43.xx driver for Legacy GPUs"
-			install_pkg akmod-nvidia-96xx xorg-x11-drv-nvidia-96xx-libs.i686 && setsebool -P allow_execstack on
-			nvidiasupported="yes"
-			break
-		fi
-	done
-	if [[ ! "$nvidiasupported" = "yes" ]]; then
-		show_err "Your video card is not supported!"
-	fi
+    add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
+    show_msg "Updating required packages"
+    yum -y update kernel kernel-PAE selinux-policy
+    for id in ${nvidia[@]}; do
+        if [[ `lspci -d 10de:$id` ]]; then
+            show_msg "Installing driver for GeForce and Quadro GPUs"
+            install_pkg akmod-nvidia xorg-x11-drv-nvidia-libs.i686 && setsebool -P allow_execstack on
+            show_msg "Enabling video acceleration support"
+            install_pkg vdpauinfo libva-vdpau-driver libva-utils
+            if [[ `lspci | grep VGA | grep Intel` ]]; then
+                show_msg "Optimus Graphics detected, installing Bumblebee"
+                add_repo "bumblebee.repo"
+                install_pkg bumblebee-nvidia
+            fi
+            nvidiasupported="yes"
+            break
+        fi
+    done
+    for id in ${nvidia173xx[@]}; do
+        if [[ `lspci -d 10de:$id` ]]; then
+            show_msg "Installing 173.14.xx driver for Legacy GPUs"
+            install_pkg akmod-nvidia-173xx xorg-x11-drv-nvidia-173xx-libs.i686 && setsebool -P allow_execstack on
+            nvidiasupported="yes"
+            break
+        fi
+    done
+    for id in ${nvidia96xx[@]}; do
+        if [[ `lspci -d 10de:$id` ]]; then
+            show_msg "Installing 96.43.xx driver for Legacy GPUs"
+            install_pkg akmod-nvidia-96xx xorg-x11-drv-nvidia-96xx-libs.i686 && setsebool -P allow_execstack on
+            nvidiasupported="yes"
+            break
+        fi
+    done
+    if [[ ! "$nvidiasupported" = "yes" ]]; then
+        show_err "Your video card is not supported!"
+    fi
 fi
 [[ "$(install_nvidia_test)" = "Installed" ]]; exit_state
 }
@@ -53,14 +53,14 @@ fi
 install_nvidia_test() {
 ls /usr/lib*/modules/*/extra/nvidia/nvidia.ko > /dev/null 2>&1
 if [[ $? -eq 0 ]]; then
-	printf "Installed"
+    printf "Installed"
 else
-	printf "Not installed"
+    printf "Not installed"
 fi
 }
 
 install_nvidia_hide() {
 if [[ ! `lspci -nn | grep VGA | grep -i nvidia` ]]; then
-	printf "true"
+    printf "true"
 fi
 }

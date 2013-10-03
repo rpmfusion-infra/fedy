@@ -4,12 +4,12 @@
 font_rendering() {
 show_func "Improving font rendering"
 if [[ "$(font_rendering_test)" = "Improved" && ! "$reinstall" = "yes" ]]; then
-	show_status "Font rendering already improved"
+    show_status "Font rendering already improved"
 else
-	add_repo "rpmfusion-free.repo"
-	add_repo "rpmfusion-nonfree.repo"
-	install_pkg freetype-freeworld
-	echo "Xft.lcdfilter: lcddefault" > "$homedir/.Xresources"
+    add_repo "rpmfusion-free.repo"
+    add_repo "rpmfusion-nonfree.repo"
+    install_pkg freetype-freeworld
+    echo "Xft.lcdfilter: lcddefault" > "$homedir/.Xresources"
 fi
 make_backup "/etc/fonts/local.conf"
 cat <<EOF | tee /etc/fonts/local.conf > /dev/null 2>&1
@@ -38,8 +38,8 @@ sudo -u "$user" dbus-launch gsettings set org.gnome.settings-daemon.plugins.xset
 font_rendering_test() {
 ls /usr/lib*/freetype-freeworld > /dev/null 2>&1 && grep -s "Xft.lcdfilter: lcddefault" "$homedir/.Xresources" > /dev/null 2>&1
 if [[ $? -eq 0 ]]; then
-	printf "Improved"
+    printf "Improved"
 else
-	printf "Not improved"
+    printf "Not improved"
 fi
 }
