@@ -32,16 +32,16 @@ if [[ $? -eq 0 ]]; then
 	show_status "Internet connection verified"
 else
 	show_warn "No working internet connection found"
-	[[ -f /usr/bin/zenity ]] && [[ "$interactive" = "no" ]] || zenity --warning --timeout="5" --title="No working internet connection found" --text="$program requires internet connection to work properly.\nYou may encounter problems."
+	[[ -f /usr/bin/yad ]] && [[ "$interactive" = "no" ]] || dialog_warn --timeout="5" --title="No working internet connection found" --text="$program requires internet connection to work properly.\nYou may encounter problems." --button="Continue:0"
 fi
-# Check zenity
-if [[ -f /usr/bin/zenity ]]; then
-	show_status "zenity verified"
+# Check yad
+if [[ -f /usr/bin/yad ]]; then
+	show_status "yad verified"
 else
-	show_err "zenity is required for $program to run properly, installing zenity"
-	install_pkg zenity
-	if [[ ! -f /usr/bin/zenity ]]; then
-		show_err "Installation of zenity failed!"
+	show_err "yad is required for $program to run properly, installing yad"
+	install_pkg yad
+	if [[ ! -f /usr/bin/yad ]]; then
+		show_err "Installation of yad failed!"
 		terminate_program
 	fi
 fi

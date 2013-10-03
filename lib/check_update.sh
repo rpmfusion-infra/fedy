@@ -28,10 +28,10 @@ check_update
 if [[ "$updatestat" = "available" ]]; then
 	show_msg "Update available!"
 	if [[ ! "$interactive" = "no" ]]; then
-		zenity --question --title="Update available" --text="$changelog" --ok-label "Install update" --cancel-label "Ignore"
+		dialog_ask --title="Update available" --text="$changelog" --button="Install update:0" --button="Ignore:1"
 		if [[ $? -eq 0 ]]; then
 			install_update
-			zenity --info --title="Update installed" --text="Please restart $program to avoid problems."
+			dialog_info --title="Update installed" --text="Please restart $program to avoid problems." --button="Ok:0"
 		fi
 	fi
 fi
