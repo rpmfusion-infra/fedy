@@ -28,10 +28,12 @@ check_update
 if [[ "$updatestat" = "available" ]]; then
 	show_msg "Update available!"
 	if [[ ! "$interactive" = "no" ]]; then
-		dialog_ask --title="Update available" --text="$changelog" --button="Install update:0" --button="Ignore:1"
+		show_dialog --title="Update available" --text="$changelog" --button="Install update:0" --button="Ignore:1"
 		if [[ $? -eq 0 ]]; then
 			install_update
-			dialog_info --title="Update installed" --text="Please restart $program to avoid problems." --button="Ok:0"
+			show_dialog --title="Update installed" --text="Please restart $program to continue." --button="Close $program:0"
+            clean_temp
+            exit
 		fi
 	fi
 fi
