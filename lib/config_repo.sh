@@ -6,12 +6,17 @@ config_repo() {
 repouri="$1"
 repofile=${repouri##*/}
 show_msg "Adding $repofile"
-check_repo "$repofile"
-if [[ $? -eq 0 ]]; then
-    show_status "$repofile already configured"
+get_file_quiet "$repouri" "$repofile"
+if [[ `grep "^name=" "$repofile"` && `grep "^baseurl=" "$repofile"` ]]; then
+    check_repo "$repofile"
+    if [[ $? -eq 0 ]]; then
+        show_status "$repofile already configured"
+    else
+        yum-config-manager --add-repo="$repofile"
+        exit_state
+    fi
 else
-    yum-config-manager --add-repo="$repouri"
-    exit_state
+    show_err "$repofile is malformed"
 fi
 }
 
