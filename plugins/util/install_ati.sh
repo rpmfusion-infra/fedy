@@ -16,7 +16,7 @@ fi
 }
 
 install_ati_test() {
-if [[ -f /usr/share/ati/fglrx-uninstall.sh ]]; then
+if [[ -f /usr/bin/aticonfig ]]; then
     printf "Installed"
 else
     printf "Not installed"
