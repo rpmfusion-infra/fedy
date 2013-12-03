@@ -32,7 +32,7 @@ if [[ $? -eq 0 ]]; then
     show_status "Internet connection verified"
 else
     show_warn "No working internet connection found"
-    [[ -f /usr/bin/yad ]] && [[ "$interactive" = "no" ]] || show_dialog --timeout="5" --title="No working internet connection found" --text="$program requires internet connection to work properly.\nYou may encounter problems." --button="Continue:0"
+    [[ -f /usr/bin/yad ]] && [[ "$interactive" = "no" ]] || show_dialog --timeout="5" --title="No working internet connection found" --text="$program requires internet connection to work properly.\nYou may encounter problems. If you are using a proxy, configure it in /etc/fedorautilsrc." --button="Continue:0"
 fi
 # Check yad
 if [[ -f /usr/bin/yad ]]; then
