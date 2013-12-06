@@ -2,10 +2,6 @@ install_pkg() {
 yum -y install --nogpgcheck "$@"
 }
 
-install_local() {
-yum -y localinstall --nogpgcheck "$@"
-}
-
 process_pkg() {
 if [[ "$arch" = "32" ]]; then
     file="$file32"
@@ -15,7 +11,7 @@ elif [[ "$arch" = "64" ]]; then
     get="$get64"
 fi
 get_file "$@"
-[[ -f "$file" ]] && install_local "$file"
+[[ -f "$file" ]] && install_pkg "$file"
 }
 
 make_backup() {

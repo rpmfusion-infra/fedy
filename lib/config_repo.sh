@@ -37,30 +37,30 @@ done
 }
 
 rpmfusion-free.repo() {
-install_local http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-${fver}.noarch.rpm
+install_pkg http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-${fver}.noarch.rpm
 }
 
 rpmfusion-nonfree.repo() {
-install_local http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-${fver}.noarch.rpm
+install_pkg http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-${fver}.noarch.rpm
 }
 
 livna.repo() {
-install_local http://rpm.livna.org/livna-release.rpm http://ftp-stud.fht-esslingen.de/pub/Mirrors/rpm.livna.org/livna-release.rpm
+install_pkg http://rpm.livna.org/livna-release.rpm http://ftp-stud.fht-esslingen.de/pub/Mirrors/rpm.livna.org/livna-release.rpm
 # Disable Livna repo
 sed -i 's/enabled=.*$/enabled=0/g' "/etc/yum.repos.d/livna.repo"
 }
 
 bumblebee.repo() {
-install_local http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee-nonfree/fedora${fver}/noarch/bumblebee-nonfree-release-1.0-1.noarch.rpm
+install_pkg http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee-nonfree/fedora${fver}/noarch/bumblebee-nonfree-release-1.0-1.noarch.rpm
 }
 
 adobe-linux-i386.repo() {
-install_local http://linuxdownload.adobe.com/adobe-release/adobe-release-i386-1.0-1.noarch.rpm
+install_pkg http://linuxdownload.adobe.com/adobe-release/adobe-release-i386-1.0-1.noarch.rpm
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
 }
 
 adobe-linux-x86_64.repo() {
-install_local http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm
+install_pkg http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
 }
 
