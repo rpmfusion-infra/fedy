@@ -3,6 +3,6 @@
 
 sys_update() {
 show_func "Updating system"
-yum -y --skip-broken update
+update_pkg
 exit_state
 }

@@ -1,5 +1,9 @@
 install_pkg() {
-yum -y install --nogpgcheck "$@"
+yum -y install --nogpgcheck --skip-broken "$@"
+}
+
+update_pkg() {
+yum -y update --nogpgcheck --skip-broken "$@"
 }
 
 process_pkg() {

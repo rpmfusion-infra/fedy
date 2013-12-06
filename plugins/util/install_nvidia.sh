@@ -11,7 +11,7 @@ if [[ "$(install_nvidia_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 else
     add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
     show_msg "Updating required packages"
-    yum -y update kernel kernel-PAE selinux-policy
+    update_pkg kernel kernel-PAE selinux-policy
     for id in ${nvidia[@]}; do
         if [[ `lspci -d 10de:$id` ]]; then
             show_msg "Installing driver for GeForce and Quadro GPUs"
