@@ -7,7 +7,7 @@ if [[ "$(install_elegance_test)" = "Installed" && ! "$reinstall" = "yes" ]]; the
     show_status "Elegance Colors Gnome Shell theme already installed"
 else
     add_repo "elegance-colors.repo"
-    install_pkg gnome-shell-theme-elegance-colors
+    install_pkg_prevrel "elegance-colors.repo" gnome-shell-theme-elegance-colors
 fi
 [[ "$(install_elegance_test)" = "Installed" ]]; exit_state
 }

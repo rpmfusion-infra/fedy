@@ -2,6 +2,10 @@ check_repo() {
 yum repolist all 2>&1 | cut -d\  -f1 | cut -d/ -f1 | grep -ix "${1%.repo}" > /dev/null 2>&1
 }
 
+test_repo() {
+get_file_quiet '$(grep "baseurl=.*" "/etc/yum.repos.d/$1")repodata/repomd.xml' /dev/null
+}
+
 config_repo() {
 repouri="$1"
 repofile=${repouri##*/}
@@ -30,6 +34,10 @@ while [[ $# -gt 0 ]]; do
             show_status "$repofile already configured"
         else
             eval "$repofile"
+        fi
+        test_repo "$repofile"
+        if [[ ! $? -eq 0 ]]; then
+            show_warn "Repo not available for Fedora ${fver} yet"
         fi
     fi
     shift

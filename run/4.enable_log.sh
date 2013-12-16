@@ -4,12 +4,7 @@ enable_log() {
 # Enable logging
 if [[ "$enablelog" = "yes" ]]; then
     show_msg "Logging is enabled"
-    if [[ "$logmode" = "default" ]]; then
-        rm -f "$logfile"
-        touch "$logfile"
-    elif [[ -f "$logfile" && "$logmode" = "buffer" ]]; then
-        mv "$logfile" "$logfile-$(stat -c %Y ${logfile})"
-    fi
+    [[ -f "$logfile" ]] && mv "$logfile" "$logfile-$(stat -c %Y ${logfile})"
     echo -e "[$(date)]\n" >> "$logfile"
     echo -e "$program - $version\n" >> "$logfile"
     echo -e "$(cat /etc/issue | head -n 1)" >> "$logfile"
@@ -35,17 +30,13 @@ if [[ "$enablelog" = "yes" ]]; then
         cat "$sysconf" >> "$logfile"
     fi
     echo -e "\n[Variables]\n" >> "$logfile"
-    log_vars=( "homedir" "scriptdir" "libdir" "moduledir" "plugindir" "workingdir" "sysconf" "userconf" "lockfile" "logfile" "logmode" "downagent" "prefwget" "reinstall" "forcedown" "forcedistro" "keepbackup" "keepdownloads" "downloadsdir" )
+    log_vars=( "homedir" "scriptdir" "libdir" "moduledir" "plugindir" "workingdir" "sysconf" "userconf" "lockfile" "logfile" "tryprevrel" "downagent" "prefwget" "reinstall" "forcedown" "forcedistro" "keepbackup" "keepdownloads" "downloadsdir" )
     for log_var in "${log_vars[@]}"; do
         echo -e "$log_var=${!log_var}" >> $logfile
     done
     echo -e "\n[Outputs]\n" >> "$logfile"
-    if [[ "$logmode" = "buffer" ]]; then
-        unset BOLD RED REDBOLD GREEN GREENBOLD YELLOW YELLOWBOLD BLUE BLUEBOLD ENDCOLOR
-        exec &>> "$logfile"
-        tail -f -n +1 "$logfile" >/dev/tty &
-    else
-        exec 1>&2>&>(tee -a >(sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' >> "$logfile"))
-    fi
+    unset BOLD RED REDBOLD GREEN GREENBOLD YELLOW YELLOWBOLD BLUE BLUEBOLD ENDCOLOR
+    exec &>> "$logfile"
+    tail -f -n +1 "$logfile" >/dev/tty &
 fi
 }

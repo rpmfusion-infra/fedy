@@ -4,8 +4,9 @@ check_args() {
 while [[ $# -gt 0 ]]; do
     case "$1" in
         -l|--enable-log)
-                enablelog="yes"
-                logmode="buffer";;
+                enablelog="yes";;
+        -p|--noprev-rel)
+                tryprevrel="no";;
         -c|--pref-curl)
                 prefwget="no";;
         -w|--use-wget)
@@ -56,8 +57,8 @@ while [[ $# -gt 0 ]]; do
                     exit
                 fi;;
         -h|--help)
-                args=( "-l, --enable-log" "-c, --pref-curl" "-w, --use-wget" "-r, --redo-task" "-g, --redownload" "-f, --force-distro" "-n, --nobakup" "-e, --exec <commands>" "-d, --debug" "-h, --help" )
-                desc=( "enable logging with buffered output" "prefer curl over wget unless specified" "use wget for download instead of curl" "redo the specified task" "force redownload of files" "run with unsupported distro" "do not keep backups" "execute commands from the plugins" "show last logfile and exit" "show this help message and exit" )
+                args=( "-l, --enable-log" "-p, --noprev-rel" "-c, --pref-curl" "-w, --use-wget" "-r, --redo-task" "-g, --redownload" "-f, --force-distro" "-n, --nobakup" "-e, --exec <commands>" "-d, --debug" "-h, --help" )
+                desc=( "enable logging" "disable installing from previous release" "prefer curl over wget unless specified" "use wget for download instead of curl" "redo the specified task" "force redownload of files" "run with unsupported distro" "do not keep backups" "execute commands from the plugins" "show last logfile and exit" "show this help message and exit" )
                 echo -e "Usage:\tfedorautils [options...]"
                 echo -e "\v"
                 for ((i=0; i < ${#args[@]}; i++)); do

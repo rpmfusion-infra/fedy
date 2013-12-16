@@ -2,6 +2,16 @@ install_pkg() {
 yum -y install --nogpgcheck --skip-broken "$@"
 }
 
+install_pkg_prevrel() {
+test_repo "$1"
+if [[ $? -eq 0 || ! "$tryprevrel" = "yes" ]]; then
+    install_pkg "${@:2}"
+else
+    show_msg "Trying with Fedora $((fver-1)) repo"
+    install_pkg --releasever="$((fver-1))" "${@:2}"
+fi
+}
+
 update_pkg() {
 yum -y update --nogpgcheck --skip-broken "$@"
 }

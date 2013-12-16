@@ -7,7 +7,7 @@ if [[ "$(install_gtkthemeconfig_test)" = "Installed" && ! "$reinstall" = "yes" ]
     show_status "Theme Configuration app already installed"
 else
     add_repo "gtk-theme-config.repo"
-    install_pkg gtk-theme-config
+    install_pkg_prevrel "gtk-theme-config.repo" gtk-theme-config
 fi
 [[ "$(install_gtkthemeconfig_test)" = "Installed" ]]; exit_state
 }
