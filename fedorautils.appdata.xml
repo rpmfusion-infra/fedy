@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2013 Satyajit Sahoo <satyajit.happy@gmail.com> -->
+<application>
+    <id type="desktop">fedorautils.desktop</id>
+    <licence>GFDL</licence>
+    <name>Fedora Utils</name>
+    <summary>Software, Codec Installs &amp; System Tweaks</summary>
+    <description>
+        <p>
+        Fedora Utils lets you install codecs and additional software that
+        Fedora doesn't want to ship, like MP3 codecs, Adobe Flash, Oracle Java
+        etc. It can also fix problems, tweak and cleanup your system, show
+        system information and much more with just few clicks.
+        </p>
+        <p>
+        In addition to the GUI, you can also use Fedora Utils in bash scripts
+        to help you install software and tweak the sytsem automatically.
+        </p>
+        <p>
+        Fedora Utils saves the downloaded files. Have to do the same steps on
+        more than one system? You won't need to redownload the files again.
+        Fedora Utils can use previously downloaded files with ease. Combine
+        this with the scripting ability, and configuring multiple systems
+        becomes a lot easier.
+        </p>
+        <p>
+        Fedora Utils is extensible via plugins. Writing a plugin is easy and
+        fun.
+        </p>
+    </description>
+    <screenshots>
+        <screenshot type="default" width="1360" height="765">http://satya164.github.io/fedorautils/images/fu-tweaks.jpg</screenshot>
+        <screenshot width="1360" height="765">http://satya164.github.io/fedorautils/images/fu-repos.jpg</screenshot>
+        <screenshot width="1360" height="765">http://satya164.github.io/fedorautils/images/fu-software.jpg</screenshot>
+        <screenshot width="1360" height="765">http://satya164.github.io/fedorautils/images/fu-plugins.jpg</screenshot>
+        <screenshot width="1360" height="765">http://satya164.github.io/fedorautils/images/fu-main.jpg</screenshot>
+    </screenshots>
+    <url type="homepage">http://satya164.github.io/fedorautils/</url>
+    <updatecontact>satyajit.happy@gmail.com</updatecontact>
+</application>

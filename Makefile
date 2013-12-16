@@ -14,30 +14,32 @@ clean:
 
 install: doc
 	$(INSTALL_DIRECTORY) $(DESTDIR)/usr/share/fedorautils/
-	$(INSTALL_DIRECTORY) $(DESTDIR)/usr/share/fedorautils/run
 	$(INSTALL_DIRECTORY) $(DESTDIR)/usr/share/fedorautils/lib
 	$(INSTALL_DIRECTORY) $(DESTDIR)/usr/share/fedorautils/modules
 	$(INSTALL_DIRECTORY) $(DESTDIR)/usr/share/fedorautils/plugins
+	$(INSTALL_DIRECTORY) $(DESTDIR)/usr/share/fedorautils/run
 	$(INSTALL_PROGRAM) fedorautils $(DESTDIR)/usr/share/fedorautils/fedorautils
 	$(INSTALL_PROGRAM) fedorautils.exec $(DESTDIR)/usr/bin/fedorautils
 	$(INSTALL_DATA) lib/* $(DESTDIR)/usr/share/fedorautils/lib/
-	$(INSTALL_DATA) run/* $(DESTDIR)/usr/share/fedorautils/run/
 	$(INSTALL_DATA) modules/* $(DESTDIR)/usr/share/fedorautils/modules/
+	$(INSTALL_DATA) run/* $(DESTDIR)/usr/share/fedorautils/run/
 	for dir in plugins/*; do \
 	$(INSTALL_DIRECTORY) $(DESTDIR)/usr/share/fedorautils/$$dir; \
 	$(INSTALL_DATA) $$dir/* $(DESTDIR)/usr/share/fedorautils/$$dir; \
 	done
-	$(INSTALL_DATA) fedorautils.desktop $(DESTDIR)/usr/share/applications/fedorautils.desktop
-	$(INSTALL_DATA) fedorautils.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/fedorautils.svg
 	$(INSTALL_DATA) fedorautils.1.gz $(DESTDIR)/usr/share/man/man1/fedorautils.1.gz
+	$(INSTALL_DATA) fedorautils.appdata.xml $(DESTDIR)/usr/share/appdata/fedorautils.appdata.xml
+	$(INSTALL_DATA) fedorautils.desktop $(DESTDIR)/usr/share/applications/fedorautils.desktop
 	$(INSTALL_DATA) fedorautils.policy $(DESTDIR)/usr/share/polkit-1/actions/org.freedesktop.pkexec.fedorautils.policy
+	$(INSTALL_DATA) fedorautils.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/fedorautils.svg
 	@-if test -z $(DESTDIR); then $(GTK_UPDATE_ICON_CACHE) $(DESTDIR)/usr/share/icons/hicolor; fi
 
 uninstall:
 	rm -rf $(DESTDIR)/usr/share/fedorautils/
-	rm -f $(DESTDIR)/usr/bin/fedorautils
-	rm -f $(DESTDIR)/usr/share/applications/fedorautils.desktop
-	rm -f $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/fedorautils.svg
-	rm -f $(DESTDIR)/usr/share/man/man1/fedorautils.1.gz
 	rm -f $(DESTDIR)/usr/share/polkit-1/actions/org.freedesktop.pkexec.fedorautils.policy
+	rm -f $(DESTDIR)/usr/share/man/man1/fedorautils.1.gz
+	rm -f $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/fedorautils.svg
+	rm -f $(DESTDIR)/usr/share/applications/fedorautils.desktop
+	rm -f $(DESTDIR)/usr/share/appdata/fedorautils.appdata.xml
+	rm -f $(DESTDIR)/usr/bin/fedorautils
 	@-if test -z $(DESTDIR); then $(GTK_UPDATE_ICON_CACHE) $(DESTDIR)/usr/share/icons/hicolor; fi

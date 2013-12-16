@@ -7,4 +7,4 @@ Exec=fedorautils
 Terminal=true
 Type=Application
 Categories=System;Utility;X-Fedora;
-Keywords=clean;codec;driver;fix;postinstall;propietary;repo;
+Keywords=clean;codec;fix;postinstall;propietary;repo;
