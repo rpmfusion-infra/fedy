@@ -134,6 +134,19 @@ skip_if_unavailable=1
 EOF
 }
 
+numix.repo() {
+cat <<EOF | tee /etc/yum.repos.d/numix.repo > /dev/null 2>&1
+[numix]
+name=Numix
+type=rpm-md
+baseurl=http://download.opensuse.org/repositories/home:/paolorotolo:/numix/Fedora_\$releasever/
+gpgkey=http://download.opensuse.org/repositories/home:/paolorotolo:/numix/Fedora_\$releasever/repodata/repomd.xml.key
+gpgcheck=1
+enabled=1
+skip_if_unavailable=1
+EOF
+}
+
 fedorautils.repo() {
 cat <<EOF | tee /etc/yum.repos.d/fedorautils.repo > /dev/null 2>&1
 [fedorautils]
