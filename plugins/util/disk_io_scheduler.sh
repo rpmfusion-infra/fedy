@@ -43,3 +43,18 @@ else
     printf "Not configured"
 fi
 }
+
+disk_io_scheduler_hide() {
+for disk in `\ls -d /sys/block/sd*`; do
+    rot="$disk/queue/rotational"
+    sched="$disk/queue/scheduler"
+    if [[ `cat $rot` -eq 0 ]]; then
+        if [[ -w "$sched" ]]; then
+            ssdfound="true"
+        fi
+    fi
+done
+if [[ ! "$ssdfound" = "true" ]]; then
+    printf "true"
+fi
+}
