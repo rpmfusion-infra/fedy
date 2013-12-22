@@ -38,7 +38,7 @@ while [[ $# -gt 0 ]]; do
         test_repo "$repofile"
         if [[ ! $? -eq 0 ]]; then
             show_warn "Repo not available for Fedora ${fver} yet"
-            yum-config-manager --save --setopt="*.skip_if_unavailable=1" "${repofile%.repo}"
+            yum-config-manager --save --setopt="*.skip_if_unavailable=1" "${repofile%.repo}" > /dev/null 2>&1
         fi
     fi
     shift
@@ -56,7 +56,7 @@ install_pkg http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-rele
 livna.repo() {
 install_pkg http://rpm.livna.org/livna-release.rpm http://ftp-stud.fht-esslingen.de/pub/Mirrors/rpm.livna.org/livna-release.rpm
 # Disable Livna repo
-sed -i 's/enabled=.*$/enabled=0/g' "/etc/yum.repos.d/livna.repo"
+yum-config-manager --disable livna > /dev/null 2>&1
 }
 
 bumblebee.repo() {
