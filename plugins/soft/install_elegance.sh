@@ -6,6 +6,7 @@ show_func "Installing Elegance Colors Gnome Shell theme"
 if [[ "$(install_elegance_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
     show_status "Elegance Colors Gnome Shell theme already installed"
 else
+    install_pkg bc gnome-shell ImageMagick
     add_repo "elegance-colors.repo"
     install_pkg_prevrel "elegance-colors.repo" gnome-shell-theme-elegance-colors
 fi
