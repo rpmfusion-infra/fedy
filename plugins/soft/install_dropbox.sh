@@ -13,6 +13,7 @@ else
     file64=$(grep -o "nautilus-dropbox-[0-9].[0-9].[0-9]-[0-9].fedora.x86_64.rpm" "dropbox.htm" | head -n 1)
     get64="https://linux.dropbox.com/packages/fedora/${file64}"
     process_pkg
+    add_repo "dropbox.repo"
 fi
 [[ "$(install_dropbox_test)" = "Installed" ]]; exit_state
 }

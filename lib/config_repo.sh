@@ -38,6 +38,11 @@ while [[ $# -gt 0 ]]; do
         test_repo "$repofile"
         if [[ ! $? -eq 0 ]]; then
             show_warn "Repo not available for Fedora ${fver} yet"
+            if [[ `grep "skip_if_unavailable=" "/etc/yum.repos.d/$repofile"` ]]; then
+                sed -i 's/skip_if_unavailable=.*$/skip_if_unavailable=1/g' "/etc/yum.repos.d/$repofile"
+            else
+                echo "skip_if_unavailable=1" >> "/etc/yum.repos.d/$repofile"
+            fi
         fi
     fi
     shift
@@ -75,7 +80,7 @@ rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
 google.repo() {
 rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub
 cat <<EOF | tee /etc/yum.repos.d/google.repo > /dev/null 2>&1
-[Google]
+[google]
 name=Google - $(uname -i)
 baseurl=http://dl.google.com/linux/rpm/stable/$(uname -i)
 gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
@@ -104,6 +109,17 @@ name=Steam RPM packages and dependencies
 baseurl=http://spot.fedorapeople.org/steam/fedora-\$releasever/
 enabled=1
 gpgcheck=0
+skip_if_unavailable=1
+EOF
+}
+
+dropbox.repo() {
+cat <<EOF | tee /etc/yum.repos.d/dropbox.repo > /dev/null 2>&1
+[dropbox]
+name=Dropbox Repository
+baseurl=http://linux.dropbox.com/fedora/$releasever/
+gpgkey=https://linux.dropbox.com/fedora/rpm-public-key.asc
+enabled=1
 skip_if_unavailable=1
 EOF
 }
