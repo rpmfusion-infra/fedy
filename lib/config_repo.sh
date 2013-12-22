@@ -3,7 +3,7 @@ yum repolist all 2>&1 | cut -d\  -f1 | cut -d/ -f1 | grep -ix "${1%.repo}" > /de
 }
 
 test_repo() {
-get_file_quiet '$(grep "baseurl=.*" "/etc/yum.repos.d/$1")repodata/repomd.xml' /dev/null
+get_file_quiet "$(grep baseurl=.* /etc/yum.repos.d/$1 | sed s/baseurl=//g)repodata/repomd.xml" /dev/null
 }
 
 config_repo() {
