@@ -38,7 +38,8 @@ while [[ $# -gt 0 ]]; do
         test_repo "$repofile"
         if [[ ! $? -eq 0 ]]; then
             show_warn "Repo not available for Fedora ${fver} yet"
-            yum-config-manager --save --setopt="*.skip_if_unavailable=1" "${repofile%.repo}" > /dev/null 2>&1
+            reponame="${repofile%.repo}"
+            yum-config-manager --save --setopt="${reponame}.skip_if_unavailable=1" --setopt="${reponame^}.skip_if_unavailable=1" > /dev/null 2>&1
         fi
     fi
     shift
