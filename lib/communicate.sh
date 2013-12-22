@@ -20,7 +20,7 @@ echo -e $BLUEBOLD"$@"$ENDCOLOR
 }
 
 show_dialog() {
-yad --name="$program" --class="fedorautils" --window-icon="fedorautils" --borders="10" "$@"
+yad --center --name="$program" --class="fedorautils" --window-icon="fedorautils" --borders="10" "$@"
 }
 
 exit_state() {
