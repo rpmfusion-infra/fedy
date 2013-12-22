@@ -3,7 +3,7 @@
 # fix problems, tweak and cleanup your system,
 # view system information and much more with just few clicks.
 #
-# Copyright (C) 2012  Satyajit sahoo
+# Copyright (C) 2014  Satyajit sahoo
 #
 # License: GNU GPLv3 <http://www.gnu.org/licenses/gpl-3.0.html>
 # Author: Satyajit Sahoo <satyajit.happy@gmail.com>
@@ -11,7 +11,7 @@
 
 # Declare variables
 program="Fedora Utils"
-version="3.1.3"
+version="3.1.4"
 user=`who | grep $(echo "$DISPLAY" | cut -d '.' -f 1) | cut -d ' ' -f 1 | tail -1`
 errors="0"
 homedir=`awk -F: -v v="$user" '{if ($1==v) print $6}' /etc/passwd`

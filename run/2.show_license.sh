@@ -1,7 +1,7 @@
 # Run: show_license
 
 show_license() {
-echo -e $BOLD"$program $version Copyright (C) 2012 Satyajit Sahoo"$ENDCOLOR
+echo -e $BOLD"$program $version Copyright (C) 2014 Satyajit Sahoo"$ENDCOLOR
 echo -e ""
 echo -e "This program comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under the terms of GNU GPL V3 or Later."
 echo -e ""
