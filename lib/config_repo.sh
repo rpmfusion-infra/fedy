@@ -38,11 +38,7 @@ while [[ $# -gt 0 ]]; do
         test_repo "$repofile"
         if [[ ! $? -eq 0 ]]; then
             show_warn "Repo not available for Fedora ${fver} yet"
-            if [[ `grep "skip_if_unavailable=" "/etc/yum.repos.d/$repofile"` ]]; then
-                sed -i 's/skip_if_unavailable=.*$/skip_if_unavailable=1/g' "/etc/yum.repos.d/$repofile"
-            else
-                echo "skip_if_unavailable=1" >> "/etc/yum.repos.d/$repofile"
-            fi
+            yum-config-manager --save --setopt="*.skip_if_unavailable=1" "${repofile%.repo}"
         fi
     fi
     shift
