@@ -15,7 +15,7 @@ else
     get="https://github.com/danielgtaylor/arista/archive/${aristaver}.tar.gz"
     file="arista-${aristaver}"
     get_file
-    tar -xvf "$file"
+    tar -xzf "$file"
     cd "${file%.tar.gz}"
     python setup.py build
     python setup.py install

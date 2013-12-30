@@ -8,24 +8,23 @@ if [[ "$(install_sublime_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 else
     show_msg "Fetching webpage"
     get_file_quiet "http://www.sublimetext.com/3" "sublime.htm"
-    if [[ "$arch" = "32" ]]; then
-        get=$(cat "sublime.htm" | tr ' ' '\n' | grep -o "http://.*/sublime_text_3_build_[0-9]*_x32.tar.bz2")
-    elif [[ "$arch" = "64" ]]; then
-        get=$(cat "sublime.htm" | tr ' ' '\n' | grep -o "http://.*/sublime_text_3_build_[0-9]*_x64.tar.bz2")
-    fi
+    get=$(cat "sublime.htm" | tr ' ' '\n' | grep -o "http://.*/sublime_text_3_build_[0-9]*_x${arch}.tar.bz2" | head -n 1)
     file=${get##*/}
     get_file
-    tar -xvjf "$file"
-    cp -rf "sublime_text_3" "/opt/"
+    show_msg "Installing files"
+    tar -xjf "$file"
+    cp -af "sublime_text_3" "/opt/"
+    for dir in /opt/sublime_text_3/Icon/*; do
+        size="${dir##*/}"
+        xdg-icon-resource install --novendor --size "${size/x*}" "$dir/sublime-text.png" "sublime-text"
+    done
     ln -sf "/opt/sublime_text_3/sublime_text" "/usr/bin/subl"
-    ln -sf "/opt/sublime_text_3/Icon/256x256/sublime-text.png" "/usr/share/icons/hicolor/256x256/apps/sublime-text.png"
-show_msg "Creating desktop file"
-cat <<EOF | tee /usr/share/applications/sublime-text-3.desktop > /dev/null 2>&1
+cat <<EOF | tee /usr/share/applications/sublime-text.desktop > /dev/null 2>&1
 [Desktop Entry]
 Name=Sublime Text 3
 GenericName=Text Editor
 Icon=sublime-text
-Comment=Sophisticated text editor
+Comment=Sophisticated text editor \for code, markup and prose
 Exec=subl %F
 MimeType=text/plain;
 Terminal=false
