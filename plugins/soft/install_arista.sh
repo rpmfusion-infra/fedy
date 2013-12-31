@@ -13,7 +13,7 @@ else
     get_file_quiet "https://github.com/danielgtaylor/arista/tags.atom" "arista.atom"
     aristaver=$(grep "<title>.*</title>" "arista.atom" | grep -o "[0-9].[0-9].[0-9]" | head -n 1)
     get="https://github.com/danielgtaylor/arista/archive/${aristaver}.tar.gz"
-    file="arista-${aristaver}"
+    file="arista-${aristaver}.tar.gz"
     get_file
     tar -xzf "$file"
     cd "${file%.tar.gz}"

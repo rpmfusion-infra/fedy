@@ -6,10 +6,15 @@ show_func "Configuring sudo access for $user"
 if [[ "$(add_sudoer_test)" = "Configured" ]]; then
     show_status "Sudo access exists"
 else
-    make_backup "/etc/sudoers"
-    su -c "echo '$user ALL=(ALL) ALL' >> /etc/sudoers"
+    su -c "usermod -G wheel $user"
 fi
 [[ "$(add_sudoer_test)" = "Configured" ]]; exit_state
+}
+
+add_sudoer_undo() {
+show_func "Removing sudo access for $user"
+gpasswd -d $user wheel
+[[ ! "$(add_sudoer_test)" = "Configured" ]]; exit_state
 }
 
 add_sudoer_test() {
