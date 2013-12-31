@@ -19,7 +19,7 @@ else
         xdg-icon-resource install --novendor --size "${size/x*}" "$dir/sublime-text.png" "sublime-text"
     done
     ln -sf "/opt/sublime_text_3/sublime_text" "/usr/bin/subl"
-cat <<EOF | tee /usr/share/applications/sublime-text.desktop > /dev/null 2>&1
+cat <<EOF | tee /usr/share/applications/sublime-text-3.desktop > /dev/null 2>&1
 [Desktop Entry]
 Name=Sublime Text 3
 GenericName=Text Editor
@@ -44,7 +44,7 @@ for dir in /opt/sublime_text_3/Icon/*; do
     xdg-icon-resource uninstall --novendor --size "${size/x*}" "$dir/sublime-text.png" "sublime-text"
 done
 rm -f "/usr/bin/subl"
-rm -f "/usr/share/applications/sublime-text.desktop"
+rm -f "/usr/share/applications/sublime-text-3.desktop"
 rm -rf "/opt/sublime_text_3"
 [[ ! "$(install_sublime_test)" = "Installed" ]]; exit_state
 }
