@@ -16,6 +16,10 @@ update_pkg() {
 yum -y update --nogpgcheck --skip-broken "$@"
 }
 
+erase_pkg() {
+yum -y erase --skip-broken "$@"
+}
+
 process_pkg() {
 if [[ "$arch" = "32" ]]; then
     file="$file32"

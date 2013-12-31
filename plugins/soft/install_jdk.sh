@@ -99,14 +99,31 @@ else
     alternatives --auto javac
     show_msg "Setting up Java plugin for firefox"
     if [[ "$arch" = "32" ]]; then
-        alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so libjavaplugin.so /usr/java/default/jre/lib/i386/libnpjp2.so 200000
+        alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so libjavaplugin.so /usr/java/latest/jre/lib/i386/libnpjp2.so 200000
         alternatives --auto libjavaplugin.so
     elif [[ "$arch" = "64" ]]; then
-        alternatives --install /usr/lib64/mozilla/plugins/libjavaplugin.so libjavaplugin.so.x86_64 /usr/java/default/jre/lib/amd64/libnpjp2.so 200000
+        alternatives --install /usr/lib64/mozilla/plugins/libjavaplugin.so libjavaplugin.so.x86_64 /usr/java/latest/jre/lib/amd64/libnpjp2.so 200000
         alternatives --auto libjavaplugin.so.x86_64
     fi
 fi
 [[ "$(install_jdk_test)" = "Installed" ]]; exit_state
+}
+
+install_jdk_remove() {
+show_func "Removing Oracle JDK"
+erase_pkg jdk
+alternatives --remove java /usr/java/latest/bin/java
+alternatives --auto java
+alternatives --remove javac /usr/java/latest/bin/javac
+alternatives --auto javac
+if [[ "$arch" = "32" ]]; then
+    alternatives --remove libjavaplugin.so /usr/java/latest/jre/lib/i386/libnpjp2.so
+    alternatives --auto libjavaplugin.so
+elif [[ "$arch" = "64" ]]; then
+    alternatives --remove libjavaplugin.so.x86_64 /usr/java/latest/jre/lib/amd64/libnpjp2.so
+    alternatives --auto libjavaplugin.so.x86_64
+fi
+[[ ! "$(install_jdk_test)" = "Installed" ]]; exit_state
 }
 
 install_jdk_test() {

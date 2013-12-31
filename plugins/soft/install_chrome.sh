@@ -15,6 +15,12 @@ fi
 [[ "$(install_chrome_test)" = "Installed" ]]; exit_state
 }
 
+install_chrome_remove() {
+show_func "Removing Google Chrome"
+erase_pkg google-chrome-stable
+[[ ! "$(install_chrome_test)" = "Installed" ]]; exit_state
+}
+
 install_chrome_test() {
 if [[ -f /opt/google/chrome/google-chrome ]]; then
     printf "Installed"

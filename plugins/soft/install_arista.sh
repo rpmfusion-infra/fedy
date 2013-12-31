@@ -24,6 +24,21 @@ fi
 [[ "$(install_arista_test)" = "Installed" ]]; exit_state
 }
 
+install_arista_remove() {
+show_func "Removing Arista Transcoder"
+rm -f /usr/bin/arista-gtk
+rm -f /usr/bin/arista-transcode
+rm -f /usr/share/nautilus-python/extensions/arista-nautilus.py
+rm -f /usr/lib/python2.7/site-packages/arista-0.9.7-py2.7.egg-info
+rm -f /usr/share/nautilus-python/extensions/arista-nautilus.pyc
+rm -f /usr/share/locale/templates/arista.pot
+rm -f /usr/share/locale/*/LC_MESSAGES/arista.mo
+rm -rf /usr/lib/python2.7/site-packages/arista
+rm -rf /usr/share/doc/arista
+rm -rf /usr/share/arista
+[[ ! "$(install_arista_test)" = "Installed" ]]; exit_state
+}
+
 install_arista_test() {
 if [[ -f /usr/bin/arista-gtk ]]; then
     printf "Installed"

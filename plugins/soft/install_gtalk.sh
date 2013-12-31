@@ -15,6 +15,12 @@ fi
 [[ "$(install_gtalk_test)" = "Installed" ]]; exit_state
 }
 
+install_gtalk_remove() {
+show_func "Removing GTalk plugin"
+erase_pkg google-talkplugin
+[[ ! "$(install_gtalk_test)" = "Installed" ]]; exit_state
+}
+
 install_gtalk_test() {
 if [[ -f /opt/google/talkplugin/GoogleTalkPlugin ]]; then
     printf "Installed"

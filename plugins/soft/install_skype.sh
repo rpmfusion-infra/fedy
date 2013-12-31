@@ -18,6 +18,13 @@ fi
 [[ "$(install_skype_test)" = "Installed" ]]; exit_state
 }
 
+install_skype_remove() {
+show_func "Removing Skype"
+erase_pkg skype
+remove_repo "skype.repo"
+[[ ! "$(install_skype_test)" = "Installed" ]]; exit_state
+}
+
 install_skype_test() {
 if [[ -f /usr/bin/skype ]]; then
     printf "Installed"

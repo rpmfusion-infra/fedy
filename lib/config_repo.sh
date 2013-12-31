@@ -46,6 +46,16 @@ while [[ $# -gt 0 ]]; do
 done
 }
 
+remove_repo() {
+while [[ $# -gt 0 ]]; do
+    if [[ $1 =~ .repo$ ]]; then
+        repofile="$1"
+        rm -f "/etc/yum.repos.d/$repofile"
+    fi
+    shift
+done
+}
+
 rpmfusion-free.repo() {
 install_pkg http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-${fver}.noarch.rpm
 }

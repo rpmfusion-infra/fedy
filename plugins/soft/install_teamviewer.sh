@@ -15,6 +15,12 @@ fi
 [[ "$(install_teamviewer_test)" = "Installed" ]]; exit_state
 }
 
+install_teamviewer_remove() {
+show_func "Removing TeamViewer"
+erase_pkg teamviewer
+[[ ! "$(install_teamviewer_test)" = "Installed" ]]; exit_state
+}
+
 install_teamviewer_test() {
 if [[ -f /usr/bin/teamviewer ]]; then
     printf "Installed"

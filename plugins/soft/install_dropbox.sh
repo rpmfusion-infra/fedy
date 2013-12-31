@@ -18,6 +18,13 @@ fi
 [[ "$(install_dropbox_test)" = "Installed" ]]; exit_state
 }
 
+install_dropbox_remove() {
+show_func "Removing Dropbox"
+erase_pkg nautilus-dropbox
+remove_repo "dropbox.repo"
+[[ ! "$(install_dropbox_test)" = "Installed" ]]; exit_state
+}
+
 install_dropbox_test() {
 if [[ -f /usr/bin/dropbox ]]; then
     printf "Installed"

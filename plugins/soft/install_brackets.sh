@@ -15,7 +15,7 @@ else
     get_file
     show_msg "Installing files"
     mkdir -p "${file%.*}"
-    ar p "$file" "data.tar.gz" | tar -C  "${file%.*}" -xzf -
+    ar p "$file" "data.tar.gz" | tar -C "${file%.*}" -xzf -
     cp -af ${file%.*}/* "/"
     for icon in /opt/brackets/appshell*.png; do
         size="${icon##*/appshell}"
@@ -24,16 +24,28 @@ else
     xdg-desktop-menu install --novendor /opt/brackets/brackets.desktop
     nss_files="libnspr4.so.0d libplds4.so.0d libplc4.so.0d libssl3.so.1d libnss3.so.1d libsmime3.so.1d libnssutil3.so.1d"
     for f in $nss_files; do
-    target=$(echo $f | sed 's/\.[01]d$//')
-    if [[ -f "/usr/lib${arch}/${target}" ]]; then
-        ln -snf "/usr/lib${arch}/${target}" "/opt/brackets/${f}"
-    else
-        show_err "$f not found in /usr/lib${arch}/${target}"
-    fi
+        target=$(echo $f | sed 's/\.[01]d$//')
+        if [[ -f "/usr/lib${arch}/${target}" ]]; then
+            ln -snf "/usr/lib${arch}/${target}" "/opt/brackets/${f}"
+        else
+            show_err "$f not found in /usr/lib${arch}/${target}"
+        fi
     done
     [[ -f /usr/lib${arch}/libudev.so.1 ]] && ln -snf /usr/lib${arch}/libudev.so.1 /usr/lib${arch}/libudev.so.0
 fi
 [[ "$(install_brackets_test)" = "Installed" ]]; exit_state
+}
+
+install_brackets_remove() {
+show_func "Removing Brackets"
+for icon in /opt/brackets/appshell*.png; do
+    size="${icon##*/appshell}"
+    xdg-icon-resource uninstall --novendor --size "${size%.png}" "$icon" "brackets"
+done
+xdg-desktop-menu uninstall --novendor /opt/brackets/brackets.desktop
+rm -rf /opt/brackets/
+rm -f /usr/lib${arch}/libudev.so.0
+[[ ! "$(install_brackets_test)" = "Installed" ]]; exit_state
 }
 
 install_brackets_test() {
