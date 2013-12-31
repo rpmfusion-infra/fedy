@@ -30,8 +30,8 @@ fi
 [[ "$(install_jre_test)" = "Installed" ]]; exit_state
 }
 
-install_jre_remove() {
-show_func "Removing Oracle JRE"
+install_jre_undo() {
+show_func "Uninstalling Oracle JRE"
 erase_pkg jdk
 alternatives --remove java /usr/java/latest/bin/java
 alternatives --auto java

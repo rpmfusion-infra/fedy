@@ -36,12 +36,14 @@ fi
 [[ "$(install_brackets_test)" = "Installed" ]]; exit_state
 }
 
-install_brackets_remove() {
-show_func "Removing Brackets"
-for icon in /opt/brackets/appshell*.png; do
-    size="${icon##*/appshell}"
-    xdg-icon-resource uninstall --novendor --size "${size%.png}" "$icon" "brackets"
-done
+install_brackets_undo() {
+show_func "Uninstalling Brackets"
+if [[ -d /opt/brackets ]]; then
+    for icon in /opt/brackets/appshell*.png; do
+        size="${icon##*/appshell}"
+        xdg-icon-resource uninstall --novendor --size "${size%.png}" "$icon" "brackets"
+    done
+fi
 xdg-desktop-menu uninstall --novendor /opt/brackets/brackets.desktop
 rm -rf /opt/brackets/
 rm -f /usr/lib${arch}/libudev.so.0

@@ -24,8 +24,8 @@ fi
 [[ "$(install_arista_test)" = "Installed" ]]; exit_state
 }
 
-install_arista_remove() {
-show_func "Removing Arista Transcoder"
+install_arista_undo() {
+show_func "Uninstalling Arista Transcoder"
 rm -f /usr/bin/arista-gtk
 rm -f /usr/bin/arista-transcode
 rm -f /usr/share/nautilus-python/extensions/arista-nautilus.py

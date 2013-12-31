@@ -13,8 +13,8 @@ fi
 [[ "$(install_numix_test)" = "Installed" ]]; exit_state
 }
 
-install_numix_remove() {
-show_func "Removing Numix GTK and icon themes"
+install_numix_undo() {
+show_func "Uninstalling Numix GTK and icon themes"
 erase_pkg numix-gtk-theme numix-icon-theme numix-icon-theme-circle
 remove_repo "numix.repo"
 [[ ! "$(install_numix_test)" = "Installed" ]]; exit_state

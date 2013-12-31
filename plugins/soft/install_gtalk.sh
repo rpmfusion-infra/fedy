@@ -15,8 +15,8 @@ fi
 [[ "$(install_gtalk_test)" = "Installed" ]]; exit_state
 }
 
-install_gtalk_remove() {
-show_func "Removing GTalk plugin"
+install_gtalk_undo() {
+show_func "Uninstalling GTalk plugin"
 erase_pkg google-talkplugin
 [[ ! "$(install_gtalk_test)" = "Installed" ]]; exit_state
 }

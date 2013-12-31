@@ -18,8 +18,8 @@ fi
 [[ "$(install_skype_test)" = "Installed" ]]; exit_state
 }
 
-install_skype_remove() {
-show_func "Removing Skype"
+install_skype_undo() {
+show_func "Uninstalling Skype"
 erase_pkg skype
 remove_repo "skype.repo"
 [[ ! "$(install_skype_test)" = "Installed" ]]; exit_state

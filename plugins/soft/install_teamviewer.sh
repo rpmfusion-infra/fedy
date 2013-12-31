@@ -15,8 +15,8 @@ fi
 [[ "$(install_teamviewer_test)" = "Installed" ]]; exit_state
 }
 
-install_teamviewer_remove() {
-show_func "Removing TeamViewer"
+install_teamviewer_undo() {
+show_func "Uninstalling TeamViewer"
 erase_pkg teamviewer
 [[ ! "$(install_teamviewer_test)" = "Installed" ]]; exit_state
 }

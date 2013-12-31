@@ -18,8 +18,8 @@ fi
 [[ "$(install_dropbox_test)" = "Installed" ]]; exit_state
 }
 
-install_dropbox_remove() {
-show_func "Removing Dropbox"
+install_dropbox_undo() {
+show_func "Uninstalling Dropbox"
 erase_pkg nautilus-dropbox
 remove_repo "dropbox.repo"
 [[ ! "$(install_dropbox_test)" = "Installed" ]]; exit_state

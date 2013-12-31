@@ -13,8 +13,8 @@ fi
 [[ "$(install_gtkthemeconfig_test)" = "Installed" ]]; exit_state
 }
 
-install_gtkthemeconfig_remove() {
-show_func "Removing Theme Configuration app"
+install_gtkthemeconfig_undo() {
+show_func "Uninstalling Theme Configuration app"
 erase_pkg gtk-theme-config
 remove_repo "gtk-theme-config.repo"
 [[ ! "$(install_gtkthemeconfig_test)" = "Installed" ]]; exit_state

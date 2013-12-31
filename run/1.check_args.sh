@@ -11,7 +11,7 @@ while [[ $# -gt 0 ]]; do
                 prefwget="no";;
         -w|--use-wget)
                 downagent="wget";;
-        -t|--redo-task)
+        -r|--redo-task)
                 reinstall="yes";;
         -g|--redownload)
                 forcedown="yes";;
@@ -26,8 +26,8 @@ while [[ $# -gt 0 ]]; do
                     echo -e "No logfile exists. Try running again with logging enabled. Use '--help' for more details"
                 fi
                 exit;;
-        -r|--remove)
-                if [[ `grep -w "${2}_remove" "$plugindir"/*/*.sh` ]]; then
+        -u|--undo)
+                if [[ `grep -w "${2}_undo()" "$plugindir"/*/*.sh` ]]; then
                     interactive="no"
                     while read run; do
                         source "$run"
@@ -37,17 +37,17 @@ while [[ $# -gt 0 ]]; do
                     check_lock
                     check_req
                     initialize_program
-                    while [[ $# -gt 1 && `grep -w "${2}_remove"  "$plugindir"/*/*.sh` ]]; do
+                    while [[ $# -gt 1 && `grep -w "${2}_undo()"  "$plugindir"/*/*.sh` ]]; do
                         for plug in "$plugindir"/*/*.sh; do source "$plug"; done
-                        eval "${2}_remove"
+                        eval "${2}_undo"
                         shift
                     done
                     complete_program
                 elif [[ $2 = "list" ]]; then
-                    echo -e "Usage:\tfedorautils --remove [commands...]"
+                    echo -e "Usage:\tfedorautils --undo [commands...]"
                     echo -e "\v"
                     for plug in "$plugindir"/*/*.sh; do
-                        if [[ `grep "_remove()"  "$plug"` ]]; then
+                        if [[ `grep "_undo()"  "$plug"` ]]; then
                             command=$(grep "# Command: " "$plug" | sed 's/# Command: //g')
                             name=$(grep "# Name: " "$plug" | sed 's/# Name: //g')
                             printf "\t%-30s%-s\n" "$command" "$name"
@@ -55,7 +55,7 @@ while [[ $# -gt 0 ]]; do
                     done
                     exit
                 else
-                    echo -e "Invalid command '$2'. Try '--remove list' for a list of available commands."
+                    echo -e "Invalid command '$2'. Try '--undo list' for a list of available commands."
                     exit
                 fi;;
         -e|--exec)

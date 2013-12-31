@@ -37,12 +37,14 @@ fi
 [[ "$(install_sublime_test)" = "Installed" ]]; exit_state
 }
 
-install_sublime_remove() {
-show_func "Removing Sublime Text 3"
-for dir in /opt/sublime_text_3/Icon/*; do
-    size="${dir##*/}"
-    xdg-icon-resource uninstall --novendor --size "${size/x*}" "$dir/sublime-text.png" "sublime-text"
-done
+install_sublime_undo() {
+show_func "Uninstalling Sublime Text 3"
+if [[ -d /opt/sublime_text_3/Icon ]]; then
+    for dir in /opt/sublime_text_3/Icon/*; do
+        size="${dir##*/}"
+        xdg-icon-resource uninstall --novendor --size "${size/x*}" "$dir/sublime-text.png" "sublime-text"
+    done
+fi
 rm -f "/usr/bin/subl"
 rm -f "/usr/share/applications/sublime-text-3.desktop"
 rm -rf "/opt/sublime_text_3"

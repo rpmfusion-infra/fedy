@@ -13,8 +13,8 @@ fi
 [[ "$(install_elegance_test)" = "Installed" ]]; exit_state
 }
 
-install_elegance_remove() {
-show_func "Removing Elegance Colors Gnome Shell theme"
+install_elegance_undo() {
+show_func "Uninstalling Elegance Colors Gnome Shell theme"
 erase_pkg gnome-shell-theme-elegance-colors
 remove_repo "elegance-colors.repo"
 [[ ! "$(install_elegance_test)" = "Installed" ]]; exit_state

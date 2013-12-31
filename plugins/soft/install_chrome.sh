@@ -15,8 +15,8 @@ fi
 [[ "$(install_chrome_test)" = "Installed" ]]; exit_state
 }
 
-install_chrome_remove() {
-show_func "Removing Google Chrome"
+install_chrome_undo() {
+show_func "Uninstalling Google Chrome"
 erase_pkg google-chrome-stable
 [[ ! "$(install_chrome_test)" = "Installed" ]]; exit_state
 }

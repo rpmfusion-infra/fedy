@@ -109,8 +109,8 @@ fi
 [[ "$(install_jdk_test)" = "Installed" ]]; exit_state
 }
 
-install_jdk_remove() {
-show_func "Removing Oracle JDK"
+install_jdk_undo() {
+show_func "Uninstalling Oracle JDK"
 erase_pkg jdk
 alternatives --remove java /usr/java/latest/bin/java
 alternatives --auto java
