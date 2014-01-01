@@ -6,7 +6,7 @@ ssdfound="false"
 udev_rule_file="/etc/udev/rules.d/60-io_schedulers.rules"
 
 disk_io_scheduler() {
-show_func "Setting up SSD I/O scheduler"
+show_func "Installing udev rules SSD I/O scheduler"
 if [[ "$(disk_io_scheduler_test)" = "Configured" && ! "$reinstall" = "yes" ]]; then
     show_status "SSD I/O scheduler already configured"
 else
@@ -29,11 +29,17 @@ fi
 install_udev_rule_file() {
 # Based on: https://wiki.archlinux.org/index.php/Solid_State_Drives
 cat <<EOF | tee "$1" > /dev/null 2>&1
-# Set deadline scheduler for non-rotating disks
+# Set noop scheduler for non-rotating disks
 ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="$scheduler"
 # Set cfq scheduler for rotating disks
 ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="cfq"
 EOF
+}
+
+disk_io_scheduler_undo() {
+show_func "Removing udev rules for SSD I/O scheduler"
+rm -f "$udev_rule_file"
+[[ ! "$(disk_io_scheduler_test)" = "Configured" ]]; exit_state
 }
 
 disk_io_scheduler_test() {

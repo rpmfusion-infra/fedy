@@ -17,8 +17,15 @@ else
     done
     mv "$workingdir/msttcorefonts" "/usr/share/fonts/"
     show_msg "Rebuilding font cache"
-    fc-cache -f -v
+    fc-cache -f
 fi
+[[ "$(core_fonts_test)" = "Installed" ]]; exit_state
+}
+
+core_fonts_undo() {
+show_func "Uninstalling Microsoft Truetype fonts"
+rm -rf "/usr/share/fonts/msttcorefonts"
+fc-cache -f
 [[ "$(core_fonts_test)" = "Installed" ]]; exit_state
 }
 
