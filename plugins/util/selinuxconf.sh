@@ -16,6 +16,13 @@ fi
 [[ "$(selinuxconf_test)" = "Permissive" || "$(selinuxconf_test)" = "Disabled" ]]; exit_state
 }
 
+selinuxconf_undo() {
+show_func "Setting SELinux to enforcing mode"
+make_backup "/etc/selinux/config"
+sed -i 's/SELINUX=.*$/SELINUX=enforcing/g' /etc/selinux/config
+[[ ! "$(selinuxconf_test)" = "Permissive" || "$(selinuxconf_test)" = "Disabled" ]]; exit_state
+}
+
 selinuxconf_test() {
 if [[ `grep "SELINUX=permissive" /etc/selinux/config` ]]; then
     printf "Permissive"

@@ -19,6 +19,12 @@ sudo -u "$user" dbus-launch gsettings set org.gnome.settings-daemon.peripherals.
 [[ "$(enable_touchpad_test)" = "Enabled" ]]; exit_state
 }
 
+enable_touchpad_undo() {
+show_func "Removing systemwide touchpad tap"
+rm -f /etc/X11/xorg.conf.d/00-enable-taps.conf > /dev/null 2>&1
+[[ ! "$(enable_touchpad_test)" = "Enabled" ]]; exit_state
+}
+
 enable_touchpad_test() {
 if [[ -f /etc/X11/xorg.conf.d/00-enable-taps.conf ]]; then
     printf "Enabled"

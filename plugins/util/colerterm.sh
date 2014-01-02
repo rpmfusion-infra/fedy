@@ -1,13 +1,12 @@
-# Name: Add colors to Terminal
+# Name: Add color prompts to Terminal
 # Command: colorterm
 
 colorterm() {
-show_func "Enabling colors in Terminal"
+show_func "Adding color prompts to Terminal"
 if [[ "$(colorterm_test)" = "Added" ]]; then
-    show_status "Colors already added"
+    show_status "Color prompts already added"
 else
-make_backup "/etc/bashrc"
-cat <<EOF | tee -a /etc/bashrc > /dev/null 2>&1
+cat <<EOF | tee /etc/profile.d/colorterm.sh > /dev/null 2>&1
 # Colors in Terminal
 if [ \$USER = root ]; then
     PS1='\[\033[1;31m\][\u@\h \W]\\$\[\033[0m\] '
@@ -19,8 +18,14 @@ fi
 [[ "$(colorterm_test)" = "Added" ]]; exit_state
 }
 
+colorterm_undo() {
+show_func "Removing color prompts from Terminal"
+rm -f /etc/profile.d/colorterm.sh > /dev/null 2>&1
+[[ ! "$(colorterm_test)" = "Added" ]]; exit_state
+}
+
 colorterm_test() {
-if [[ `grep "# Colors in Terminal" /etc/bashrc` ]]; then
+if [[ -f /etc/profile.d/colorterm.sh ]]; then
     printf "Added"
 else
     printf "Not added"

@@ -15,6 +15,13 @@ fi
 [[ "$(enable_dvd_test)" = "Enabled" ]]; exit_state
 }
 
+enable_dvd_undo() {
+show_func "Uninstalling DVD codecs"
+erase_pkg libdvdcss libdvdread libdvdnav lsdvd
+remove_repo "livna.repo"
+[[ ! "$(enable_dvd_test)" = "Enabled" ]]; exit_state
+}
+
 enable_dvd_test() {
 ls /usr/lib*/libdvdread.so.4 > /dev/null 2>&1 && ls /usr/lib*/libdvdnav.so.4 > /dev/null 2>&1 && ls /usr/bin/lsdvd > /dev/null 2>&1 && ls /usr/lib*/libdvdcss.so.2 > /dev/null 2>&1
 if [[ $? -eq 0 ]]; then

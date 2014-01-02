@@ -7,6 +7,12 @@ add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
 [[ "$(rpmfusion_repos_test)" = "Configured" ]]; exit_state
 }
 
+rpmfusion_repos_undo() {
+show_func "Removing RPM Fusion repositories"
+remove_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
+[[ ! "$(rpmfusion_repos_test)" = "Configured" ]]; exit_state
+}
+
 rpmfusion_repos_test() {
 check_repo "rpmfusion-free.repo" && check_repo "rpmfusion-nonfree.repo"
 if [[ $? -eq 0 ]]; then

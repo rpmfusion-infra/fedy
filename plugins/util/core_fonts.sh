@@ -26,7 +26,7 @@ core_fonts_undo() {
 show_func "Uninstalling Microsoft Truetype fonts"
 rm -rf "/usr/share/fonts/msttcorefonts"
 fc-cache -f
-[[ "$(core_fonts_test)" = "Installed" ]]; exit_state
+[[ ! "$(core_fonts_test)" = "Installed" ]]; exit_state
 }
 
 core_fonts_test() {
