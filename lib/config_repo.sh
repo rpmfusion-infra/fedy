@@ -70,10 +70,6 @@ install_pkg http://rpm.livna.org/livna-release.rpm http://ftp-stud.fht-esslingen
 yum-config-manager --disable livna > /dev/null 2>&1
 }
 
-bumblebee.repo() {
-install_pkg http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee-nonfree/fedora${fver}/noarch/bumblebee-nonfree-release-1.0-1.noarch.rpm
-}
-
 adobe-linux-i386.repo() {
 install_pkg http://linuxdownload.adobe.com/adobe-release/adobe-release-i386-1.0-1.noarch.rpm
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
@@ -82,6 +78,10 @@ rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
 adobe-linux-x86_64.repo() {
 install_pkg http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
+}
+
+infinality.repo() {
+install_pkg http://www.infinality.net/fedora/linux/infinality-repo-1.0-1.noarch.rpm
 }
 
 google.repo() {
