@@ -17,7 +17,7 @@ fi
 
 enable_dvd_undo() {
 show_func "Uninstalling DVD codecs"
-erase_pkg libdvdcss libdvdread libdvdnav lsdvd
+erase_pkg libdvdcss libdvdread libdvdnav livna-release lsdvd
 remove_repo "livna.repo"
 [[ ! "$(enable_dvd_test)" = "Enabled" ]]; exit_state
 }

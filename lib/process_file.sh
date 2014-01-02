@@ -17,7 +17,7 @@ yum -y update --nogpgcheck --skip-broken "$@"
 }
 
 erase_pkg() {
-yum -y erase --skip-broken "$@"
+yum -y erase --skip-broken --setopt clean_requirements_on_remove=1 "$@"
 }
 
 process_pkg() {

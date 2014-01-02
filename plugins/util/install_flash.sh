@@ -18,7 +18,7 @@ fi
 
 install_flash_undo() {
 show_func "Uninstalling Adobe flash plugin"
-erase_pkg flash-plugin
+erase_pkg adobe-release flash-plugin
 if [[ "$arch" = "32" ]]; then
     remove_repo "adobe-linux-i386.repo"
 elif [[ "$arch" = "64" ]]; then

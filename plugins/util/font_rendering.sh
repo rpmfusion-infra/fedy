@@ -14,7 +14,7 @@ fi
 
 font_rendering_undo() {
 show_func "Restoring original font rendering"
-erase_pkg freetype-infinality fontconfig-infinality
+erase_pkg infinality-repo freetype-infinality fontconfig-infinality
 remove_repo "infinality.repo"
 [[ ! "$(font_rendering_test)" = "Improved" ]]; exit_state
 }

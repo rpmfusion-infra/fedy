@@ -9,6 +9,7 @@ add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
 
 rpmfusion_repos_undo() {
 show_func "Removing RPM Fusion repositories"
+erase_pkg rpmfusion-free-release rpmfusion-nonfree-release
 remove_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
 [[ ! "$(rpmfusion_repos_test)" = "Configured" ]]; exit_state
 }
