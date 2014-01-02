@@ -1,9 +1,9 @@
 # Name: Install Brackets
-# Command: install_brackets
+# Command: adobe_brackets
 
-install_brackets() {
+adobe_brackets() {
 show_func "Installing Brackets"
-if [[ "$(install_brackets_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(adobe_brackets_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
     show_status "Brackets already installed"
 else
     show_msg "Installing dependencies"
@@ -33,10 +33,10 @@ else
     done
     [[ -f /usr/lib${arch}/libudev.so.1 ]] && ln -snf /usr/lib${arch}/libudev.so.1 /usr/lib${arch}/libudev.so.0
 fi
-[[ "$(install_brackets_test)" = "Installed" ]]; exit_state
+[[ "$(adobe_brackets_test)" = "Installed" ]]; exit_state
 }
 
-install_brackets_undo() {
+adobe_brackets_undo() {
 show_func "Uninstalling Brackets"
 if [[ -d /opt/brackets ]]; then
     for icon in /opt/brackets/appshell*.png; do
@@ -47,10 +47,10 @@ fi
 xdg-desktop-menu uninstall --novendor /opt/brackets/brackets.desktop
 rm -rf /opt/brackets/
 rm -f /usr/lib${arch}/libudev.so.0
-[[ ! "$(install_brackets_test)" = "Installed" ]]; exit_state
+[[ ! "$(adobe_brackets_test)" = "Installed" ]]; exit_state
 }
 
-install_brackets_test() {
+adobe_brackets_test() {
 if [[ -f /opt/brackets/brackets ]]; then
     printf "Installed"
 else

@@ -1,9 +1,9 @@
 # Name: Install Sublime Text 3
-# Command: install_sublime
+# Command: sublime_text
 
-install_sublime() {
+sublime_text() {
 show_func "Installing Sublime Text 3"
-if [[ "$(install_sublime_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(sublime_text_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
     show_status "Sublime Text 3 already installed"
 else
     show_msg "Fetching webpage"
@@ -34,10 +34,10 @@ Categories=Development;Utility;TextEditor;
 Keywords=Text;Editor;
 EOF
 fi
-[[ "$(install_sublime_test)" = "Installed" ]]; exit_state
+[[ "$(sublime_text_test)" = "Installed" ]]; exit_state
 }
 
-install_sublime_undo() {
+sublime_text_undo() {
 show_func "Uninstalling Sublime Text 3"
 if [[ -d /opt/sublime_text_3/Icon ]]; then
     for dir in /opt/sublime_text_3/Icon/*; do
@@ -48,10 +48,10 @@ fi
 rm -f "/usr/bin/subl"
 rm -f "/usr/share/applications/sublime-text-3.desktop"
 rm -rf "/opt/sublime_text_3"
-[[ ! "$(install_sublime_test)" = "Installed" ]]; exit_state
+[[ ! "$(sublime_text_test)" = "Installed" ]]; exit_state
 }
 
-install_sublime_test() {
+sublime_text_test() {
 if [[ -f /opt/sublime_text_3/sublime_text ]]; then
     printf "Installed"
 else

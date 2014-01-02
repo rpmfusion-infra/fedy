@@ -1,9 +1,9 @@
 # Name: Install Dropbox
-# Command: install_dropbox
+# Command: nautilus_dropbox
 
-install_dropbox() {
+nautilus_dropbox() {
 show_func "Installing Dropbox"
-if [[ "$(install_dropbox_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(nautilus_dropbox_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
     show_status "Dropbox already installed"
 else
     show_msg "Fetching webpage"
@@ -15,17 +15,17 @@ else
     process_pkg
     add_repo "dropbox.repo"
 fi
-[[ "$(install_dropbox_test)" = "Installed" ]]; exit_state
+[[ "$(nautilus_dropbox_test)" = "Installed" ]]; exit_state
 }
 
-install_dropbox_undo() {
+nautilus_dropbox_undo() {
 show_func "Uninstalling Dropbox"
 erase_pkg nautilus-dropbox
 remove_repo "dropbox.repo"
-[[ ! "$(install_dropbox_test)" = "Installed" ]]; exit_state
+[[ ! "$(nautilus_dropbox_test)" = "Installed" ]]; exit_state
 }
 
-install_dropbox_test() {
+nautilus_dropbox_test() {
 if [[ -f /usr/bin/dropbox ]]; then
     printf "Installed"
 else

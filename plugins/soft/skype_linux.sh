@@ -1,9 +1,9 @@
 # Name: Install Skype
-# Command: install_skype
+# Command: skype_linux
 
-install_skype() {
+skype_linux() {
 show_func "Installing Skype"
-if [[ "$(install_skype_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(skype_linux_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
     show_status "Skype already installed"
 else
     add_repo "skype.repo"
@@ -15,17 +15,17 @@ else
     file64="$file32"
     process_pkg
 fi
-[[ "$(install_skype_test)" = "Installed" ]]; exit_state
+[[ "$(skype_linux_test)" = "Installed" ]]; exit_state
 }
 
-install_skype_undo() {
+skype_linux_undo() {
 show_func "Uninstalling Skype"
 erase_pkg skype
 remove_repo "skype.repo"
-[[ ! "$(install_skype_test)" = "Installed" ]]; exit_state
+[[ ! "$(skype_linux_test)" = "Installed" ]]; exit_state
 }
 
-install_skype_test() {
+skype_linux_test() {
 if [[ -f /usr/bin/skype ]]; then
     printf "Installed"
 else

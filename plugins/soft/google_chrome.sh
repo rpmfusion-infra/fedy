@@ -1,9 +1,9 @@
 # Name: Install Google Chrome
-# Command: install_chrome
+# Command: google_chrome
 
-install_chrome() {
+google_chrome() {
 show_func "Installing Google Chrome"
-if [[ "$(install_chrome_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(google_chrome_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
     show_status "Google Chrome already installed"
 else
     get32="https://dl.google.com/linux/direct/google-chrome-stable_current_i386.rpm"
@@ -12,16 +12,16 @@ else
     file64=${get64##*/}
     process_pkg
 fi
-[[ "$(install_chrome_test)" = "Installed" ]]; exit_state
+[[ "$(google_chrome_test)" = "Installed" ]]; exit_state
 }
 
-install_chrome_undo() {
+google_chrome_undo() {
 show_func "Uninstalling Google Chrome"
 erase_pkg google-chrome-stable
-[[ ! "$(install_chrome_test)" = "Installed" ]]; exit_state
+[[ ! "$(google_chrome_test)" = "Installed" ]]; exit_state
 }
 
-install_chrome_test() {
+google_chrome_test() {
 if [[ -f /opt/google/chrome/google-chrome ]]; then
     printf "Installed"
 else

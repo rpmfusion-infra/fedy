@@ -1,10 +1,10 @@
 # Name: Fedora People repositories
-# Command: list_fedorapeople
+# Command: fedorapeople_repos
 
-list_fedorapeople() {
+fedorapeople_repos() {
 while :
 do
-    list_fedorapeople_build
+    fedorapeople_repos_list
     repos=$(show_dialog --list --checklist --width=900 --height=600 --title="Fedora People repositories" --text="The following repositories are listed from repos.fedorapeople.org and are unofficial. Add them at your own risk." --no-headers --hide-column="2" --print-column="2" --column "Select:CHK" --column "URL" --column "Name" --column "Description" --column "Status" --button="Back:1" --button="Add selected:0" "${repolist[@]}")
     if [[ $? -eq 0 ]]; then
         selrepo=$(echo $repos | tr "|" "\n")
@@ -17,7 +17,7 @@ do
 done
 }
 
-list_fedorapeople_build() {
+fedorapeople_repos_list() {
 unset repolist
 show_msg "Fetching repo list"
 get_file_quiet "http://repos.fedorapeople.org/index.html" "fedorapeople.htm"

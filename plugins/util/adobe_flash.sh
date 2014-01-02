@@ -1,9 +1,9 @@
 # Name: Install Adobe flash plugin
-# Command: install_flash
+# Command: adobe_flash
 
-install_flash() {
+adobe_flash() {
 show_func "Installing Adobe flash plugin"
-if [[ "$(install_flash_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(adobe_flash_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
     show_status "Adobe flash plugin already installed"
 else
     if [[ "$arch" = "32" ]]; then
@@ -13,10 +13,10 @@ else
     fi
     install_pkg flash-plugin
 fi
-[[ "$(install_flash_test)" = "Installed" ]]; exit_state
+[[ "$(adobe_flash_test)" = "Installed" ]]; exit_state
 }
 
-install_flash_undo() {
+adobe_flash_undo() {
 show_func "Uninstalling Adobe flash plugin"
 erase_pkg adobe-release flash-plugin
 if [[ "$arch" = "32" ]]; then
@@ -24,10 +24,10 @@ if [[ "$arch" = "32" ]]; then
 elif [[ "$arch" = "64" ]]; then
     remove_repo "adobe-linux-x86_64.repo"
 fi
-[[ ! "$(install_flash_test)" = "Installed" ]]; exit_state
+[[ ! "$(adobe_flash_test)" = "Installed" ]]; exit_state
 }
 
-install_flash_test() {
+adobe_flash_test() {
 ls /usr/lib*/mozilla/plugins/libflashplayer.so > /dev/null 2>&1
 if [[ $? -eq 0 ]]; then
     printf "Installed"

@@ -1,9 +1,9 @@
 # Name: Install TeamViewer
-# Command: install_teamviewer
+# Command: teamviewer_linux
 
-install_teamviewer() {
+teamviewer_linux() {
 show_func "Installing TeamViewer"
-if [[ "$(install_teamviewer_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(teamviewer_linux_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
     show_status "TeamViewer already installed"
 else
     get32="http://www.teamviewer.com/download/teamviewer_linux.rpm"
@@ -12,16 +12,16 @@ else
     file64="$file32"
     process_pkg
 fi
-[[ "$(install_teamviewer_test)" = "Installed" ]]; exit_state
+[[ "$(teamviewer_linux_test)" = "Installed" ]]; exit_state
 }
 
-install_teamviewer_undo() {
+teamviewer_linux_undo() {
 show_func "Uninstalling TeamViewer"
 erase_pkg teamviewer
-[[ ! "$(install_teamviewer_test)" = "Installed" ]]; exit_state
+[[ ! "$(teamviewer_linux_test)" = "Installed" ]]; exit_state
 }
 
-install_teamviewer_test() {
+teamviewer_linux_test() {
 if [[ -f /usr/bin/teamviewer ]]; then
     printf "Installed"
 else

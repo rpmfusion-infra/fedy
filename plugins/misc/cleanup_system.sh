@@ -1,7 +1,7 @@
 # Name: Clean up system
-# Command: cleanup
+# Command: cleanup_system
 
-cleanup() {
+cleanup_system() {
 while clean=$(show_dialog --list --checklist --width=350 --height=400 --title="Clean up system" --text="Clean up your system to free up space.\nThese options affect all users. Use at your own risk." --no-headers --hide-column="2" --print-column="2" --column "Select:CHK" --column "Command" --column "Option" FALSE "kernel" "Remove old kernels" FALSE "duplicate" "Remove duplicate packages" FALSE "junk" "Delete junk files" FALSE "backup" "Delete backup files" FALSE "bash" "Erase bash history" FALSE "trash" "Empty trash" FALSE "logfile" "Delete Fedora Utils logs" --button="Back:1" --button="Clean:0"); do
     arr=$(echo $clean | tr "|" "\n")
     for x in $arr; do

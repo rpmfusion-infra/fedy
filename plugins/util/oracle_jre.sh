@@ -1,9 +1,9 @@
 # Name: Install Oracle Java
-# Command: install_jre
+# Command: oracle_jre
 
-install_jre() {
+oracle_jre() {
 show_func "Installing Oracle JRE"
-if [[ "$(install_jre_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(oracle_jre_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
     show_status "Oracle JRE already installed"
 else
     show_msg "Fetching webpage"
@@ -27,10 +27,10 @@ else
         alternatives --auto libjavaplugin.so.x86_64
     fi
 fi
-[[ "$(install_jre_test)" = "Installed" ]]; exit_state
+[[ "$(oracle_jre_test)" = "Installed" ]]; exit_state
 }
 
-install_jre_undo() {
+oracle_jre_undo() {
 show_func "Uninstalling Oracle JRE"
 erase_pkg jdk
 alternatives --remove java /usr/java/latest/bin/java
@@ -42,10 +42,10 @@ elif [[ "$arch" = "64" ]]; then
     alternatives --remove libjavaplugin.so.x86_64 /usr/java/latest/jre/lib/amd64/libnpjp2.so
     alternatives --auto libjavaplugin.so.x86_64
 fi
-[[ ! "$(install_jre_test)" = "Installed" ]]; exit_state
+[[ ! "$(oracle_jre_test)" = "Installed" ]]; exit_state
 }
 
-install_jre_test() {
+oracle_jre_test() {
 ls /usr/java/jre* > /dev/null 2>&1
 if [[ $? -eq 0 ]]; then
     printf "Installed"

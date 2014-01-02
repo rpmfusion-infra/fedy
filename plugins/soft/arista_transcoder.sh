@@ -1,9 +1,9 @@
 # Name: Install Arista Transcoder
-# Command: install_arista
+# Command: arista_transcoder
 
-install_arista() {
+arista_transcoder() {
 show_func "Installing Arista Transcoder"
-if [[ "$(install_arista_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(arista_transcoder_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
     show_status "Arista Transcoder already installed"
 else
     add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"
@@ -21,10 +21,10 @@ else
     python setup.py install
     cd ..
 fi
-[[ "$(install_arista_test)" = "Installed" ]]; exit_state
+[[ "$(arista_transcoder_test)" = "Installed" ]]; exit_state
 }
 
-install_arista_undo() {
+arista_transcoder_undo() {
 show_func "Uninstalling Arista Transcoder"
 rm -f /usr/bin/arista-gtk
 rm -f /usr/bin/arista-transcode
@@ -36,10 +36,10 @@ rm -f /usr/share/locale/*/LC_MESSAGES/arista.mo
 rm -rf /usr/lib/python2.7/site-packages/arista
 rm -rf /usr/share/doc/arista
 rm -rf /usr/share/arista
-[[ ! "$(install_arista_test)" = "Installed" ]]; exit_state
+[[ ! "$(arista_transcoder_test)" = "Installed" ]]; exit_state
 }
 
-install_arista_test() {
+arista_transcoder_test() {
 if [[ -f /usr/bin/arista-gtk ]]; then
     printf "Installed"
 else
