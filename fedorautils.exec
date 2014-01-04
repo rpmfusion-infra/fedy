@@ -1,6 +1,6 @@
 #!/bin/bash
 case "$1" in
-    -e|--exec|-h|--help)
+    -e|--exec|-u|--undo|-h|--help)
         "/usr/share/fedorautils/fedorautils" "$@";;
     *)
         pkexec "/usr/share/fedorautils/fedorautils" "$@";;
