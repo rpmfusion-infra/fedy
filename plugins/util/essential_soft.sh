@@ -1,26 +1,34 @@
 # Name: Install essential software
 # Command: essential_soft
 
+softlist=( "cabextract" "cups-pdf" "dconf-editor" "nano" "p7zip" "p7zip-plugins" "unrar" "wget" "xz-lzma-compat" )
+
 essential_soft() {
 show_func "Installing essential software"
 if [[ "$(essential_soft_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
     show_status "Essential software already installed"
 else
     add_repo "rpmfusion-nonfree.repo"
-    install_pkg cabextract cups-pdf dconf-editor nano p7zip p7zip-plugins unrar wget xz-lzma-compat
+    install_pkg ${softlist[@]}
 fi
 [[ "$(essential_soft_test)" = "Installed" ]]; exit_state
 }
 
 essential_soft_undo() {
 show_func "Uninstalling essential software"
-erase_pkg cabextract cups-pdf dconf-editor nano p7zip p7zip-plugins unrar wget xz-lzma-compat
+erase_pkg ${softlist[@]}
 [[ ! "$(essential_soft_test)" = "Installed" ]]; exit_state
 }
 
 essential_soft_test() {
-ls /usr/bin/cabextract > /dev/null 2>&1 && ls /usr/lib/cups/backend/cups-pdf > /dev/null 2>&1 && ls /usr/bin/dconf-editor > /dev/null 2>&1 && ls /usr/bin/nano > /dev/null 2>&1 && ls /usr/bin/7za > /dev/null 2>&1 && ls /usr/bin/7z > /dev/null 2>&1 && ls /usr/bin/unrar > /dev/null 2>&1 && ls /usr/bin/wget > /dev/null 2>&1 && ls /usr/bin/lzma > /dev/null 2>&1
-if [[ $? -eq 0 ]]; then
+for soft in ${softlist[@]}; do
+    ls /usr/share/doc/$soft* > /dev/null 2>&1
+    if [[ ! $? -eq 0 ]]; then
+        softinstalled="no"
+        break
+    fi
+done
+if [[ ! "$softinstalled" = "no" ]]; then
     printf "Installed"
 else
     printf "Not installed"
