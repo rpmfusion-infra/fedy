@@ -11,6 +11,10 @@ Audio: $(lspci | grep Audio | cut -c23-)
 Ethernet: $(lspci | grep Ethernet | cut -c30-)
 Wireless: $(lspci | grep Network | cut -c29-)
 EOF
-[[ "$interactive" = "no" ]] || show_dialog --text-info --width=400 --height=400 --title="System information" --filename="sysinfo.txt" --button="Back:0"
+if [[ "$interactive" = "no" ]]; then
+    cat sysinfo.txt
+else
+    show_dialog --text-info --width=400 --height=400 --title="System information" --filename="sysinfo.txt" --button="Back:0"
+fi
 rm -f sysinfo.txt
 }
