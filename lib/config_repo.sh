@@ -3,7 +3,7 @@ yum repolist all 2>&1 | cut -d\  -f1 | cut -d/ -f1 | grep -ix "${1%.repo}" > /de
 }
 
 test_repo() {
-get_file_quiet "$(grep baseurl=.* /etc/yum.repos.d/$1 | tr ' ' '\n' | head -n 1 | sed s/\$releasever/$fver/g | sed s/\$basearch/$(uname -i)/g | sed s/.*baseurl=//g)repodata/repomd.xml" /dev/null
+get_file_quiet "$(yum -q repoinfo ${1%.repo} 2>&1 | grep Repo-baseurl | grep -o -E 'http(s?)://.*' | sed -e 's/$/repodata\/repomd.xml/')" /dev/null
 }
 
 config_repo() {
@@ -37,7 +37,7 @@ while [[ $# -gt 0 ]]; do
         fi
         test_repo "$repofile"
         if [[ ! $? -eq 0 ]]; then
-            show_warn "Repo not available for Fedora ${fver} yet"
+            show_warn "$repofile is currently not available"
             reponame="${repofile%.repo}"
             yum-config-manager --save --setopt="${reponame}.skip_if_unavailable=1" --setopt="${reponame^}.skip_if_unavailable=1" > /dev/null 2>&1
         fi
