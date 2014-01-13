@@ -32,45 +32,18 @@ if [[ $? -eq 0 ]]; then
     show_status "Internet connection verified"
 else
     show_warn "No working internet connection found"
-    [[ -f /usr/bin/yad ]] && [[ "$interactive" = "no" ]] || show_dialog --timeout="5" --title="No working internet connection found" --text="$program requires internet connection to work properly.\nYou may encounter problems. If you are using a proxy, configure it in /etc/fedorautilsrc." --button="Continue:0"
+    [[ -f /usr/bin/yad && "$interactive" = "no" ]] || show_dialog --timeout="5" --title="No working internet connection found" --text="$program requires internet connection to work properly.\nYou may encounter problems. If you are using a proxy, configure it in /etc/fedorautilsrc." --button="Continue:0"
 fi
-# Check yad
-if [[ -f /usr/bin/yad ]]; then
-    show_status "yad verified"
-else
-    show_err "yad is required for $program to run properly, installing yad"
-    install_pkg yad
-    if [[ ! -f /usr/bin/yad ]]; then
-        show_err "Installation of yad failed!"
-        terminate_program
-    fi
-fi
-# Check curl
-if [[ -f /usr/bin/curl ]]; then
-    show_status "curl verified"
-else
-    show_err "curl is required for $program to run properly, installing curl"
-    install_pkg curl
-    if [[ ! -f /usr/bin/curl ]]; then
-        show_err "Installation of curl failed!"
-        terminate_program
-    fi
-fi
-# Check wget
-if [[ "$prefwget" = "yes" ]] && [[ -f /usr/bin/wget ]]; then
-    downagent="wget"
-fi
-if [[ "$downagent" = "wget" ]]; then
-    if [[ -f /usr/bin/wget ]]; then
-        show_status "wget verified"
-        show_msg "Using wget"
-    else
-        show_err "wget is not present in the system, installing wget"
-        install_pkg wget
-        if [[ ! -f /usr/bin/wget ]]; then
-            show_err "Installation of wget failed, using curl"
-            downagent="curl"
+# Check required packages
+reqpkgs=( "curl" "wget" "yad" )
+for pkg in ${reqpkgs[@]}; do
+    if [[ ! -f /usr/bin/$pkg ]]; then
+        show_err "$pkg is required for $program to run properly, installing yad"
+        install_pkg $pkg
+        if [[ ! -f /usr/bin/$pkg ]]; then
+            show_err "Installation of $pkg failed!"
+            terminate_program
         fi
     fi
-fi
+done
 }

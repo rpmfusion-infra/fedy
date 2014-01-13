@@ -7,8 +7,8 @@ while [[ $# -gt 0 ]]; do
                 enablelog="yes";;
         -p|--noprev-rel)
                 tryprevrel="no";;
-        -c|--pref-curl)
-                prefwget="no";;
+        -c|--use-curl)
+                downagent="curl";;
         -w|--use-wget)
                 downagent="wget";;
         -f|--force-distro)
@@ -86,8 +86,8 @@ while [[ $# -gt 0 ]]; do
                     exit
                 fi;;
         -h|--help)
-                args=( "-l, --enable-log" "-p, --noprev-rel" "-c, --pref-curl" "-w, --use-wget" "-f, --force-distro" "-n, --nobakup" "-g, --redownload" "-r, --redo" "-u, --undo <commands>" "-e, --exec <commands>" "-h, --help" )
-                desc=( "enable logging" "disable installing from previous release" "prefer curl over wget unless specified" "use wget for download instead of curl" "force run with unsupported distro" "do not keep backup(s)" "force redownload of file(s)" "force redo of the task(s)" "undo the specified task(s)" "execute the specified task(s)" "show this help message and exit" )
+                args=( "-l, --enable-log" "-p, --noprev-rel" "-c, --use-curl" "-w, --use-wget" "-f, --force-distro" "-n, --nobakup" "-g, --redownload" "-r, --redo" "-u, --undo <commands>" "-e, --exec <commands>" "-h, --help" )
+                desc=( "enable logging" "disable installing from previous release" "use curl to download files" "use wget to download files" "force run with unsupported distro" "do not keep backup(s)" "force redownload of file(s)" "force redo of the task(s)" "undo the specified task(s)" "execute the specified task(s)" "show this help message and exit" )
                 echo -e "Usage:\tfedorautils [options...]"
                 echo -e "\v"
                 for ((i=0; i < ${#args[@]}; i++)); do
