@@ -1,6 +1,6 @@
 ### Introduction
 
-Fedora Utils is a post installation script for Fedora. It lets you install codecs and additional software, fix problems, tweak and cleanup your system, view system information and much more with just few clicks.
+Fedora Utils lets you install multimedia codecs and additional software that Fedora [doesn't want to ship](http://fedoraproject.org/wiki/Forbidden_items?rd=ForbiddenItems), like mp3 support, Adobe Flash, Oracle Java etc., and much more with just a few clicks.
 
 ### License
 
