@@ -1,7 +1,7 @@
 # Name: Install essential software
 # Command: essential_soft
 
-softlist=( "cabextract" "cups-pdf" "dconf-editor" "nano" "p7zip" "p7zip-plugins" "unrar" "wget" "xz-lzma-compat" )
+softlist=( "cabextract" "lzip" "nano" "p7zip" "p7zip-plugins" "unrar" "wget" )
 
 essential_soft() {
 show_func "Installing essential software"
