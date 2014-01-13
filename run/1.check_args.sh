@@ -11,21 +11,14 @@ while [[ $# -gt 0 ]]; do
                 prefwget="no";;
         -w|--use-wget)
                 downagent="wget";;
-        -r|--redo-task)
-                reinstall="yes";;
-        -g|--redownload)
-                forcedown="yes";;
         -f|--force-distro)
                 forcedistro="yes";;
         -n|--nobakup)
                 keepbackup="no";;
-        -d|--debug)
-                if [[ -r "$logfile" ]]; then
-                    cat "$logfile"
-                else
-                    echo -e "No logfile exists. Try running again with logging enabled. Use '--help' for more details"
-                fi
-                exit;;
+        -g|--get)
+                forcedown="yes";;
+        -r|--redo)
+                reinstall="yes";;
         -u|--undo)
                 if [[ `grep -w "${2}_undo()" "$plugindir"/*/*.sh` ]]; then
                     interactive="no"
@@ -93,8 +86,8 @@ while [[ $# -gt 0 ]]; do
                     exit
                 fi;;
         -h|--help)
-                args=( "-l, --enable-log" "-p, --noprev-rel" "-c, --pref-curl" "-w, --use-wget" "-r, --redo-task" "-g, --redownload" "-f, --force-distro" "-n, --nobakup" "-e, --exec <commands>" "-d, --debug" "-h, --help" )
-                desc=( "enable logging" "disable installing from previous release" "prefer curl over wget unless specified" "use wget for download instead of curl" "redo the specified task" "force redownload of files" "run with unsupported distro" "do not keep backups" "execute commands from the plugins" "show last logfile and exit" "show this help message and exit" )
+                args=( "-l, --enable-log" "-p, --noprev-rel" "-c, --pref-curl" "-w, --use-wget" "-f, --force-distro" "-n, --nobakup" "-g, --redownload" "-r, --redo" "-u, --undo <commands>" "-e, --exec <commands>" "-h, --help" )
+                desc=( "enable logging" "disable installing from previous release" "prefer curl over wget unless specified" "use wget for download instead of curl" "force run with unsupported distro" "do not keep backup(s)" "force redownload of file(s)" "force redo of the task(s)" "undo the specified task(s)" "execute the specified task(s)" "show this help message and exit" )
                 echo -e "Usage:\tfedorautils [options...]"
                 echo -e "\v"
                 for ((i=0; i < ${#args[@]}; i++)); do
