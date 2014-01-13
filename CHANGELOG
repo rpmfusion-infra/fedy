@@ -1,3 +1,11 @@
+Changelog 3.1.5 (13-01-2014)
+
+1. Added undo function for a bunch of plugins
+2. Added plugins for GNOME dev tools and Tor Browser
+3. Removed plugins for cleanup and block sites
+4. Use infanility for improving font-rendering
+5. Various bug fixes and enhancements
+
 Changelog 3.1.4 (22-12-2013)
 
 1. Skip unavailable repos
