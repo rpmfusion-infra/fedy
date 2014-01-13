@@ -53,6 +53,8 @@ while [[ $# -gt 0 ]]; do
                             printf "\t%-30s%-s\n" "$command" "$name"
                         fi
                     done
+                    echo -e "\v"
+                    echo -e "See '--help' for more options."
                     exit
                 else
                     echo -e "Invalid command '$2'. Try '--undo list' for a list of available commands."
@@ -83,6 +85,8 @@ while [[ $# -gt 0 ]]; do
                         name=$(grep "# Name: " "$plug" | sed 's/# Name: //g')
                         printf "\t%-30s%-s\n" "$command" "$name"
                     done
+                    echo -e "\v"
+                    echo -e "See '--help' for more options."
                     exit
                 else
                     echo -e "Invalid command '$2'. Try '--exec list' for a list of available commands."
