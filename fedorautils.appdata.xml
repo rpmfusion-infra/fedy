@@ -7,21 +7,18 @@
     <summary>Software, Codec Installs &amp; System Tweaks</summary>
     <description>
         <p>
-        Fedora Utils lets you install codecs and additional software that
-        Fedora doesn't want to ship, like MP3 codecs, Adobe Flash, Oracle Java
-        etc. It can also fix problems, tweak and cleanup your system, show
-        system information and much more with just few clicks.
+        Fedora Utils lets you install multimedia codecs and additional
+        software that Fedora doesn't want to ship, like mp3 support, Adobe
+        Flash, Oracle Java etc., and much more with just a few clicks.
         </p>
         <p>
-        In addition to the GUI, you can also use Fedora Utils in bash scripts
-        to help you install software and tweak the sytsem automatically.
+        You can perform operations from the command line, and even use it in
+        scripts to automate tasks.
         </p>
         <p>
-        Fedora Utils saves the downloaded files. Have to do the same steps on
-        more than one system? You won't need to redownload the files again.
-        Fedora Utils can use previously downloaded files with ease. Combine
-        this with the scripting ability, and configuring multiple systems
-        becomes a lot easier.
+        The downloaded files are saved in a folder named "fedorautils_dl" in
+        your home directory, so that you can use them on another computer, or
+        if you need to reinstall Fedora, without having to redownload.
         </p>
         <p>
         Fedora Utils is extensible via plugins. Writing a plugin is easy and
