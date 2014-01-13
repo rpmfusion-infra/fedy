@@ -9,5 +9,5 @@ show_func "Fixing bad theme in root apps"
 ln -sf $homedir/.local/share/themes /root/.local/share/themes
 ln -sf $homedir/.themes /root/.themes
 ln -sf $homedir/.icons /root/.icons
-[[ -L /root/.themes ]]; exit_state
+[[ -L /root/.themes && -L /root/.icons ]]; exit_state
 }
