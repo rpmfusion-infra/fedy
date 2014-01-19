@@ -11,6 +11,7 @@ else
     else
         make_backup "/etc/selinux/config"
         sed -i 's/SELINUX=.*$/SELINUX=permissive/g' /etc/selinux/config
+        setenforce 0
     fi
 fi
 [[ "$(config_selinux_test)" = "Permissive" || "$(config_selinux_test)" = "Disabled" ]]; exit_state
@@ -20,6 +21,7 @@ config_selinux_undo() {
 show_func "Setting SELinux to enforcing mode"
 make_backup "/etc/selinux/config"
 sed -i 's/SELINUX=.*$/SELINUX=enforcing/g' /etc/selinux/config
+setenforce 1
 [[ ! "$(config_selinux_test)" = "Permissive" || "$(config_selinux_test)" = "Disabled" ]]; exit_state
 }
 
