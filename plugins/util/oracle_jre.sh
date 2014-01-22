@@ -6,7 +6,7 @@ show_func "Installing Oracle JRE"
 if [[ "$(oracle_jre_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
     show_status "Oracle JRE already installed"
 else
-    show_msg "Fetching webpage"
+    show_msg "Getting latest version"
     get_file_quiet "http://www.oracle.com/technetwork/java/javase/downloads/index.html" "java.htm"
     dlurl=$(cat "java.htm" | tr ' ' '\n' | grep "/technetwork/java/javase/downloads/jre7" | head -n 1 | cut -d\" -f 2 | sed -e 's/^/http:\/\/www.oracle.com/')
     get_file_quiet "$dlurl" "jre.htm"

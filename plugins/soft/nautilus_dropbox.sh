@@ -6,7 +6,7 @@ show_func "Installing Dropbox"
 if [[ "$(nautilus_dropbox_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
     show_status "Dropbox already installed"
 else
-    show_msg "Fetching webpage"
+    show_msg "Getting latest version"
     get_file_quiet "https://www.dropbox.com/install?os=lnx" "dropbox.htm"
     file32=$(grep -o "nautilus-dropbox-[0-9].[0-9].[0-9]-[0-9].fedora.i386.rpm" "dropbox.htm" | head -n 1)
     get32="https://linux.dropbox.com/packages/fedora/${file32}"

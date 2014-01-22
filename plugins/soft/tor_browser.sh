@@ -6,7 +6,7 @@ show_func "Installing Tor Browser Bundle"
 if [[ "$(tor_browser_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
     show_status "Tor Browser Bundle already installed"
 else
-    show_msg "Fetching webpage"
+    show_msg "Getting latest version"
     get_file_quiet "http://www.torproject.org/projects/torbrowser.html.en" "tor.htm"
     get=$(cat "tor.htm" | tr ' ' '\n' | grep -o "/dist/torbrowser/.*/tor-browser-linux${arch}-.*_en-US.tar.xz" | head -n 1 | sed -e 's/^/http:\/\/www.torproject.org/')
     file=${get##*/}

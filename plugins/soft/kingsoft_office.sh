@@ -6,8 +6,7 @@ show_func "Installing Kingsoft Office"
 if [[ "$(kingsoft_office_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
     show_status "Kingsoft Office already installed"
 else
-    show_msg "Installing dependencies"
-    show_msg "Fetching webpage"
+    show_msg "Getting latest version"
     get_file_quiet "http://wps-community.org/download.html" "kingsoft.htm"
     get32=$(cat 'kingsoft.htm' | tr ' ' '\n' | grep -o "http://.*/kingsoft-office-.*.rpm" | head -n 1)
     file32=${get32##*/}
