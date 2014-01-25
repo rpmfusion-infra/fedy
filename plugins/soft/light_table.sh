@@ -19,8 +19,7 @@ else
     show_msg "Installing files"
     tar -xzf "$file"
     cp -af "LightTable" "/opt/"
-    mkdir -p "/usr/share/icons/hicolor/1024x1024/apps/"
-    cp -f "/opt/LightTable/core/img/lticon.png" "/usr/share/icons/hicolor/1024x1024/apps/lticon.png"
+    cp -f "/opt/LightTable/core/img/lticon.png" "/usr/share/icons/hicolor/256x256/apps/lticon.png"
     ln -sf "/opt/LightTable/LightTable" "/usr/bin/LightTable"
 cat <<EOF | tee /usr/share/applications/LightTable.desktop > /dev/null 2>&1
 [Desktop Entry]
@@ -44,8 +43,7 @@ light_table_undo() {
 show_func "Uninstalling Light Table"
 rm -f "/usr/bin/LightTable"
 rm -f "/usr/share/applications/LightTable.desktop"
-rm -f "/usr/share/icons/hicolor/1024x1024/apps/lticon.png"
-rmdir --ignore-fail-on-non-empty "/usr/share/icons/hicolor/1024x1024" > /dev/null 2>&1
+rm -f "/usr/share/icons/hicolor/256x256/apps/lticon.png"
 rm -rf "/opt/LightTable/"
 [[ ! "$(light_table_test)" = "Installed" ]]; exit_state
 }
