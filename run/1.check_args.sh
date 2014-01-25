@@ -37,7 +37,7 @@ while [[ $# -gt 0 ]]; do
                     done
                     complete_program
                 elif [[ $2 = "list" ]]; then
-                    echo -e "Usage:\tfez --undo [commands...]"
+                    echo -e "Usage:\t$unixname --undo [commands...]"
                     echo -e "\v"
                     for plug in "$plugindir"/*/*.sh; do
                         if [[ `grep "_undo()"  "$plug"` ]]; then
@@ -71,7 +71,7 @@ while [[ $# -gt 0 ]]; do
                     done
                     complete_program
                 elif [[ $2 = "list" ]]; then
-                    echo -e "Usage:\tfez --exec [commands...]"
+                    echo -e "Usage:\t$unixname --exec [commands...]"
                     echo -e "\v"
                     for plug in "$plugindir"/*/*.sh; do
                         command=$(grep "# Command: " "$plug" | sed 's/# Command: //g')
@@ -88,7 +88,7 @@ while [[ $# -gt 0 ]]; do
         -h|--help)
                 args=( "-l, --enable-log" "-p, --noprev-rel" "-c, --use-curl" "-w, --use-wget" "-f, --force-distro" "-n, --nobakup" "-g, --redownload" "-r, --redo" "-u, --undo <commands>" "-e, --exec <commands>" "-h, --help" )
                 desc=( "enable logging" "disable installing from previous release" "use curl to download files" "use wget to download files" "force run with unsupported distro" "do not keep backup(s)" "force redownload of file(s)" "force redo of the task(s)" "undo the specified task(s)" "execute the specified task(s)" "show this help message and exit" )
-                echo -e "Usage:\tfez [options...]"
+                echo -e "Usage:\t$unixname [options...]"
                 echo -e "\v"
                 for ((i=0; i < ${#args[@]}; i++)); do
                     printf "\t%-30s%-s\n" "${args[i]}" "${desc[i]}"

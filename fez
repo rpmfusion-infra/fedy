@@ -11,6 +11,7 @@
 
 # Declare variables
 program="Fez"
+unixname="fez"
 version="3.1.5"
 user=`who | grep $(echo "$DISPLAY" | cut -d '.' -f 1) | cut -d ' ' -f 1 | tail -1`
 errors="0"
@@ -18,23 +19,23 @@ homedir=`awk -F: -v v="$user" '{if ($1==v) print $6}' /etc/passwd`
 scriptdir=`cd $(dirname "${BASH_SOURCE[0]}") && pwd`
 
 # Default configuration
-libdir="$scriptdir/lib"                 # Provides core functionality, change only if you know what are you doing
-rundir="$scriptdir/run"                 # Contains scripts to run at startup
-moduledir="$scriptdir/modules"          # Provides the main menu module
-plugindir="$scriptdir/plugins"          # The directory where are containing all the plugins
+libdir="$scriptdir/lib"         # Provides core functionality, change only if you know what are you doing
+rundir="$scriptdir/run"         # Contains scripts to run at startup
+moduledir="$scriptdir/modules"  # Provides the main menu module
+plugindir="$scriptdir/plugins"  # The directory where are containing all the plugins
 workingdir="/tmp/fez"           # A temporary directory where everything is done, automatically created as needed
 sysconf="/etc/fezrc"            # System wide configuration file for fez
 userconf="$homedir/.fezrc"      # User specific configuration file for fez
 lockfile="/var/run/fez.pid"     # The lockfile used to prevent running of multiple instances
 logfile="/var/log/fez.log"      # Outputs will be redirected to this file if logging is enabled
-enablelog="no"                          # If you want to disable logging, change "yes" to "no"
-tryprevrel="yes"                        # If you don't want to try installing from repo of a previous release, change "yes" to "no" 
-downagent="wget"                        # To use curl to download files, change "wget" to "curl"
-reinstall="no"                          # To redo the selected tasks, change "no" to "yes"
-forcedown="no"                          # To force redownload of files, change "no" to "yes"
-forcedistro="no"                        # To run the script with unsupported distro, change "no" to "yes"
-keepbackup="yes"                        # If you don't want to backup previous configurations, change "yes" to "no"
-keepdownloads="yes"                     # If you don't want to save downloads, change "yes" to "no"
+enablelog="no"                  # If you want to disable logging, change "yes" to "no"
+tryprevrel="yes"                # If you don't want to try installing from repo of a previous release, change "yes" to "no" 
+downagent="wget"                # To use curl to download files, change "wget" to "curl"
+reinstall="no"                  # To redo the selected tasks, change "no" to "yes"
+forcedown="no"                  # To force redownload of files, change "no" to "yes"
+forcedistro="no"                # To run the script with unsupported distro, change "no" to "yes"
+keepbackup="yes"                # If you don't want to backup previous configurations, change "yes" to "no"
+keepdownloads="yes"             # If you don't want to save downloads, change "yes" to "no"
 downloadsdir="$homedir/fez_dl"  # All downloaded files are saved in this directory
 
 # Set Colors
