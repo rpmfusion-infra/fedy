@@ -16,13 +16,13 @@ while shell=$(show_dialog --list --radiolist --width=300 --height=300 --title="$
                 show_dialog --title="Could not check update" --text="An error occured and $program was unable to check for update." --button="Back:0"
             fi;;
         "repo")
-            add_repo "$unixname.repo";;
+            add_repo "fez.repo";;
         "issue")
             show_msg "Opening Browser"
-            sudo -u "$user"  xdg-open "http://github.com/satya164/$unixname/issues/new";;
+            sudo -u "$user" xdg-open "http://github.com/satya164/$unixname/issues/new";;
         "wiki")
             show_msg "Opening Browser"
-            sudo -u "$user"  xdg-open "http://github.com/satya164/$unixname/wiki";;
+            sudo -u "$user" xdg-open "http://github.com/satya164/$unixname/wiki";;
         "changelog")
             show_msg "Fetching changelog"
             get_file_quiet "https://raw.github.com/satya164/$unixname/master/CHANGELOG" "changelog.txt"
