@@ -21,7 +21,7 @@ erase_pkg @development-libs @development-tools @gnome-software-development @rpm-
 
 gnome_development_test() {
 query_pkg ${devtoolslist[@]}
-if [[ ! $? -eq 0 ]]; then
+if [[ $? -eq 0 ]]; then
     printf "Installed"
 else
     printf "Not installed"
