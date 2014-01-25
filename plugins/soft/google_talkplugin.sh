@@ -22,7 +22,8 @@ erase_pkg google-talkplugin
 }
 
 google_talkplugin_test() {
-if [[ -f /opt/google/talkplugin/GoogleTalkPlugin ]]; then
+query_pkg google-talkplugin
+if [[ $? -eq 0 ]]; then
     printf "Installed"
 else
     printf "Not installed"

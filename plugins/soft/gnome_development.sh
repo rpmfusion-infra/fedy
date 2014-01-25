@@ -20,14 +20,8 @@ erase_pkg @development-libs @development-tools @gnome-software-development @rpm-
 }
 
 gnome_development_test() {
-for devtool in ${devtoolslist[@]}; do
-    ls /usr/share/doc/$devtool* > /dev/null 2>&1
-    if [[ ! $? -eq 0 ]]; then
-        devtoolsinstalled="no"
-        break
-    fi
-done
-if [[ ! "$devtoolsinstalled" = "no" ]]; then
+query_pkg ${devtoolslist[@]}
+if [[ ! $? -eq 0 ]]; then
     printf "Installed"
 else
     printf "Not installed"

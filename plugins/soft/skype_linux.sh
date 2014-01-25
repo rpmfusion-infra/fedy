@@ -26,7 +26,8 @@ remove_repo "skype.repo"
 }
 
 skype_linux_test() {
-if [[ -f /usr/bin/skype ]]; then
+query_pkg skype
+if [[ $? -eq 0 ]]; then
     printf "Installed"
 else
     printf "Not installed"

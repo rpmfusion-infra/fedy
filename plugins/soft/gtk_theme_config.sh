@@ -21,7 +21,8 @@ remove_repo "gtk-theme-config.repo"
 }
 
 gtk_theme_config_test() {
-if [[ -f /usr/bin/gtk-theme-config ]]; then
+query_pkg gtk-theme-config
+if [[ $? -eq 0 ]]; then
     printf "Installed"
 else
     printf "Not installed"

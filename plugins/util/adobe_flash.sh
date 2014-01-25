@@ -28,7 +28,7 @@ fi
 }
 
 adobe_flash_test() {
-ls /usr/lib*/mozilla/plugins/libflashplayer.so > /dev/null 2>&1
+query_pkg flash-plugin
 if [[ $? -eq 0 ]]; then
     printf "Installed"
 else

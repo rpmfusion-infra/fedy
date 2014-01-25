@@ -32,7 +32,7 @@ fi
 
 oracle_jre_undo() {
 show_func "Uninstalling Oracle JRE"
-erase_pkg jdk
+erase_pkg jre
 alternatives --remove java /usr/java/latest/bin/java
 alternatives --auto java
 if [[ "$arch" = "32" ]]; then

@@ -24,7 +24,8 @@ erase_pkg kingsoft-office
 }
 
 kingsoft_office_test() {
-if [[ -f /opt/kingsoft/wps-office/office6/wps ]]; then
+query_pkg kingsoft-office
+if [[ $? -eq 0 ]]; then
     printf "Installed"
 else
     printf "Not installed"

@@ -1,3 +1,7 @@
+query_pkg() {
+rpm --quiet --query "$@"
+}
+
 install_pkg() {
 yum -y install --nogpgcheck --skip-broken "$@"
 }

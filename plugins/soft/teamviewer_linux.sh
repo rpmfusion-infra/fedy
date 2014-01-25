@@ -22,7 +22,8 @@ erase_pkg teamviewer
 }
 
 teamviewer_linux_test() {
-if [[ -f /usr/bin/teamviewer ]]; then
+query_pkg teamviewer
+if [[ $? -eq 0 ]]; then
     printf "Installed"
 else
     printf "Not installed"

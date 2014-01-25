@@ -22,7 +22,8 @@ erase_pkg google-chrome-stable
 }
 
 google_chrome_test() {
-if [[ -f /opt/google/chrome/google-chrome ]]; then
+query_pkg google-chrome-stable
+if [[ $? -eq 0 ]]; then
     printf "Installed"
 else
     printf "Not installed"

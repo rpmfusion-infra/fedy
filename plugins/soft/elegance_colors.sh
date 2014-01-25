@@ -21,7 +21,8 @@ remove_repo "elegance-colors.repo"
 }
 
 elegance_colors_test() {
-if [[ -f /usr/bin/elegance-colors ]]; then
+query_pkg gnome-shell-theme-elegance-colors
+if [[ $? -eq 0 ]]; then
     printf "Installed"
 else
     printf "Not installed"

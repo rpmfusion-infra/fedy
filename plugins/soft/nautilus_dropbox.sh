@@ -26,7 +26,8 @@ remove_repo "dropbox.repo"
 }
 
 nautilus_dropbox_test() {
-if [[ -f /usr/bin/dropbox ]]; then
+query_pkg nautilus-dropbox
+if [[ $? -eq 0 ]]; then
     printf "Installed"
 else
     printf "Not installed"
