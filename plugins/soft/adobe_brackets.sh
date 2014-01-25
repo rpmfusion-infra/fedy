@@ -44,9 +44,9 @@ if [[ -d /opt/brackets ]]; then
         xdg-icon-resource uninstall --novendor --size "${size%.png}" "$icon" "brackets"
     done
 fi
-xdg-desktop-menu uninstall --novendor /opt/brackets/brackets.desktop
-rm -rf /opt/brackets/
-rm -f /usr/lib${arch}/libudev.so.0
+xdg-desktop-menu uninstall --novendor "/opt/brackets/brackets.desktop"
+rm -rf "/opt/brackets/"
+rm -f "/usr/lib${arch}/libudev.so.0"
 [[ ! "$(adobe_brackets_test)" = "Installed" ]]; exit_state
 }
 

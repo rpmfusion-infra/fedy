@@ -8,7 +8,7 @@ if [[ "$(sublime_text_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
 else
     show_msg "Getting latest version"
     get_file_quiet "http://www.sublimetext.com/3" "sublime.htm"
-    get=$(cat "sublime.htm" | tr ' ' '\n' | grep -o "http://.*/sublime_text_3_build_[0-9]*_x${arch}.tar.bz2" | head -n 1)
+    get=$(cat "sublime.htm" | tr ' ' '\n' | grep -o "https\?://.*/sublime_text_3_build_[0-9]*_x${arch}.tar.bz2" | head -n 1)
     file=${get##*/}
     get_file
     show_msg "Installing files"
