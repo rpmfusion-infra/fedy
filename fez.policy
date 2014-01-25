@@ -3,11 +3,11 @@
  "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
  "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
 <policyconfig>
-  <vendor>Fedora Utils</vendor>
-  <vendor_url>http://satya164.github.com/fedorautils/</vendor_url>
-  <icon_name>fedorautils</icon_name>
+  <vendor>Fez</vendor>
+  <vendor_url>http://satya164.github.com/fez/</vendor_url>
+  <icon_name>fez</icon_name>
 
-  <action id="org.freedesktop.pkexec.fedorautils">
+  <action id="org.freedesktop.pkexec.fez">
     <description>Tweak Fedora</description>
     <message>Authentication is required to install programs and configure the system.</message>
     <defaults>
@@ -15,7 +15,7 @@
       <allow_inactive>no</allow_inactive>
       <allow_active>auth_admin_keep</allow_active>
     </defaults>
-    <annotate key="org.freedesktop.policykit.exec.path">/usr/share/fedorautils/fedorautils</annotate>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/share/fez/fez</annotate>
     <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
   </action>
 

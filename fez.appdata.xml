@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014 Satyajit Sahoo <satyajit.happy@gmail.com> -->
+<application>
+    <id type="desktop">fez.desktop</id>
+    <licence>GFDL</licence>
+    <name>Fez</name>
+    <summary>Software, Codec Installs &amp; System Tweaks</summary>
+    <description>
+        <p>
+        Fez lets you install multimedia codecs and additional
+        software that Fedora doesn't want to ship, like mp3 support, Adobe
+        Flash, Oracle Java etc., and much more with just a few clicks.
+        </p>
+        <p>
+        You can perform operations from the command line, and even use it in
+        scripts to automate tasks.
+        </p>
+        <p>
+        The downloaded files are saved in a folder named "fez_dl" in
+        your home directory, so that you can use them on another computer, or
+        if you need to reinstall Fedora, without having to redownload.
+        </p>
+        <p>
+        Fez is extensible via plugins. Writing a plugin is easy and
+        fun.
+        </p>
+    </description>
+    <screenshots>
+        <screenshot type="default" width="1360" height="765">http://satya164.github.io/fez/images/fu-tweaks.jpg</screenshot>
+        <screenshot width="1360" height="765">http://satya164.github.io/fez/images/fu-repos.jpg</screenshot>
+        <screenshot width="1360" height="765">http://satya164.github.io/fez/images/fu-software.jpg</screenshot>
+        <screenshot width="1360" height="765">http://satya164.github.io/fez/images/fu-plugins.jpg</screenshot>
+        <screenshot width="1360" height="765">http://satya164.github.io/fez/images/fu-main.jpg</screenshot>
+    </screenshots>
+    <url type="homepage">http://satya164.github.io/fez/</url>
+    <updatecontact>satyajit.happy@gmail.com</updatecontact>
+</application>

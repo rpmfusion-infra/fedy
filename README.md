@@ -1,6 +1,6 @@
 ### Introduction
 
-Fedora Utils lets you install multimedia codecs and additional software that Fedora [doesn't want to ship](http://fedoraproject.org/wiki/Forbidden_items?rd=ForbiddenItems), like mp3 support, Adobe Flash, Oracle Java etc., and much more with just a few clicks.
+Fez lets you install multimedia codecs and additional software that Fedora [doesn't want to ship](http://fedoraproject.org/wiki/Forbidden_items?rd=ForbiddenItems), like mp3 support, Adobe Flash, Oracle Java etc., and much more with just a few clicks.
 
 ### License
 
@@ -14,22 +14,22 @@ Copyright (C) [Satyajit Sahoo](mailto:satyajit.happy@gmail.com)
 
 ### Documentation
 
-Documentation is available online. Please visit the [wiki](http://github.com/satya164/fedorautils/wiki).
+Documentation is available online. Please visit the [wiki](http://github.com/satya164/fez/wiki).
 
 ### How to install
 
-Fedora Utils can be installed with our [script](http://satya164.github.io/fedorautils/fedorautils-installer) which automatically sets up the repo and installs the `fedorautils` package.
+Fez can be installed with our [script](http://satya164.github.io/fez/fez-installer) which automatically sets up the repo and installs the `fez` package.
 
 ### How to use
 
-After installation, search for `Fedora Utils` in the menu/overview or type `fedorautils` in the terminal.
+After installation, search for `Fez` in the menu/overview or type `fez` in the terminal.
 
 ### Getting the source
 
-You can get the latest source code from the [github page](http://github.com/satya164/fedorautils).
+You can get the latest source code from the [github page](http://github.com/satya164/fez).
 
-`git clone git@github.com:satya164/fedorautils.git`
+`git clone git@github.com:satya164/fez.git`
 
 ### Bugs and feature requests
 
-Please submit bugs and feature requests [here](http://github.com/satya164/fedorautils/issues).
+Please submit bugs and feature requests [here](http://github.com/satya164/fez/issues).

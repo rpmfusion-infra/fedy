@@ -156,7 +156,7 @@ Changelog 2.1.0 (16-06-2012)
 Changelog 2.0.9 (01-06-2012)
 
 1. Completely switched to PolicyKit for authentication
-2. Fedora Utils can now speak the errors and warnings (optional, see --help)
+2. Fez can now speak the errors and warnings (optional, see --help)
 3. Install VLC instead of Gnome Mplayer if KDE is running
 4. Improved "Fix font rendering" plugin
 5. Updated Android SDK
@@ -170,7 +170,7 @@ Changelog 2.0.8 (31-05-2012)
 
 Changelog 2.0.7 (30-05-2012)
 
-1. Fixed fedorautils could not run in Fedora 17
+1. Fixed fez could not run in Fedora 17
 2. Added option to install the Cinnamon Shell
 
 Changelog 2.0.6 (20-05-2012)
@@ -190,7 +190,7 @@ Changelog 2.0.4 (24-03-2012)
 
 1. Fixed minor bugs
 2. Updated some apllications
-3. Now Fedora Utils won't use PolicyKit for root access by default, but you can still use "pkexec fedorautils"
+3. Now Fez won't use PolicyKit for root access by default, but you can still use "pkexec fez"
 4. Removed Picasa, as the Linux platform is no longer officially supported
 5. Removed WinFF
 6. Added TeamViewer, Arista
@@ -198,7 +198,7 @@ Changelog 2.0.4 (24-03-2012)
 Changelog 2.0.3 (26-02-2012)
 
 1. Fixed minor bugs
-2. Now Fedora Utils repo will be added automatically when installing the package
+2. Now Fez repo will be added automatically when installing the package
 3. Removed arguments as it was difficult to maintain
 
 Changelog 2.0.2 (16-02-2012)
@@ -244,10 +244,10 @@ Changelog 1.8.0 (20-01-2012)
 Changelog 1.7.0 (15-09-2011)
 
 1. Initial Fedora 16 support
-2. Now you can double click Fedora Utils and select "Run in Terminal"
-3. Attempts to run itself as root when you run Fedora Utils as normal user
+2. Now you can double click Fez and select "Run in Terminal"
+3. Attempts to run itself as root when you run Fez as normal user
 4. Completely new code to detect sudo access to prevent multiple prompts
-5. Detects and prevents running multiple instances of Fedora Utils
+5. Detects and prevents running multiple instances of Fez
 6. Handles Ctrl-C interrrupt
 7. Added support for arguements, try --help for the list
 8. Option to force redownload of files with --force
@@ -286,7 +286,7 @@ Changelog 1.4.0 (03-07-2011)
 3. Logging can be enabled now
 4. Changes specific to Gnome 3 and Fedora 15
 5. Better notifications
-6. Fedora Utils can reuse downloaded fonts now
+6. Fez can reuse downloaded fonts now
 7. Downloads are now saved in the home directory under "FedoraUtils"
 
 Changelog 1.3.0 (09-03-2011)

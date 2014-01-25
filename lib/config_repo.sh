@@ -170,13 +170,13 @@ skip_if_unavailable=1
 EOF
 }
 
-fedorautils.repo() {
-cat <<EOF | tee /etc/yum.repos.d/fedorautils.repo > /dev/null 2>&1
-[fedorautils]
-name=Fedora Utils
+fez.repo() {
+cat <<EOF | tee /etc/yum.repos.d/fez.repo > /dev/null 2>&1
+[fez]
+name=Fez
 type=rpm-md
-baseurl=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_\$releasever/
-gpgkey=http://download.opensuse.org/repositories/home:/satya164:/fedorautils/Fedora_\$releasever/repodata/repomd.xml.key
+baseurl=http://download.opensuse.org/repositories/home:/satya164:/fez/Fedora_\$releasever/
+gpgkey=http://download.opensuse.org/repositories/home:/satya164:/fez/Fedora_\$releasever/repodata/repomd.xml.key
 gpgcheck=1
 enabled=1
 metadata_expire=1d

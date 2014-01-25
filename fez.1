@@ -1,0 +1,53 @@
+.TH "fez" 1 "28 June 2012" Fedora "User Manual"
+
+.SH NAME
+Fez - Tweak your Fedora
+
+.SH SYNOPSIS
+.B fez
+[options...]
+
+.SH DESCRIPTION
+Fez lets you install multimedia codecs and additional software that Fedora doesn't want to ship, like mp3 support, Adobe Flash, Oracle Java etc., and much more with just a few clicks.
+
+.PP
+After installation, search for
+.B Fez
+in the menu/overview or type
+.B fez
+in the terminal.
+
+.PP
+Fez requires root permissions to perform various tasks.
+
+.SH OPTIONS
+Fez supports specifying options for temporarily changing different configuration variables and executing various commands, helpful in case you don't want to change a configuration permanently and want to enable/disable some features just for the session, or execute certain commands without launching the full interface. You can get a list of supported arguments with
+.B fez --help
+
+.SH FILES
+
+.SS Configuration files
+Fez supports use of configuration files. The global configuration file is usually
+.B /etc/fezrc
+and user-specific configuration file is usually
+.B ~/.fezrc
+(unless overriden in the global configuration file). The user specific configurations will be given higher priority than the global configurations. Arguments can override values in configuration files.
+
+.PP
+Configuration files can be used for changing configurations, setting value of shell variables (for example setting the proxy), or running any command before starting the GUI.
+
+.SS Plugins
+Fez supports plugins for adding more functionality. You can write your own custom plugins for Fez. The plugin files are usually located under
+.B /usr/share/fez/plugins
+
+.SH BUGS
+You can report bugs at http://github.com/satya164/fez/issues
+
+Before reporting a bug, please run Fez at least once with logging enabled (See
+.B fez --help
+to know how to enable logging) and repeat the actions which cause an error. Submitting the logged information might be helpful for identifying the problem quickly.
+
+.SH SEE ALSO
+curl(1), rpm(8), yum(8)
+
+http://github.com/satya164/fez/wiki
