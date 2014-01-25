@@ -3,7 +3,7 @@
 
 google_chrome() {
 show_func "Installing Google Chrome"
-if [[ "$(google_chrome_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(google_chrome_test)" = "Installed" ]]; then
     show_status "Google Chrome already installed"
 else
     get32="https://dl.google.com/linux/direct/google-chrome-stable_current_i386.rpm"

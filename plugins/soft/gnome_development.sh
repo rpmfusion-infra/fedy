@@ -5,7 +5,7 @@ devtoolslist=( "boost-devel" "bzip2-devel" "clutter-devel" "cvs" "cyrus-sasl-dev
 
 gnome_development() {
 show_func "Installing GNOME development tools"
-if [[ "$(gnome_development_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(gnome_development_test)" = "Installed" ]]; then
     show_status "GNOME development tools already installed"
 else
     install_pkg @development-libs @development-tools @gnome-software-development @rpm-development-tools bzr bzrtools fedora-packager vala vala-devel vala-tools vala-doc

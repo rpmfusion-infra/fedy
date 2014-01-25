@@ -7,7 +7,7 @@ codeclistall=( ${codeclistbase[@]} "gstreamer1-plugins-bad-free" "gstreamer1-plu
 
 media_codecs() {
 show_func "Installing multimedia codecs"
-if [[ "$(media_codecs_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(media_codecs_test)" = "Installed" ]]; then
     show_status "Multimedia codecs already installed"
 else
     add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"

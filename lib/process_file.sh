@@ -8,7 +8,7 @@ yum -y install --nogpgcheck --skip-broken "$@"
 
 install_pkg_prevrel() {
 test_repo "$1"
-if [[ $? -eq 0 || ! "$tryprevrel" = "yes" ]]; then
+if [[ $? -eq 0 || ! "$tryprevrel" = "true" ]]; then
     install_pkg "${@:2}"
 else
     show_msg "Trying with Fedora $((fver-1)) repo"
@@ -37,7 +37,7 @@ get_file "$@"
 }
 
 make_backup() {
-if [[ "$keepbackup" = "yes" ]]; then
+if [[ "$keepbackup" = "true" ]]; then
     [[ -f "$1" && ! -f "$1".bak ]] && cp -rf "$1" "$1".bak
 fi
 }

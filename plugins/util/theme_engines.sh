@@ -5,7 +5,7 @@ enginelist=( "gtk-murrine-engine" "gtk-unico-engine" )
 
 theme_engines() {
 show_func "Installing GTK theme engines"
-if [[ "$(theme_engines_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(theme_engines_test)" = "Installed" ]]; then
     show_status "GTK theme engines already installed"
 else
     install_pkg ${enginelist[@]}

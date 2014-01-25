@@ -3,7 +3,7 @@
 
 tor_browser() {
 show_func "Installing Tor Browser Bundle"
-if [[ "$(tor_browser_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(tor_browser_test)" = "Installed" ]]; then
     show_status "Tor Browser Bundle already installed"
 else
     show_msg "Getting latest version"

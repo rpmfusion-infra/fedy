@@ -3,7 +3,7 @@
 
 google_talkplugin() {
 show_func "Installing Google Talk plugin"
-if [[ "$(google_talkplugin_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(google_talkplugin_test)" = "Installed" ]]; then
     show_status "Google Talk plugin already installed"
 else
     get32="http://dl.google.com/linux/direct/google-talkplugin_current_i386.rpm"

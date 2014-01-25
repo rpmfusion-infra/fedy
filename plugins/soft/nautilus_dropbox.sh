@@ -3,7 +3,7 @@
 
 nautilus_dropbox() {
 show_func "Installing Dropbox"
-if [[ "$(nautilus_dropbox_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(nautilus_dropbox_test)" = "Installed" ]]; then
     show_status "Dropbox already installed"
 else
     show_msg "Getting latest version"

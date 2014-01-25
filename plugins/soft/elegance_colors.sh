@@ -3,7 +3,7 @@
 
 elegance_colors() {
 show_func "Installing Elegance Colors Gnome Shell theme"
-if [[ "$(elegance_colors_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(elegance_colors_test)" = "Installed" ]]; then
     show_status "Elegance Colors Gnome Shell theme already installed"
 else
     install_pkg bc gnome-shell ImageMagick

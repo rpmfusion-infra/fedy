@@ -5,7 +5,7 @@ dvdlist=( "libdvdread" "libdvdnav" "lsdvd" )
 
 dvd_playback() {
 show_func "Installing DVD codecs"
-if [[ "$(dvd_playback_test)" = "Enabled" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(dvd_playback_test)" = "Enabled" ]]; then
     show_status "DVD codecs already installed"
 else
     add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"

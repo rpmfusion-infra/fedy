@@ -3,7 +3,7 @@
 
 adobe_flash() {
 show_func "Installing Adobe flash plugin"
-if [[ "$(adobe_flash_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(adobe_flash_test)" = "Installed" ]]; then
     show_status "Adobe flash plugin already installed"
 else
     if [[ "$arch" = "32" ]]; then

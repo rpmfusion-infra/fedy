@@ -3,7 +3,7 @@
 
 kingsoft_office() {
 show_func "Installing Kingsoft Office"
-if [[ "$(kingsoft_office_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(kingsoft_office_test)" = "Installed" ]]; then
     show_status "Kingsoft Office already installed"
 else
     show_msg "Getting latest version"

@@ -3,7 +3,7 @@
 
 adobe_brackets() {
 show_func "Installing Brackets"
-if [[ "$(adobe_brackets_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(adobe_brackets_test)" = "Installed" ]]; then
     show_status "Brackets already installed"
 else
     show_msg "Installing dependencies"

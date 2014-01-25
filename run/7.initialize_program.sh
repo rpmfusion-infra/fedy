@@ -6,7 +6,7 @@ mkdir -p "$workingdir"
 mkdir -p "$downloadsdir"
 show_status "Synchronizing files to $workingdir"
 rsync -r -u "$downloadsdir/" "$workingdir"
-[[ "$forcedown" = "yes" ]] && show_warn "$program will force redownload of files even if already downloaded"
+[[ "$redownload" = "true" ]] && show_warn "$program will force redownload of files even if already downloaded"
 cd "$workingdir"
 [[ $? -eq 0 ]] || terminate_program
 # Check for updates

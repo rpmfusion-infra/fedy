@@ -3,7 +3,7 @@
 
 yum_keepcache() {
 show_func "Configuring yum to keep package cache"
-if [[ "$(yum_keepcache_test)" = "Configured" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(yum_keepcache_test)" = "Configured" ]]; then
     show_status "Yum already configured to keep package cache"
 else
     make_backup "/etc/yum.conf"

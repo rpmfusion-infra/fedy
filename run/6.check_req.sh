@@ -7,7 +7,7 @@ if [[ -f /etc/fedora-release ]]; then
     fver="$(rpm -E %fedora)"
     show_msg "Fedora version $fver detected"
 else
-    if [[ "$forcedistro" = "yes" ]]; then
+    if [[ "$forcedistro" = "true" ]]; then
         show_warn "Unsupported distro, but will continue as instructed"
     else
         show_err "Distro not supported!"

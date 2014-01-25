@@ -3,7 +3,7 @@
 
 sublime_text() {
 show_func "Installing Sublime Text 3"
-if [[ "$(sublime_text_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(sublime_text_test)" = "Installed" ]]; then
     show_status "Sublime Text 3 already installed"
 else
     show_msg "Getting latest version"

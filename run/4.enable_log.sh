@@ -2,7 +2,7 @@
 
 enable_log() {
 # Enable logging
-if [[ "$enablelog" = "yes" ]]; then
+if [[ "$enablelog" = "true" ]]; then
     show_msg "Logging is enabled"
     [[ -f "$logfile" ]] && mv "$logfile" "$logfile-$(stat -c %Y ${logfile})"
     echo -e "[$(date)]\n" >> "$logfile"
@@ -30,7 +30,7 @@ if [[ "$enablelog" = "yes" ]]; then
         cat "$sysconf" >> "$logfile"
     fi
     echo -e "\n[Variables]\n" >> "$logfile"
-    log_vars=( "homedir" "scriptdir" "libdir" "moduledir" "plugindir" "workingdir" "sysconf" "userconf" "lockfile" "logfile" "tryprevrel" "downagent" "reinstall" "forcedown" "forcedistro" "keepbackup" "keepdownloads" "downloadsdir" )
+    log_vars=( "homedir" "scriptdir" "libdir" "moduledir" "plugindir" "workingdir" "sysconf" "userconf" "lockfile" "logfile" "tryprevrel" "downagent" "redownload" "forcedistro" "keepbackup" "keepdownloads" "downloadsdir" )
     for log_var in "${log_vars[@]}"; do
         echo -e "$log_var=${!log_var}" >> $logfile
     done

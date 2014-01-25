@@ -3,7 +3,7 @@
 
 config_selinux() {
 show_func "Setting SELinux to permissive mode"
-if [[ "$(config_selinux_test)" = "Configured" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(config_selinux_test)" = "Configured" ]]; then
     show_status "SELinux is already in permissive mode"
 else
     make_backup "/etc/selinux/config"

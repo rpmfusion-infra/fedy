@@ -3,7 +3,7 @@
 
 core_fonts() {
 show_func "Installing Microsoft Truetype fonts"
-if [[ "$(core_fonts_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(core_fonts_test)" = "Installed" ]]; then
     show_status "Microsoft Truetype fonts already installed"
 else
     [[ -f /usr/bin/cabextract ]] || install_pkg cabextract

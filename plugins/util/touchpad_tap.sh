@@ -3,7 +3,7 @@
 
 touchpad_tap() {
 show_func "Enabling systemwide touchpad tap"
-if [[ "$(touchpad_tap_test)" = "Enabled" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(touchpad_tap_test)" = "Enabled" ]]; then
     show_status "Touchpad tap already enabled"
 else
 cat <<EOF | tee /etc/X11/xorg.conf.d/00-enable-taps.conf > /dev/null 2>&1

@@ -3,7 +3,7 @@
 
 gtk_theme_config() {
 show_func "Installing Theme Configuration app"
-if [[ "$(gtk_theme_config_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(gtk_theme_config_test)" = "Installed" ]]; then
     show_status "Theme Configuration app already installed"
 else
     install_pkg gsettings-desktop-schemas

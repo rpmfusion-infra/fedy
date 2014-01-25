@@ -28,14 +28,13 @@ sysconf="/etc/fezrc"            # System wide configuration file for fez
 userconf="$homedir/.fezrc"      # User specific configuration file for fez
 lockfile="/var/run/fez.pid"     # The lockfile used to prevent running of multiple instances
 logfile="/var/log/fez.log"      # Outputs will be redirected to this file if logging is enabled
-enablelog="no"                  # If you want to disable logging, change "yes" to "no"
-tryprevrel="yes"                # If you don't want to try installing from repo of a previous release, change "yes" to "no" 
+enablelog="false"                  # If you want to disable logging, change "true" to "false"
+tryprevrel="true"                # If you don't want to try installing from repo of a previous release, change "true" to "false" 
 downagent="wget"                # To use curl to download files, change "wget" to "curl"
-reinstall="no"                  # To redo the selected tasks, change "no" to "yes"
-forcedown="no"                  # To force redownload of files, change "no" to "yes"
-forcedistro="no"                # To run the script with unsupported distro, change "no" to "yes"
-keepbackup="yes"                # If you don't want to backup previous configurations, change "yes" to "no"
-keepdownloads="yes"             # If you don't want to save downloads, change "yes" to "no"
+redownload="false"                  # To force redownload of files, change "false" to "true"
+forcedistro="false"                # To run the script with unsupported distro, change "false" to "true"
+keepbackup="true"                # If you don't want to backup previous configurations, change "true" to "false"
+keepdownloads="true"             # If you don't want to save downloads, change "true" to "false"
 downloadsdir="$homedir/fez_dl"  # All downloaded files are saved in this directory
 
 # Set Colors

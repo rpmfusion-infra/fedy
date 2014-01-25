@@ -3,7 +3,7 @@
 
 arista_transcoder() {
 show_func "Installing Arista Transcoder"
-if [[ "$(arista_transcoder_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(arista_transcoder_test)" = "Installed" ]]; then
     show_status "Arista Transcoder already installed"
 else
     add_repo "rpmfusion-free.repo" "rpmfusion-nonfree.repo"

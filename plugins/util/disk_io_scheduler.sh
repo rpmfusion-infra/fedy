@@ -7,7 +7,7 @@ udev_rule_file="/etc/udev/rules.d/60-io_schedulers.rules"
 
 disk_io_scheduler() {
 show_func "Installing udev rules SSD I/O scheduler"
-if [[ "$(disk_io_scheduler_test)" = "Configured" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(disk_io_scheduler_test)" = "Configured" ]]; then
     show_status "SSD I/O scheduler already configured"
 else
     for disk in `\ls -d /sys/block/sd*`; do

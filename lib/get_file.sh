@@ -5,13 +5,13 @@ else
     show_msg "Downloading from: $get"
     show_msg "Saving to: $file"
     if [[ "$downagent" = "wget" ]]; then
-        if [[ "$forcedown" = "yes" ]]; then
+        if [[ "$redownload" = "true" ]]; then
             wget --progress=bar:force --no-cookies "$get" -O "$file" "$@"
         else
             wget --progress=bar:force --no-cookies -c "$get" -O "$file" "$@"
         fi
     else
-        if [[ "$forcedown" = "yes" ]]; then
+        if [[ "$redownload" = "true" ]]; then
             curl -L -# "$get" -o "$file" "$@"
         else
             curl -C - -L -# "$get" -o "$file" "$@"
@@ -19,7 +19,7 @@ else
     fi
     if [[ -s "$file" ]]; then
         show_status "Download successful!"
-        [[ "$keepdownloads" = "yes" ]] && cp -f "$file" "$downloadsdir"
+        [[ "$keepdownloads" = "true" ]] && cp -f "$file" "$downloadsdir"
     else
         show_err "Error downloading $file!"
     fi

@@ -4,24 +4,22 @@ check_args() {
 while [[ $# -gt 0 ]]; do
     case "$1" in
         -l|--enable-log)
-                enablelog="yes";;
+                enablelog="true";;
         -p|--noprev-rel)
-                tryprevrel="no";;
+                tryprevrel="false";;
         -c|--use-curl)
                 downagent="curl";;
         -w|--use-wget)
                 downagent="wget";;
         -f|--force-distro)
-                forcedistro="yes";;
+                forcedistro="true";;
         -n|--nobakup)
-                keepbackup="no";;
-        -g|--get)
-                forcedown="yes";;
-        -r|--redo)
-                reinstall="yes";;
+                keepbackup="false";;
+        -r|--redownload)
+                redownload="true";;
         -u|--undo)
                 if [[ `grep -w "${2}_undo()" "$plugindir"/*/*.sh` ]]; then
-                    interactive="no"
+                    interactive="false"
                     while read run; do
                         source "$run"
                     done < <(find "$rundir/" -name *.sh | sort -u)
@@ -55,7 +53,7 @@ while [[ $# -gt 0 ]]; do
                 fi;;
         -e|--exec)
                 if [[ `grep -w "# Command: $2" "$plugindir"/*/*.sh` ]]; then
-                    interactive="no"
+                    interactive="false"
                     while read run; do
                         source "$run"
                     done < <(find "$rundir/" -name *.sh | sort -u)
@@ -86,8 +84,8 @@ while [[ $# -gt 0 ]]; do
                     exit
                 fi;;
         -h|--help)
-                args=( "-l, --enable-log" "-p, --noprev-rel" "-c, --use-curl" "-w, --use-wget" "-f, --force-distro" "-n, --nobakup" "-g, --redownload" "-r, --redo" "-u, --undo <commands>" "-e, --exec <commands>" "-h, --help" )
-                desc=( "enable logging" "disable installing from previous release" "use curl to download files" "use wget to download files" "force run with unsupported distro" "do not keep backup(s)" "force redownload of file(s)" "force redo of the task(s)" "undo the specified task(s)" "execute the specified task(s)" "show this help message and exit" )
+                args=( "-l, --enable-log" "-p, --noprev-rel" "-c, --use-curl" "-w, --use-wget" "-f, --force-distro" "-n, --nobakup" "-r, --redownload" "-u, --undo <commands>" "-e, --exec <commands>" "-h, --help" )
+                desc=( "enable logging" "disable installing from previous release" "use curl to download files" "use wget to download files" "force run with unsupported distro" "do not keep backup(s)" "force redownload of file(s)" "undo the specified task(s)" "execute the specified task(s)" "show this help message and exit" )
                 echo -e "Usage:\t$unixname [options...]"
                 echo -e "\v"
                 for ((i=0; i < ${#args[@]}; i++)); do

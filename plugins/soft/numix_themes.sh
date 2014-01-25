@@ -5,7 +5,7 @@ numixlist=( "numix-gtk-theme" "numix-icon-theme" "numix-icon-theme-circle" )
 
 numix_themes() {
 show_func "Installing Numix GTK and icon themes"
-if [[ "$(numix_themes_test)" = "Installed" && ! "$reinstall" = "yes" ]]; then
+if [[ "$(numix_themes_test)" = "Installed" ]]; then
     show_status "Numix GTK and icon themes already installed"
 else
     install_pkg gtk-murrine-engine
