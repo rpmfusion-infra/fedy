@@ -28,7 +28,6 @@ GenericName=Interactive IDE
 Icon=lticon
 Comment=Interactive IDE with real time feedback 
 Exec=LightTable %F
-MimeType=text/plain;
 Terminal=false
 Type=Application
 StartupNotify=true
