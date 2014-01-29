@@ -20,6 +20,7 @@ else
     python setup.py build
     python setup.py install
     cd ..
+    gtk-update-icon-cache -f -t /usr/share/icons/hicolor
 fi
 [[ "$(arista_transcoder_test)" = "Installed" ]]; exit_state
 }
@@ -36,6 +37,7 @@ rm -f /usr/share/locale/*/LC_MESSAGES/arista.mo
 rm -rf /usr/lib/python2.7/site-packages/arista
 rm -rf /usr/share/doc/arista
 rm -rf /usr/share/arista
+gtk-update-icon-cache -f -t /usr/share/icons/hicolor
 [[ ! "$(arista_transcoder_test)" = "Installed" ]]; exit_state
 }
 

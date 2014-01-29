@@ -21,6 +21,7 @@ else
         size="${icon##*/appshell}"
         xdg-icon-resource install --novendor --size "${size%.png}" "$icon" "brackets"
     done
+    gtk-update-icon-cache -f -t /usr/share/icons/hicolor
     xdg-desktop-menu install --novendor /opt/brackets/brackets.desktop
     nss_files="libnspr4.so.0d libplds4.so.0d libplc4.so.0d libssl3.so.1d libnss3.so.1d libsmime3.so.1d libnssutil3.so.1d"
     for f in $nss_files; do
@@ -44,6 +45,7 @@ if [[ -d /opt/brackets ]]; then
         xdg-icon-resource uninstall --novendor --size "${size%.png}" "$icon" "brackets"
     done
 fi
+gtk-update-icon-cache -f -t /usr/share/icons/hicolor
 xdg-desktop-menu uninstall --novendor "/opt/brackets/brackets.desktop"
 rm -rf "/opt/brackets/"
 rm -f "/usr/lib${arch}/libudev.so.0"

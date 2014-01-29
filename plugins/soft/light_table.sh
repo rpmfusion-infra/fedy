@@ -21,6 +21,7 @@ else
     cp -af "LightTable" "/opt/"
     cp -f "/opt/LightTable/core/img/lticon.png" "/usr/share/icons/hicolor/256x256/apps/lticon.png"
     ln -sf "/opt/LightTable/LightTable" "/usr/bin/LightTable"
+    gtk-update-icon-cache -f -t /usr/share/icons/hicolor
 cat <<EOF | tee /usr/share/applications/LightTable.desktop > /dev/null 2>&1
 [Desktop Entry]
 Name=Light Table
@@ -44,6 +45,7 @@ rm -f "/usr/bin/LightTable"
 rm -f "/usr/share/applications/LightTable.desktop"
 rm -f "/usr/share/icons/hicolor/256x256/apps/lticon.png"
 rm -rf "/opt/LightTable/"
+gtk-update-icon-cache -f -t /usr/share/icons/hicolor
 [[ ! "$(light_table_test)" = "Installed" ]]; exit_state
 }
 
