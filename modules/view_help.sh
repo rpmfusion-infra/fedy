@@ -16,7 +16,7 @@ while shell=$(show_dialog --list --radiolist --width=300 --height=300 --title="$
                 show_dialog --title="Could not check update" --text="An error occured and $program was unable to check for update." --button="Back:0"
             fi;;
         "repo")
-            add_repo "fez.repo";;
+            add_repo "fedy.repo";;
         "issue")
             show_msg "Opening Browser"
             sudo -u "$user" xdg-open "http://github.com/satya164/$unixname/issues/new";;

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Fez lets you install codecs and additional software,
+# Fedy lets you install codecs and additional software,
 # fix problems, tweak and cleanup your system,
 # view system information and much more with just few clicks.
 #
@@ -7,11 +7,11 @@
 #
 # License: GNU GPLv3 <http://www.gnu.org/licenses/gpl-3.0.html>
 # Author: Satyajit Sahoo <satyajit.happy@gmail.com>
-# Code: GitHub <https://github.com/satya164/fez>
+# Code: GitHub <https://github.com/satya164/fedy>
 
 # Declare variables
-program="Fez"
-unixname="fez"
+program="Fedy"
+unixname="fedy"
 version="3.1.5"
 user=`who | grep $(echo "$DISPLAY" | cut -d '.' -f 1) | cut -d ' ' -f 1 | tail -1`
 errors="0"
@@ -23,11 +23,11 @@ libdir="$scriptdir/lib"         # Provides core functionality, change only if yo
 rundir="$scriptdir/run"         # Contains scripts to run at startup
 moduledir="$scriptdir/modules"  # Provides the main menu module
 plugindir="$scriptdir/plugins"  # The directory where are containing all the plugins
-workingdir="/tmp/fez"           # A temporary directory where everything is done, automatically created as needed
-sysconf="/etc/fezrc"            # System wide configuration file for fez
-userconf="$homedir/.fezrc"      # User specific configuration file for fez
-lockfile="/var/run/fez.pid"     # The lockfile used to prevent running of multiple instances
-logfile="/var/log/fez.log"      # Outputs will be redirected to this file if logging is enabled
+workingdir="/tmp/fedy"           # A temporary directory where everything is done, automatically created as needed
+sysconf="/etc/fedyrc"            # System wide configuration file for fedy
+userconf="$homedir/.fedyrc"      # User specific configuration file for fedy
+lockfile="/var/run/fedy.pid"     # The lockfile used to prevent running of multiple instances
+logfile="/var/log/fedy.log"      # Outputs will be redirected to this file if logging is enabled
 enablelog="false"                  # If you want to disable logging, change "true" to "false"
 tryprevrel="true"                # If you don't want to try installing from repo of a previous release, change "true" to "false" 
 downagent="wget"                # To use curl to download files, change "wget" to "curl"
@@ -35,7 +35,7 @@ redownload="false"                  # To force redownload of files, change "fals
 forcedistro="false"                # To run the script with unsupported distro, change "false" to "true"
 keepbackup="true"                # If you don't want to backup previous configurations, change "true" to "false"
 keepdownloads="true"             # If you don't want to save downloads, change "true" to "false"
-downloadsdir="$homedir/fez_dl"  # All downloaded files are saved in this directory
+downloadsdir="$homedir/fedy_dl"  # All downloaded files are saved in this directory
 
 # Set Colors
 BOLD="\033[1;10m"
@@ -68,5 +68,5 @@ while read run; do
     eval "$runcommand" "$@"
 done < <(find "$rundir/" -name '*.sh' | sort -u)
 
-# Please report bugs at <http://github.com/satya164/fez/issues>
+# Please report bugs at <http://github.com/satya164/fedy/issues>
 # End of the Script

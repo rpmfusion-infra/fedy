@@ -170,13 +170,13 @@ skip_if_unavailable=1
 EOF
 }
 
-fez.repo() {
-cat <<EOF | tee /etc/yum.repos.d/fez.repo > /dev/null 2>&1
-[Fez]
-name=$program
+fedy.repo() {
+cat <<EOF | tee /etc/yum.repos.d/fedy.repo > /dev/null 2>&1
+[fedy]
+name=Fedy
 type=rpm-md
-baseurl=http://download.opensuse.org/repositories/home:/satya164:/fez/Fedora_\$releasever/
-gpgkey=http://download.opensuse.org/repositories/home:/satya164:/fez/Fedora_\$releasever/repodata/repomd.xml.key
+baseurl=http://download.opensuse.org/repositories/home:/satya164:/fedy/Fedora_\$releasever/
+gpgkey=http://download.opensuse.org/repositories/home:/satya164:/fedy/Fedora_\$releasever/repodata/repomd.xml.key
 gpgcheck=1
 enabled=1
 metadata_expire=1d

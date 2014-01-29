@@ -1,11 +1,10 @@
 [Desktop Entry]
-Name=Fez
-GenericName=Fez
-Icon=fez
+Name=Fedy
+GenericName=Fedy
+Icon=fedy
 Comment=Software, Codec Installs & System Tweaks
-Exec=fez
+Exec=fedy
 Terminal=true
 Type=Application
 Categories=System;Utility;X-Fedora;
-Keywords=clean;codec;fix;postinstall;propietary;repo;
-Name[en_US]=fez.desktop
+Keywords=clean;codec;fedora;fix;postinstall;propietary;repo;utils;
