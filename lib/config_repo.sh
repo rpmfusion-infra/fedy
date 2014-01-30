@@ -97,29 +97,6 @@ skip_if_unavailable=1
 EOF
 }
 
-skype.repo() {
-cat <<EOF | tee /etc/yum.repos.d/skype.repo > /dev/null 2>&1
-[skype]
-name=Skype Repository
-baseurl=http://download.skype.com/linux/repos/fedora/updates/i586/
-gpgkey=http://www.skype.com/products/skype/linux/rpm-public-key.asc
-enabled=1
-gpgcheck=1
-skip_if_unavailable=1
-EOF
-}
-
-steam.repo() {
-cat <<EOF | tee /etc/yum.repos.d/steam.repo > /dev/null 2>&1
-[steam]
-name=Steam RPM packages and dependencies
-baseurl=http://spot.fedorapeople.org/steam/fedora-\$releasever/
-enabled=1
-gpgcheck=0
-skip_if_unavailable=1
-EOF
-}
-
 dropbox.repo() {
 cat <<EOF | tee /etc/yum.repos.d/dropbox.repo > /dev/null 2>&1
 [dropbox]
