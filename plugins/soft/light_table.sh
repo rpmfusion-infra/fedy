@@ -27,7 +27,7 @@ else
         libdir="/usr/lib64"
     fi
     [[ -f $libdir/libudev.so.1 ]] && ln -snf $libdir/libudev.so.1 $libdir/libudev.so.0
-    gtk-update-icon-cache -f -t /usr/share/icons/hicolor
+    gtk-update-icon-cache -f -t /usr/share/icons/hicolor > /dev/null 2>&1
 cat <<EOF | tee /usr/share/applications/LightTable.desktop > /dev/null 2>&1
 [Desktop Entry]
 Name=Light Table
@@ -57,7 +57,7 @@ rm -f "/usr/bin/LightTable"
 rm -f "/usr/share/applications/LightTable.desktop"
 rm -f "/usr/share/icons/hicolor/256x256/apps/lticon.png"
 rm -rf "/opt/LightTable/"
-gtk-update-icon-cache -f -t /usr/share/icons/hicolor
+gtk-update-icon-cache -f -t /usr/share/icons/hicolor > /dev/null 2>&1
 [[ ! "$(light_table_test)" = "Installed" ]]; exit_state
 }
 

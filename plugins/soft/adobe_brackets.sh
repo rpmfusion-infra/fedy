@@ -21,7 +21,7 @@ else
         size="${icon##*/appshell}"
         xdg-icon-resource install --novendor --size "${size%.png}" "$icon" "brackets"
     done
-    gtk-update-icon-cache -f -t /usr/share/icons/hicolor
+    gtk-update-icon-cache -f -t /usr/share/icons/hicolor > /dev/null 2>&1
     xdg-desktop-menu install --novendor /opt/brackets/brackets.desktop
     if [[ "$arch" = "32" ]]; then
         libdir="/usr/lib"
@@ -50,7 +50,7 @@ if [[ -d /opt/brackets ]]; then
         xdg-icon-resource uninstall --novendor --size "${size%.png}" "$icon" "brackets"
     done
 fi
-gtk-update-icon-cache -f -t /usr/share/icons/hicolor
+gtk-update-icon-cache -f -t /usr/share/icons/hicolor > /dev/null 2>&1
 xdg-desktop-menu uninstall --novendor "/opt/brackets/brackets.desktop"
 if [[ "$arch" = "32" ]]; then
     libdir="/usr/lib"

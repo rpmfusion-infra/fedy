@@ -18,7 +18,7 @@ else
         size="${dir##*/}"
         xdg-icon-resource install --novendor --size "${size/x*}" "$dir/sublime-text.png" "sublime-text"
     done
-    gtk-update-icon-cache -f -t /usr/share/icons/hicolor
+    gtk-update-icon-cache -f -t /usr/share/icons/hicolor > /dev/null 2>&1
     ln -sf "/opt/sublime_text_3/sublime_text" "/usr/bin/subl"
 cat <<EOF | tee /usr/share/applications/sublime-text-3.desktop > /dev/null 2>&1
 [Desktop Entry]
@@ -45,7 +45,7 @@ if [[ -d /opt/sublime_text_3/Icon ]]; then
         size="${dir##*/}"
         xdg-icon-resource uninstall --novendor --size "${size/x*}" "$dir/sublime-text.png" "sublime-text"
     done
-    gtk-update-icon-cache -f -t /usr/share/icons/hicolor
+    gtk-update-icon-cache -f -t /usr/share/icons/hicolor > /dev/null 2>&1
 fi
 rm -f "/usr/bin/subl"
 rm -f "/usr/share/applications/sublime-text-3.desktop"
