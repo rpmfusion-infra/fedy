@@ -12,7 +12,7 @@
 # Declare variables
 program="Fedy"
 unixname="fedy"
-version="3.1.6"
+version="3.1.7"
 user=`who | grep $(echo "$DISPLAY" | cut -d '.' -f 1) | cut -d ' ' -f 1 | tail -1`
 errors="0"
 homedir=`awk -F: -v v="$user" '{if ($1==v) print $6}' /etc/passwd`
