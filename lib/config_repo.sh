@@ -9,9 +9,9 @@ get_file_quiet "$(yum -q repoinfo ${1%.repo} 2>&1 | grep Repo-baseurl | grep -o 
 config_repo() {
 repouri="$1"
 repofile=${repouri##*/}
-show_msg "Adding $repofile"
+show_msg "Adding $repouri"
 get_file_quiet "$repouri" "$repofile"
-if [[ `grep "^name=" "$repofile"` && `grep "^baseurl=" "$repofile"` ]]; then
+if [[ `grep "^name=" "$repouri"` && `grep "^#\?baseurl=" "$repouri"` ]]; then
     check_repo "$repofile"
     if [[ $? -eq 0 ]]; then
         show_status "$repofile already configured"
