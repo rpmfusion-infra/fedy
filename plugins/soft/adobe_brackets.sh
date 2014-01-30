@@ -23,16 +23,21 @@ else
     done
     gtk-update-icon-cache -f -t /usr/share/icons/hicolor
     xdg-desktop-menu install --novendor /opt/brackets/brackets.desktop
+    if [[ "$arch" = "32" ]]; then
+        libdir="/usr/lib"
+    elif [[ "$arch" = "64" ]]; then
+        libdir="/usr/lib64"
+    fi
     nss_files="libnspr4.so.0d libplds4.so.0d libplc4.so.0d libssl3.so.1d libnss3.so.1d libsmime3.so.1d libnssutil3.so.1d"
     for f in $nss_files; do
         target=$(echo $f | sed 's/\.[01]d$//')
-        if [[ -f "/usr/lib${arch}/${target}" ]]; then
-            ln -snf "/usr/lib${arch}/${target}" "/opt/brackets/${f}"
+        if [[ -f "$libdir/$target" ]]; then
+            ln -snf "$libdir/$target" "/opt/brackets/$f"
         else
-            show_err "$f not found in /usr/lib${arch}/${target}"
+            show_err "$f not found in $libdir/$target"
         fi
     done
-    [[ -f /usr/lib${arch}/libudev.so.1 ]] && ln -snf /usr/lib${arch}/libudev.so.1 /usr/lib${arch}/libudev.so.0
+    [[ -f $libdir/libudev.so.1 ]] && ln -snf $libdir/libudev.so.1 $libdir/libudev.so.0
 fi
 [[ "$(adobe_brackets_test)" = "Installed" ]]; exit_state
 }
@@ -47,8 +52,13 @@ if [[ -d /opt/brackets ]]; then
 fi
 gtk-update-icon-cache -f -t /usr/share/icons/hicolor
 xdg-desktop-menu uninstall --novendor "/opt/brackets/brackets.desktop"
+if [[ "$arch" = "32" ]]; then
+    libdir="/usr/lib"
+elif [[ "$arch" = "64" ]]; then
+    libdir="/usr/lib64"
+fi
+rm -f "$libdir/libudev.so.0"
 rm -rf "/opt/brackets/"
-rm -f "/usr/lib${arch}/libudev.so.0"
 [[ ! "$(adobe_brackets_test)" = "Installed" ]]; exit_state
 }
 
