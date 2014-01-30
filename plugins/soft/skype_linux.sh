@@ -18,7 +18,6 @@ fi
 skype_linux_undo() {
 show_func "Uninstalling Skype"
 erase_pkg skype
-remove_repo "skype.repo"
 [[ ! "$(skype_linux_test)" = "Installed" ]]; exit_state
 }
 
