@@ -4,33 +4,28 @@
     <id type="desktop">fedy.desktop</id>
     <licence>GFDL</licence>
     <name>Fedy</name>
-    <summary>Software, Codec Installs &amp; System Tweaks</summary>
+    <summary>Install codecs, software, and more...</summary>
     <description>
         <p>
-        Fedy lets you install multimedia codecs and additional
-        software that Fedora doesn't want to ship, like mp3 support, Adobe
-        Flash, Oracle Java etc., and much more with just a few clicks.
+        Fedy lets you install multimedia codecs and additional software that
+        Fedora doesn't want to ship, like mp3 support, Adobe Flash, Oracle Java
+        etc., and much more with just a few clicks.
         </p>
-        <p>
-        You can perform operations from the command line, and even use it in
-        scripts to automate tasks.
-        </p>
-        <p>
-        The downloaded files are saved in a folder named "fedy_dl" in
-        your home directory, so that you can use them on another computer, or
-        if you need to reinstall Fedora, without having to redownload.
-        </p>
-        <p>
-        Fedy is extensible via plugins. Writing a plugin is easy and
-        fun.
-        </p>
+        <p>Features:</p>
+        <ul>
+            <li>Simple and easy to use GUI</li>
+            <li>Always installs latest versions of software</li>
+            <li>Saves downloaded files for later use</li>
+            <li>Can be run from the command line</li>
+            <li>Extensible with plugins</li>
+        </ul>
     </description>
     <screenshots>
-        <screenshot type="default" width="1360" height="765">http://satya164.github.io/fedy/images/fu-tweaks.jpg</screenshot>
-        <screenshot width="1360" height="765">http://satya164.github.io/fedy/images/fu-repos.jpg</screenshot>
-        <screenshot width="1360" height="765">http://satya164.github.io/fedy/images/fu-software.jpg</screenshot>
-        <screenshot width="1360" height="765">http://satya164.github.io/fedy/images/fu-plugins.jpg</screenshot>
-        <screenshot width="1360" height="765">http://satya164.github.io/fedy/images/fu-main.jpg</screenshot>
+        <screenshot type="default" width="1360" height="765">http://satya164.github.io/fedy/images/tweaks.jpg</screenshot>
+        <screenshot width="1360" height="765">http://satya164.github.io/fedy/images/repos.jpg</screenshot>
+        <screenshot width="1360" height="765">http://satya164.github.io/fedy/images/software.jpg</screenshot>
+        <screenshot width="1360" height="765">http://satya164.github.io/fedy/images/plugins.jpg</screenshot>
+        <screenshot width="1360" height="765">http://satya164.github.io/fedy/images/main.jpg</screenshot>
     </screenshots>
     <url type="homepage">http://satya164.github.io/fedy/</url>
     <updatecontact>satyajit.happy@gmail.com</updatecontact>
