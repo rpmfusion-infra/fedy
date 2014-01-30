@@ -16,7 +16,7 @@ if [[ `grep "^name=" "$repouri"` && `grep "^#\?baseurl=" "$repouri"` ]]; then
     if [[ $? -eq 0 ]]; then
         show_status "$repofile already configured"
     else
-        yum-config-manager --add-repo="$repofile"
+        yum-config-manager --add-repo="$repouri"
         exit_state
     fi
 else
