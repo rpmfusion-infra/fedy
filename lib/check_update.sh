@@ -27,7 +27,7 @@ show_update() {
 check_update
 if [[ "$updatestat" = "available" ]]; then
     show_msg "Update available!"
-    if [[ ! "$interactive" = "no" ]]; then
+    if [[ ! "$interactive" = "false" ]]; then
         show_dialog --title="Update available" --text="$changelog" --button="Install update:0" --button="Ignore:1"
         if [[ $? -eq 0 ]]; then
             install_update

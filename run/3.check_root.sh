@@ -4,7 +4,7 @@ check_root() {
 show_func "Verifying root access"
 if [[ ! $(whoami) = "root" ]]; then
     show_err "Root access is needed to run $program!"
-    [[ "$interactive" = "no" ]] && terminate_program
+    [[ "$interactive" = "false" ]] && terminate_program
     show_dialog --title="Root access needed" --text="$program needs root access to work. Are you sure to continue?" --button="No:1" --button="Yes:0"
     if [[ $? -eq 0 ]]; then
         check_sudoer
