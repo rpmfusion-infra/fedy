@@ -38,7 +38,7 @@ fi
 reqpkgs=( "curl" "wget" "yad" )
 for pkg in ${reqpkgs[@]}; do
     if [[ ! -f /usr/bin/$pkg ]]; then
-        show_err "$pkg is required for $program to run properly, installing yad"
+        show_err "$pkg is required for $program to run properly, installing $pkg"
         install_pkg $pkg
         if [[ ! -f /usr/bin/$pkg ]]; then
             show_err "Installation of $pkg failed!"
