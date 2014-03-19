@@ -14,7 +14,7 @@ else
     file32=${get32##*/}
     get64=$(grep "Linux x64" "jre.htm" | grep ".rpm" | cut -d\" -f 12 | grep -v demos | head -n 1)
     file64=${get64##*/}
-    process_pkg --header "Cookie: gpw_e24=www.oracle.com"
+    process_pkg --header "Cookie: oraclelicense=a"
     show_msg "Setting up Oracle Java"
     alternatives --install /usr/bin/java java /usr/java/latest/bin/java 200000
     alternatives --auto java
