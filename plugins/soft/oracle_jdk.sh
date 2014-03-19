@@ -8,7 +8,7 @@ if [[ "$(oracle_jdk_test)" = "Installed" ]]; then
 else
     show_msg "Getting latest version"
     get_file_quiet "http://www.oracle.com/technetwork/java/javase/downloads/index.html" "java.htm"
-    dlurl=$(cat "java.htm" | tr ' ' '\n' | grep "/technetwork/java/javase/downloads/jdk7" | head -n 1 | cut -d\" -f 2 | sed -e 's/^/http:\/\/www.oracle.com/')
+    dlurl=$(cat "java.htm" | tr ' ' '\n' | grep "/technetwork/java/javase/downloads/jdk8" | head -n 1 | cut -d\" -f 2 | sed -e 's/^/http:\/\/www.oracle.com/')
     get_file_quiet "$dlurl" "jdk.htm"
     get32=$(grep "Linux x86" "jdk.htm" | grep ".rpm" | cut -d\" -f 12 | grep -v demos | head -n 1)
     file32=${get32##*/}
