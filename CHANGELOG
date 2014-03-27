@@ -1,3 +1,8 @@
+Changelog 3.1.8 (27-03-2014)
+1. Fixed Oracle JRE and JDK download
+2. Updated JRE and JDK to 8
+3. Added Moka themes
+
 Changelog 3.1.7 (31-01-2014)
 
 1. Fixed issues with adding repo
