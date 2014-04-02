@@ -16,7 +16,11 @@ else
     show_msg "Installing files"
     mkdir -p "${file%.*}"
     ar p "$file" "data.tar.gz" | tar -C "${file%.*}" -xzf -
-    cp -af ${file%.*}/* "/"
+    cp -af "${file%.*}/opt/brackets" "/opt/"
+    cp -af "${file%.*}/usr/bin/brackets" "/usr/bin/"
+    cp -af "${file%.*}/usr/share/doc/brackets" "/usr/share/doc/"
+    cp -af "${file%.*}/usr/share/menu/brackets.menu" "/usr/share/menu/"
+    cp -af "${file%.*}/usr/share/icons/hicolor/scalable/apps/brackets.svg" "/usr/share/icons/hicolor/scalable/apps/"
     for icon in /opt/brackets/appshell*.png; do
         size="${icon##*/appshell}"
         xdg-icon-resource install --novendor --size "${size%.png}" "$icon" "brackets"
@@ -58,6 +62,10 @@ elif [[ "$arch" = "64" ]]; then
     libdir="/usr/lib64"
 fi
 rm -f "$libdir/libudev.so.0"
+rm -f "/usr/share/icons/hicolor/scalable/apps/brackets.svg"
+rm -f "/usr/share/menu/brackets.menu"
+rm -f "/usr/bin/brackets"
+rm -rf "/usr/share/doc/brackets"
 rm -rf "/opt/brackets/"
 [[ ! "$(adobe_brackets_test)" = "Installed" ]]; exit_state
 }
