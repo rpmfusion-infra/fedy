@@ -1,3 +1,8 @@
+Changelog 3.1.9 (04-05-2014)
+1. Fixed Adobe Brackets download
+2. Added Sublime Text 2
+3. Fixed repo malformed error
+
 Changelog 3.1.8 (27-03-2014)
 1. Fixed Oracle JRE and JDK download
 2. Updated JRE and JDK to 8
