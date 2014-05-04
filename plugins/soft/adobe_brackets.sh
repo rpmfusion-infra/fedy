@@ -9,9 +9,10 @@ else
     show_msg "Installing dependencies"
     install_pkg atk ca-certificates cairo cups dbus expat fontconfig freetype gcc GConf2 gdk-pixbuf2 glib2 gtk2 libcurl libgcrypt libstdc++ libX11 libXcomposite libXdamage libXext libXfixes libXrandr libXrender nspr nss pango redhat-lsb wget xdg-utils
     show_msg "Getting latest version"
-    get_file_quiet "http://download.brackets.io/" "brackets.htm"
-    get=$(cat "brackets.htm" | tr ' ' '\n' | grep -o "file.cfm?platform=LINUX${arch}&build=[0-9]*" | head -n 1 | sed -e 's/^/http:\/\/download.brackets.io\//')
-    file="brackets-LINUX.deb"
+    get_file_quiet "https://github.com/adobe/brackets/tags.atom" "brackets.atom"
+    sprint=$(grep "<title>.*</title>" "brackets.atom" | grep -io "Sprint [0-9]*" | head -n 1 | tr ' ' '\n' | tail -n 1)
+    get="http://github.com/adobe/brackets/releases/download/sprint-${sprint}/Brackets.Sprint.${sprint}.${arch}-bit.deb"
+    file=${get##*/}
     get_file
     show_msg "Installing files"
     mkdir -p "${file%.*}"
