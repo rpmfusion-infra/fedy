@@ -1,14 +1,14 @@
 # Name: Install Sublime Text 3
-# Command: sublime_text
+# Command: sublime_text3
 
-sublime_text() {
+sublime_text3() {
 show_func "Installing Sublime Text 3"
-if [[ "$(sublime_text_test)" = "Installed" ]]; then
+if [[ "$(sublime_text3_test)" = "Installed" ]]; then
     show_status "Sublime Text 3 already installed"
 else
     show_msg "Getting latest version"
-    get_file_quiet "http://www.sublimetext.com/3" "sublime.htm"
-    get=$(cat "sublime.htm" | tr ' ' '\n' | grep -o "https\?://.*/sublime_text_3_build_[0-9]*_x${arch}.tar.bz2" | head -n 1)
+    get_file_quiet "http://www.sublimetext.com/3" "sublime3.htm"
+    get=$(cat "sublime3.htm" | tr ' ' '\n' | grep -o "https\?://.*/sublime_text_3_build_[0-9]*_x${arch}.tar.bz2" | head -n 1)
     file=${get##*/}
     get_file
     show_msg "Installing files"
@@ -35,10 +35,10 @@ Categories=Development;Utility;TextEditor;
 Keywords=Text;Editor;
 EOF
 fi
-[[ "$(sublime_text_test)" = "Installed" ]]; exit_state
+[[ "$(sublime_text3_test)" = "Installed" ]]; exit_state
 }
 
-sublime_text_undo() {
+sublime_text3_undo() {
 show_func "Uninstalling Sublime Text 3"
 if [[ -d /opt/sublime_text_3/Icon ]]; then
     for dir in /opt/sublime_text_3/Icon/*; do
@@ -50,10 +50,10 @@ fi
 rm -f "/usr/bin/subl"
 rm -f "/usr/share/applications/sublime-text-3.desktop"
 rm -rf "/opt/sublime_text_3"
-[[ ! "$(sublime_text_test)" = "Installed" ]]; exit_state
+[[ ! "$(sublime_text3_test)" = "Installed" ]]; exit_state
 }
 
-sublime_text_test() {
+sublime_text3_test() {
 if [[ -f /opt/sublime_text_3/sublime_text ]]; then
     printf "Installed"
 else
