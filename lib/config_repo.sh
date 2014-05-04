@@ -11,7 +11,7 @@ repouri="$1"
 repofile=${repouri##*/}
 show_msg "Adding $repouri"
 get_file_quiet "$repouri" "$repofile"
-if [[ `grep "^name=" "$repouri"` && `grep "^#\?baseurl=" "$repouri"` ]]; then
+if [[ `grep "^name=" "$repofile"` && `grep "^#\?baseurl=" "$repofile"` ]]; then
     check_repo "$repofile"
     if [[ $? -eq 0 ]]; then
         show_status "$repofile already configured"
