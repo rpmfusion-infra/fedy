@@ -16,7 +16,7 @@ else
     get_file
     show_msg "Installing files"
     mkdir -p "${file%.*}"
-    ar p "$file" "data.tar.gz" | tar -C "${file%.*}" -xzf -
+    ar p "$file" "data.tar.xz" | tar -C "${file%.*}" -xJf -
     cp -af "${file%.*}/opt/brackets" "/opt/"
     cp -af "${file%.*}/usr/bin/brackets" "/usr/bin/"
     cp -af "${file%.*}/usr/share/doc/brackets" "/usr/share/doc/"
