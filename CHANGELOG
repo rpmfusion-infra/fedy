@@ -1,3 +1,7 @@
+Changelog 3.2.0 (22-06-2014)
+1. Fixed Adobe Brackets install
+2. Fixed SELinux warning
+
 Changelog 3.1.9 (04-05-2014)
 1. Fixed Adobe Brackets download
 2. Added Sublime Text 2
