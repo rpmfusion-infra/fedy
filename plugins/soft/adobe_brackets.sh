@@ -10,8 +10,8 @@ else
     install_pkg atk ca-certificates cairo cups dbus expat fontconfig freetype gcc GConf2 gdk-pixbuf2 glib2 gtk2 libcurl libgcrypt libstdc++ libX11 libXcomposite libXdamage libXext libXfixes libXrandr libXrender nspr nss pango redhat-lsb wget xdg-utils
     show_msg "Getting latest version"
     get_file_quiet "https://github.com/adobe/brackets/tags.atom" "brackets.atom"
-    sprint=$(grep "<title>.*</title>" "brackets.atom" | grep -io "Sprint [0-9]*" | head -n 1 | tr ' ' '\n' | tail -n 1)
-    get="http://github.com/adobe/brackets/releases/download/sprint-${sprint}/Brackets.Sprint.${sprint}.${arch}-bit.deb"
+    sprint=$(grep "<id>tag:github\.com.*</id>" "brackets.atom" | grep -io "sprint-[0-9]*" | head -n 1 | tr '-' '\n' | tail -n 1)
+    get="https://github.com/adobe/brackets/releases/download/release-0.${sprint}/Brackets.Release.0.${sprint}.${arch}-bit.deb"
     file=${get##*/}
     get_file
     show_msg "Installing files"
