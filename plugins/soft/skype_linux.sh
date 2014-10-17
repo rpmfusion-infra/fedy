@@ -6,6 +6,8 @@ show_func "Installing Skype"
 if [[ "$(skype_linux_test)" = "Installed" ]]; then
     show_status "Skype already installed"
 else
+    show_msg "Installing dependencies"
+    install_pkg gtk2-engines.i686
     get32="http://www.skype.com/go/getskype-linux-fc10"
     file32="skype-fedora.i586.rpm"
     get64="$get32"
