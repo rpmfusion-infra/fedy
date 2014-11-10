@@ -27,13 +27,23 @@ case `uname -m` in
         terminate_program;;
 esac
 # Check connection
-ping -c 1 www.google.com > /dev/null 2>&1
-if [[ $? -eq 0 ]]; then
-    show_status "Internet connection verified"
-else
-    show_warn "No working internet connection found"
-    [[ -f /usr/bin/yad && "$interactive" = "false" ]] || show_dialog --timeout="5" --title="No working internet connection found" --text="$program requires internet connection to work properly.\nYou may encounter problems. If you are using a proxy, configure it in $sysconf." --button="Continue:0"
-fi
+downagents=( "curl" "wget" )
+for agent in ${downagents[@]}; do
+    if [[ "$downagent" = "$agent" ]]; then
+        if [[ -f /usr/bin/$agent ]]; then
+            $agent http://www.google.com &> /dev/null
+            if [[ $? -eq 0 ]]; then
+                show_status "Internet connection verified"
+            else
+                show_warn "No working internet connection found"
+                [[ -f /usr/bin/yad && "$interactive" = "false" ]] || show_dialog --timeout="5" --title="No working internet connection found" --text="$program requires internet connection to work properly.\nYou may encounter problems. If you are using a proxy, configure it in $sysconf." --button="Continue:0"
+            fi
+        else
+            show_warn "$agent specified as download agent but does not exist in default location (usr/bin/$agent)."
+            show_warn "If this is the first time fedy is being run, it will attempt to install the required download agent package."
+        fi
+    fi
+done
 # Check required packages
 reqpkgs=( "curl" "wget" "yad" )
 for pkg in ${reqpkgs[@]}; do
