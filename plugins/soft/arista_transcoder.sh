@@ -42,7 +42,7 @@ gtk-update-icon-cache -f -t /usr/share/icons/hicolor > /dev/null 2>&1
 }
 
 arista_transcoder_test() {
-if [[ -f /usr/bin/arista-gtk ]]; then
+if [[ `command -v arista-gtk` ]]; then
     printf "Installed"
 else
     printf "Not installed"

@@ -6,7 +6,7 @@ show_func "Installing Microsoft Truetype fonts"
 if [[ "$(core_fonts_test)" = "Installed" ]]; then
     show_status "Microsoft Truetype fonts already installed"
 else
-    [[ -f /usr/bin/cabextract ]] || install_pkg cabextract
+    [[ `command -v cabextract` ]] || install_pkg cabextract
     mkdir -p "$workingdir/corefonts"
     fontlist=( "andale32.exe" "arial32.exe" "arialb32.exe" "comic32.exe" "courie32.exe" "georgi32.exe" "impact32.exe" "times32.exe" "trebuc32.exe" "verdan32.exe" "webdin32.exe" "wd97vwr32.exe" )
     for font in "${fontlist[@]}"; do
