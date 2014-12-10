@@ -7,11 +7,13 @@ if [[ "$(color_prompt_test)" = "Added" ]]; then
     show_status "Color prompts already added"
 else
 cat <<EOF | tee /etc/profile.d/color_prompt.sh > /dev/null 2>&1
-# Colors in Terminal
-if [ \$USER = root ]; then
-    PS1='\[\033[1;31m\][\u@\h \W]\\$\[\033[0m\] '
-else
-    PS1='\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W\[\033[00m\]\[\033[1;32m\]\\$\[\033[m\] '
+# Colors in Terminal (Bash)
+if [[ ! -z $BASH ]]
+    if [[ \$USER = "root" ]; then
+        PS1="\[\033[1;31m\][\u@\h \W]\\$\[\033[0m\] "
+    else
+        PS1="\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W\[\033[00m\]\[\033[1;32m\]\\$\[\033[m\] "
+    fi
 fi
 EOF
 fi
