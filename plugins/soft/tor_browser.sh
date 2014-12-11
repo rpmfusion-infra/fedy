@@ -11,10 +11,12 @@ else
     get=$(cat "tor.htm" | tr ' ' '\n' | grep -o "/dist/torbrowser/.*/tor-browser-linux${arch}-.*_en-US.tar.xz" | head -n 1 | sed -e 's/^/http:\/\/www.torproject.org/')
     file=${get##*/}
     get_file
-    show_msg "Installing files"
-    tar -xJf "$file"
-    cp -af "tor-browser_en-US" "/opt/"
-    ln -sf "/opt/tor-browser_en-US/start-tor-browser" "/usr/bin/tor-browser"
+
+    if [[ -f "$file" ]]; then
+        show_msg "Installing files"
+        tar -xJf "$file"
+        cp -af "tor-browser_en-US" "/opt/"
+        ln -sf "/opt/tor-browser_en-US/start-tor-browser" "/usr/bin/tor-browser"
 cat <<EOF | tee /usr/share/applications/tor-browser.desktop > /dev/null 2>&1
 [Desktop Entry]
 Name=Tor Browser
@@ -28,6 +30,7 @@ StartupNotify=true
 Categories=Network;WebBrowser;
 Keywords=web;browser;internet;
 EOF
+    fi
 fi
 [[ "$(tor_browser_test)" = "Installed" ]]; exit_state
 }

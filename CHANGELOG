@@ -1,3 +1,9 @@
+Changelog 3.2.2 (11-12-2014)
+1. Fixed Adobe Brackets install
+2. Check if shell is bash before showing color prompt
+3. Use freetype-freeworld instead of infinality
+4. Minor fixes
+
 Changelog 3.2.1 (12-09-2014)
 1. Fixed Adobe Brackets install
 
@@ -92,7 +98,7 @@ Changelog 3.0.8 (03-07-2013)
 5. Fixed error after java install
 6. Remove disable_services plugin
 7. Fix bug in font_rendering plugin
-8. Fix false error on enable_dvd plugin 
+8. Fix false error on enable_dvd plugin
 
 Changelog 3.0.7 (21-06-2013)
 

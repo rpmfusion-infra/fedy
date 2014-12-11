@@ -11,16 +11,18 @@ else
     get=$(cat "sublime2.htm" | grep "dl_linux_${arch}" | grep -o "https\?://.*/Sublime.*Text.*.tar.bz2" | head -n 1)
     file=${get##*/}
     get_file
-    show_msg "Installing files"
-    tar -xjf "$file"
-    mv "Sublime Text 2" "sublime_text_2"
-    cp -af "sublime_text_2" "/opt/"
-    for dir in /opt/sublime_text_2/Icon/*; do
-        size="${dir##*/}"
-        xdg-icon-resource install --novendor --size "${size/x*}" "$dir/sublime_text.png" "sublime_text"
-    done
-    gtk-update-icon-cache -f -t /usr/share/icons/hicolor > /dev/null 2>&1
-    ln -sf "/opt/sublime_text_2/sublime_text" "/usr/bin/subl2"
+
+    if [[ -f "$file" ]]; then
+        show_msg "Installing files"
+        tar -xjf "$file"
+        mv "Sublime Text 2" "sublime_text_2"
+        cp -af "sublime_text_2" "/opt/"
+        for dir in /opt/sublime_text_2/Icon/*; do
+            size="${dir##*/}"
+            xdg-icon-resource install --novendor --size "${size/x*}" "$dir/sublime_text.png" "sublime_text"
+        done
+        gtk-update-icon-cache -f -t /usr/share/icons/hicolor > /dev/null 2>&1
+        ln -sf "/opt/sublime_text_2/sublime_text" "/usr/bin/subl2"
 cat <<EOF | tee /usr/share/applications/sublime-text-2.desktop > /dev/null 2>&1
 [Desktop Entry]
 Name=Sublime Text 2
@@ -35,6 +37,7 @@ StartupNotify=true
 Categories=Development;Utility;TextEditor;
 Keywords=Text;Editor;
 EOF
+    fi
 fi
 [[ "$(sublime_text2_test)" = "Installed" ]]; exit_state
 }

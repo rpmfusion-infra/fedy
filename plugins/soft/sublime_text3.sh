@@ -10,16 +10,18 @@ else
     get_file_quiet "http://www.sublimetext.com/3" "sublime3.htm"
     get=$(cat "sublime3.htm" | tr ' ' '\n' | grep -o "https\?://.*/sublime_text_3_build_[0-9]*_x${arch}.tar.bz2" | head -n 1)
     file=${get##*/}
-    get_file
-    show_msg "Installing files"
-    tar -xjf "$file"
-    cp -af "sublime_text_3" "/opt/"
-    for dir in /opt/sublime_text_3/Icon/*; do
-        size="${dir##*/}"
-        xdg-icon-resource install --novendor --size "${size/x*}" "$dir/sublime-text.png" "sublime-text"
-    done
-    gtk-update-icon-cache -f -t /usr/share/icons/hicolor > /dev/null 2>&1
-    ln -sf "/opt/sublime_text_3/sublime_text" "/usr/bin/subl"
+
+    if [[ -f "$file" ]]; then
+        get_file
+        show_msg "Installing files"
+        tar -xjf "$file"
+        cp -af "sublime_text_3" "/opt/"
+        for dir in /opt/sublime_text_3/Icon/*; do
+            size="${dir##*/}"
+            xdg-icon-resource install --novendor --size "${size/x*}" "$dir/sublime-text.png" "sublime-text"
+        done
+        gtk-update-icon-cache -f -t /usr/share/icons/hicolor > /dev/null 2>&1
+        ln -sf "/opt/sublime_text_3/sublime_text" "/usr/bin/subl"
 cat <<EOF | tee /usr/share/applications/sublime-text-3.desktop > /dev/null 2>&1
 [Desktop Entry]
 Name=Sublime Text 3
@@ -34,6 +36,7 @@ StartupNotify=true
 Categories=Development;Utility;TextEditor;
 Keywords=Text;Editor;
 EOF
+    fi
 fi
 [[ "$(sublime_text3_test)" = "Installed" ]]; exit_state
 }

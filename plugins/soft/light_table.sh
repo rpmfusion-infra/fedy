@@ -16,24 +16,26 @@ else
     file=${get##*/}
     echo $file
     get_file
-    show_msg "Installing files"
-    tar -xzf "$file"
-    cp -af "LightTable" "/opt/"
-    cp -f "/opt/LightTable/core/img/lticon.png" "/usr/share/icons/hicolor/256x256/apps/lticon.png"
-    ln -sf "/opt/LightTable/LightTable" "/usr/bin/LightTable"
-    if [[ "$arch" = "32" ]]; then
-        libdir="/usr/lib"
-    elif [[ "$arch" = "64" ]]; then
-        libdir="/usr/lib64"
-    fi
-    [[ -f $libdir/libudev.so.1 ]] && ln -snf $libdir/libudev.so.1 $libdir/libudev.so.0
-    gtk-update-icon-cache -f -t /usr/share/icons/hicolor > /dev/null 2>&1
+
+    if [[ -f "$file" ]]; then
+        show_msg "Installing files"
+        tar -xzf "$file"
+        cp -af "LightTable" "/opt/"
+        cp -f "/opt/LightTable/core/img/lticon.png" "/usr/share/icons/hicolor/256x256/apps/lticon.png"
+        ln -sf "/opt/LightTable/LightTable" "/usr/bin/LightTable"
+        if [[ "$arch" = "32" ]]; then
+            libdir="/usr/lib"
+        elif [[ "$arch" = "64" ]]; then
+            libdir="/usr/lib64"
+        fi
+        [[ -f $libdir/libudev.so.1 ]] && ln -snf $libdir/libudev.so.1 $libdir/libudev.so.0
+        gtk-update-icon-cache -f -t /usr/share/icons/hicolor > /dev/null 2>&1
 cat <<EOF | tee /usr/share/applications/LightTable.desktop > /dev/null 2>&1
 [Desktop Entry]
 Name=Light Table
 GenericName=Interactive IDE
 Icon=lticon
-Comment=Interactive IDE with real time feedback 
+Comment=Interactive IDE with real time feedback
 Exec=LightTable %F
 Terminal=false
 Type=Application
@@ -41,6 +43,7 @@ StartupNotify=true
 Categories=Development;Utility;TextEditor;
 Keywords=Development;Editor;IDE;Text;
 EOF
+    fi
 fi
 [[ "$(light_table_test)" = "Installed" ]]; exit_state
 }

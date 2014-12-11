@@ -15,12 +15,15 @@ else
     get="https://github.com/danielgtaylor/arista/archive/${aristaver}.tar.gz"
     file="arista-${aristaver}.tar.gz"
     get_file
-    tar -xzf "$file"
-    cd "${file%.tar.gz}"
-    python setup.py build
-    python setup.py install
-    cd ..
-    gtk-update-icon-cache -f -t /usr/share/icons/hicolor > /dev/null 2>&1
+
+    if [[ -f "$file" ]]; then
+        tar -xzf "$file"
+        cd "${file%.tar.gz}"
+        python setup.py build
+        python setup.py install
+        cd ..
+        gtk-update-icon-cache -f -t /usr/share/icons/hicolor > /dev/null 2>&1
+    fi
 fi
 [[ "$(arista_transcoder_test)" = "Installed" ]]; exit_state
 }

@@ -12,7 +12,7 @@
 # Declare variables
 program="Fedy"
 unixname="fedy"
-version="3.2.1"
+version="3.2.2"
 user=`who | grep $(echo "$DISPLAY" | cut -d '.' -f 1) | cut -d ' ' -f 1 | tail -1`
 errors="0"
 homedir=`awk -F: -v v="$user" '{if ($1==v) print $6}' /etc/passwd`
@@ -29,7 +29,7 @@ userconf="$homedir/.fedyrc"     # User specific configuration file for fedy
 lockfile="/var/run/fedy.pid"    # The lockfile used to prevent running of multiple instances
 logfile="/var/log/fedy.log"     # Outputs will be redirected to this file if logging is enabled
 enablelog="false"               # If you want to disable logging, change "true" to "false"
-tryprevrel="true"               # If you don't want to try installing from repo of a previous release, change "true" to "false" 
+tryprevrel="true"               # If you don't want to try installing from repo of a previous release, change "true" to "false"
 downagent="wget"                # To use curl to download files, change "wget" to "curl"
 redownload="false"              # To force redownload of files, change "false" to "true"
 forcedistro="false"             # To run the script with unsupported distro, change "false" to "true"
