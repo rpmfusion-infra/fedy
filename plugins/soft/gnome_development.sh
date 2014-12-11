@@ -1,7 +1,7 @@
 # Name: Install GNOME development tools
 # Command: gnome_development
 
-devtoolslist=( "boost-devel" "bzip2-devel" "clutter-devel" "cvs" "cyrus-sasl-devel" "devhelp" "d-feet" "diffstat" "doxygen" "gdb" "gettext" "git" "gnome-common" "gobject-introspection" "gtkparasite" "koji" "krb5-devel" "mock" "ncurses-devel" "openldap-devel" "pam-devel" "patchutils" "perl-devel" "python-devel" "python-ldap" "rcs" "readline-devel" "redhat-rpm-config" "rpmdevtools" "slang-devel" "subversion" "systemtap" "valgrind" "zlib-devel" )
+devtoolslist=( "boost-devel" "bzip2-devel" "clutter-devel" "cvs" "cyrus-sasl-devel" "devhelp" "diffstat" "doxygen" "gdb" "gettext" "git" "gnome-common" "gobject-introspection" "koji" "krb5-devel" "mock" "ncurses-devel" "openldap-devel" "pam-devel" "patchutils" "perl-devel" "python-devel" "python-ldap" "rcs" "readline-devel" "redhat-rpm-config" "rpmdevtools" "slang-devel" "subversion" "systemtap" "zlib-devel" )
 
 gnome_development() {
 show_func "Installing GNOME development tools"
