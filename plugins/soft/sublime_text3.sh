@@ -10,9 +10,9 @@ else
     get_file_quiet "http://www.sublimetext.com/3" "sublime3.htm"
     get=$(cat "sublime3.htm" | tr ' ' '\n' | grep -o "https\?://.*/sublime_text_3_build_[0-9]*_x${arch}.tar.bz2" | head -n 1)
     file=${get##*/}
+    get_file
 
     if [[ -f "$file" ]]; then
-        get_file
         show_msg "Installing files"
         tar -xjf "$file"
         cp -af "sublime_text_3" "/opt/"
