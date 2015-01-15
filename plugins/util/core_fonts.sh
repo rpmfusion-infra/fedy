@@ -16,6 +16,7 @@ else
         cabextract -L -d "$workingdir/msttcorefonts" "$file"
     done
     mv "$workingdir/msttcorefonts" "/usr/share/fonts/"
+    restorecon -r -v "/usr/share/fonts/msttcorefonts/"
     show_msg "Rebuilding font cache"
     fc-cache -f
 fi
