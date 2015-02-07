@@ -103,26 +103,13 @@ skip_if_unavailable=1
 EOF
 }
 
-moka-icon-theme.repo() {
-cat <<EOF | tee /etc/yum.repos.d/moka-icon-theme.repo > /dev/null 2>&1
-[moka-icon-theme]
-name=Moka Icon Theme
+moka-project.repo() {
+cat <<EOF | tee /etc/yum.repos.d/moka-project.repo > /dev/null 2>&1
+[home_snwh_moka-project]
+name=Moka Project (Fedora_\$releasever)
 type=rpm-md
-baseurl=http://download.opensuse.org/repositories/home:/snwh:/moka-icon-theme/Fedora_\$releasever/
-gpgkey=http://download.opensuse.org/repositories/home:/snwh:/moka-icon-theme/Fedora_\$releasever/repodata/repomd.xml.key
-gpgcheck=1
-enabled=1
-skip_if_unavailable=1
-EOF
-}
-
-moka-gtk-theme.repo() {
-cat <<EOF | tee /etc/yum.repos.d/moka-gtk-theme.repo > /dev/null 2>&1
-[moka-gtk-theme]
-name=Moka GTK Theme
-type=rpm-md
-baseurl=http://download.opensuse.org/repositories/home:/snwh:/moka-gtk-theme/Fedora_\$releasever/
-gpgkey=http://download.opensuse.org/repositories/home:/snwh:/moka-gtk-theme/Fedora_\$releasever/repodata/repomd.xml.key
+baseurl=http://download.opensuse.org/repositories/home:/snwh:/moka-project/Fedora_\$releasever/
+gpgkey=http://download.opensuse.org/repositories/home:/snwh:/moka-project/Fedora_\$releasever/repodata/repomd.xml.key
 gpgcheck=1
 enabled=1
 skip_if_unavailable=1
