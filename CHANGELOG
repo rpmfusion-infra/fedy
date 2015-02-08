@@ -1,3 +1,9 @@
+Changelog 3.2.3 (08-02-2014)
+1. Added Popcorn Time
+2. Fix sublime Text 3 installation
+3. Fix microsoft fonts installation
+4. Minor fixes
+
 Changelog 3.2.2 (11-12-2014)
 1. Fixed Adobe Brackets install
 2. Check if shell is bash before showing color prompt

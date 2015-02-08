@@ -6,10 +6,8 @@ rpmfusion-nonfree.repo() {
 install_pkg http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-${fver}.noarch.rpm
 }
 
-livna.repo() {
-install_pkg http://rpm.livna.org/livna-release.rpm http://ftp-stud.fht-esslingen.de/pub/Mirrors/rpm.livna.org/livna-release.rpm
-# Disable Livna repo
-yum-config-manager --disable livna > /dev/null 2>&1
+remi.repo() {
+install_pkg http://rpms.famillecollet.com/fedora/remi-release-${fver}.rpm
 }
 
 adobe-linux-i386.repo() {
