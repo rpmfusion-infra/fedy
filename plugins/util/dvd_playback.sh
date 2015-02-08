@@ -6,16 +6,16 @@ show_func "Installing libdvdcss"
 if [[ "$(dvd_playback_test)" = "Enabled" ]]; then
     show_status "libdvdcss already installed"
 else
-    add_repo "livna.repo"
-    install_pkg --enablerepo=livna libdvdcss
+    add_repo "remi.repo"
+    install_pkg libdvdcss
 fi
 [[ "$(dvd_playback_test)" = "Enabled" ]]; exit_state
 }
 
 dvd_playback_undo() {
 show_func "Uninstalling libdvdcss"
-erase_pkg livna-release libdvdcss
-remove_repo "livna.repo"
+erase_pkg remi-release libdvdcss
+remove_repo "remi.repo"
 [[ ! "$(dvd_playback_test)" = "Enabled" ]]; exit_state
 }
 
