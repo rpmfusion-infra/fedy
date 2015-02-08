@@ -1,17 +1,15 @@
 # Name: Install Moka themes
 # Command: moka_themes
 
-mokalist=( "moka-gtk-theme" "moka-icon-theme" )
+mokalist=( "moka-gnome-shell-theme" "moka-icon-theme" "faba-icon-theme" "faba-mono-icons" )
 
 moka_themes() {
 show_func "Installing Moka themes"
 if [[ "$(moka_themes_test)" = "Installed" ]]; then
     show_status "Moka themes already installed"
 else
-    add_repo "moka-icon-theme.repo"
-    add_repo "moka-gtk-theme.repo"
-    install_pkg_prevrel "moka-icon-theme.repo" moka-icon-theme
-    install_pkg_prevrel "moka-gtk-theme.repo" moka-gtk-theme
+    add_repo "moka-project.repo"
+    install_pkg_prevrel "moka-project.repo" ${mokalist[@]}
 
 fi
 [[ "$(moka_themes_test)" = "Installed" ]]; exit_state
@@ -20,8 +18,7 @@ fi
 moka_themes_undo() {
 show_func "Uninstalling Moka themes"
 erase_pkg ${mokalist[@]}
-remove_repo "moka-icon-theme.repo"
-remove_repo "moka-gtk-theme.repo"
+remove_repo "moka-project.repo"
 [[ ! "$(moka_themes_test)" = "Installed" ]]; exit_state
 }
 
