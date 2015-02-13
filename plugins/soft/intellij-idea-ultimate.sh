@@ -35,9 +35,6 @@ intellij_idea_ultimate() {
 			-np -nd -erobots=off \
 			-c "http://www.jetbrains.com/idea/download/download_thanks.jsp"
 	
-		# Remove any pre-existing installation
-		install_intellij_undo
-	
 		TARBALL=$(ls ideaIU-*.tar.gz)
 	
 		# Unpack IntelliJ into /opt
