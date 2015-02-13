@@ -24,7 +24,7 @@ intellij_idea_ultimate() {
 		# Not using Fedy's download functions because we have to do a wacky POST request
 		#
 		wget \
-			--user-agent="Mozilla/5.0 (X11; Linux x86_64; rv:35.0) Gecko/20100101 Firefox/35.0" \ 
+			--user-agent="Mozilla/5.0 (X11; Linux x86_64; rv:35.0) Gecko/20100101 Firefox/35.0" \
 			--post-data="os=linux&edition=IU" \
 			--referer="http://www.jetbrains.com/idea/download/" \
 			--domains="jetbrains.com" \
