@@ -13,7 +13,7 @@ intellij_idea_ultimate() {
 	
 		# Install a JDK
 		#
-		yum install -y wget java-1.8.0-openjdk java-1.8.0-openjdk-devel
+		install_pkg "java-1.8.0-openjdk" "java-1.8.0-openjdk-devel"
 
 		# Work in /tmp
 		cd /tmp
