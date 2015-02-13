@@ -1,7 +1,5 @@
 # Name: Install IntelliJ IDEA Ultimate Edition
 # Command: intellij_idea_ultimate
-#
-# Fedy plugin by Gabriel Bauman <gabe@codehaus.org>
 
 intellij_idea_ultimate() {
 

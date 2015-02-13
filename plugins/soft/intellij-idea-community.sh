@@ -1,7 +1,5 @@
 # Name: Install IntelliJ IDEA Community Edition
 # Command: intellij_idea_community
-#
-# Fedy plugin by Gabriel Bauman <gabe@codehaus.org>
 
 intellij_idea_community() {
 
