@@ -45,7 +45,7 @@ intellij_idea_community() {
 		
 		# Create a desktop file so the app can be launched from GNOME Shell
 		#
-		cat > /usr/local/share/applications/jetbrains-idea.desktop <<-DESKTOPFILE
+		cat > /usr/local/share/applications/jetbrains-idea-community.desktop <<-DESKTOPFILE
 		[Desktop Entry]
 		Version=1.0
 		Type=Application
@@ -82,7 +82,7 @@ intellij_idea_community_undo() {
 	show_func "Uninstalling IntelliJ IDEA Community Edition"
 
 	rm -rf /opt/intellij-idea-community
-	rm -f /usr/local/share/applications/jetbrains-idea.desktop
+	rm -f /usr/local/share/applications/jetbrains-idea-community.desktop
 	
 	[[ ! "$(intellij_idea_community_test)" = "Installed" ]]; exit_state
 	
