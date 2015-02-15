@@ -1,10 +1,10 @@
-# Name: Install Jetbrains Phpstorm
+# Name: Install Jetbrains PhpStorm
 # Command: jetbrains_phpstorm
  
 jetbrains_phpstorm() {
-show_func "Installing Jetbrains Phpstorm"
+show_func "Installing Jetbrains PhpStorm"
 if [[ "$(jetbrains_phpstorm_test)" = "Installed" ]]; then
-	show_status "Jetbrains Phpstorm already installed"
+	show_status "Jetbrains PhpStorm already installed"
 else
 	show_msg "Getting latest version"
 	get_file_quiet "https://www.jetbrains.com/phpstorm/download/download_thanks.jsp?os=linux" "phpstorm.html"
@@ -23,7 +23,7 @@ else
 
 cat <<EOF | tee /usr/share/applications/jetbrains-phpstorm.desktop > /dev/null 2>&1
 [Desktop Entry]
-Name=Jetbrains Phpstorm
+Name=Jetbrains PhpStorm
 Icon=jetbrains-phpstorm
 Comment=The Most Intelligent PHP IDE
 Exec=phpstorm
@@ -39,7 +39,7 @@ fi
 }
  
 jetbrains_phpstorm_undo() {
-show_func "Uninstalling Jetbrains Phpstorm"
+show_func "Uninstalling Jetbrains PhpStorm"
 rm -f "/usr/share/applications/jetbrains-phpstorm.desktop"
 rm -f "/usr/bin/phpstorm"
 rm -f "/usr/share/icons/hicolor/256x256/apps/phpstorm.png"
