@@ -8,7 +8,7 @@ if [[ "$(pycharm_professional_test)" = "Installed" ]]; then
 else
 	show_msg "Getting latest version"
 	get_file_quiet "https://www.jetbrains.com/pycharm/download/download_thanks.jsp?os=linux" "pycharm-p.html"
-	get="$(cat pycharm-p.html | grep -o https://download.jetbrains.com/python/pycharm-professional-[0-9.]*.tar.gz | head -n 1)"
+	get=$(cat pycharm-p.html | grep -o "https://download.jetbrains.com/python/pycharm-professional-[0-9.]*.tar.gz" | head -n 1)
 	file=${get##*/}
 	get_file
 	if [[ -f "$file" ]]; then
