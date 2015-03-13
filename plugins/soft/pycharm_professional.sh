@@ -1,6 +1,6 @@
 # Name: Install Jetbrains PyCharm Professional
 # Command: pycharm_professional
- 
+
 pycharm_professional() {
 show_func "Installing Jetbrains PyCharm Professional"
 if [[ "$(pycharm_professional_test)" = "Installed" ]]; then
@@ -19,7 +19,7 @@ else
 		ln -sf "/opt/pycharm-professional/bin/pycharm.sh" "/usr/bin/pycharm-professional"
 		cp -f "/opt/pycharm-professional/bin/pycharm.png" "/usr/share/icons/hicolor/128x128/apps/jetbrains-pycharm.png"
 		gtk-update-icon-cache -f -t /usr/share/icons/hicolor > /dev/null 2>&1
- 
+
 cat <<EOF | tee /usr/share/applications/pycharm-professional.desktop > /dev/null 2>&1
 [Desktop Entry]
 Name=Jetbrains PyCharm Professional
@@ -36,19 +36,20 @@ EOF
 fi
 [[ "$(pycharm_professional_test)" = "Installed" ]]; exit_state
 }
- 
+
 pycharm_professional_undo() {
 show_msg "Uninstalling Jetbrains PyCharm Professional"
 rm -f "/usr/bin/pycharm-professional"
 rm -f "/usr/share/icons/hicolor/128x128/apps/jetbrains-pycharm.png"
+rm -f "/usr/share/applications/pycharm-professional.desktop"
 rm -rf "/opt/pycharm-professional"
 [[ ! "$(pycharm_professional_test)" = "Installed" ]]; exit_state
 }
- 
+
 pycharm_professional_test() {
 if [[ -f "/opt/pycharm-professional/bin/pycharm.sh" ]]; then
 	echo "Installed"
 else
 	echo "Not Installed"
 fi
-} 
+}
