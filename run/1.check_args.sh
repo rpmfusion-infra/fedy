@@ -3,6 +3,8 @@
 check_args() {
 while [[ $# -gt 0 ]]; do
     case "$1" in
+        -v|--version)
+                echo $version
         -l|--enable-log)
                 enablelog="true";;
         -p|--noprev-rel)
