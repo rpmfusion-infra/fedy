@@ -43,8 +43,6 @@ const Application = new Lang.Class({
     _createHeaderbar: function() {
         this._headerbar = new Gtk.HeaderBar({ show_close_button: true });
 
-        let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
-
         let buttonbox = new Gtk.ButtonBox({
             orientation: Gtk.Orientation.HORIZONTAL,
             homogeneous: true
@@ -85,9 +83,7 @@ const Application = new Lang.Class({
             b.show();
         }
 
-        hbox.add(buttonbox);
-
-        this._headerbar.add(hbox);
+        this._headerbar.set_custom_title(buttonbox);
     }
 });
 
