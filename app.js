@@ -37,6 +37,7 @@ const Application = new Lang.Class({
     },
 
     _onStartup: function() {
+        this._loadPlugins();
         this._buildUI();
     },
 
@@ -50,31 +51,28 @@ const Application = new Lang.Class({
 
         buttonbox.get_style_context().add_class("linked");
 
-        let buttons = {
-            tweaks: {
-                label: "Tweaks",
-                action: function() {
-                    print("You clicked 'New'.");
-                }
-            },
-            apps: {
-                label: "Apps",
-                action: function() {}
+        let categories = [];
+
+        for (var plugin in this._plugins) {
+            let p = this._plugins[plugin];
+
+            if (p.category && categories.indexOf(p.category) === -1) {
+                categories.push(p.category);
             }
-        };
+        }
 
         let group;
 
-        for (let cat in buttons) {
+        for (var i = 0, l = categories.length; i < l; i++) {
             let b;
 
             if (group) {
                 b = new Gtk.RadioButton({
-                    label: buttons[cat].label,
+                    label: categories[i],
                     group: group
                 });
             } else {
-                group = b = new Gtk.RadioButton({ label: buttons[cat].label });
+                group = b = new Gtk.RadioButton({ label: categories[i] });
             }
 
             buttonbox.add(b);
@@ -84,6 +82,54 @@ const Application = new Lang.Class({
         }
 
         this._headerbar.set_custom_title(buttonbox);
+    },
+
+    _loadPlugins: function() {
+        this._plugins = {};
+
+        let currdir = GLib.get_current_dir();
+
+        let plugindir = currdir + "/plugins";
+
+        let dir = Gio.File.new_for_path(plugindir);
+
+        let fileEnum;
+
+        try {
+            fileEnum = dir.enumerate_children('standard::name,standard::type',
+                                              Gio.FileQueryInfoFlags.NONE, null);
+        } catch (e) {
+            fileEnum = null;
+        }
+
+
+        if (fileEnum != null) {
+            let info;
+
+            while ((info = fileEnum.next_file(null)) != null) {
+                let name = info.get_name();
+
+                if (/.*\.plugin$/.test(name)) {
+                    let file = Gio.File.new_for_path(plugindir + "/" + name);
+                    let size = file.query_info("standard::size",
+                                               Gio.FileQueryInfoFlags.NONE,
+                                               null).get_size();
+
+                    try {
+                        let stream = file.open_readwrite(null).get_input_stream();
+                        let data = stream.read_bytes(size, null).get_data();
+
+                        stream.close(null);
+
+                        let plugin = name.replace(/\.plugin$/, "");
+
+                        this._plugins[plugin] = JSON.parse(data);
+                    } catch (e) {
+                        print("Error loading plugin " + name + " : " + e.message);
+                    }
+                }
+            }
+        }
     }
 });
 
