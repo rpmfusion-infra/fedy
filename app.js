@@ -43,16 +43,14 @@ const Application = new Lang.Class({
     _createHeaderbar: function() {
         this._headerbar = new Gtk.HeaderBar({ show_close_button: true });
 
-        this._hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
+        let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
 
-        this._headerbar.add(this._hbox);
-
-        this._buttonbox = new Gtk.ButtonBox({
+        let buttonbox = new Gtk.ButtonBox({
         	orientation: Gtk.Orientation.HORIZONTAL,
         	homogeneous: true
         });
 
-        this._buttonbox.get_style_context().add_class("linked");
+        buttonbox.get_style_context().add_class("linked");
 
         let buttons = {
         	tweaks: {
@@ -67,27 +65,29 @@ const Application = new Lang.Class({
         	}
         };
 
-        let prev;
+        let group;
 
-        for (let b in buttons) {
-        	let newb;
+        for (let cat in buttons) {
+        	let b;
 
-        	if (prev) {
-        		newb = new Gtk.RadioButton({
-        			label: buttons[b].label,
-        			group: prev
+        	if (group) {
+        		b = new Gtk.RadioButton({
+        			label: buttons[cat].label,
+        			group: group
         		});
         	} else {
-        		prev = newb = new Gtk.RadioButton({ label: buttons[b].label });
+        		group = b = new Gtk.RadioButton({ label: buttons[cat].label });
         	}
 
-        	this._buttonbox.add(newb);
+        	buttonbox.add(b);
 
-            newb.set_mode(false);
-        	newb.show();
+            b.set_mode(false);
+        	b.show();
         }
 
-        this._hbox.add(this._buttonbox);
+        hbox.add(buttonbox);
+
+        this._headerbar.add(hbox);
     }
 });
 
