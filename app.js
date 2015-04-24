@@ -14,16 +14,16 @@ const Application = new Lang.Class({
             flags: Gio.ApplicationFlags.FLAGS_NONE
         });
 
-		this.application.connect("activate", Lang.bind(this, this._onActivate));
-		this.application.connect("startup", Lang.bind(this, this._onStartup));
+        this.application.connect("activate", Lang.bind(this, this._onActivate));
+        this.application.connect("startup", Lang.bind(this, this._onStartup));
     },
 
     _buildUI: function() {
         this._window = new Gtk.ApplicationWindow({
-    						application: this.application,
-    						window_position: Gtk.WindowPosition.CENTER,
-    						title: "Ozon toolbox"
-    					});
+                            application: this.application,
+                            window_position: Gtk.WindowPosition.CENTER,
+                            title: "Ozon toolbox"
+                        });
 
         this._createHeaderbar();
 
@@ -46,43 +46,43 @@ const Application = new Lang.Class({
         let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
 
         let buttonbox = new Gtk.ButtonBox({
-        	orientation: Gtk.Orientation.HORIZONTAL,
-        	homogeneous: true
+            orientation: Gtk.Orientation.HORIZONTAL,
+            homogeneous: true
         });
 
         buttonbox.get_style_context().add_class("linked");
 
         let buttons = {
-        	tweaks: {
-        		label: "Tweaks",
-        		action: function() {
-			        print("You clicked 'New'.");
-			    }
-        	},
-        	apps: {
-        		label: "Apps",
-        		action: function() {}
-        	}
+            tweaks: {
+                label: "Tweaks",
+                action: function() {
+                    print("You clicked 'New'.");
+                }
+            },
+            apps: {
+                label: "Apps",
+                action: function() {}
+            }
         };
 
         let group;
 
         for (let cat in buttons) {
-        	let b;
+            let b;
 
-        	if (group) {
-        		b = new Gtk.RadioButton({
-        			label: buttons[cat].label,
-        			group: group
-        		});
-        	} else {
-        		group = b = new Gtk.RadioButton({ label: buttons[cat].label });
-        	}
+            if (group) {
+                b = new Gtk.RadioButton({
+                    label: buttons[cat].label,
+                    group: group
+                });
+            } else {
+                group = b = new Gtk.RadioButton({ label: buttons[cat].label });
+            }
 
-        	buttonbox.add(b);
+            buttonbox.add(b);
 
             b.set_mode(false);
-        	b.show();
+            b.show();
         }
 
         hbox.add(buttonbox);
