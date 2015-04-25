@@ -3,6 +3,7 @@
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
+const Pango = imports.gi.Pango;
 const Lang = imports.lang;
 
 const Application = new Lang.Class({
@@ -90,11 +91,42 @@ const Application = new Lang.Class({
             for (let item in this._plugins[category]) {
                 let plugin = this._plugins[category][item];
 
-                let view = new Gtk.TextView({ wrap_mode: Gtk.WrapMode.WORD });
+                let grid = new Gtk.Grid({
+                    row_spacing: 5,
+                    column_spacing: 10,
+                    border_width: 5
+                });
 
-                view.buffer.text = plugin.label;
+                let label = new Gtk.Label({
+                    halign: Gtk.Align.START,
+                    expand: true
+                });
 
-                list.add(view);
+                label.set_markup("<b>" + plugin.label + "</b>");
+                label.set_ellipsize(Pango.EllipsizeMode.END);
+
+                let description = new Gtk.Label({
+                    label: plugin.description,
+                    halign: Gtk.Align.START,
+                    expand: true
+                });
+
+                description.set_ellipsize(Pango.EllipsizeMode.END);
+
+                let box = new Gtk.Box({
+                    orientation: Gtk.Orientation.VERTICAL,
+                    halign: Gtk.Align.END
+                });
+
+                let button = new Gtk.Button({ label: "Install" });
+
+                box.set_center_widget(button);
+
+                grid.attach(label, 0, 1, 1, 1);
+                grid.attach(description, 0, 2, 1, 1);
+                grid.attach(box, 1, 1, 1, 2);
+
+                list.add(grid);
             }
 
             this._panes[category].add(list);

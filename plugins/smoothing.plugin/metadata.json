@@ -1,4 +1,5 @@
 {
-	"label": "Improve font smoothing",
+	"label": "Better Font Smoothing",
+	"description": "Improve the font rendering for better readability",
 	"category": "Tweaks"
 }
