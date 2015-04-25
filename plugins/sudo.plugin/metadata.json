@@ -1,0 +1,5 @@
+{
+	"label": "Administrator Access",
+	"description": "Set up sudo access to do things as root",
+	"category": "Tweaks"
+}
