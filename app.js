@@ -112,6 +112,20 @@ const Application = new Lang.Class({
                     border_width: 5
                 });
 
+                let image = new Gtk.Image();
+
+                if (plugin.icon) {
+                    if (/^\.\/.*/.test(plugin.icon)) {
+                        image.set_from_file(plugin.path + "/" + plugin.icon);
+                    } else {
+                        image.set_from_icon_name(plugin.icon, Gtk.IconSize.DIALOG);
+                    }
+                } else {
+                    image.set_from_icon_name("system-run", Gtk.IconSize.DIALOG);
+                }
+
+                grid.attach(image, 0, 1, 1, 2);
+
                 let label = new Gtk.Label({
                     halign: Gtk.Align.START,
                     expand: true
@@ -120,7 +134,7 @@ const Application = new Lang.Class({
                 label.set_markup("<b>" + plugin.label + "</b>");
                 label.set_ellipsize(Pango.EllipsizeMode.END);
 
-                grid.attach(label, 0, 1, 1, 1);
+                grid.attach(label, 1, 1, 1, 1);
 
                 let description = new Gtk.Label({
                     label: plugin.description,
@@ -130,7 +144,7 @@ const Application = new Lang.Class({
 
                 description.set_ellipsize(Pango.EllipsizeMode.END);
 
-                grid.attach(description, 0, 2, 1, 1);
+                grid.attach(description, 1, 2, 1, 1);
 
                 if (plugin.action) {
                     let box = new Gtk.Box({
@@ -144,7 +158,7 @@ const Application = new Lang.Class({
 
                     box.set_center_widget(button);
 
-                    grid.attach(box, 1, 1, 1, 2);
+                    grid.attach(box, 2, 1, 1, 2);
                 }
 
                 list.add(grid);
