@@ -3,6 +3,7 @@
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
+const Gdk = imports.gi.Gdk;
 const Pango = imports.gi.Pango;
 const Lang = imports.lang;
 
@@ -78,12 +79,13 @@ const Application = new Lang.Class({
     },
 
     _handleTask: function(event, plugin) {
-        let install = plugin.path  + "/install.sh";
-        let file = Gio.File.new_for_path(install);
+        let script = plugin.path  + "/" + plugin.scripts[plugin.action];
+
+        let file = Gio.File.new_for_path(script);
 
         if (file.query_exists(null)) {
             try {
-                GLib.spawn_command_line_async("sh " + install);
+                GLib.spawn_command_line_async("sh " + script);
             } catch (e) {
                 print("Failed to run process: " + e.message);
             }
