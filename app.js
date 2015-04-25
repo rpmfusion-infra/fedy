@@ -110,7 +110,12 @@ const Application = new Lang.Class({
                 let name = info.get_name();
 
                 if (/.*\.plugin$/.test(name)) {
-                    let file = Gio.File.new_for_path(plugindir + "/" + name);
+                    let file = Gio.File.new_for_path(plugindir + "/" + name + "/metadata.json");
+
+                    if (!file.query_exists(null)) {
+                        continue;
+                    }
+
                     let size = file.query_info("standard::size",
                                                Gio.FileQueryInfoFlags.NONE,
                                                null).get_size();
