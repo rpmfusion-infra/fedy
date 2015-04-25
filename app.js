@@ -43,6 +43,31 @@ const Application = new Lang.Class({
         this._buildUI();
     },
 
+    _loadJSON: function(path) {
+        let parsed;
+
+        let file = Gio.File.new_for_path(path);
+
+        if (file.query_exists(null)) {
+            let size = file.query_info("standard::size",
+                                       Gio.FileQueryInfoFlags.NONE,
+                                       null).get_size();
+
+            try {
+                let stream = file.open_readwrite(null).get_input_stream();
+                let data = stream.read_bytes(size, null).get_data();
+
+                stream.close(null);
+
+                parsed = JSON.parse(data);
+            } catch (e) {
+                print("Error loading file " + file.get_path() + " : " + e.message);
+            }
+        }
+
+        return parsed;
+    },
+
     _renderPlugins: function() {
         let stack = new Gtk.Stack({ transition_type: Gtk.StackTransitionType.CROSSFADE });
         let switcher = new Gtk.StackSwitcher({ stack: stack });
@@ -52,11 +77,19 @@ const Application = new Lang.Class({
         for (let category in this._plugins) {
             this._panes[category] = new Gtk.ScrolledWindow();
 
-            let view = new Gtk.TextView({ wrap_mode: Gtk.WrapMode.WORD });
+            let list = new Gtk.ListBox();
 
-            view.buffer.text = "View for " + category;
+            for (let item in this._plugins[category]) {
+                let plugin = this._plugins[category][item];
 
-            this._panes[category].add(view);
+                let view = new Gtk.TextView({ wrap_mode: Gtk.WrapMode.WORD });
+
+                view.buffer.text = plugin.label;
+
+                list.add(view);
+            }
+
+            this._panes[category].add(list);
 
             stack.add_titled(this._panes[category], category, category);
         }
@@ -91,33 +124,14 @@ const Application = new Lang.Class({
                 let name = info.get_name();
 
                 if (/.*\.plugin$/.test(name)) {
-                    let file = Gio.File.new_for_path(plugindir + "/" + name + "/metadata.json");
+                    let parsed = this._loadJSON(plugindir + "/" + name + "/metadata.json");
 
-                    if (!file.query_exists(null)) {
-                        continue;
-                    }
-
-                    let size = file.query_info("standard::size",
-                                               Gio.FileQueryInfoFlags.NONE,
-                                               null).get_size();
-
-                    try {
-                        let stream = file.open_readwrite(null).get_input_stream();
-                        let data = stream.read_bytes(size, null).get_data();
-
-                        stream.close(null);
+                    if (parsed && parsed.category) {
+                        this._plugins[parsed.category] = this._plugins[parsed.category] || {};
 
                         let plugin = name.replace(/\.plugin$/, "");
 
-                        let parsed = JSON.parse(data);
-
-                        if (parsed && parsed.category) {
-                            this._plugins[parsed.category] = this._plugins[parsed.category] || {};
-                        }
-
                         this._plugins[parsed.category][plugin] = parsed;
-                    } catch (e) {
-                        print("Error loading plugin " + name + " : " + e.message);
                     }
                 }
             }
