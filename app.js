@@ -109,7 +109,7 @@ const Application = new Lang.Class({
                 let grid = new Gtk.Grid({
                     row_spacing: 5,
                     column_spacing: 10,
-                    border_width: 5
+                    margin: 5
                 });
 
                 let image = new Gtk.Image();
