@@ -158,12 +158,11 @@ const Application = new Lang.Class({
         let fileEnum;
 
         try {
-            fileEnum = dir.enumerate_children('standard::name,standard::type',
+            fileEnum = dir.enumerate_children("standard::name,standard::type",
                                               Gio.FileQueryInfoFlags.NONE, null);
         } catch (e) {
             fileEnum = null;
         }
-
 
         if (fileEnum !== null) {
             let info;
