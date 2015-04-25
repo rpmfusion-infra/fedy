@@ -25,7 +25,9 @@ const Application = new Lang.Class({
                             title: "Ozon toolbox"
                         });
 
-        this._createHeaderbar();
+        this._headerbar = new Gtk.HeaderBar({ show_close_button: true });
+
+        this._renderPlugins();
 
         this._window.set_default_size(800, 600);
         this._window.set_titlebar(this._headerbar);
@@ -41,47 +43,26 @@ const Application = new Lang.Class({
         this._buildUI();
     },
 
-    _createHeaderbar: function() {
-        this._headerbar = new Gtk.HeaderBar({ show_close_button: true });
+    _renderPlugins: function() {
+        let stack = new Gtk.Stack({ transition_type: Gtk.StackTransitionType.CROSSFADE });
+        let switcher = new Gtk.StackSwitcher({ stack: stack });
 
-        let buttonbox = new Gtk.ButtonBox({
-            orientation: Gtk.Orientation.HORIZONTAL,
-            homogeneous: true
-        });
+        this._panes = {};
 
-        buttonbox.get_style_context().add_class("linked");
+        for (let category in this._plugins) {
+            this._panes[category] = new Gtk.ScrolledWindow();
 
-        let categories = [];
+            let view = new Gtk.TextView({ wrap_mode: Gtk.WrapMode.WORD });
 
-        for (var plugin in this._plugins) {
-            let p = this._plugins[plugin];
+            view.buffer.text = "View for " + category;
 
-            if (p.category && categories.indexOf(p.category) === -1) {
-                categories.push(p.category);
-            }
+            this._panes[category].add(view);
+
+            stack.add_titled(this._panes[category], category, category);
         }
 
-        let group;
-
-        for (var i = 0, l = categories.length; i < l; i++) {
-            let b;
-
-            if (group) {
-                b = new Gtk.RadioButton({
-                    label: categories[i],
-                    group: group
-                });
-            } else {
-                group = b = new Gtk.RadioButton({ label: categories[i] });
-            }
-
-            buttonbox.add(b);
-
-            b.set_mode(false);
-            b.show();
-        }
-
-        this._headerbar.set_custom_title(buttonbox);
+        this._headerbar.set_custom_title(switcher);
+        this._window.add(stack);
     },
 
     _loadPlugins: function() {
@@ -128,7 +109,13 @@ const Application = new Lang.Class({
 
                         let plugin = name.replace(/\.plugin$/, "");
 
-                        this._plugins[plugin] = JSON.parse(data);
+                        let parsed = JSON.parse(data);
+
+                        if (parsed && parsed.category) {
+                            this._plugins[parsed.category] = this._plugins[parsed.category] || {};
+                        }
+
+                        this._plugins[parsed.category][plugin] = parsed;
                     } catch (e) {
                         print("Error loading plugin " + name + " : " + e.message);
                     }
