@@ -6,11 +6,11 @@ const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
 const Application = new Lang.Class({
-    Name: "Ozon toolbox",
+    Name: "Fedy",
 
     _init: function() {
         this.application = new Gtk.Application({
-            application_id: "org.ozonos.toolbox",
+            application_id: "org.ozonos.fedy",
             flags: Gio.ApplicationFlags.FLAGS_NONE
         });
 
@@ -22,8 +22,16 @@ const Application = new Lang.Class({
         this._window = new Gtk.ApplicationWindow({
                             application: this.application,
                             window_position: Gtk.WindowPosition.CENTER,
-                            title: "Ozon toolbox"
+                            title: "Fedy"
                         });
+
+        try {
+            let icon = Gtk.IconTheme.get_default().load_icon("fedy", 48, 0);
+
+            this._window.set_icon(icon);
+        } catch (e) {
+            print("Failed to load application icon: " + e.message);
+        }
 
         this._headerbar = new Gtk.HeaderBar({ show_close_button: true });
 
