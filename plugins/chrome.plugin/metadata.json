@@ -1,5 +1,10 @@
 {
 	"label": "Google Chrome",
 	"description": "A fast, simple and secure web browser, built for the modern web",
-	"category": "Apps"
+	"category": "Apps",
+	"action": "Install",
+	"scripts": {
+		"Install": "install.sh",
+		"Uninstall": "uninstall.sh"
+	}
 }
