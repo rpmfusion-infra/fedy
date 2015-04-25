@@ -120,6 +120,14 @@ const Application = new Lang.Class({
 
                 let button = new Gtk.Button({ label: "Install" });
 
+                button.connect("clicked", function() {
+                    try {
+                        GLib.spawn_command_line_async("notify-send 'Installing " + plugin.label + "'");
+                    } catch (e) {
+                        print("Failed to run process: " + e.message);
+                    }
+                });
+
                 box.set_center_widget(button);
 
                 grid.attach(label, 0, 1, 1, 1);
