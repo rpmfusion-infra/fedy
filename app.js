@@ -103,10 +103,10 @@ const Application = new Lang.Class({
         }
 
 
-        if (fileEnum != null) {
+        if (fileEnum !== null) {
             let info;
 
-            while ((info = fileEnum.next_file(null)) != null) {
+            while ((info = fileEnum.next_file(null)) !== null) {
                 let name = info.get_name();
 
                 if (/.*\.plugin$/.test(name)) {
