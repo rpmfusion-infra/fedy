@@ -77,13 +77,28 @@ const Application = new Lang.Class({
         return parsed;
     },
 
+    _handleTask: function(event, plugin) {
+        let install = plugin.path  + "/install.sh";
+        let file = Gio.File.new_for_path(install);
+
+        if (file.query_exists(null)) {
+            try {
+                GLib.spawn_command_line_async("sh " + install);
+            } catch (e) {
+                print("Failed to run process: " + e.message);
+            }
+        }
+    },
+
     _renderPlugins: function() {
         let stack = new Gtk.Stack({ transition_type: Gtk.StackTransitionType.CROSSFADE });
         let switcher = new Gtk.StackSwitcher({ stack: stack });
 
         this._panes = {};
 
-        for (let category in this._plugins) {
+        let categories = Object.keys(this._plugins).sort();
+
+        for (let category of categories) {
             this._panes[category] = new Gtk.ScrolledWindow();
 
             let list = new Gtk.ListBox();
@@ -105,6 +120,8 @@ const Application = new Lang.Class({
                 label.set_markup("<b>" + plugin.label + "</b>");
                 label.set_ellipsize(Pango.EllipsizeMode.END);
 
+                grid.attach(label, 0, 1, 1, 1);
+
                 let description = new Gtk.Label({
                     label: plugin.description,
                     halign: Gtk.Align.START,
@@ -113,26 +130,22 @@ const Application = new Lang.Class({
 
                 description.set_ellipsize(Pango.EllipsizeMode.END);
 
-                let box = new Gtk.Box({
-                    orientation: Gtk.Orientation.VERTICAL,
-                    halign: Gtk.Align.END
-                });
-
-                let button = new Gtk.Button({ label: "Install" });
-
-                button.connect("clicked", function() {
-                    try {
-                        GLib.spawn_command_line_async("notify-send 'Installing " + plugin.label + "'");
-                    } catch (e) {
-                        print("Failed to run process: " + e.message);
-                    }
-                });
-
-                box.set_center_widget(button);
-
-                grid.attach(label, 0, 1, 1, 1);
                 grid.attach(description, 0, 2, 1, 1);
-                grid.attach(box, 1, 1, 1, 2);
+
+                if (plugin.action) {
+                    let box = new Gtk.Box({
+                        orientation: Gtk.Orientation.VERTICAL,
+                        halign: Gtk.Align.END
+                    });
+
+                    let button = new Gtk.Button({ label: plugin.action });
+
+                    button.connect("clicked", Lang.bind(this, this._handleTask, plugin));
+
+                    box.set_center_widget(button);
+
+                    grid.attach(box, 1, 1, 1, 2);
+                }
 
                 list.add(grid);
             }
@@ -179,6 +192,7 @@ const Application = new Lang.Class({
                         let plugin = name.replace(/\.plugin$/, "");
 
                         this._plugins[parsed.category][plugin] = parsed;
+                        this._plugins[parsed.category][plugin].path = plugindir + "/" + name;
                     }
                 }
             }

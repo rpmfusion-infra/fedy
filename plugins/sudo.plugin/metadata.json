@@ -1,5 +1,10 @@
 {
 	"label": "Administrator Access",
 	"description": "Set up sudo access to do things as root",
-	"category": "Tweaks"
+	"category": "Tweaks",
+	"action": "Set up",
+	"scripts": {
+		"Set up": "setup.sh",
+		"Revert": "revert.sh"
+	}
 }
