@@ -1,0 +1,16 @@
+{
+	"label": "Keep yum cache",
+	"description": "Don't delete package cache downloaded by Yum",
+	"category": "Tweaks",
+	"scripts": {
+		"exec": {
+			"label": "Set up",
+			"script": "run-as-root sed -i s/^keepcache=.*$/keepcache=1/g /etc/yum.conf"
+		},
+		"undo": {
+			"label": "Revert",
+			"script": "run-as-root sed -i s/^keepcache=.*$/keepcache=0/g /etc/yum.conf"
+		},
+		"status": { "script": "grep --quiet ^keepcache=1$ /etc/yum.conf > /dev/null 2>&1" }
+	}
+}

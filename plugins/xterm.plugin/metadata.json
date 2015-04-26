@@ -1,5 +1,5 @@
 {
-	"icon": "terminal",
+	"icon": "utilities-terminal",
 	"label": "Xterm",
 	"description": "Standard terminal emulator for the X Window System",
 	"category": "Apps",
