@@ -79,9 +79,9 @@ const Application = new Lang.Class({
     },
 
     _executeCommand: function(workingdir, command, callback) {
-        let process;
-
         callback = (typeof callback === "function") ? callback : function() {};
+
+        let process;
 
         try {
             process = GLib.spawn_async(workingdir, command.split(" "), null,
