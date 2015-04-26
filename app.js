@@ -105,11 +105,11 @@ const Application = new Lang.Class({
     },
 
     _queueCommand: function(workingdir, command, callback) {
-        function run(w, s, c) {
-            this._executeCommand(w, s, function() {
+        function run(wd, cmd, cb) {
+            this._executeCommand(wd, cmd, function() {
                 let index;
 
-                c.apply(this, Array.prototype.slice.call(arguments));
+                cb.apply(this, Array.prototype.slice.call(arguments));
 
                 this._queue.splice(0, 1);
 
