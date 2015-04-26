@@ -103,7 +103,7 @@ const Application = new Lang.Class({
         for (let category of categories) {
             this._panes[category] = new Gtk.ScrolledWindow();
 
-            let list = new Gtk.ListBox();
+            let list = new Gtk.ListBox({ selection_mode: Gtk.SelectionMode.NONE });
 
             for (let item in this._plugins[category]) {
                 let plugin = this._plugins[category][item];
