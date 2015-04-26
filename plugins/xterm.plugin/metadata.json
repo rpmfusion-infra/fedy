@@ -10,8 +10,8 @@
 		},
 		"undo": {
 			"label": "Uninstall",
-			"script": "run-as-root yum -y erase xterm"
+			"script": "run-as-root yum -y --setopt clean_requirements_on_remove=1 erase xterm"
 		},
-		"status": { "script": "command -v xterm" }
+		"status": { "script": "rpm --quiet --query xterm" }
 	}
 }

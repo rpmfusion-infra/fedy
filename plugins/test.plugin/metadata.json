@@ -1,6 +1,6 @@
 {
-	"label": "Administrator Access",
-	"description": "Set up sudo access to do things as root",
+	"label": "Test plugin",
+	"description": "Test running scripts on the system",
 	"category": "Tweaks",
 	"scripts": {
 		"exec": {
