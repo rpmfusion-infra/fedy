@@ -184,11 +184,33 @@ const Application = new Lang.Class({
 
                 let image = new Gtk.Image();
 
+                image.set_pixel_size(48);
+
                 if (plugin.icon) {
-                    if (/^\.\/.*/.test(plugin.icon)) {
-                        image.set_from_file(plugin.path + "/" + plugin.icon);
-                    } else {
-                        image.set_from_icon_name(plugin.icon, Gtk.IconSize.DIALOG);
+                    try {
+                        let icon = Gtk.IconTheme.get_default().load_icon (plugin.icon, 48, 0);
+
+                        image.set_from_pixbuf (icon);
+                    } catch (e) {
+                        let icon;
+
+                        let formats = [ "", ".svg", ".png" ];
+
+                        for (let ext of formats) {
+                            let path = plugin.path + "/" + plugin.icon + ext;
+
+                            if (Gio.File.new_for_path(path).query_exists(null)) {
+                                icon = path;
+
+                                break;
+                            }
+                        }
+
+                        if (icon) {
+                            image.set_from_file(icon);
+                        } else {
+                            image.set_from_icon_name(plugin.icon, Gtk.IconSize.DIALOG);
+                        }
                     }
                 } else {
                     image.set_from_icon_name("system-run", Gtk.IconSize.DIALOG);
