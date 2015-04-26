@@ -1,4 +1,5 @@
 {
+	"icon": "preferences-desktop-theme",
 	"label": "Theme Engines",
 	"description": "Use by GTK themes to draw widgets",
 	"category": "Tweaks",

@@ -1,4 +1,5 @@
 {
+	"icon": "security-medium",
 	"label": "Permissive SELinux",
 	"description": "Set SELinux to permissive mode",
 	"category": "Tweaks",

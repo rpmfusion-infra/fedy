@@ -1,4 +1,5 @@
 {
+	"icon": "preferences-desktop-font",
 	"label": "Better Font Rendering",
 	"description": "Improve the font rendering for better readability",
 	"category": "Tweaks",
