@@ -78,17 +78,32 @@ const Application = new Lang.Class({
         return parsed;
     },
 
-    _handleTask: function(event, plugin) {
+    _handleTask: function(button, plugin) {
         let script = plugin.path  + "/" + plugin.scripts[plugin.action];
 
         let file = Gio.File.new_for_path(script);
 
+        let spinner = new Gtk.Spinner({ active: true });
+
         if (file.query_exists(null)) {
+            button.set_image(spinner);
+            button.set_label("");
+            button.set_sensitive(false);
+
             try {
                 GLib.spawn_command_line_async("sh " + script);
             } catch (e) {
                 print("Failed to run process: " + e.message);
+
+                let empty = new Gtk.Box();
+
+                button.set_image(empty);
+                button.set_label(plugin.action);
+                button.set_sensitive(true);
             }
+        } else {
+            button.set_label("Plugin error");
+            button.get_style_context().remove_class("suggested-action");
         }
     },
 
@@ -104,6 +119,8 @@ const Application = new Lang.Class({
             this._panes[category] = new Gtk.ScrolledWindow();
 
             let list = new Gtk.ListBox({ selection_mode: Gtk.SelectionMode.NONE });
+
+            list.get_style_context().add_class("view");
 
             for (let item in this._plugins[category]) {
                 let plugin = this._plugins[category][item];
@@ -154,8 +171,12 @@ const Application = new Lang.Class({
                         halign: Gtk.Align.END
                     });
 
-                    let button = new Gtk.Button({ label: plugin.action });
+                    let button = new Gtk.Button({
+                        label: plugin.action,
+                        always_show_image: true
+                    });
 
+                    button.get_style_context().add_class("suggested-action");
                     button.connect("clicked", Lang.bind(this, this._handleTask, plugin));
 
                     box.set_center_widget(button);
