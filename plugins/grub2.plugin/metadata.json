@@ -1,0 +1,11 @@
+{
+	"label": "GRUB2 Configuration",
+	"description": "Run the GRUB2 configuration scripts and update the configuration file",
+	"category": "Tweaks",
+	"scripts": {
+		"exec": {
+			"label": "Configure",
+			"script": "sh setup.sh"
+		}
+	}
+}

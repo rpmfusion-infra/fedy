@@ -12,10 +12,6 @@ You should have received a copy of the GNU General Public License along with thi
 
 Copyright (C) [Satyajit Sahoo](mailto:satyajit.happy@gmail.com)
 
-### Documentation
-
-Documentation is available online. Please visit the [wiki](http://github.com/satya164/fedy/wiki).
-
 ### How to install
 
 Fedy can be installed with our [script](http://satya164.github.io/fedy/fedy-installer) which automatically sets up the repo and installs the `fedy` package.

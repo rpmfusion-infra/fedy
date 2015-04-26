@@ -1,0 +1,17 @@
+{
+	"icon": "google-chrome",
+	"label": "Google Chrome",
+	"description": "A fast, simple and secure web browser, built for the modern web",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"script": "run-as-root dnf -y install https://dl.google.com/linux/direct/google-chrome-stable_current_$(uname -i).rpm"
+		},
+		"undo": {
+			"label": "Uninstall",
+			"script": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase google-chrome-stable"
+		},
+		"status": { "script": "rpm --quiet --query google-chrome-stable" }
+	}
+}

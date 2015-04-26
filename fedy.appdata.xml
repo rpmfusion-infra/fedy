@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2014 Satyajit Sahoo <satyajit.happy@gmail.com> -->
+<!-- Copyright 2015 Satyajit Sahoo <satyajit.happy@gmail.com> -->
 <application>
     <id type="desktop">fedy.desktop</id>
     <licence>GFDL</licence>
@@ -11,21 +11,10 @@
         Fedora doesn't want to ship, like mp3 support, Adobe Flash, Oracle Java
         etc., and much more with just a few clicks.
         </p>
-        <p>Features:</p>
-        <ul>
-            <li>Simple and easy to use GUI</li>
-            <li>Always installs latest versions of software</li>
-            <li>Saves downloaded files for later use</li>
-            <li>Can be run from the command line</li>
-            <li>Extensible with plugins</li>
-        </ul>
     </description>
     <screenshots>
-        <screenshot type="default" width="1360" height="765">http://satya164.github.io/fedy/images/tweaks.jpg</screenshot>
-        <screenshot width="1360" height="765">http://satya164.github.io/fedy/images/repos.jpg</screenshot>
-        <screenshot width="1360" height="765">http://satya164.github.io/fedy/images/software.jpg</screenshot>
-        <screenshot width="1360" height="765">http://satya164.github.io/fedy/images/plugins.jpg</screenshot>
-        <screenshot width="1360" height="765">http://satya164.github.io/fedy/images/main.jpg</screenshot>
+        <screenshot type="default" width="1360" height="765">http://satya164.github.io/fedy/images/apps.jpg</screenshot>
+        <screenshot width="1360" height="765">http://satya164.github.io/fedy/images/tweaks.jpg</screenshot>
     </screenshots>
     <url type="homepage">http://satya164.github.io/fedy/</url>
     <updatecontact>satyajit.happy@gmail.com</updatecontact>
