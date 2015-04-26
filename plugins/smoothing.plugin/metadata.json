@@ -1,16 +1,16 @@
 {
-	"label": "Better Font Smoothing",
+	"label": "Better Font Rendering",
 	"description": "Improve the font rendering for better readability",
 	"category": "Tweaks",
 	"scripts": {
 		"exec": {
 			"label": "Set up",
-			"script": "sh setup.sh"
+			"script": "run-as-root yum -y install ozon-font-config"
 		},
 		"undo": {
 			"label": "Revert",
-			"script": "sh revert.sh"
+			"script": "run-as-root yum -y --setopt clean_requirements_on_remove=1 erase ozon-font-config"
 		},
-		"status": { "script": "sh status.sh" }
+		"status": { "script": "rpm --quiet --query ozon-font-config" }
 	}
 }

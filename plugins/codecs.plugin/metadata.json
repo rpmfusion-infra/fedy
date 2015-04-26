@@ -5,12 +5,12 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"script": "sh install.sh"
+			"script": "run-as-root yum -y install ozon-multimedia-codecs"
 		},
 		"undo": {
 			"label": "Uninstall",
-			"script": "sh uninstall.sh"
+			"script": "run-as-root yum -y --setopt clean_requirements_on_remove=1 erase ozon-multimedia-codecs"
 		},
-		"status": { "script": "sh status.sh" }
+		"status": { "script": "rpm --quiet --query ozon-multimedia-codecs" }
 	}
 }

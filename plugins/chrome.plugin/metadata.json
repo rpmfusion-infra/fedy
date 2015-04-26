@@ -6,12 +6,12 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"script": "sh install.sh"
+			"script": "run-as-root yum -y install https://dl.google.com/linux/direct/google-chrome-stable_current_$(uname -i).rpm"
 		},
 		"undo": {
 			"label": "Uninstall",
-			"script": "sh uninstall.sh"
+			"script": "run-as-root yum -y --setopt clean_requirements_on_remove=1 erase google-chrome-stable"
 		},
-		"status": { "script": "sh status.sh" }
+		"status": { "script": "rpm --quiet --query google-chrome-stable" }
 	}
 }
