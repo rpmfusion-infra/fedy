@@ -6,6 +6,7 @@ const Gtk = imports.gi.Gtk;
 const Gdk = imports.gi.Gdk;
 const Pango = imports.gi.Pango;
 const Lang = imports.lang;
+const Mainloop = imports.mainloop;
 
 const Application = new Lang.Class({
     Name: "Fedy",
@@ -150,7 +151,13 @@ const Application = new Lang.Class({
         this._getPluginStatus(plugin, function(action) {
             this._executeCommand(plugin.path, action.script, function(pid, status) {
                 if (status === 0) {
-                    this._setButtonState(button, plugin);
+                    button.set_label("Finished!");
+
+                    Mainloop.timeout_add(1000, function() {
+                        this._setButtonState(button, plugin);
+
+                        return false;
+                    }.bind(this), null);
                 } else {
                     button.set_label("Error!");
                 }
