@@ -81,6 +81,8 @@ const Application = new Lang.Class({
     _executeCommand: function(workingdir, command, callback) {
         let process;
 
+        callback = (typeof callback === "function") ? callback : function() {};
+
         try {
             process = GLib.spawn_async(workingdir, command.split(" "), null,
                                        GLib.SpawnFlags.SEARCH_PATH | GLib.SpawnFlags.DO_NOT_REAP_CHILD, null);
@@ -101,6 +103,40 @@ const Application = new Lang.Class({
         }
     },
 
+    _getPluginStatus: function(plugin, callback) {
+        if (typeof callback !== "function") {
+            return;
+        }
+
+        let scripts = plugin.scripts;
+
+        if (scripts.status) {
+            this._executeCommand(plugin.path, scripts.status.script, function(pid, status) {
+                if (status === 0) {
+                    callback(scripts.undo, status);
+                } else {
+                    callback(scripts.exec, status);
+                }
+            }.bind(this));
+        } else {
+            callback(scripts.exec, 1);
+        }
+    },
+
+    _setButtonState: function(button, plugin) {
+        this._getPluginStatus(plugin, function(action, status) {
+            button.set_label(action.label);
+
+            if (status === 0) {
+                button.get_style_context().add_class("destructive-action");
+            } else {
+                button.get_style_context().add_class("suggested-action");
+            }
+
+            button.set_sensitive(!!action.script);
+        }.bind(this));
+    },
+
     _handleTask: function(button, plugin) {
         let process;
 
@@ -108,17 +144,18 @@ const Application = new Lang.Class({
 
         button.set_label("Working...");
         button.get_style_context().remove_class("suggested-action");
+        button.get_style_context().remove_class("destructive-action");
         button.set_sensitive(false);
 
-        this._executeCommand(plugin.path, plugin.scripts.exec.script, function(pid, status) {
-            if (status === 0) {
-                button.set_label("Uninstall");
-                button.get_style_context().add_class("destructive-action");
-                button.set_sensitive(true);
-            } else {
-                button.set_label("Error!");
-            }
-        });
+        this._getPluginStatus(plugin, function(action) {
+            this._executeCommand(plugin.path, action.script, function(pid, status) {
+                if (status === 0) {
+                    this._setButtonState(button, plugin);
+                } else {
+                    button.set_label("Error!");
+                }
+            }.bind(this));
+        }.bind(this));
     },
 
     _renderPlugins: function() {
@@ -187,10 +224,11 @@ const Application = new Lang.Class({
 
                     let button = new Gtk.Button({
                         label: plugin.scripts.exec.label,
-                        always_show_image: true
+                        sensitive: false
                     });
 
-                    button.get_style_context().add_class("suggested-action");
+                    this._setButtonState(button, plugin);
+
                     button.connect("clicked", Lang.bind(this, this._handleTask, plugin));
 
                     box.set_center_widget(button);

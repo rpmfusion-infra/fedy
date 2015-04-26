@@ -1,4 +1,4 @@
 #!/bin/bash
 
-notify-send "Installing..."
 sleep 2
+touch /tmp/ozon-somefile.txt
