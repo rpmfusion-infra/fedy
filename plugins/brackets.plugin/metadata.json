@@ -1,0 +1,17 @@
+{
+	"icon": "brackets",
+	"label": "Brackets",
+	"description": "An open source code editor for web designers and front-end developers",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"script": "sh install.sh"
+		},
+		"undo": {
+			"label": "Uninstall",
+			"script": "sh uninstall.sh"
+		},
+		"status": { "script": "rpm --quiet --query brackets" }
+	}
+}
