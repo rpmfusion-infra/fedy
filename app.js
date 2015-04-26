@@ -96,6 +96,8 @@ const Application = new Lang.Class({
         if (process) {
             if (process[0] === false) {
                 callback(process[1], 1);
+
+                return;
             }
 
             if (typeof process[1] === "number") {
