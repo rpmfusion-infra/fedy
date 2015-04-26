@@ -5,11 +5,11 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"script": "run-as-root yum -y install gtk-murrine-engine gtk-unico-engine"
+			"script": "run-as-root dnf -y install gtk-murrine-engine gtk-unico-engine"
 		},
 		"undo": {
 			"label": "Uninstall",
-			"script": "run-as-root yum -y --setopt clean_requirements_on_remove=1 erase gtk-murrine-engine gtk-unico-engine"
+			"script": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase gtk-murrine-engine gtk-unico-engine"
 		},
 		"status": { "script": "rpm --quiet --query gtk-murrine-engine gtk-unico-engine" }
 	}

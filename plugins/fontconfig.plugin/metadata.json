@@ -5,11 +5,11 @@
 	"scripts": {
 		"exec": {
 			"label": "Set up",
-			"script": "run-as-root yum -y install ozon-font-config"
+			"script": "run-as-root dnf -y install ozon-font-config"
 		},
 		"undo": {
 			"label": "Revert",
-			"script": "run-as-root yum -y --setopt clean_requirements_on_remove=1 erase ozon-font-config"
+			"script": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase ozon-font-config"
 		},
 		"status": { "script": "rpm --quiet --query ozon-font-config" }
 	}
