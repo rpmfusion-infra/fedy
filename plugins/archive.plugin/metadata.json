@@ -1,0 +1,17 @@
+{
+	"icon": "file-roller",
+	"label": "Archive Formats",
+	"description": "Utilized by file-roller to extract or compress different formats",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"script": "run-as-root yum -y install cabextract lzip p7zip p7zip-plugins unrar"
+		},
+		"undo": {
+			"label": "Uninstall",
+			"script": "run-as-root yum -y --setopt clean_requirements_on_remove=1 erase cabextract lzip p7zip p7zip-plugins unrar"
+		},
+		"status": { "script": "rpm --quiet --query cabextract lzip p7zip p7zip-plugins unrar" }
+	}
+}
