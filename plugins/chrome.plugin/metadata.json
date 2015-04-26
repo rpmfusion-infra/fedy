@@ -3,9 +3,15 @@
 	"label": "Google Chrome",
 	"description": "A fast, simple and secure web browser, built for the modern web",
 	"category": "Apps",
-	"action": "Install",
 	"scripts": {
-		"Install": "install.sh",
-		"Uninstall": "uninstall.sh"
+		"exec": {
+			"label": "Install",
+			"script": "sh install.sh"
+		},
+		"undo": {
+			"label": "Uninstall",
+			"script": "sh uninstall.sh"
+		},
+		"status": { "script": "sh status.sh" }
 	}
 }

@@ -78,33 +78,47 @@ const Application = new Lang.Class({
         return parsed;
     },
 
-    _handleTask: function(button, plugin) {
-        let script = plugin.path  + "/" + plugin.scripts[plugin.action];
+    _executeCommand: function(workingdir, command, callback) {
+        let process;
 
-        let file = Gio.File.new_for_path(script);
+        try {
+            process = GLib.spawn_async(workingdir, command.split(" "), null,
+                                       GLib.SpawnFlags.SEARCH_PATH | GLib.SpawnFlags.DO_NOT_REAP_CHILD, null);
+        } catch (e) {
+            print("Failed to run process: " + e.message);
+
+            callback(null, 1, e);
+        }
+
+        if (process) {
+            if (process[0] === false) {
+                callback(process[1], 1);
+            }
+
+            if (typeof process[1] === "number") {
+                GLib.child_watch_add(GLib.PRIORITY_DEFAULT, process[1], callback);
+            }
+        }
+    },
+
+    _handleTask: function(button, plugin) {
+        let process;
 
         let spinner = new Gtk.Spinner({ active: true });
 
-        if (file.query_exists(null)) {
-            button.set_image(spinner);
-            button.set_label("");
-            button.set_sensitive(false);
+        button.set_label("Working...");
+        button.get_style_context().remove_class("suggested-action");
+        button.set_sensitive(false);
 
-            try {
-                GLib.spawn_command_line_async("sh " + script);
-            } catch (e) {
-                print("Failed to run process: " + e.message);
-
-                let empty = new Gtk.Box();
-
-                button.set_image(empty);
-                button.set_label(plugin.action);
+        this._executeCommand(plugin.path, plugin.scripts.exec.script, function(pid, status) {
+            if (status === 0) {
+                button.set_label("Uninstall");
+                button.get_style_context().add_class("destructive-action");
                 button.set_sensitive(true);
+            } else {
+                button.set_label("Error!");
             }
-        } else {
-            button.set_label("Plugin error");
-            button.get_style_context().remove_class("suggested-action");
-        }
+        });
     },
 
     _renderPlugins: function() {
@@ -165,14 +179,14 @@ const Application = new Lang.Class({
 
                 grid.attach(description, 1, 2, 1, 1);
 
-                if (plugin.action) {
+                if (plugin.scripts && plugin.scripts.exec) {
                     let box = new Gtk.Box({
                         orientation: Gtk.Orientation.VERTICAL,
                         halign: Gtk.Align.END
                     });
 
                     let button = new Gtk.Button({
-                        label: plugin.action,
+                        label: plugin.scripts.exec.label,
                         always_show_image: true
                     });
 

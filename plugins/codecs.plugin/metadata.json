@@ -2,9 +2,15 @@
 	"label": "Multimedia Codecs",
 	"description": "Multimedia codecs are used to encode or decode audio or video streams",
 	"category": "Apps",
-	"action": "Install",
 	"scripts": {
-		"Install": "install.sh",
-		"Uninstall": "uninstall.sh"
+		"exec": {
+			"label": "Install",
+			"script": "sh install.sh"
+		},
+		"undo": {
+			"label": "Uninstall",
+			"script": "sh uninstall.sh"
+		},
+		"status": { "script": "sh status.sh" }
 	}
 }
