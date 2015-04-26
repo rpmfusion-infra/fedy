@@ -104,6 +104,32 @@ const Application = new Lang.Class({
         }
     },
 
+    _queueCommand: function(workingdir, command, callback) {
+        function run(w, s, c) {
+            this._executeCommand(w, s, function() {
+                let index;
+
+                c.apply(this, Array.prototype.slice.call(arguments));
+
+                this._queue.splice(0, 1);
+
+                if (this._queue.length) {
+                    run.apply(this, this._queue[0]);
+                }
+            }.bind(this));
+        }
+
+        let args = Array.prototype.slice.call(arguments);
+
+        this._queue = this._queue || [];
+
+        this._queue.push(args);
+
+        if (this._queue.length === 1) {
+            run.apply(this, args);
+        }
+    },
+
     _getPluginStatus: function(plugin, callback) {
         if (typeof callback !== "function") {
             return;
@@ -149,7 +175,7 @@ const Application = new Lang.Class({
         button.set_sensitive(false);
 
         this._getPluginStatus(plugin, function(action) {
-            this._executeCommand(plugin.path, action.script, function(pid, status) {
+            this._queueCommand(plugin.path, action.script, function(pid, status) {
                 if (status === 0) {
                     button.set_label("Finished!");
 
