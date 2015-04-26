@@ -1,0 +1,17 @@
+{
+	"icon": "terminal",
+	"label": "Xterm",
+	"description": "Standard terminal emulator for the X Window System",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"script": "run-as-root yum -y install xterm"
+		},
+		"undo": {
+			"label": "Uninstall",
+			"script": "run-as-root yum -y erase xterm"
+		},
+		"status": { "script": "command -v xterm" }
+	}
+}

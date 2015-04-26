@@ -1,6 +1,6 @@
 {
 	"label": "Multimedia Codecs",
-	"description": "Multimedia codecs are used to encode or decode audio or video streams",
+	"description": "Utilized by multimedia applications to encode or decode audio or video streams",
 	"category": "Apps",
 	"scripts": {
 		"exec": {
