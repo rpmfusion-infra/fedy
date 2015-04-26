@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Fedy
+GenericName=Fedy
+Icon=fedy
+Comment=Software, Codec Installs & System Tweaks
+Exec=fedy
+Terminal=false
+Type=Application
+Categories=System;Utility;X-Fedora;
+Keywords=clean;codec;fedora;fix;postinstall;propietary;repo;utils;
