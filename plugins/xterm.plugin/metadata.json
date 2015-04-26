@@ -6,11 +6,11 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"script": "run-as-root yum -y install xterm"
+			"script": "run-as-root dnf -y install xterm"
 		},
 		"undo": {
 			"label": "Uninstall",
-			"script": "run-as-root yum -y --setopt clean_requirements_on_remove=1 erase xterm"
+			"script": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase xterm"
 		},
 		"status": { "script": "rpm --quiet --query xterm" }
 	}
