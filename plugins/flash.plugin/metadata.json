@@ -1,0 +1,16 @@
+{
+	"label": "Adobe Flash",
+	"description": "Browser plug-in and rich Internet application runtime",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"script": "sh install.sh"
+		},
+		"undo": {
+			"label": "Uninstall",
+			"script": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase flash-plugin adobe-release"
+		},
+		"status": { "script": "rpm --quiet --query flash-plugin" }
+	}
+}
