@@ -2,9 +2,15 @@
 	"label": "Better Font Smoothing",
 	"description": "Improve the font rendering for better readability",
 	"category": "Tweaks",
-	"action": "Set up",
 	"scripts": {
-		"Set up": "setup.sh",
-		"Revert": "revert.sh"
+		"exec": {
+			"label": "Set up",
+			"script": "sh setup.sh"
+		},
+		"undo": {
+			"label": "Revert",
+			"script": "sh revert.sh"
+		},
+		"status": { "script": "sh status.sh" }
 	}
 }
