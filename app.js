@@ -186,15 +186,15 @@ const Application = new Lang.Class({
             this._queueCommand(plugin.path, action.script, function(pid, status) {
                 if (status === 0) {
                     button.set_label("Finished!");
-
-                    Mainloop.timeout_add(1000, function() {
-                        this._setButtonState(button, plugin);
-
-                        return false;
-                    }.bind(this), null);
                 } else {
                     button.set_label("Error!");
                 }
+
+                Mainloop.timeout_add(1000, function() {
+                    this._setButtonState(button, plugin);
+
+                    return false;
+                }.bind(this), null);
             }.bind(this));
         }.bind(this));
     },
