@@ -15,6 +15,6 @@ for disk in `\ls -d /sys/block/sd*`; do
     sched="$disk/queue/scheduler"
 
     if [[ `cat $rot` -eq 0 ]]; then
-        echo $scheduler | run-as-root tee $sched
+        echo $scheduler | run-as-root tee $sched > /dev/null 2>&1
     fi
 done
