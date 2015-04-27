@@ -1,7 +1,7 @@
 {
 	"icon": "file-roller",
 	"label": "Archive Formats",
-	"description": "Utilized by file-roller to extract or compress different formats",
+	"description": "Utilized by file-roller to extract or compress different formats.",
 	"category": "Apps",
 	"scripts": {
 		"exec": {

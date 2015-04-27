@@ -1,7 +1,7 @@
 {
 	"icon": "firefox",
-	"label": "Firefox",
-	"description": "Mozilla Firefox is an open-source web browser, designed for standards compliance, performance and portability.",
+	"label": "Mozilla Firefox",
+	"description": "An open-source web browser, designed for standards compliance, performance and portability.",
 	"category": "Apps",
 	"scripts": {
 		"exec": {
