@@ -262,7 +262,6 @@ const Application = new Lang.Class({
                 });
 
                 label.set_markup("<b>" + plugin.label + "</b>");
-                label.set_ellipsize(Pango.EllipsizeMode.END);
 
                 grid.attach(label, 1, 1, 1, 1);
 
@@ -273,7 +272,17 @@ const Application = new Lang.Class({
                 });
 
                 description.set_ellipsize(Pango.EllipsizeMode.END);
-                description.set_tooltip_text(plugin.description);
+                description.set_has_tooltip(true);
+
+                description.connect("query_tooltip", (l, x, y, k, tip) => {
+                    if (l.get_layout().is_ellipsized()) {
+                        tip.set_text(plugin.description);
+
+                        return true;
+                    }
+
+                    return false;
+                });
 
                 grid.attach(description, 1, 2, 1, 1);
 
