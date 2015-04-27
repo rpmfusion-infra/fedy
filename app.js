@@ -172,10 +172,10 @@ const Application = new Lang.Class({
         }.bind(this));
     },
 
-    _handleTask: function(button, plugin) {
+    _handleTask: function(button, spinner, plugin) {
         let process;
 
-        let spinner = new Gtk.Spinner({ active: true });
+        spinner.start();
 
         button.set_label("Working...");
         button.get_style_context().remove_class("suggested-action");
@@ -184,6 +184,8 @@ const Application = new Lang.Class({
 
         this._getPluginStatus(plugin, function(action) {
             this._queueCommand(plugin.path, action.script, function(pid, status) {
+                spinner.stop();
+
                 if (status === 0) {
                     button.set_label("Finished!");
                 } else {
@@ -281,6 +283,10 @@ const Application = new Lang.Class({
                 grid.attach(description, 1, 2, 1, 1);
 
                 if (plugin.scripts && plugin.scripts.exec) {
+                    let spinner = new Gtk.Spinner({ active: false });
+
+                    grid.attach(spinner, 2, 1, 1, 2);
+
                     let box = new Gtk.Box({
                         orientation: Gtk.Orientation.VERTICAL,
                         halign: Gtk.Align.END
@@ -293,11 +299,11 @@ const Application = new Lang.Class({
 
                     this._setButtonState(button, plugin);
 
-                    button.connect("clicked", Lang.bind(this, this._handleTask, plugin));
+                    button.connect("clicked", Lang.bind(this, this._handleTask, spinner, plugin));
 
                     box.set_center_widget(button);
 
-                    grid.attach(box, 2, 1, 1, 2);
+                    grid.attach(box, 3, 1, 1, 2);
                 }
 
                 list.add(grid);
