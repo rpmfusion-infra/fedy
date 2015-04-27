@@ -1,0 +1,17 @@
+{
+	"icon": "drive-harddisk",
+	"label": "SSD I/O scheduler",
+	"description": "Switch to NOOP scheduler to boost performance for SSDs.",
+	"category": "Tweaks",
+	"scripts": {
+		"exec": {
+			"label": "Setup",
+			"command": "sh setup.sh"
+		},
+		"undo": {
+			"label": "Revert",
+			"command": "run-as-root rm -f /etc/udev/rules.d/60-io_schedulers.rules"
+		},
+		"status": { "command": "test -f /etc/udev/rules.d/60-io_schedulers.rules" }
+	}
+}
