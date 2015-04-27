@@ -1,11 +1,10 @@
 {
-	"icon": "preferences-desktop-font",
 	"label": "Better Font Rendering",
 	"description": "Improve the font rendering for better readability.",
 	"category": "Tweaks",
 	"scripts": {
 		"exec": {
-			"label": "Set up",
+			"label": "Setup",
 			"command": "run-as-root dnf -y install ozon-font-config"
 		},
 		"undo": {
