@@ -80,12 +80,18 @@ const Application = new Lang.Class({
     },
 
     _executeCommand: function(workingdir, command, callback) {
+        let argv = GLib.shell_parse_argv(command);
+
+        if (argv[0] === false) {
+            callback(null, 1);
+        }
+
         callback = (typeof callback === "function") ? callback : function() {};
 
         let process;
 
         try {
-            process = GLib.spawn_async(workingdir, command.split(" "), null,
+            process = GLib.spawn_async(workingdir, argv[1], null,
                                        GLib.SpawnFlags.SEARCH_PATH | GLib.SpawnFlags.DO_NOT_REAP_CHILD, null);
         } catch (e) {
             print("Failed to run process: " + e.message);
