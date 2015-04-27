@@ -142,8 +142,8 @@ const Application = new Lang.Class({
 
         let scripts = plugin.scripts;
 
-        if (scripts.status) {
-            this._executeCommand(plugin.path, scripts.status.script, function(pid, status) {
+        if (scripts.status && scripts.status.command) {
+            this._executeCommand(plugin.path, scripts.status.command, function(pid, status) {
                 if (status === 0) {
                     callback(scripts.undo, status);
                 } else {
@@ -165,7 +165,7 @@ const Application = new Lang.Class({
                 button.get_style_context().add_class("suggested-action");
             }
 
-            button.set_sensitive(!!action.script);
+            button.set_sensitive(!!action.command);
         }.bind(this));
     },
 
@@ -178,7 +178,7 @@ const Application = new Lang.Class({
         button.set_sensitive(false);
 
         this._getPluginStatus(plugin, function(action) {
-            this._queueCommand(plugin.path, action.script, function(pid, status) {
+            this._queueCommand(plugin.path, action.command, function(pid, status) {
                 spinner.stop();
 
                 if (status === 0) {
