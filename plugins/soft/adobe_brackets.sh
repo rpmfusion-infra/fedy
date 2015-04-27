@@ -7,7 +7,7 @@ if [[ "$(adobe_brackets_test)" = "Installed" ]]; then
     show_status "Brackets already installed"
 else
     show_msg "Installing dependencies"
-    install_pkg atk ca-certificates cairo cups dbus expat fontconfig freetype gcc GConf2 gdk-pixbuf2 glib2 gtk2 libcurl libgcrypt libstdc++ libX11 libXcomposite libXdamage libXext libXfixes libXrandr libXrender nspr nss pango redhat-lsb wget xdg-utils
+    install_pkg libgcrypt15-1.5.3-2mamba.x86_64 atk ca-certificates cairo cups dbus expat fontconfig freetype gcc GConf2 gdk-pixbuf2 glib2 gtk2 libcurl libgcrypt libstdc++ libX11 libXcomposite libXdamage libXext libXfixes libXrandr libXrender nspr nss pango redhat-lsb wget xdg-utils
     show_msg "Getting latest version"
     get_file_quiet "https://github.com/adobe/brackets/tags.atom" "brackets.atom"
     release=$(grep "<id>tag:github\.com.*release-[0-9]*.[0-9]*</id>" "brackets.atom" | grep -io "release-[0-9]*.[0-9]*" | head -n 1 | tr '-' '\n' | tail -n 1)
