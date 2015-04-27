@@ -1,3 +1,9 @@
 {
-    "esnext": true
+    "esnext": true,
+    "boss": true,
+    "eqeqeq": true,
+    "noarg": true,
+    "predef": [ "imports", "print", "ARGV" ],
+    "unused": true,
+    "undef": true
 }
