@@ -5,7 +5,7 @@
 	"scripts": {
 		"exec": {
 			"label": "Configure",
-			"script": "sh setup.sh"
+			"command": "sh setup.sh"
 		}
 	}
 }

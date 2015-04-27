@@ -6,7 +6,7 @@
 	"scripts": {
 		"exec": {
 			"label": "Cleanup",
-			"script": "run-as-root find /home/ -type f -name .DS_Store -delete -o -name desktop.ini -delete -o -name Thumbs.db -delete -o -name *~ -delete"
+			"command": "run-as-root find /home/ -type f -name .DS_Store -delete -o -name desktop.ini -delete -o -name Thumbs.db -delete -o -name *~ -delete"
 		}
 	}
 }

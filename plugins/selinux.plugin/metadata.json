@@ -6,12 +6,12 @@
 	"scripts": {
 		"exec": {
 			"label": "Set up",
-			"script": "run-as-root sed -i s/^SELINUX=.*$/SELINUX=permissive/g /etc/selinux/config"
+			"command": "run-as-root sed -i s/^SELINUX=.*$/SELINUX=permissive/g /etc/selinux/config"
 		},
 		"undo": {
 			"label": "Revert",
-			"script": "run-as-root sed -i s/^SELINUX=.*$/SELINUX=enforcing/g /etc/selinux/config"
+			"command": "run-as-root sed -i s/^SELINUX=.*$/SELINUX=enforcing/g /etc/selinux/config"
 		},
-		"status": { "script": "grep --quiet ^SELINUX=permissive$ /etc/selinux/config" }
+		"status": { "command": "grep --quiet ^SELINUX=permissive$ /etc/selinux/config" }
 	}
 }

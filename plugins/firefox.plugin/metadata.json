@@ -6,12 +6,12 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"script": "run-as-root dnf -y install firefox"
+			"command": "run-as-root dnf -y install firefox"
 		},
 		"undo": {
 			"label": "Uninstall",
-			"script": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase firefox"
+			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase firefox"
 		},
-		"status": { "script": "rpm --quiet --query firefox" }
+		"status": { "command": "rpm --quiet --query firefox" }
 	}
 }
