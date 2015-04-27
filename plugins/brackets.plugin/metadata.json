@@ -1,7 +1,7 @@
 {
 	"icon": "brackets",
 	"label": "Brackets",
-	"description": "An open source code editor for web designers and front-end developers",
+	"description": "An open source code editor for web designers and front-end developers.",
 	"category": "Apps",
 	"scripts": {
 		"exec": {
