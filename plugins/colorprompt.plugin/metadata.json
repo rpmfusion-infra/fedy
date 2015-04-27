@@ -1,0 +1,17 @@
+{
+	"icon": "utilities-terminal",
+	"label": "Fancy Bash Prompt",
+	"description": "Add colors to bash prompt to make it stand out.",
+	"category": "Tweaks",
+	"scripts": {
+		"exec": {
+			"label": "Setup",
+			"command": "sh setup.sh"
+		},
+		"undo": {
+			"label": "Revert",
+			"command": "run-as-root rm -f /etc/profile.d/color_prompt.sh"
+		},
+		"status": { "command": "test -f /etc/profile.d/color_prompt.sh" }
+	}
+}
