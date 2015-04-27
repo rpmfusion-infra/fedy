@@ -5,11 +5,11 @@
 	"scripts": {
 		"exec": {
 			"label": "Setup",
-			"command": "run-as-root dnf -y install ozon-font-config"
+			"command": "sh setup.sh"
 		},
 		"undo": {
 			"label": "Revert",
-			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase ozon-font-config"
+			"command": "sh revert.sh"
 		},
 		"status": { "command": "rpm --quiet --query ozon-font-config" }
 	}
