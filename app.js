@@ -276,6 +276,7 @@ const Application = new Lang.Class({
                 });
 
                 description.set_ellipsize(Pango.EllipsizeMode.END);
+                description.set_tooltip_text(plugin.description);
 
                 grid.attach(description, 1, 2, 1, 1);
 
