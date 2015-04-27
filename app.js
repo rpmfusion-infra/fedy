@@ -3,7 +3,6 @@
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
-const Gdk = imports.gi.Gdk;
 const Pango = imports.gi.Pango;
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
@@ -112,11 +111,9 @@ const Application = new Lang.Class({
         }
     },
 
-    _queueCommand: function(workingdir, command, callback) {
+    _queueCommand: function() {
         function run(wd, cmd, cb) {
             this._executeCommand(wd, cmd, function() {
-                let index;
-
                 cb.apply(this, Array.prototype.slice.call(arguments));
 
                 this._queue.splice(0, 1);
@@ -173,8 +170,6 @@ const Application = new Lang.Class({
     },
 
     _handleTask: function(button, spinner, plugin) {
-        let process;
-
         spinner.start();
 
         button.set_label("Working...");
