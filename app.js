@@ -113,7 +113,7 @@ const Application = new Lang.Class({
 
     _queueCommand: function() {
         function run(wd, cmd, cb) {
-            this._executeCommand(wd, cmd, function() {
+            this._executeCommand(wd, cmd, () => {
                 cb.apply(this, Array.prototype.slice.call(arguments));
 
                 this._queue.splice(0, 1);
@@ -121,7 +121,7 @@ const Application = new Lang.Class({
                 if (this._queue.length) {
                     run.apply(this, this._queue[0]);
                 }
-            }.bind(this));
+            });
         }
 
         let args = Array.prototype.slice.call(arguments);
@@ -143,20 +143,20 @@ const Application = new Lang.Class({
         let scripts = plugin.scripts;
 
         if (scripts.status && scripts.status.command) {
-            this._executeCommand(plugin.path, scripts.status.command, function(pid, status) {
+            this._executeCommand(plugin.path, scripts.status.command, (pid, status) => {
                 if (status === 0) {
                     callback(scripts.undo, status);
                 } else {
                     callback(scripts.exec, status);
                 }
-            }.bind(this));
+            });
         } else {
             callback(scripts.exec, 1);
         }
     },
 
     _setButtonState: function(button, plugin) {
-        this._getPluginStatus(plugin, function(action, status) {
+        this._getPluginStatus(plugin, (action, status) => {
             button.set_label(action.label);
 
             if (status === 0) {
@@ -166,7 +166,7 @@ const Application = new Lang.Class({
             }
 
             button.set_sensitive(!!action.command);
-        }.bind(this));
+        });
     },
 
     _handleTask: function(button, spinner, plugin) {
@@ -177,8 +177,8 @@ const Application = new Lang.Class({
         button.get_style_context().remove_class("destructive-action");
         button.set_sensitive(false);
 
-        this._getPluginStatus(plugin, function(action) {
-            this._queueCommand(plugin.path, action.command, function(pid, status) {
+        this._getPluginStatus(plugin, (action) => {
+            this._queueCommand(plugin.path, action.command, (pid, status) => {
                 spinner.stop();
 
                 if (status === 0) {
@@ -187,13 +187,13 @@ const Application = new Lang.Class({
                     button.set_label("Error!");
                 }
 
-                Mainloop.timeout_add(1000, function() {
+                Mainloop.timeout_add(1000, () => {
                     this._setButtonState(button, plugin);
 
                     return false;
-                }.bind(this), null);
-            }.bind(this));
-        }.bind(this));
+                }, null);
+            });
+        });
     },
 
     _renderPlugins: function() {
