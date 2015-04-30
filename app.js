@@ -286,28 +286,36 @@ const Application = new Lang.Class({
 
                 grid.attach(description, 1, 2, 1, 1);
 
-                if (plugin.scripts && plugin.scripts.exec) {
-                    let spinner = new Gtk.Spinner({ active: false });
+                if (plugin.scripts) {
+                    if (plugin.scripts.exec) {
+                        let spinner = new Gtk.Spinner({ active: false });
 
-                    grid.attach(spinner, 2, 1, 1, 2);
+                        grid.attach(spinner, 2, 1, 1, 2);
 
-                    let box = new Gtk.Box({
-                        orientation: Gtk.Orientation.VERTICAL,
-                        halign: Gtk.Align.END
-                    });
+                        let box = new Gtk.Box({
+                            orientation: Gtk.Orientation.VERTICAL,
+                            halign: Gtk.Align.END
+                        });
 
-                    let button = new Gtk.Button({
-                        label: plugin.scripts.exec.label,
-                        sensitive: false
-                    });
+                        let button = new Gtk.Button({
+                            label: plugin.scripts.exec.label,
+                            sensitive: false
+                        });
 
-                    this._setButtonState(button, plugin);
+                        this._setButtonState(button, plugin);
 
-                    button.connect("clicked", Lang.bind(this, this._handleTask, spinner, plugin));
+                        button.connect("clicked", Lang.bind(this, this._handleTask, spinner, plugin));
 
-                    box.set_center_widget(button);
+                        box.set_center_widget(button);
 
-                    grid.attach(box, 3, 1, 1, 2);
+                        grid.attach(box, 3, 1, 1, 2);
+                    }
+
+                    if (plugin.scripts.show && plugin.scripts.show.command) {
+                        this._executeCommand(plugin.path, plugin.scripts.show.command, (pid, status) => {
+                            grid.set_visible(status === 0);
+                        });
+                    }
                 }
 
                 list.add(grid);
