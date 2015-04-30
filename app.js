@@ -78,14 +78,12 @@ const Application = new Lang.Class({
         return parsed;
     },
 
-    _executeCommand: function(workingdir, command, callback) {
+    _executeCommand: function(workingdir, command, callback = () => {}) {
         let argv = GLib.shell_parse_argv(command);
 
         if (argv[0] === false) {
             callback(null, 1);
         }
-
-        callback = (typeof callback === "function") ? callback : function() {};
 
         let process;
 
@@ -111,10 +109,10 @@ const Application = new Lang.Class({
         }
     },
 
-    _queueCommand: function() {
+    _queueCommand: function(...args) {
         function run(wd, cmd, cb) {
-            this._executeCommand(wd, cmd, () => {
-                cb.apply(this, Array.prototype.slice.call(arguments));
+            this._executeCommand(wd, cmd, (...a) => {
+                cb.apply(this, a);
 
                 this._queue.splice(0, 1);
 
@@ -123,8 +121,6 @@ const Application = new Lang.Class({
                 }
             });
         }
-
-        let args = Array.prototype.slice.call(arguments);
 
         this._queue = this._queue || [];
 
