@@ -87,9 +87,17 @@ const Application = new Lang.Class({
 
         let process;
 
+        let envp = GLib.get_environ();
+
+        let currdir = GLib.get_current_dir();
+
+        let path = GLib.environ_getenv(envp, "PATH");
+
+        envp = GLib.environ_setenv(envp, "PATH", path + ":" + currdir + "/bin", true);
+
         try {
-            process = GLib.spawn_async(workingdir, argv[1], null,
-                                       GLib.SpawnFlags.SEARCH_PATH | GLib.SpawnFlags.DO_NOT_REAP_CHILD, null);
+            process = GLib.spawn_async(workingdir, argv[1], envp,
+                                       GLib.SpawnFlags.SEARCH_PATH_FROM_ENVP | GLib.SpawnFlags.DO_NOT_REAP_CHILD, null);
         } catch (e) {
             print("Failed to run process: " + e.message);
 
