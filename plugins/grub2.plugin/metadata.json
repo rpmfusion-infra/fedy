@@ -6,6 +6,7 @@
 		"exec": {
 			"label": "Configure",
 			"command": "sh setup.sh"
-		}
+		},
+		"show": { "command": "test -d /boot/grub2 -o -d /boot/efi/EFI/fedora" }
 	}
 }
