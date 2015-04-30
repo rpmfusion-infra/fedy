@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if [[ $(whoami) == "root" ]]; then
-	exec "$@"
-else
-	exec pkexec "$0" "$@"
-fi
