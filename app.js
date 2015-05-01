@@ -79,13 +79,11 @@ const Application = new Lang.Class({
     },
 
     _executeCommand: function(workingdir, command, callback = () => {}) {
-        let argv = GLib.shell_parse_argv(command);
+        let [ status, argvp ] = GLib.shell_parse_argv(command);
 
-        if (argv[0] === false) {
+        if (status === false) {
             callback(null, 1);
         }
-
-        let process;
 
         let envp = GLib.get_environ();
 
@@ -95,8 +93,10 @@ const Application = new Lang.Class({
 
         envp = GLib.environ_setenv(envp, "PATH", path + ":" + currdir + "/bin", true);
 
+        let ok, pid;
+
         try {
-            process = GLib.spawn_async(workingdir, argv[1], envp,
+            [ ok, pid ] = GLib.spawn_async(workingdir, argvp, envp,
                                        GLib.SpawnFlags.SEARCH_PATH_FROM_ENVP | GLib.SpawnFlags.DO_NOT_REAP_CHILD, null);
         } catch (e) {
             print("Failed to run process: " + e.message);
@@ -104,16 +104,18 @@ const Application = new Lang.Class({
             callback(null, 1, e);
         }
 
-        if (process) {
-            if (process[0] === false) {
-                callback(process[1], 1);
+        if (ok === false) {
+            callback(pid, 1);
 
-                return;
-            }
+            return;
+        }
 
-            if (typeof process[1] === "number") {
-                GLib.child_watch_add(GLib.PRIORITY_DEFAULT, process[1], callback);
-            }
+        if (typeof pid === "number") {
+            GLib.child_watch_add(GLib.PRIORITY_DEFAULT, pid, (...args) => {
+                GLib.spawn_close_pid(pid);
+
+                callback.apply(this, args);
+            });
         }
     },
 
