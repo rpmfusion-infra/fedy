@@ -1,0 +1,17 @@
+{
+	"icon": "teamviewer",
+	"label": "TeamViewer",
+	"description": "Easy, fast and secure remote access to Windows, Mac and Linux systems.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root dnf -y install http://www.teamviewer.com/download/teamviewer_linux.rpm"
+		},
+		"undo": {
+			"label": "Uninstall",
+			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase teamviewer"
+		},
+		"status": { "command": "rpm --quiet --query teamviewer" }
+	}
+}
