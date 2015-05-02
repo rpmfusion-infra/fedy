@@ -6,7 +6,7 @@
 	"scripts": {
 		"exec": {
 			"label": "Setup",
-			"command": "sh setup.sh"
+			"command": "run-as-root -s setup.sh"
 		},
 		"undo": {
 			"label": "Revert",

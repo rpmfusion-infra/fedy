@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cat <<EOF | run-as-root tee /etc/profile.d/color_prompt.sh > /dev/null 2>&1
+cat <<EOF | tee /etc/profile.d/color_prompt.sh > /dev/null 2>&1
 # Colors in Terminal (Bash)
 if [[ ! -z \$BASH ]]; then
     if [[ \$USER = "root" ]]; then
