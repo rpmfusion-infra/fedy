@@ -7,7 +7,7 @@ if [[ "$1" == "-s" || "$1" == "--script" ]]; then
 	if [[ $(whoami) == "root" ]]; then
 		exec sh "$SCRIPT" "$@"
 	else
-		exec pkexec bash "$SCRIPT" "$@"
+		exec pkexec sh "$SCRIPT" "$@"
 	fi
 else
 	if [[ $(whoami) == "root" ]]; then
