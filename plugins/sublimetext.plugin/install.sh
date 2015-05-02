@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CACHEDIR="/var/cache/fedy/sublimetext";
+CACHEDIR="/var/cache/fedy/sublimetext"
 
 if [[ "$(uname -m)" = "x86_64" ]]; then
 	ARCH="x64"
@@ -26,6 +26,7 @@ if [[ ! -d "sublime_text_3" ]]; then
 	exit 1
 fi
 
+rm -rf "/opt/sublime_text_3/"
 cp -af "$CACHEDIR/sublime_text_3" "/opt/"
 
 for dir in /opt/sublime_text_3/Icon/*; do
