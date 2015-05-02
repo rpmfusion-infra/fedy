@@ -1,0 +1,17 @@
+{
+	"icon": "android-studio",
+	"label": "Android Studio",
+	"description": "Official IDE for Android application development, based on IntelliJ IDEA.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Uninstall",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/android-studio/bin/studio.sh" }
+	}
+}
