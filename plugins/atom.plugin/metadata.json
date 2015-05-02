@@ -1,0 +1,17 @@
+{
+	"icon": "atom",
+	"label": "Atom",
+	"description": "A hackable text editor for the 21st Century.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Uninstall",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query atom" }
+	}
+}
