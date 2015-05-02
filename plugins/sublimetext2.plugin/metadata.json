@@ -1,0 +1,17 @@
+{
+	"icon": "sublime_text",
+	"label": "Sublime Text 2",
+	"description": "Sophisticated text editor for code, markup and prose.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Uninstall",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/sublime_text_2/sublime_text" }
+	}
+}
