@@ -6,11 +6,11 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"command": "sh install.sh"
+			"command": "run-as-root -s install.sh"
 		},
 		"undo": {
 			"label": "Uninstall",
-			"command": "sh uninstall.sh"
+			"command": "run-as-root -s uninstall.sh"
 		},
 		"status": { "command": "rpm --quiet --query brackets" }
 	}
