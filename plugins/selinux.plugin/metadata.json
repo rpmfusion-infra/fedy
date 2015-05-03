@@ -5,7 +5,7 @@
 	"category": "Tweaks",
 	"scripts": {
 		"exec": {
-			"label": "Set up",
+			"label": "Setup",
 			"command": "run-as-root sed -i s/^SELINUX=.*$/SELINUX=permissive/g /etc/selinux/config"
 		},
 		"undo": {

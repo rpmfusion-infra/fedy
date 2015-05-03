@@ -1,6 +1,7 @@
 {
+	"icon": "hangouts",
 	"label": "Hangouts plugin",
-	"description": "Have voice and video conversations from your computer..",
+	"description": "Have voice and video conversations from your computer.",
 	"category": "Apps",
 	"scripts": {
 		"exec": {
