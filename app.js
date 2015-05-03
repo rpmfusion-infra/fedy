@@ -206,7 +206,7 @@ const Application = new Lang.Class({
 
                         stream.close(null);
 
-                        let lines = (data + "").replace(/\n\n/g, /\n/).split(/\n/);
+                        let lines = (data + "").split(/\n/);
 
                         parts = parts.concat(lines);
                     } catch (e) {
@@ -215,6 +215,10 @@ const Application = new Lang.Class({
                 }
             }
         }
+
+        parts = parts.map(p => p.trim()).filter((p, i, s) => {
+            return /^[^#]/.test(p) && p.length > 1 && s.indexOf(p) === i;
+        });
 
         for (let item in data) {
             if (Array.isArray(data[item].variations)) {
