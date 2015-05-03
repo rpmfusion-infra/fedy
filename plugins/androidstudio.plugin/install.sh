@@ -20,7 +20,8 @@ rm -rf "/opt/android-studio"
 unzip -xq "$FILE" -d "/opt/"
 
 ln -sf "/opt/android-studio/bin/studio.sh" "/usr/bin/android-studio"
-cp -f "/opt/android-studio/bin/androidstudio.svg" "/usr/share/icons/hicolor/scalable/apps/android-studio.svg"
+
+xdg-icon-resource install --novendor --size "scalable" "/opt/android-studio/bin/androidstudio.svg" "android-studio"
 gtk-update-icon-cache -f -t /usr/share/icons/hicolor
 
 cat <<EOF | tee /usr/share/applications/android-studio.desktop
