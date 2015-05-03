@@ -253,9 +253,9 @@ const Application = new Lang.Class({
         if (malicious) {
             this._showDialog({
                 type: "question",
-                text: "The plugin <b>" + plugin.label + "</b> is trying to run the command \n" +
-                      "<tt>" + command + "</tt>, \n" +
-                      "which might <b>" + description + "</b>. \n" +
+                text: "The plugin <b>" + GLib.markup_escape_text(plugin.label, -1) + "</b> is trying to run the command \n" +
+                      "<tt>" + GLib.markup_escape_text(command, -1) + "</tt>, \n" +
+                      "which might <b>" + GLib.markup_escape_text(description, -1) + "</b>. \n" +
                       "Continue anyways?"
             }, (dialog, response) => {
                 switch (response) {
