@@ -10,4 +10,6 @@ URL=$(wget "https://www.dropbox.com/install?os=lnx" -O - | tr ' ' '\n' | grep -o
 
 if [[ "$URL" != "" ]]; then
 	dnf -y install "$URL"
+else
+	exit 1
 fi
