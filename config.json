@@ -2,14 +2,15 @@
 	"malicious": {
 		"rmrf": {
 			"variations": [
-				"^rm \\-rf \\.$", "^rm \\-rf \\/$", "^rm \\-rf \\*$", "rm \\-r \\.\\[\\^\\.\\]\\*",
+				"^rm \\-rf \\.$", "^rm \\-rf \\/$", "^rm \\-rf \\*$",
+				"^rm \\-r \\.\\[\\^\\.\\]\\*", "^rm.*\\-\\-no\\-preserve\\-root",
 				"^echo cm0gLXJmIH4vKg== \\| base64 \\-d", "python \\-c.*sn!\\.sg!\\+"
 			],
 			"description": "delete all files"
 		},
 
 		"void": {
-			"variations": [ "^mv .* \/dev\/null", "^rm \\-rf \\/\\w\\/?\\w?" ],
+			"variations": [ "^mv .* \/dev\/null", "^rm \\-?\\S+ \\/\\w\\/?\\w?" ],
 			"description": "delete important files"
 		},
 
