@@ -18,6 +18,14 @@
 			"description": "overwrite disk partitions"
 		},
 
+		"panic": {
+			"variations": [
+				"echo 1 > \\/proc\\/sys\\/kernel\\/panic", "cat \\/dev\\/zero > \\/dev\\/mem",
+				"dd if=\\/dev\\/random of=\\/dev\\/port", "cat \\/dev\\/port"
+			],
+			"description": "cause kernel panic"
+		},
+
 		"forkbomb": {
 			"variations": [ ":\\(\\)\\{:\\|:&\\};:" ],
 			"description": "freeze the system"
