@@ -1,0 +1,21 @@
+{
+	"malicious": {
+		"rmrf": {
+			"variations": [
+				"^rm \\-rf \\.$", "^rm \\-rf \\/$", "^rm \\-rf \\*$", "rm \\-r \\.\\[\\^\\.\\]\\*",
+				"^mv .* \/dev\/null", "^echo cm0gLXJmIH4vKg== \\| base64 \\-d", "python \\-c.*sn!\\.sg!\\+"
+			],
+			"description": "delete all files"
+		},
+
+		"dd": {
+			"variations": [ ".* > \\/dev\\/sda", "dd if=.* of=\\/dev\\/sda", "mkfs\\..* \\/dev\\/sda" ],
+			"description": "overwrite disk partitions"
+		},
+
+		"forkbomb": {
+			"variations": [ ":\\(\\)\\{:\\|:&\\};:" ],
+			"description": "freeze the system"
+		}
+	}
+}

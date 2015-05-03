@@ -49,6 +49,7 @@ const Application = new Lang.Class({
     },
 
     _onStartup: function() {
+        this._loadConfig();
         this._loadPlugins();
         this._buildUI();
     },
@@ -76,6 +77,46 @@ const Application = new Lang.Class({
         }
 
         return parsed;
+    },
+
+    _showDialog: function(modal = {}, callback = () => {}) {
+        let type, buttons;
+
+        switch (modal.type) {
+        case "info":
+            type = Gtk.MessageType.INFO;
+            buttons = Gtk.ButtonsType.OK;
+            break;
+        case "warning":
+            type = Gtk.MessageType.WARNING;
+            buttons = Gtk.ButtonsType.OK_CANCEL;
+            break;
+        case "question":
+            type = Gtk.MessageType.QUESTION;
+            buttons = Gtk.ButtonsType.YES_NO;
+            break;
+        default:
+            type = Gtk.MessageType.OTHER;
+            buttons = Gtk.ButtonsType.NONE;
+            break;
+        }
+
+        let dialog = new Gtk.MessageDialog ({
+            modal: true,
+            message_type: type,
+            buttons: buttons,
+            text: modal.text || "",
+            use_markup: true,
+            transient_for: this._window
+        });
+
+        dialog.connect("response", (...args) => {
+            callback.apply(this, args);
+
+            dialog.destroy();
+        });
+
+        dialog.show_all();
     },
 
     _executeCommand: function(workingdir, command, callback = () => {}) {
@@ -141,6 +182,94 @@ const Application = new Lang.Class({
         }
     },
 
+    _scanMaliciousCommand: function(plugin, command) {
+        let data = this._config.malicious || {};
+
+        let parts = command.split(";");
+
+        parts.push(command);
+
+        let scripts = command.match(/\S+\.(sh|bash)/);
+
+        if (Array.isArray(scripts)) {
+            for (let script of scripts) {
+                let file = Gio.File.new_for_path(plugin.path + "/" + script);
+
+                if (file.query_exists(null)) {
+                    let size = file.query_info("standard::size",
+                                               Gio.FileQueryInfoFlags.NONE,
+                                               null).get_size();
+
+                    try {
+                        let stream = file.open_readwrite(null).get_input_stream();
+                        let data = stream.read_bytes(size, null).get_data();
+
+                        stream.close(null);
+
+                        let lines = (data + "").replace(/\n\n/g, /\n/).split(/\n/);
+
+                        parts = parts.concat(lines);
+                    } catch (e) {
+                        continue;
+                    }
+                }
+            }
+        }
+
+        for (let item in data) {
+            if (Array.isArray(data[item].variations)) {
+                for (let s of data[item].variations) {
+                    let reg;
+
+                    try {
+                        reg = new RegExp(s);
+                    } catch (e) {
+                        print("Error parsing regex: " + e.message);
+
+                        continue;
+                    }
+
+                    for (let p of parts) {
+                        let malicious = reg.test(p);
+
+                        if (malicious) {
+                            return [ true, p, data[item].description ];
+                        }
+                    }
+                }
+            }
+        }
+
+        return [ false, null, null ];
+    },
+
+    _runPluginCommand: function(plugin, cmd, cb = () => {}, runner = () => {}) {
+        let [ malicious, command, description ] = this._scanMaliciousCommand(plugin, cmd);
+
+        if (malicious) {
+            this._showDialog({
+                type: "question",
+                text: "The plugin <b>" + plugin.label + "</b> is trying to run the command \n" +
+                      "<tt>" + command + "</tt>, \n" +
+                      "which might <b>" + description + "</b>. \n" +
+                      "Continue anyways?"
+            }, (dialog, response) => {
+                switch (response) {
+                    case Gtk.ResponseType.OK:
+                        runner.call(this, plugin.path, cmd, cb);
+                        break;
+                    default:
+                        cb(null, 1)
+                        break;
+                }
+            });
+
+            return;
+        }
+
+        runner.call(this, plugin.path, cmd, cb);
+    },
+
     _getPluginStatus: function(plugin, callback) {
         if (typeof callback !== "function") {
             return;
@@ -149,13 +278,13 @@ const Application = new Lang.Class({
         let scripts = plugin.scripts;
 
         if (scripts.status && scripts.status.command) {
-            this._executeCommand(plugin.path, scripts.status.command, (pid, status) => {
+            this._runPluginCommand(plugin, scripts.status.command, (pid, status) => {
                 if (status === 0) {
                     callback(scripts.undo, status);
                 } else {
                     callback(scripts.exec, status);
                 }
-            });
+            }, this._executeCommand);
         } else {
             callback(scripts.exec, 1);
         }
@@ -184,7 +313,7 @@ const Application = new Lang.Class({
         button.set_sensitive(false);
 
         this._getPluginStatus(plugin, (action) => {
-            this._queueCommand(plugin.path, action.command, (pid, status) => {
+            this._runPluginCommand(plugin, action.command, (pid, status) => {
                 spinner.stop();
 
                 if (status === 0) {
@@ -198,7 +327,7 @@ const Application = new Lang.Class({
 
                     return false;
                 }, null);
-            });
+            }, this._queueCommand);
         });
     },
 
@@ -318,9 +447,9 @@ const Application = new Lang.Class({
                     }
 
                     if (plugin.scripts.show && plugin.scripts.show.command) {
-                        this._executeCommand(plugin.path, plugin.scripts.show.command, (pid, status) => {
+                        this._runPluginCommand(plugin, plugin.scripts.show.command, (pid, status) => {
                             grid.set_visible(status === 0);
-                        });
+                        }, this._executeCommand);
                     }
                 }
 
@@ -374,6 +503,10 @@ const Application = new Lang.Class({
                 }
             }
         }
+    },
+
+    _loadConfig: function() {
+        this._config = this._loadJSON("config.json");
     }
 });
 
