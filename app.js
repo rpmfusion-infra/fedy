@@ -64,10 +64,7 @@ const Application = new Lang.Class({
                                        null).get_size();
 
             try {
-                let stream = file.open_readwrite(null).get_input_stream();
-                let data = stream.read_bytes(size, null).get_data();
-
-                stream.close(null);
+                let data = file.read(null).read_bytes(size, null).get_data();
 
                 parsed = JSON.parse(data);
             } catch (e) {
