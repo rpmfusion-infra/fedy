@@ -5,7 +5,6 @@ const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const Pango = imports.gi.Pango;
 const Lang = imports.lang;
-const Mainloop = imports.mainloop;
 
 const Application = new Lang.Class({
     Name: "Fedy",
@@ -326,7 +325,7 @@ const Application = new Lang.Class({
                     button.set_label("Error!");
                 }
 
-                Mainloop.timeout_add(1000, () => {
+                GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
                     this._setButtonState(button, plugin);
 
                     return false;
