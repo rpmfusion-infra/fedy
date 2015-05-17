@@ -9,7 +9,7 @@
 			"command": "run-as-root -s install.sh"
 		},
 		"undo": {
-			"label": "Uninstall",
+			"label": "Remove",
 			"command": "run-as-root -s uninstall.sh"
 		},
 		"status": { "command": "test -f /opt/sublime_text_2/sublime_text" }
