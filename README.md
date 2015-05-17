@@ -1,7 +1,3 @@
-### NOTE:
-
-The current focus of development is the [next branch of the repo](https://github.com/satya164/fedy/tree/next). If you want to contribute or test, please work on that branch instead.
-
 ### Introduction
 
 Fedy lets you install multimedia codecs and additional software that Fedora [doesn't want to ship](http://fedoraproject.org/wiki/Forbidden_items?rd=ForbiddenItems), like mp3 support, Adobe Flash, Oracle Java etc., and much more with just a few clicks.
@@ -44,4 +40,4 @@ You can get the latest source code from the [github page](http://github.com/saty
 
 ### Bugs and feature requests
 
-Please submit bugs and feature requests [here](http://github.com/satya164/fedy/issues).
+Please submit bugs and feature requests [here](http://github.com/satya164/fedy/issues). Pull requests are always welcome.
