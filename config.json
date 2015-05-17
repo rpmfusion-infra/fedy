@@ -1,0 +1,35 @@
+{
+	"malicious": {
+		"rmrf": {
+			"variations": [
+				"^rm \\-rf \\.$", "^rm \\-rf \\/$", "^rm \\-rf \\*$",
+				"^rm \\-r \\.\\[\\^\\.\\]\\*", "^rm.*\\-\\-no\\-preserve\\-root",
+				"^echo cm0gLXJmIH4vKg== \\| base64 \\-d", "python \\-c.*sn!\\.sg!\\+"
+			],
+			"description": "delete all files"
+		},
+
+		"void": {
+			"variations": [ "^mv .* \/dev\/null", "^rm \\-?\\S+ \\/\\w\\/?\\w?" ],
+			"description": "delete important files"
+		},
+
+		"dd": {
+			"variations": [ ".* > \\/dev\\/sda", "dd if=.* of=\\/dev\\/sda", "mkfs\\..* \\/dev\\/sda" ],
+			"description": "overwrite disk partitions"
+		},
+
+		"panic": {
+			"variations": [
+				"echo 1 > \\/proc\\/sys\\/kernel\\/panic", "cat \\/dev\\/zero > \\/dev\\/mem",
+				"dd if=\\/dev\\/random of=\\/dev\\/port", "cat \\/dev\\/port"
+			],
+			"description": "cause kernel panic"
+		},
+
+		"forkbomb": {
+			"variations": [ ":\\(\\)\\{:\\|:&\\};:" ],
+			"description": "freeze the system"
+		}
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"icon": "dropbox",
+	"label": "Dropbox for Nautilus",
+	"description": "Dropbox integration for the GNOME file manager.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase nautilus-dropbox"
+		},
+		"status": { "command": "rpm --quiet --query nautilus-dropbox" }
+	}
+}

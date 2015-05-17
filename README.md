@@ -16,19 +16,27 @@ You should have received a copy of the GNU General Public License along with thi
 
 Copyright (C) [Satyajit Sahoo](mailto:satyajit.happy@gmail.com)
 
-### Documentation
+### Dependencies
 
-Documentation is available online. Please visit the [wiki](http://github.com/satya164/fedy/wiki).
+Fedy relies on `GTK+3` and `GJS` for it's UI layer.
 
-### How to install
+The included plugins rely on the following packages,
+* `dnf`
+* `dnf-plugins-core`
+* `wget`
+* `rpmfusion-free-release`
+* `rpmfusion-nonfree-release`
+* `ozon-repos`
 
-Fedy can be installed with our [script](http://satya164.github.io/fedy/fedy-installer) which automatically sets up the repo and installs the `fedy` package.
+### Installation
 
-### How to use
+Fedy can be installed with our [script](http://satya164.github.io/fedy/fedy-installer) which automatically sets up the repos and dependencies.
+
+### Usage
 
 After installation, search for `Fedy` in the menu/overview or type `fedy` in the terminal.
 
-### Getting the source
+### Source code
 
 You can get the latest source code from the [github page](http://github.com/satya164/fedy).
 

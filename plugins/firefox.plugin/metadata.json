@@ -1,0 +1,17 @@
+{
+	"icon": "firefox",
+	"label": "Mozilla Firefox",
+	"description": "An open-source web browser, designed for standards compliance, performance and portability.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root dnf -y install firefox"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase firefox"
+		},
+		"status": { "command": "rpm --quiet --query firefox" }
+	}
+}

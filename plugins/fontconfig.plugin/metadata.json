@@ -1,0 +1,16 @@
+{
+	"label": "Better Font Rendering",
+	"description": "Improve the font rendering for better readability.",
+	"category": "Tweaks",
+	"scripts": {
+		"exec": {
+			"label": "Setup",
+			"command": "sh setup.sh"
+		},
+		"undo": {
+			"label": "Revert",
+			"command": "sh revert.sh"
+		},
+		"status": { "command": "rpm --quiet --query ozon-font-config" }
+	}
+}

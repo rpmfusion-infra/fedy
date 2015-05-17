@@ -1,0 +1,17 @@
+{
+	"icon": "input-touchpad",
+	"label": "Touchpad tap",
+	"description": "Enable systemwide touchpad tap-to-click.",
+	"category": "Tweaks",
+	"scripts": {
+		"exec": {
+			"label": "Setup",
+			"command": "sh setup.sh"
+		},
+		"undo": {
+			"label": "Revert",
+			"command": "sh revert.sh"
+		},
+		"status": { "command": "test -f /etc/X11/xorg.conf.d/00-enable-taps.conf" }
+	}
+}

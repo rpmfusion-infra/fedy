@@ -1,0 +1,17 @@
+{
+	"icon": "java",
+	"label": "Oracle JRE",
+	"description": "Allows to run applications written in the Java programming language.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "sh status.sh" }
+	}
+}

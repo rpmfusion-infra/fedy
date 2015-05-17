@@ -1,0 +1,17 @@
+{
+	"icon": "security-medium",
+	"label": "Permissive SELinux",
+	"description": "Set SELinux to permissive mode.",
+	"category": "Tweaks",
+	"scripts": {
+		"exec": {
+			"label": "Setup",
+			"command": "run-as-root sed -i s/^SELINUX=.*$/SELINUX=permissive/g /etc/selinux/config"
+		},
+		"undo": {
+			"label": "Revert",
+			"command": "run-as-root sed -i s/^SELINUX=.*$/SELINUX=enforcing/g /etc/selinux/config"
+		},
+		"status": { "command": "grep --quiet ^SELINUX=permissive$ /etc/selinux/config" }
+	}
+}

@@ -1,7 +1,3 @@
 #!/bin/bash
-case "$1" in
-    -e|--exec|-u|--undo|-h|--help)
-        "/usr/share/fedy/fedy" "$@";;
-    *)
-        pkexec "/usr/share/fedy/fedy" "$@";;
-esac
+
+"/usr/share/fedy/fedy" "$@"

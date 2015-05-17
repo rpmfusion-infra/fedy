@@ -1,0 +1,17 @@
+{
+	"icon": "skype",
+	"label": "Skype",
+	"description": "Stay in touch with your family and friends for free on Skype.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase skype"
+		},
+		"status": { "command": "rpm --quiet --query skype" }
+	}
+}

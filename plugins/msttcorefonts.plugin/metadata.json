@@ -1,0 +1,17 @@
+{
+	"icon": "preferences-desktop-font",
+	"label": "Microsoft TrueType core fonts",
+	"description": "Times New Roman, Arial, Comic Sans and other core Microsoft fonts.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root dnf -y install http://sourceforge.net/projects/mscorefonts2/files/rpms/msttcore-fonts-installer-2.2-1.noarch.rpm"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase msttcore-fonts-installer"
+		},
+		"status": { "command": "rpm --quiet --query msttcore-fonts-installer" }
+	}
+}
