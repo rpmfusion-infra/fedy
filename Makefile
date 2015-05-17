@@ -1,12 +1,12 @@
 # Install Fedy
 
 install:
+	install -dm755 $(DESTDIR)/usr/bin/
 	install -dm755 $(DESTDIR)/usr/share/fedy/
 
 	for f in *; do cp -pr $$f $(DESTDIR)/usr/share/fedy/; done
 
-	ln -sf $(DESTDIR)/usr/share/fedy/fedy.exec $(DESTDIR)/usr/bin/fedy
-
+	install -Dpm 0644 fedy.exec $(DESTDIR)/usr/bin/fedy
 	install -Dpm 0644 fedy.appdata.xml $(DESTDIR)/usr/share/appdata/fedy.appdata.xml
 	install -Dpm 0644 fedy.desktop $(DESTDIR)/usr/share/applications/fedy.desktop
 	install -Dpm 0644 fedy.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/fedy.svg
