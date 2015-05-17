@@ -348,6 +348,24 @@ const Application = new Lang.Class({
             return label1 > label2 ? 1 : label1 < label2 ? -1 : 0;
         };
 
+        let settooltip = plugin => {
+            return ((l, x, y, k, tip) => {
+                if (l.get_layout().is_ellipsized()) {
+                    tip.set_text(plugin.description);
+
+                    return true;
+                }
+
+                return false;
+            });
+        };
+
+        let setvisible = (plugin, grid) => {
+            this._runPluginCommand(plugin, plugin.scripts.show.command, (pid, status) => {
+                grid.set_visible(status === 0);
+            }, this._executeCommand);
+        }
+
         for (let category of categories) {
             this._panes[category] = new Gtk.ScrolledWindow();
 
@@ -420,15 +438,7 @@ const Application = new Lang.Class({
                 description.set_ellipsize(Pango.EllipsizeMode.END);
                 description.set_has_tooltip(true);
 
-                description.connect("query_tooltip", (l, x, y, k, tip) => {
-                    if (l.get_layout().is_ellipsized()) {
-                        tip.set_text(plugin.description);
-
-                        return true;
-                    }
-
-                    return false;
-                });
+                description.connect("query_tooltip", settooltip(plugin));
 
                 grid.attach(description, 1, 2, 1, 1);
 
@@ -458,9 +468,7 @@ const Application = new Lang.Class({
                     }
 
                     if (plugin.scripts.show && plugin.scripts.show.command) {
-                        this._runPluginCommand(plugin, plugin.scripts.show.command, (pid, status) => {
-                            grid.set_visible(status === 0);
-                        }, this._executeCommand);
+                        setvisible(plugin, grid);
                     }
                 }
 
