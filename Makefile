@@ -3,7 +3,7 @@
 install:
 	install -dm755 $(DESTDIR)/usr/share/fedy/
 
-	for f in *; do cp -pr $$f /usr/share/fedy/; done
+	for f in *; do cp -pr $$f $(DESTDIR)/usr/share/fedy/; done
 
 	ln -sf $(DESTDIR)/usr/share/fedy/fedy.exec $(DESTDIR)/usr/bin/fedy
 
