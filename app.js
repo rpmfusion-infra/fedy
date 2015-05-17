@@ -339,12 +339,21 @@ const Application = new Lang.Class({
 
         let categories = Object.keys(this._plugins).sort();
 
+        let sort = (row1, row2) => {
+            let label1 = row1.get_children()[0].get_children()[3].get_label(),
+                label2 = row2.get_children()[0].get_children()[3].get_label();
+
+            return label1 > label2 ? 1 : label1 < label2 ? -1 : 0;
+        };
+
         for (let category of categories) {
             this._panes[category] = new Gtk.ScrolledWindow();
 
             let list = new Gtk.ListBox({ selection_mode: Gtk.SelectionMode.NONE });
 
             list.get_style_context().add_class("view");
+
+            list.set_sort_func(sort);
 
             for (let item in this._plugins[category]) {
                 let plugin = this._plugins[category][item];
