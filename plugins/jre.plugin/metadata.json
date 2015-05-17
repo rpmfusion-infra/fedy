@@ -1,7 +1,7 @@
 {
 	"icon": "java",
 	"label": "Oracle JRE",
-	"description": "Runs Java applets and JavaBeans using Java Runtime Environment.",
+	"description": "Allows to run applications written in the Java programming language.",
 	"category": "Apps",
 	"scripts": {
 		"exec": {
