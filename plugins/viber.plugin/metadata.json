@@ -9,7 +9,7 @@
 			"command": "run-as-root dnf -y install https://download.cdn.viber.com/desktop/Linux/viber.rpm"
 		},
 		"undo": {
-			"label": "Uninstall",
+			"label": "Remove",
 			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase viber"
 		},
 		"status": { "command": "rpm --quiet --query viber" }

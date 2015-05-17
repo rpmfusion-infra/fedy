@@ -9,7 +9,7 @@
 			"command": "run-as-root dnf -y install http://sourceforge.net/projects/mscorefonts2/files/rpms/msttcore-fonts-installer-2.2-1.noarch.rpm"
 		},
 		"undo": {
-			"label": "Uninstall",
+			"label": "Remove",
 			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase msttcore-fonts-installer"
 		},
 		"status": { "command": "rpm --quiet --query msttcore-fonts-installer" }

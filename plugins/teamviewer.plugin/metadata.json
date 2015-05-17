@@ -9,7 +9,7 @@
 			"command": "run-as-root dnf -y install http://www.teamviewer.com/download/teamviewer_linux.rpm"
 		},
 		"undo": {
-			"label": "Uninstall",
+			"label": "Remove",
 			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase teamviewer"
 		},
 		"status": { "command": "rpm --quiet --query teamviewer" }
