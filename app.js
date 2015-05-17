@@ -335,6 +335,8 @@ const Application = new Lang.Class({
         let stack = new Gtk.Stack({ transition_type: Gtk.StackTransitionType.CROSSFADE });
         let switcher = new Gtk.StackSwitcher({ stack: stack });
 
+        stack.set_vexpand(true);
+
         this._panes = {};
 
         let categories = Object.keys(this._plugins).sort();
@@ -470,8 +472,53 @@ const Application = new Lang.Class({
             stack.add_titled(this._panes[category], category, category);
         }
 
+        let searchentry = new Gtk.SearchEntry();
+
+        searchentry.connect("search_changed", (entry) => {
+            let searchtext = entry.get_text().toLowerCase();
+
+            let filter = (row) => {
+                let items = row.get_children()[0].get_children(),
+                    title = items[3].get_label(),
+                    description = items[2].get_label();
+
+                return (title + description).toLowerCase().indexOf(searchtext) > -1;
+            }
+
+            let children = stack.get_children();
+
+            for (let child of children) {
+                let listbox = child.get_children()[0].get_children()[0];
+
+                listbox.set_filter_func(filter);
+            }
+        });
+
+        let searchbar = new Gtk.SearchBar();
+
+        searchbar.add(searchentry);
+        searchbar.connect_entry(searchentry);
+
+        let searchicon = new Gtk.Image();
+
+        searchicon.set_from_icon_name("edit-find-symbolic", Gtk.IconSize.BUTTON);
+
+        let searchbutton = new Gtk.ToggleButton({
+            image: searchicon,
+            always_show_image: true
+        });
+
+        searchbutton.connect("toggled", b => searchbar.set_search_mode(b.get_active()));
+
+        this._headerbar.pack_end(searchbutton);
         this._headerbar.set_custom_title(switcher);
-        this._window.add(stack);
+
+        let vbox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL });
+
+        vbox.add(searchbar);
+        vbox.add(stack);
+
+        this._window.add(vbox);
     },
 
     _loadPlugins: function() {
