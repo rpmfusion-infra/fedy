@@ -181,7 +181,7 @@ const Application = new Lang.Class({
     },
 
     _scanMaliciousCommand: function(plugin, command) {
-        let data = this._config.malicious || {};
+        let mal = this._config.malicious || {};
 
         let parts = command.split(";");
 
@@ -218,9 +218,9 @@ const Application = new Lang.Class({
             return /^[^#]/.test(p) && p.length > 1 && s.indexOf(p) === i;
         });
 
-        for (let item in data) {
-            if (Array.isArray(data[item].variations)) {
-                for (let s of data[item].variations) {
+        for (let item in mal) {
+            if (Array.isArray(mal[item].variations)) {
+                for (let s of mal[item].variations) {
                     let reg;
 
                     try {
@@ -235,7 +235,7 @@ const Application = new Lang.Class({
                         let malicious = reg.test(p);
 
                         if (malicious) {
-                            return [ true, p, data[item].description ];
+                            return [ true, p, mal[item].description ];
                         }
                     }
                 }
@@ -347,7 +347,13 @@ const Application = new Lang.Class({
             let label1 = row1.get_children()[0].get_children()[3].get_label(),
                 label2 = row2.get_children()[0].get_children()[3].get_label();
 
-            return label1 > label2 ? 1 : label1 < label2 ? -1 : 0;
+            if (label1 > label2) {
+                return 1;
+            } else if (label1 < label2) {
+                return -1;
+            } else {
+                return 0;
+            }
         };
 
         let settooltip = plugin => {
@@ -366,7 +372,7 @@ const Application = new Lang.Class({
             this._runPluginCommand(plugin, plugin.scripts.show.command, (pid, status) => {
                 grid.set_visible(status === 0);
             }, this._executeCommand);
-        }
+        };
 
         for (let category of categories) {
             this._panes[category] = new Gtk.ScrolledWindow();

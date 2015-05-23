@@ -16,7 +16,7 @@
 
 		"dd": {
 			"variations": [ ".* > \\/dev\\/sda", "dd if=.* of=\\/dev\\/sda", "mkfs\\..* \\/dev\\/sda" ],
-			"description": "overwrite disk partitions"
+			"description": "overwrite or wipe hard disk"
 		},
 
 		"panic": {
