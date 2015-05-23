@@ -1,0 +1,17 @@
+{
+	"icon": "master-pdf-editor",
+	"label": "Master PDF editor",
+	"description": "A convenient and smart XPS & PDF editor.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase master-pdf-editor"
+		},
+		"status": { "command": "rpm --quiet --query master-pdf-editor" }
+	}
+}
