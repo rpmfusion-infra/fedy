@@ -6,8 +6,10 @@ const Gtk = imports.gi.Gtk;
 const Pango = imports.gi.Pango;
 const Lang = imports.lang;
 
+const APP_NAME = "Fedy";
+
 const Application = new Lang.Class({
-    Name: "Fedy",
+    Name: APP_NAME,
 
     _init: function() {
         this.application = new Gtk.Application({
@@ -23,7 +25,7 @@ const Application = new Lang.Class({
         this._window = new Gtk.ApplicationWindow({
                             application: this.application,
                             window_position: Gtk.WindowPosition.CENTER,
-                            title: "Fedy"
+                            title: APP_NAME
                         });
 
         try {
@@ -259,7 +261,7 @@ const Application = new Lang.Class({
                         runner.call(this, plugin.path, cmd, cb);
                         break;
                     default:
-                        cb(null, 1)
+                        cb(null, 1);
                         break;
                 }
             });
@@ -491,7 +493,7 @@ const Application = new Lang.Class({
                     description = items[2].get_label();
 
                 return (title + description).toLowerCase().indexOf(searchtext) > -1;
-            }
+            };
 
             let children = stack.get_children();
 
