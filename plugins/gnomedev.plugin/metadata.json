@@ -1,0 +1,17 @@
+{
+	"icon": "applications-development",
+	"label": "GNOME developement tools",
+	"description": "Everything you need to start developing software for GNOME.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root dnf -y install @development-libs @development-tools @gnome-software-development @rpm-development-tools bzr bzrtools createrepo fedora-packager rpm-sign rpmdevtools vala vala-devel vala-tools vala-doc"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase @development-libs @development-tools @gnome-software-development @rpm-development-tools bzr bzrtools createrepo fedora-packager rpm-sign rpmdevtools vala vala-devel vala-tools vala-doc"
+		},
+		"status": { "command": "rpm --quiet --query boost-devel bzip2-devel clutter-devel cvs cyrus-sasl-devel devhelp diffstat doxygen fedora-packager rpm-sign rpmdevtools gdb gettext git gnome-common gobject-introspection koji krb5-devel mock ncurses-devel openldap-devel pam-devel patchutils perl-devel python-devel python-ldap rcs readline-devel redhat-rpm-config rpmdevtools slang-devel subversion systemtap zlib-devel" }
+	}
+}
