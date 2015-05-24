@@ -43,6 +43,21 @@ const Application = new Lang.Class({
         this._window.set_default_size(800, 600);
         this._window.set_titlebar(this._headerbar);
         this._window.show_all();
+
+        // Hide the window if any task is running
+        this._window.connect("delete_event", w => {
+            if (this._queue && this._queue.length) {
+                w.hide();
+
+                this.hidden = true;
+
+                return true;
+            }
+
+            return false;
+        });
+
+        this.hidden = false;
     },
 
     _onActivate: function() {
@@ -342,6 +357,12 @@ const Application = new Lang.Class({
 
         this._getPluginStatus(plugin, (action) => {
             this._runPluginCommand(plugin, action.command, (pid, status) => {
+                if (this.hidden && !(this._queue && this._queue.length)) {
+                    this._window.close();
+
+                    return false;
+                }
+
                 spinner.stop();
 
                 if (status === 0) {
