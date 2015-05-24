@@ -32,6 +32,8 @@ Fedy can be installed with our [script](http://satya164.github.io/fedy/fedy-inst
 
 After installation, search for `Fedy` in the menu/overview or type `fedy` in the terminal.
 
+Users can place their own plugins under `~/.local/share/fedy/plugins/`.
+
 ### Source code
 
 You can get the latest source code from the [github page](http://github.com/satya164/fedy).
