@@ -55,6 +55,32 @@ const Application = new Lang.Class({
         this._buildUI();
     },
 
+    _extendObject: function(...objs) {
+        var orig = objs[0];
+
+        if (typeof orig !== "object" || orig === null) {
+            return orig;
+        }
+
+        for (var i = 1, l = objs.length; i < l; i++) {
+            if (typeof objs[i] !== "object" || objs[i] === null) {
+                return orig;
+            }
+
+            for (var o in objs[i]) {
+                if (objs[i].hasOwnProperty(o)) {
+                    if (typeof orig[o] === "object") {
+                        this._extendObject(orig[o], objs[i][o]);
+                    } else {
+                        orig[o] = objs[i][o];
+                    }
+                }
+            }
+        }
+
+        return orig;
+    },
+
     _loadJSON: function(path) {
         let parsed;
 
@@ -537,12 +563,8 @@ const Application = new Lang.Class({
         this._window.add(vbox);
     },
 
-    _loadPlugins: function() {
-        this._plugins = {};
-
-        let currdir = GLib.get_current_dir();
-
-        let plugindir = currdir + "/plugins";
+    _loadPluginsFromDir: function(plugindir) {
+        let plugins = {};
 
         let dir = Gio.File.new_for_path(plugindir);
 
@@ -565,20 +587,42 @@ const Application = new Lang.Class({
                     let parsed = this._loadJSON(plugindir + "/" + name + "/metadata.json");
 
                     if (parsed && parsed.category) {
-                        this._plugins[parsed.category] = this._plugins[parsed.category] || {};
+                        plugins[parsed.category] = plugins[parsed.category] || {};
 
                         let plugin = name.replace(/\.plugin$/, "");
 
-                        this._plugins[parsed.category][plugin] = parsed;
-                        this._plugins[parsed.category][plugin].path = plugindir + "/" + name;
+                        plugins[parsed.category][plugin] = parsed;
+                        plugins[parsed.category][plugin].path = plugindir + "/" + name;
                     }
                 }
             }
         }
+
+        return plugins;
+    },
+
+    _loadPlugins: function() {
+        this._plugins = {};
+
+        // System plugins
+        let system = this._loadPluginsFromDir(GLib.get_current_dir() + "/plugins");
+
+        // User plugins
+        let user = this._loadPluginsFromDir(GLib.get_user_data_dir() + "/fedy/plugins");
+
+        this._extendObject(this._plugins, system, user);
     },
 
     _loadConfig: function() {
-        this._config = this._loadJSON("config.json");
+        this._config = {}
+
+        // System config
+        let system = this._loadJSON(GLib.get_current_dir() + "/config.json");
+
+        // User config
+        let user = this._loadJSON(GLib.get_user_data_dir() + "/fedy/config.json");
+
+        this._extendObject(this._config, system, user);
     }
 });
 
