@@ -3,6 +3,7 @@
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
+const Notify = imports.gi.Notify;
 const Pango = imports.gi.Pango;
 const Lang = imports.lang;
 
@@ -19,6 +20,8 @@ const Application = new Lang.Class({
 
         this.application.connect("activate", Lang.bind(this, this._onActivate));
         this.application.connect("startup", Lang.bind(this, this._onStartup));
+
+        Notify.init(APP_NAME);
     },
 
     _buildUI: function() {
@@ -68,6 +71,16 @@ const Application = new Lang.Class({
         this._loadConfig();
         this._loadPlugins();
         this._buildUI();
+    },
+
+    _hashString: function(str) {
+        let hash = 0;
+
+        for (let i = 0; i < str.length; i++) {
+            hash += str.charCodeAt(i);
+        }
+
+        return hash;
     },
 
     _extendObject: function(...objs) {
@@ -357,10 +370,26 @@ const Application = new Lang.Class({
 
         this._getPluginStatus(plugin, (action) => {
             this._runPluginCommand(plugin, action.command, (pid, status) => {
+
+                let notification = new Notify.Notification({
+                    summary: "Task " + (status === 0 ? "completed!" : "failed!"),
+                    body: plugin.label + " (" + action.label + ") " + (status === 0 ? "successfully completed." : "failed."),
+                    icon_name: "fedy",
+                    id: this._hashString(plugin.category + plugin.label)
+                });
+
+                if (status !== 0) {
+                    notification.set_urgency(Notify.Urgency.CRITICAL);
+                }
+
+                notification.set_timeout(1000);
+
+                notification.show();
+
                 if (this.hidden && !(this._queue && this._queue.length)) {
                     this._window.close();
 
-                    return false;
+                    return;
                 }
 
                 spinner.stop();
