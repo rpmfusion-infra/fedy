@@ -367,20 +367,24 @@ const Application = new Lang.Class({
         this._getPluginStatus(plugin, (action) => {
             this._runPluginCommand(plugin, action.command, (pid, status) => {
 
-                let notification = new Notify.Notification({
-                    summary: "Task " + (status === 0 ? "completed!" : "failed!"),
-                    body: plugin.label + " (" + action.label + ") " + (status === 0 ? "successfully completed." : "failed."),
-                    icon_name: "fedy",
-                    id: this._hashString(plugin.category + plugin.label)
-                });
+                try {
+                    let notification = new Notify.Notification({
+                        summary: "Task " + (status === 0 ? "completed!" : "failed!"),
+                        body: plugin.label + " (" + action.label + ") " + (status === 0 ? "successfully completed." : "failed."),
+                        icon_name: "fedy",
+                        id: this._hashString(plugin.category + plugin.label)
+                    });
 
-                if (status !== 0) {
-                    notification.set_urgency(Notify.Urgency.CRITICAL);
+                    if (status !== 0) {
+                        notification.set_urgency(Notify.Urgency.CRITICAL);
+                    }
+
+                    notification.set_timeout(1000);
+
+                    notification.show();
+                } catch (e) {
+                    print("Failed to show notification: " + e.message);
                 }
-
-                notification.set_timeout(1000);
-
-                notification.show();
 
                 if (!this._window.visible && !(this._queue && this._queue.length)) {
                     this._window.close();
