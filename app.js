@@ -407,13 +407,22 @@ const Application = new Lang.Class({
 
     _renderPlugins: function() {
         let stack = new Gtk.Stack({ transition_type: Gtk.StackTransitionType.CROSSFADE });
-        let switcher = new Gtk.StackSwitcher({ stack: stack });
 
         stack.set_vexpand(true);
 
         this._panes = {};
 
         let categories = Object.keys(this._plugins).sort();
+
+        let switcher;
+
+        if (categories.length === 0) {
+            switcher = APP_NAME;
+        } else if (categories.length === 1) {
+            switcher = categories[0];
+        } else {
+            switcher = new Gtk.StackSwitcher({ stack: stack });
+        }
 
         let sort = (row1, row2) => {
             let label1 = row1.get_children()[0].get_children()[3].get_label(),
@@ -599,7 +608,12 @@ const Application = new Lang.Class({
         searchbutton.connect("toggled", b => searchbar.set_search_mode(b.get_active()));
 
         this._headerbar.pack_end(searchbutton);
-        this._headerbar.set_custom_title(switcher);
+
+        if (typeof switcher === "string") {
+            this._headerbar.set_title(switcher);
+        } else {
+            this._headerbar.set_custom_title(switcher);
+        }
 
         let vbox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL });
 
