@@ -1,6 +1,6 @@
 {
 	"icon": "utilities-terminal",
-	"label": "Fancy Bash Prompt",
+	"label": "Fancy Bash prompt",
 	"description": "Add colors to bash prompt to make it stand out.",
 	"category": "Tweaks",
 	"scripts": {

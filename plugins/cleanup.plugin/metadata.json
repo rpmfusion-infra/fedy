@@ -1,6 +1,6 @@
 {
 	"icon": "edit-clear-all",
-	"label": "Cleanup Junk",
+	"label": "Cleanup junk",
 	"description": "Delete junk files such as .DS_Store, desktop.ini, Thumbs.db etc.",
 	"category": "Tweaks",
 	"scripts": {

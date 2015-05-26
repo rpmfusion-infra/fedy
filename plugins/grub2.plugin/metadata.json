@@ -1,5 +1,5 @@
 {
-	"label": "GRUB2 Configuration",
+	"label": "GRUB2 configuration",
 	"description": "Run the GRUB2 configuration scripts and update the configuration file.",
 	"category": "Tweaks",
 	"scripts": {

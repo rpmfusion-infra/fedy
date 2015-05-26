@@ -1,6 +1,6 @@
 {
 	"icon": "preferences-desktop-theme",
-	"label": "Theme Engines",
+	"label": "Theme engines",
 	"description": "Used by GTK themes to draw widgets.",
 	"category": "Apps",
 	"scripts": {
