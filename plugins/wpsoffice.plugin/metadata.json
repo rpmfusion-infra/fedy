@@ -1,6 +1,6 @@
 {
-	"icon": "kingsoft-office",
-	"label": "Kingsoft Office",
+	"icon": "wps-office",
+	"label": "WPS Office",
 	"description": "Simple, powerful office suite with a comfortable interface.",
 	"category": "Apps",
 	"scripts": {
@@ -10,8 +10,8 @@
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase kingsoft-office"
+			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase wps-office"
 		},
-		"status": { "command": "rpm --quiet --query kingsoft-office" }
+		"status": { "command": "rpm --quiet --query wps-office" }
 	}
 }
