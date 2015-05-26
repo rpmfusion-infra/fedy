@@ -52,15 +52,11 @@ const Application = new Lang.Class({
             if (this._queue && this._queue.length) {
                 w.hide();
 
-                this.hidden = true;
-
                 return true;
             }
 
             return false;
         });
-
-        this.hidden = false;
     },
 
     _onActivate: function() {
@@ -215,9 +211,9 @@ const Application = new Lang.Class({
     _queueCommand: function(...args) {
         function run(wd, cmd, cb) {
             this._executeCommand(wd, cmd, (...a) => {
-                cb.apply(this, a);
-
                 this._queue.splice(0, 1);
+
+                cb.apply(this, a);
 
                 if (this._queue.length) {
                     run.apply(this, this._queue[0]);
@@ -386,7 +382,7 @@ const Application = new Lang.Class({
 
                 notification.show();
 
-                if (this.hidden && !(this._queue && this._queue.length)) {
+                if (!this._window.visible && !(this._queue && this._queue.length)) {
                     this._window.close();
 
                     return;
@@ -664,7 +660,7 @@ const Application = new Lang.Class({
     },
 
     _loadConfig: function() {
-        this._config = {}
+        this._config = {};
 
         // System config
         let system = this._loadJSON(GLib.get_current_dir() + "/config.json");

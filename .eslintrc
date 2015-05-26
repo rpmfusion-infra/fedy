@@ -145,7 +145,7 @@
     "new-parens": 0,
     "no-array-constructor": 0,
     "no-inline-comments": 0,
-    "no-lonely-if": 1,
+    "no-lonely-if": 0,
     "no-mixed-spaces-and-tabs": 0,
     "no-multiple-empty-lines": 0,
     "no-nested-ternary": 2,
