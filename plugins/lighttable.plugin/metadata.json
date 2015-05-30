@@ -1,0 +1,17 @@
+{
+	"icon": "lighttable",
+	"label": "LightTable",
+	"description": "The Next Generation Code Editor",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/LightTable/LightTable" }
+	}
+}
