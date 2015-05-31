@@ -3,6 +3,7 @@
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
+const GdkPixbuf = imports.gi.GdkPixbuf;
 const Notify = imports.gi.Notify;
 const Pango = imports.gi.Pango;
 const Lang = imports.lang;
@@ -486,6 +487,10 @@ const Application = new Lang.Class({
                 if (plugin.icon) {
                     try {
                         icon = Gtk.IconTheme.get_default().load_icon(plugin.icon, 48, 0);
+
+                        if (icon.width > 48) {
+                            icon = icon.scale_simple(48, 48, GdkPixbuf.InterpType.NEAREST);
+                        }
 
                         image.set_from_pixbuf(icon);
                     } catch (e) {
