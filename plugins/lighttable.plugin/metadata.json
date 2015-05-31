@@ -1,7 +1,7 @@
 {
-	"icon": "lighttable",
+	"icon": "lticon",
 	"label": "LightTable",
-	"description": "The Next Generation Code Editor",
+	"description": "The next generation code editor.",
 	"category": "Apps",
 	"scripts": {
 		"exec": {
