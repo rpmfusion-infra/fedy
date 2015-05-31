@@ -5,7 +5,7 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"command": "run-as-root -s install.sh"
+			"command": "run-as-root dnf -y install libdvdcss"
 		},
 		"undo": {
 			"label": "Remove",
