@@ -1,4 +1,4 @@
 #!/bin/bash
 
-dnf copr -y enable satya164/brackets
+dnf copr -y enable jgillich/brackets
 dnf -y install brackets
