@@ -6,7 +6,7 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"command": "run-as-root dnf -y install http://www.teamviewer.com/download/teamviewer_linux.rpm"
+			"command": "run-as-root dnf -y install http://download.teamviewer.com/download/teamviewer.i686.rpm"
 		},
 		"undo": {
 			"label": "Remove",
