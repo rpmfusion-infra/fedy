@@ -1,8 +1,8 @@
 #!/bin/bash
 
-dnf -y install java-1.8.0-openjdk java-1.8.0-openjdk-devel
+dnf -y install compat-libstdc++-296.i686 compat-libstdc++-33.i686 compat-libstdc++-33.x86_64 glibc.i686 ncurses-libs.i686
 
-CACHEDIR="/var/cache/fedy/intellij-idea";
+CACHEDIR="/var/cache/fedy/intellij-idea-community";
 mkdir -p "$CACHEDIR"
 cd "$CACHEDIR"
 
@@ -15,10 +15,9 @@ if [[ ! -f "$FILE" ]]; then
 	exit 1
 fi
 
-rm -rf "/opt/intellij-idea-community"
-tar -xzf "$FILE" -C "/opt"
+tar -xzf "$FILE" -C .
 
-mv /opt/idea-IC* /opt/intellij-idea-community
+mv idea-IC* "/opt/intellij-idea-community"
 ln -sf "/opt/intellij-idea-community/bin/idea.sh" "/usr/bin/ideaIC"
 
 xdg-icon-resource install --novendor --size 128 "/opt/intellij-idea-community/bin/idea.png" "intellij-idea-ce"
