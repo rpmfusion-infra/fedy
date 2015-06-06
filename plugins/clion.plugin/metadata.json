@@ -1,0 +1,17 @@
+{
+	"icon": "clion",
+	"label": "CLion",
+	"description": "This powerful IDE helps you develop in C and C++ on Linux.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/clion/bin/clion.sh" }
+	}
+}
