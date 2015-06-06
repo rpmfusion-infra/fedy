@@ -38,7 +38,7 @@ Users can place their own plugins under `~/.local/share/fedy/plugins/`.
 
 You can get the latest source code from the [github page](http://github.com/satya164/fedy).
 
-`git clone git@github.com:satya164/fedy.git`
+`git clone https://github.com/satya164/fedy.git`
 
 ### Bugs and feature requests
 
