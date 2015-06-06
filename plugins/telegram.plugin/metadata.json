@@ -1,0 +1,17 @@
+{
+	"icon": "Telegram",
+	"label": "Telegram",
+	"description": "A new era of messaging.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/Telegram/Telegram" }
+	}
+}
