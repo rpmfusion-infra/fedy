@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2015 Satyajit Sahoo <satyajit.happy@gmail.com> -->
 <application>
-    <id type="desktop">fedy.desktop</id>
+    <id type="desktop">org.ozonos.fedy.desktop</id>
     <licence>GFDL</licence>
     <name>Fedy</name>
     <summary>Install codecs, software, and more...</summary>
