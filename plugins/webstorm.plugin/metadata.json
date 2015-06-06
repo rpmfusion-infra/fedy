@@ -1,0 +1,17 @@
+{
+	"icon": "webstorm",
+	"label": "WebStorm",
+	"description": "The Smartest JavaScript IDE.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/WebStorm/bin/webstorm.sh" }
+	}
+}
