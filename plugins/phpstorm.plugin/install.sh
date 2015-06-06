@@ -15,9 +15,9 @@ if [[ ! -f "$FILE" ]]; then
 	exit 1
 fi
 
-tar -xzf "$FILE" -C .
+tar -xzf "$FILE" -C "/opt/"
 
-mv PhpStorm* "/opt/PhpStorm"
+mv /opt/PhpStorm* "/opt/PhpStorm"
 ln -sf "/opt/PhpStorm/bin/phpstorm.sh" "/usr/bin/phpstorm"
 
 xdg-icon-resource install --novendor --size 256 "/opt/PhpStorm/bin/webide.png" "phpstorm"

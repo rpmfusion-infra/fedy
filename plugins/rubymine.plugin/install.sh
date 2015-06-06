@@ -15,9 +15,9 @@ if [[ ! -f "$FILE" ]]; then
 	exit 1
 fi
 
-tar -xzf "$FILE" -C .
+tar -xzf "$FILE" -C "/opt/"
 
-mv RubyMine* "/opt/RubyMine"
+mv /opt/RubyMine* "/opt/RubyMine"
 ln -sf "/opt/RubyMine/bin/rubymine.sh" "/usr/bin/rubymine"
 
 xdg-icon-resource install --novendor --size 32 "/opt/RubyMine/bin/rubymine.png" "rubymine"

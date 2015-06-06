@@ -15,9 +15,9 @@ if [[ ! -f "$FILE" ]]; then
 	exit 1
 fi
 
-tar -xzf "$FILE" -C .
+tar -xzf "$FILE" -C "/opt/"
 
-mv WebStorm* "/opt/WebStorm"
+mv /opt/WebStorm* "/opt/WebStorm"
 ln -sf "/opt/WebStorm/bin/webstorm.sh" "/usr/bin/webstorm"
 
 xdg-icon-resource install --novendor --size 128 "/opt/WebStorm/bin/webide.png" "webstorm"

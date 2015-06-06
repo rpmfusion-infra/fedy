@@ -15,9 +15,9 @@ if [[ ! -f "$FILE" ]]; then
 	exit 1
 fi
 
-tar -xzf "$FILE" -C .
+tar -xzf "$FILE" -C "/opt/"
 
-mv pycharm* "/opt/pycharm-professional"
+mv /opt/pycharm* "/opt/pycharm-professional"
 ln -sf "/opt/pycharm-professional/bin/pycharm.sh" "/usr/bin/pycharm-professional"
 
 xdg-icon-resource install --novendor --size 128 "/opt/pycharm-professional/bin/pycharm.png" "pycharm"

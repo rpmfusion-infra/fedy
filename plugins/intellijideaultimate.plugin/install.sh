@@ -15,9 +15,9 @@ if [[ ! -f "$FILE" ]]; then
 	exit 1
 fi
 
-tar -xzf "$FILE" -C .
+tar -xzf "$FILE" -C "/opt/"
 
-mv idea-IU* "/opt/intellij-idea-ultimate"
+mv /opt/idea-IU* "/opt/intellij-idea-ultimate"
 ln -sf "/opt/intellij-idea-ultimate/bin/idea.sh" "/usr/bin/ideaIU"
 
 xdg-icon-resource install --novendor --size 128 "/opt/intellij-idea-ultimate/bin/idea.png" "intellij-idea-ue"
