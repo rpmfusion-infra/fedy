@@ -1,7 +1,7 @@
 {
-	"icon": "Telegram",
+	"icon": "telegram",
 	"label": "Telegram",
-	"description": "A new era of messaging.",
+	"description": "A messaging app with a focus on speed and security.",
 	"category": "Apps",
 	"scripts": {
 		"exec": {
