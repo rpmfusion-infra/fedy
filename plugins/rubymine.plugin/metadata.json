@@ -1,0 +1,17 @@
+{
+	"icon": "rubymine",
+	"label": "RubyMine",
+	"description": "The Most Intelligent Ruby and Rails IDE.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/RubyMine/bin/rubymine.sh" }
+	}
+}
