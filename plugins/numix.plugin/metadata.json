@@ -1,0 +1,17 @@
+{
+	"icon": "numix",
+	"label": "Numix themes",
+	"description": "GTK and icon themes from the Numix Project.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query numix-icon-theme numix-icon-theme-circle numix-gtk-theme" }
+	}
+}
