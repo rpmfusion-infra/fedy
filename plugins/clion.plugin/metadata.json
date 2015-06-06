@@ -1,7 +1,7 @@
 {
 	"icon": "clion",
 	"label": "CLion",
-	"description": "This powerful IDE helps you develop in C and C++ on Linux.",
+	"description": "Fully integrated C/C++ Development Environment.",
 	"category": "Apps",
 	"scripts": {
 		"exec": {
