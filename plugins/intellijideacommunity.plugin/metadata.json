@@ -1,0 +1,17 @@
+{
+	"icon": "intellij-idea-ce",
+	"label": "IntelliJ IDEA Community Edition",
+	"description": "The Most Intelligent Java IDE.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/intellij-idea-community/bin/idea.sh" }
+	}
+}
