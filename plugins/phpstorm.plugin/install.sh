@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dnf -y install compat-libstdc++-296.i686 compat-libstdc++-33.i686 compat-libstdc++-33.x86_64 glibc.i686 ncurses-libs.i686
+dnf -y install java-1.8.0-openjdk java-1.8.0-openjdk-devel compat-libstdc++-296.i686 compat-libstdc++-33.i686 compat-libstdc++-33.x86_64 glibc.i686 ncurses-libs.i686
 
 CACHEDIR="/var/cache/fedy/phpstorm";
 mkdir -p "$CACHEDIR"
@@ -15,9 +15,9 @@ if [[ ! -f "$FILE" ]]; then
 	exit 1
 fi
 
-tar -xzf "$FILE" -C "/opt"
+tar -xzf "$FILE" -C .
 
-mv /opt/PhpStorm* "/opt/PhpStorm"
+mv PhpStorm* "/opt/PhpStorm"
 ln -sf "/opt/PhpStorm/bin/phpstorm.sh" "/usr/bin/phpstorm"
 
 xdg-icon-resource install --novendor --size 256 "/opt/PhpStorm/bin/webide.png" "phpstorm"

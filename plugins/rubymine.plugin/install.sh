@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dnf -y install compat-libstdc++-296.i686 compat-libstdc++-33.i686 compat-libstdc++-33.x86_64 glibc.i686 ncurses-libs.i686
+dnf -y install java-1.8.0-openjdk java-1.8.0-openjdk-devel compat-libstdc++-296.i686 compat-libstdc++-33.i686 compat-libstdc++-33.x86_64 glibc.i686 ncurses-libs.i686
 
 CACHEDIR="/var/cache/fedy/rubymine";
 mkdir -p "$CACHEDIR"
@@ -15,9 +15,9 @@ if [[ ! -f "$FILE" ]]; then
 	exit 1
 fi
 
-tar -xzf "$FILE" -C "/opt"
+tar -xzf "$FILE" -C .
 
-mv /opt/RubyMine* "/opt/RubyMine"
+mv RubyMine* "/opt/RubyMine"
 ln -sf "/opt/RubyMine/bin/rubymine.sh" "/usr/bin/rubymine"
 
 xdg-icon-resource install --novendor --size 32 "/opt/RubyMine/bin/rubymine.png" "rubymine"

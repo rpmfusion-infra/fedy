@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dnf -y install compat-libstdc++-296.i686 compat-libstdc++-33.i686 compat-libstdc++-33.x86_64 glibc.i686 ncurses-libs.i686
+dnf -y install java-1.8.0-openjdk java-1.8.0-openjdk-devel compat-libstdc++-296.i686 compat-libstdc++-33.i686 compat-libstdc++-33.x86_64 glibc.i686 ncurses-libs.i686
 
 CACHEDIR="/var/cache/fedy/intellij-idea-community";
 mkdir -p "$CACHEDIR"
