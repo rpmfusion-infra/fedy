@@ -1,7 +1,7 @@
 {
 	"icon": "intellij-idea-ultimate-edition",
 	"label": "IntelliJ IDEA Ultimate Edition",
-	"description": "The Most Intelligent Java IDE.",
+	"description": "A complete toolset for web, mobile and enterprise development.",
 	"category": "Apps",
 	"scripts": {
 		"exec": {

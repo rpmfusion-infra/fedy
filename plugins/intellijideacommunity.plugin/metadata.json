@@ -1,7 +1,7 @@
 {
 	"icon": "intellij-idea-ce",
 	"label": "IntelliJ IDEA Community Edition",
-	"description": "The Most Intelligent Java IDE.",
+	"description": "A free and open-source IDE for Java, Groovy, Scala and Android development.",
 	"category": "Apps",
 	"scripts": {
 		"exec": {
