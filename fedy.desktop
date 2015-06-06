@@ -7,4 +7,4 @@ Exec=fedy
 Terminal=false
 Type=Application
 Categories=System;Utility;X-Fedora;
-Keywords=clean;codec;fedora;fix;postinstall;propietary;repo;utils;
+Keywords=clean;codec;fedora;fix;install;proprietary;
