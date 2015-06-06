@@ -32,7 +32,15 @@ Fedy can be installed with our [script](http://satya164.github.io/fedy/fedy-inst
 
 After installation, search for `Fedy` in the menu/overview or type `fedy` in the terminal.
 
-Users can place their own plugins under `~/.local/share/fedy/plugins/`.
+### Plugin structure
+
+Plugins can be placed under `~/.local/share/fedy/plugins/`, or the system plugins directory.
+
+Each plugin is a directory with the suffix `.plugin`, which consist of a JSON formatted metadata file. The metadata file contains information about the plugin and describes how `Fedy` should run the tasks.
+
+The plugins can run any command or scripts (`bash`, `python` etc.). In addtion to the system commands, `Fedy` provides an additional command, `run-as-root` to allow running commands (e.g.- `run-as-root touch /some/file/somewhere`) or scripts (e.g.- `run-as-root -s do-stuff.sh`) as root.
+
+Have a look at the existing plugins to know more about how to write plugins for `Fedy`.
 
 ### Source code
 
