@@ -1,6 +1,6 @@
 #!/bin/bash
 
-xdg-icon-resource uninstall --novendor --size "scalable" "intellij-idea-ce"
+xdg-icon-resource uninstall --novendor --size 128 "intellij-idea-ce"
 
 gtk-update-icon-cache -f -t /usr/share/icons/hicolor
 
