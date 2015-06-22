@@ -1,0 +1,17 @@
+{
+	"icon": "eclipse",
+	"label": "Eclipse for Testers",
+	"description": "This package contains Eclipse features that support the software development quality assurance process, such as Jubula and Mylyn.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/eclipse-testing/eclipse" }
+	}
+}
