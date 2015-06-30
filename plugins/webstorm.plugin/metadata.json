@@ -2,6 +2,8 @@
 	"icon": "webstorm",
 	"label": "WebStorm",
 	"description": "The Smartest JavaScript IDE.",
+	"license": "Commercial",
+	"proprietary": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

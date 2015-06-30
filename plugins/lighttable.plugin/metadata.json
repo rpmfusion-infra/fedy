@@ -2,6 +2,8 @@
 	"icon": "lticon",
 	"label": "LightTable",
 	"description": "The next generation code editor.",
+	"license": "MIT",
+	"libre": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

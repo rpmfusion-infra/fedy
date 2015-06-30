@@ -2,6 +2,8 @@
 	"icon": "brackets",
 	"label": "Brackets",
 	"description": "An open source code editor for web designers and front-end developers.",
+	"license": "MIT",
+	"libre": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

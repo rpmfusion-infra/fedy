@@ -2,6 +2,8 @@
 	"icon": "popcorn-time",
 	"label": "Popcorn Time",
 	"description": "Watch the best movies instantly in HD, with subtitles, for free.",
+	"license": "GPLv3",
+	"libre": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

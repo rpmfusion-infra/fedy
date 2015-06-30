@@ -2,6 +2,7 @@
 	"icon": "sublime_text",
 	"label": "Sublime Text 2",
 	"description": "Sophisticated text editor for code, markup and prose.",
+	"proprietary": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

@@ -2,6 +2,8 @@
 	"icon": "android-studio",
 	"label": "Android Studio",
 	"description": "Official IDE for Android application development, based on IntelliJ IDEA.",
+	"license": "Apache 2.0",
+	"libre": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

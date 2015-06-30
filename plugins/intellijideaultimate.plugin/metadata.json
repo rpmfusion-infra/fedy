@@ -2,6 +2,8 @@
 	"icon": "intellij-idea-ue",
 	"label": "IntelliJ IDEA Ultimate Edition",
 	"description": "A complete toolset for web, mobile and enterprise development.",
+	"license": "Commercial with free 30 day trial",
+	"proprietary": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {
