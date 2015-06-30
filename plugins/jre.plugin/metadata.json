@@ -2,6 +2,9 @@
 	"icon": "java",
 	"label": "Oracle JRE",
 	"description": "Allows to run applications written in the Java programming language.",
+	"license": "Sun License, GPL",
+	"libre": true,
+	"proprietary": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

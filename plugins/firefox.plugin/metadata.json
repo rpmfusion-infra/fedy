@@ -2,6 +2,8 @@
 	"icon": "firefox",
 	"label": "Mozilla Firefox",
 	"description": "An open-source web browser, designed for standards compliance, performance and portability.",
+	"license": "MPLv1.1 or GPLv2+ or LGPLv2+",
+	"libre": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

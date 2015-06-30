@@ -2,6 +2,8 @@
 	"icon": "viber",
 	"label": "Viber",
 	"description": "Free calls, text and picture sharing with anyone, anywhere.",
+	"license": "Adware",
+	"proprietary": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {
