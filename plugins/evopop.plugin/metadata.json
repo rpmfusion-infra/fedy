@@ -1,0 +1,17 @@
+{
+	"icon": "evopop",
+	"label": "EvoPop themes",
+	"description": "GTK and icon themes from the Solus Project.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query evopop-icon-theme evopop-gtk-theme" }
+	}
+}
