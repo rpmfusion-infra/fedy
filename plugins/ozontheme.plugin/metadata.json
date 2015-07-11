@@ -1,0 +1,17 @@
+{
+	"icon": "ozon",
+	"label": "Ozon themes",
+	"description": "GTK, shell and icon themes from the Ozon Project.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query ozon-icon-theme ozon-gtk-theme ozon-shell-theme" }
+	}
+}
