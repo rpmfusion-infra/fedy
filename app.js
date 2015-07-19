@@ -369,7 +369,7 @@ const Application = new Lang.Class({
             this._runPluginCommand(plugin, action.command, (pid, status) => {
 
                 try {
-                    let notification = new Notify.Notification({
+                    const notification = new Notify.Notification({
                         summary: "Task " + (status === 0 ? "completed!" : "failed!"),
                         body: plugin.label + " (" + action.label + ") " + (status === 0 ? "successfully completed." : "failed."),
                         icon_name: "fedy",
