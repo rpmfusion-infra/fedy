@@ -11,7 +11,7 @@ fi
 mkdir -p "$CACHEDIR"
 cd "$CACHEDIR"
 
-URL=$(wget "https://popcorntime.io" -O - | grep -o "https://get.popcorntime.io/build/Popcorn-Time-[0-9.]*-Linux${ARCH}.tar.xz" | head -n 1)
+URL=$(wget "https://popcorntime.io" -O - | grep -o "https://get.popcorntime.io/build/\S*${ARCH}.tar.xz" | head -n 1)
 FILE=${URL##*/}
 
 wget -c "$URL" -O "$FILE"
