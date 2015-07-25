@@ -1,0 +1,16 @@
+{
+	"label": "Arc Theme",
+	"description": "A flat theme with transparent elements.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query arc-theme" }
+	}
+}
