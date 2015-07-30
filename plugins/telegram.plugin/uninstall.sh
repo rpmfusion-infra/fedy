@@ -1,9 +1,5 @@
 #!/bin/bash
 
-xdg-icon-resource uninstall --novendor --size 256 "telegram"
+dnf copr -y disable rommon/telegram
 
-gtk-update-icon-cache -f -t /usr/share/icons/hicolor
-
-rm -f "/usr/bin/telegram"
-rm -f "/usr/share/applications/telegram.desktop"
-rm -rf "/opt/Telegram"
+dnf -y --setopt clean_requirements_on_remove=1 erase telegram-desktop
