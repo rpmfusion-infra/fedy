@@ -12,6 +12,6 @@
 			"label": "Remove",
 			"command": "run-as-root -s uninstall.sh"
 		},
-		"status": { "command": "test -f /opt/Telegram/Telegram" }
+		"status": { "command": "rpm --quiet --query telegram-desktop" }
 	}
 }
