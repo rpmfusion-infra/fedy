@@ -2,6 +2,7 @@
 	"icon": "flash",
 	"label": "Adobe Flash",
 	"description": "Browser plug-in and rich Internet application runtime.",
+	"proprietary": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

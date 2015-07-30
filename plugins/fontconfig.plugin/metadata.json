@@ -1,6 +1,9 @@
 {
 	"label": "Better font rendering",
 	"description": "Improve the font rendering for better readability.",
+	"license": "FTL or GPLv2+, BSD, MIT, Public Domain, zlib, Apache 2.0, patented",
+	"libre": true,
+	"patented": true,
 	"category": "Tweaks",
 	"scripts": {
 		"exec": {

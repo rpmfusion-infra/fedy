@@ -2,6 +2,8 @@
 	"icon": "preferences-desktop-theme",
 	"label": "Theme engines",
 	"description": "Used by GTK themes to draw widgets.",
+	"license": "LGPLv2 or LGPLv3",
+	"libre": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

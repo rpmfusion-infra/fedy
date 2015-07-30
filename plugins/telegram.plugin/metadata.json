@@ -2,6 +2,9 @@
 	"icon": "telegram",
 	"label": "Telegram",
 	"description": "A messaging app with a focus on speed and security.",
+	"license": "GPLv2 client, proprietary server",
+	"libre": true,
+	"proprietary": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

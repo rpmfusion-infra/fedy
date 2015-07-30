@@ -2,6 +2,8 @@
 	"icon": "teamviewer",
 	"label": "TeamViewer",
 	"description": "Easy, fast and secure remote access to Windows, Mac and Linux systems.",
+	"license": "Free for non-commercial usage",
+	"proprietary": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

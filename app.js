@@ -472,6 +472,8 @@ const Application = new Lang.Class({
             for (let item in this._plugins[category]) {
                 let plugin = this._plugins[category][item];
 
+                let has_license = plugin.libre || plugin.proprietary
+
                 let grid = new Gtk.Grid({
                     row_spacing: 5,
                     column_spacing: 10,
@@ -516,7 +518,13 @@ const Application = new Lang.Class({
                     image.set_from_icon_name("system-run", Gtk.IconSize.DIALOG);
                 }
 
-                grid.attach(image, 0, 1, 1, 2);
+                let nb_rows
+                if (has_license) {
+                  nb_rows = 3
+                } else {
+                  nb_rows = 2
+                }
+                grid.attach(image, 0, 1, 1, nb_rows);
 
                 let label = new Gtk.Label({
                     halign: Gtk.Align.START,
@@ -539,6 +547,36 @@ const Application = new Lang.Class({
                 description.connect("query_tooltip", settooltip(plugin));
 
                 grid.attach(description, 1, 2, 1, 1);
+
+
+                if (has_license) {
+                  let license = new Gtk.Label({
+                      halign: Gtk.Align.START,
+                      expand: true
+                  });
+
+                  let license_type;
+                  if (plugin.libre && !plugin.proprietary && !plugin.patented) {
+                    license_type = "Libre"
+                  } else if (!plugin.libre && plugin.proprietary && !plugin.patented) {
+                    license_type = "Proprietary"
+                  } else if (!plugin.libre && !plugin.proprietary && plugin.patented) {
+                    license_type = "Patented"
+                  } else {
+                    license_type = "Mixed"
+                  }
+
+                  let license_description;
+                  if (plugin.license) {
+                    license_description = " (" + plugin.license + ")"
+                  } else {
+                    license_description = ""
+                  }
+
+                  license.set_markup("<i>" + license_type + license_description + "</i>");
+                  license.set_ellipsize(Pango.EllipsizeMode.END);
+                  grid.attach(license, 1, 3, 1, 1);
+              }
 
                 if (plugin.scripts) {
                     if (plugin.scripts.exec) {

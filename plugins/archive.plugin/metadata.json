@@ -2,6 +2,9 @@
 	"icon": "file-roller",
 	"label": "Archive formats",
 	"description": "Utilized by file-roller to extract or compress different formats.",
+	"license": "Freeware, GPLv2+, GPLv3+, LGPLv2(+)",
+	"libre": true,
+	"proprietary": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

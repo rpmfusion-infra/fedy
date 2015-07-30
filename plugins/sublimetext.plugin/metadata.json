@@ -2,6 +2,7 @@
 	"icon": "sublime-text",
 	"label": "Sublime Text 3",
 	"description": "Sophisticated text editor for code, markup and prose (beta).",
+	"proprietary": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {
