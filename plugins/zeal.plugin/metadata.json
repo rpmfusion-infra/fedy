@@ -1,0 +1,17 @@
+{
+	"icon": "zeal",
+	"label": "Zeal",
+	"description": "Zeal is a simple offline documentation browser inspired by Dash.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query zeal" }
+	}
+}
