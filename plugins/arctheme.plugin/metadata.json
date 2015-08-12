@@ -1,7 +1,7 @@
 {
 	"label": "Arc Theme",
 	"description": "A flat theme with transparent elements.",
-	"category": "Apps",
+	"category": "Themes",
 	"scripts": {
 		"exec": {
 			"label": "Install",

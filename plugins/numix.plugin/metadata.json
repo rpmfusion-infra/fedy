@@ -4,7 +4,7 @@
 	"description": "GTK and icon themes from the Numix Project.",
 	"license": "GPLv3",
 	"libre": true,
-	"category": "Apps",
+	"category": "Themes",
 	"scripts": {
 		"exec": {
 			"label": "Install",

@@ -2,7 +2,7 @@
 	"icon": "evopop",
 	"label": "EvoPop themes",
 	"description": "GTK and icon themes from the Solus Project.",
-	"category": "Apps",
+	"category": "Themes",
 	"scripts": {
 		"exec": {
 			"label": "Install",
