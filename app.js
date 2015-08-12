@@ -27,10 +27,10 @@ const Application = new Lang.Class({
 
     _buildUI: function() {
         this._window = new Gtk.ApplicationWindow({
-                            application: this.application,
-                            window_position: Gtk.WindowPosition.CENTER,
-                            title: APP_NAME
-                        });
+                application: this.application,
+                window_position: Gtk.WindowPosition.CENTER,
+                title: APP_NAME
+            });
 
         try {
             let icon = Gtk.IconTheme.get_default().load_icon("fedy", 48, 0);
@@ -81,18 +81,18 @@ const Application = new Lang.Class({
     },
 
     _extendObject: function(...objs) {
-        var orig = objs[0];
+        let orig = objs[0];
 
         if (typeof orig !== "object" || orig === null) {
             return orig;
         }
 
-        for (var i = 1, l = objs.length; i < l; i++) {
+        for (let i = 1, l = objs.length; i < l; i++) {
             if (typeof objs[i] !== "object" || objs[i] === null) {
                 return orig;
             }
 
-            for (var o in objs[i]) {
+            for (let o in objs[i]) {
                 if (objs[i].hasOwnProperty(o)) {
                     if (typeof orig[o] === "object") {
                         this._extendObject(orig[o], objs[i][o]);
@@ -150,7 +150,7 @@ const Application = new Lang.Class({
             break;
         }
 
-        let dialog = new Gtk.MessageDialog ({
+        let dialog = new Gtk.MessageDialog({
             modal: true,
             message_type: type,
             buttons: buttons,
@@ -308,12 +308,12 @@ const Application = new Lang.Class({
                       "Continue anyways?"
             }, (dialog, response) => {
                 switch (response) {
-                    case Gtk.ResponseType.OK:
-                        runner.call(this, plugin.path, cmd, cb);
-                        break;
-                    default:
-                        cb(null, 1);
-                        break;
+                case Gtk.ResponseType.OK:
+                    runner.call(this, plugin.path, cmd, cb);
+                    break;
+                default:
+                    cb(null, 1);
+                    break;
                 }
             });
 
@@ -472,7 +472,7 @@ const Application = new Lang.Class({
             for (let item in this._plugins[category]) {
                 let plugin = this._plugins[category][item];
 
-                let has_license = plugin.libre || plugin.proprietary
+                let has_license = plugin.libre || plugin.proprietary;
 
                 let grid = new Gtk.Grid({
                     row_spacing: 5,
@@ -518,12 +518,14 @@ const Application = new Lang.Class({
                     image.set_from_icon_name("system-run", Gtk.IconSize.DIALOG);
                 }
 
-                let nb_rows
+                let nb_rows;
+
                 if (has_license) {
-                  nb_rows = 3
+                    nb_rows = 3;
                 } else {
-                  nb_rows = 2
+                    nb_rows = 2;
                 }
+
                 grid.attach(image, 0, 1, 1, nb_rows);
 
                 let label = new Gtk.Label({
@@ -550,33 +552,36 @@ const Application = new Lang.Class({
 
 
                 if (has_license) {
-                  let license = new Gtk.Label({
-                      halign: Gtk.Align.START,
-                      expand: true
-                  });
+                    let license = new Gtk.Label({
+                        halign: Gtk.Align.START,
+                        expand: true
+                    });
 
-                  let license_type;
-                  if (plugin.libre && !plugin.proprietary && !plugin.patented) {
-                    license_type = "Libre"
-                  } else if (!plugin.libre && plugin.proprietary && !plugin.patented) {
-                    license_type = "Proprietary"
-                  } else if (!plugin.libre && !plugin.proprietary && plugin.patented) {
-                    license_type = "Patented"
-                  } else {
-                    license_type = "Mixed"
-                  }
+                    let license_type;
 
-                  let license_description;
-                  if (plugin.license) {
-                    license_description = " (" + plugin.license + ")"
-                  } else {
-                    license_description = ""
-                  }
+                    if (plugin.libre && !plugin.proprietary && !plugin.patented) {
+                        license_type = "Libre";
+                    } else if (!plugin.libre && plugin.proprietary && !plugin.patented) {
+                        license_type = "Proprietary";
+                    } else if (!plugin.libre && !plugin.proprietary && plugin.patented) {
+                        license_type = "Patented";
+                    } else {
+                        license_type = "Mixed";
+                    }
 
-                  license.set_markup("<i>" + license_type + license_description + "</i>");
-                  license.set_ellipsize(Pango.EllipsizeMode.END);
-                  grid.attach(license, 1, 3, 1, 1);
-              }
+                    let license_description;
+
+                    if (plugin.license) {
+                        license_description = " (" + plugin.license + ")";
+                    } else {
+                        license_description = "";
+                    }
+
+                    license.set_markup("<i>" + license_type + license_description + "</i>");
+                    license.set_ellipsize(Pango.EllipsizeMode.END);
+
+                    grid.attach(license, 1, 3, 1, 1);
+                }
 
                 if (plugin.scripts) {
                     if (plugin.scripts.exec) {
