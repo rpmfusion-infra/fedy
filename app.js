@@ -232,7 +232,7 @@ const Application = new Lang.Class({
     },
 
     _scanMaliciousCommand: function(plugin, command) {
-        let mal = this._config.malicious || {};
+        let mal = this._config.malicious || [];
 
         let parts = command.split(";");
 
@@ -269,9 +269,9 @@ const Application = new Lang.Class({
             return /^[^#]/.test(p) && p.length > 1 && s.indexOf(p) === i;
         });
 
-        for (let item in mal) {
-            if (Array.isArray(mal[item].variations)) {
-                for (let s of mal[item].variations) {
+        for (let item of mal) {
+            if (Array.isArray(item.variations)) {
+                for (let s of item.variations) {
                     let reg;
 
                     try {
@@ -286,7 +286,7 @@ const Application = new Lang.Class({
                         let malicious = reg.test(p);
 
                         if (malicious) {
-                            return [ true, p, mal[item].description ];
+                            return [ true, p, item.description ];
                         }
                     }
                 }
