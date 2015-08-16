@@ -520,12 +520,23 @@ const Application = new Lang.Class({
 
                 let label = new Gtk.Label({
                     halign: Gtk.Align.START,
-                    expand: true
+                    expand: false
                 });
 
                 label.set_markup("<b>" + plugin.label + "</b>");
 
                 grid.attach(label, 1, 1, 1, 1);
+
+                let license = new Gtk.Label({
+                    halign: Gtk.Align.START,
+                    expand: true
+                });
+
+                license.set_text((Array.isArray(plugin.license) ? plugin.license.join(", ") : plugin.license) || "");
+
+                license.set_opacity(0.7);
+
+                grid.attach_next_to(license, label, Gtk.PositionType.RIGHT, 1, 1);
 
                 let description = new Gtk.Label({
                     label: plugin.description,
@@ -538,7 +549,7 @@ const Application = new Lang.Class({
 
                 description.connect("query_tooltip", settooltip(plugin));
 
-                grid.attach(description, 1, 2, 1, 1);
+                grid.attach(description, 1, 2, 2, 1);
 
                 if (plugin.scripts) {
                     if (plugin.scripts.exec) {
