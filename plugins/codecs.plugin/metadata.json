@@ -2,9 +2,7 @@
 	"icon": "applications-multimedia",
 	"label": "Multimedia codecs",
 	"description": "Utilized by multimedia applications to encode or decode audio or video streams.",
-	"license": "Distributable, BSD, GPLv2(+), LGPLv2(+), GFDL",
-	"libre": true,
-	"proprietary": true,
+	"license": [ "BSD", "GPLv2", "LGPLv2", "GFDL" ],
 	"category": "Apps",
 	"scripts": {
 		"exec": {

@@ -3,7 +3,6 @@
 	"label": "Hangouts plugin",
 	"description": "Have voice and video conversations from your computer.",
 	"license": "Freeware",
-	"proprietary": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

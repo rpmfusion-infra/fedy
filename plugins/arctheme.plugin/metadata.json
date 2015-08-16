@@ -1,6 +1,7 @@
 {
 	"label": "Arc Theme",
 	"description": "A flat theme with transparent elements.",
+	"license": "GPLv3",
 	"category": "Themes",
 	"scripts": {
 		"exec": {

@@ -3,7 +3,6 @@
 	"label": "Master PDF editor",
 	"description": "A convenient and smart XPS & PDF editor.",
 	"license": "Free for non-commercial use",
-	"proprietary": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

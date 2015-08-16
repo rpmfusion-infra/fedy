@@ -3,7 +3,6 @@
 	"label": "Skype",
 	"description": "Stay in touch with your family and friends for free on Skype.",
 	"license": "Adware",
-	"proprietary": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

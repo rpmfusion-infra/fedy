@@ -2,8 +2,7 @@
 	"icon": "google-chrome",
 	"label": "Google Chrome",
 	"description": "A fast, simple and secure web browser, built for the modern web.",
-	"license": "Freeware under Google Chrome Terms of Service",
-	"proprietary": true,
+	"license": "Freeware",
 	"category": "Apps",
 	"scripts": {
 		"exec": {

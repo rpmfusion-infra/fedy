@@ -2,6 +2,7 @@
 	"icon": "evopop",
 	"label": "EvoPop themes",
 	"description": "GTK and icon themes from the Solus Project.",
+	"license": "GPLv3",
 	"category": "Themes",
 	"scripts": {
 		"exec": {

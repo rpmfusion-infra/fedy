@@ -2,7 +2,7 @@
 	"icon": "wps-office",
 	"label": "WPS Office",
 	"description": "Simple, powerful office suite with a comfortable interface.",
-	"proprietary": true,
+	"license": "Proprietary",
 	"category": "Apps",
 	"scripts": {
 		"exec": {

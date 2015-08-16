@@ -2,7 +2,7 @@
 	"icon": "vivaldi",
 	"label": "Vivaldi",
 	"description": "An advanced browser made with the power user in mind.",
-	"proprietary": true,
+	"license": "Proprietary",
 	"category": "Apps",
 	"scripts": {
 		"exec": {

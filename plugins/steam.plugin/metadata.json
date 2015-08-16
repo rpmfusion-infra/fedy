@@ -2,7 +2,7 @@
 	"icon": "steam",
 	"label": "Steam",
 	"description": "The ultimate online game platform.",
-	"proprietary": true,
+	"license": "Proprietary",
 	"category": "Apps",
 	"scripts": {
 		"exec": {

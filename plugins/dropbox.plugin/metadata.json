@@ -2,8 +2,7 @@
 	"icon": "dropbox",
 	"label": "Dropbox for Nautilus",
 	"description": "Dropbox integration for the GNOME file manager.",
-	"license": "GPL, custom CC-BY-ND-3",
-	"libre": true,
+	"license": [ "GPL", "CC-BY-ND-3" ],
 	"category": "Apps",
 	"scripts": {
 		"exec": {

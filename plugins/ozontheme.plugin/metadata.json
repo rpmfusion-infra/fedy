@@ -2,6 +2,7 @@
 	"icon": "ozon",
 	"label": "Ozon themes",
 	"description": "GTK, shell and icon themes from the Ozon Project.",
+	"license": "GPLv3",
 	"category": "Themes",
 	"scripts": {
 		"exec": {
