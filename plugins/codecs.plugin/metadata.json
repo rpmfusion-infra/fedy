@@ -7,12 +7,12 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"command": "run-as-root dnf -y install ozon-multimedia-codecs"
+			"command": "run-as-root dnf -y install fedy-multimedia-codecs"
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase ozon-multimedia-codecs"
+			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase fedy-multimedia-codecs"
 		},
-		"status": { "command": "rpm --quiet --query ozon-multimedia-codecs" }
+		"status": { "command": "rpm --quiet --query fedy-multimedia-codecs" }
 	}
 }

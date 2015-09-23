@@ -5,10 +5,10 @@
 
 <policyconfig>
   <vendor>Run as root</vendor>
-  <vendor_url>http://ozon-os.com/</vendor_url>
+  <vendor_url>http://folkswithhats.org/</vendor_url>
   <icon_name>system-run</icon_name>
 
-  <action id="org.ozonos.pkexec.run-as-root">
+  <action id="org.folkswithhats.pkexec.run-as-root">
     <description>Run command as root</description>
     <message>Authentication is required to run command as root.</message>
     <defaults>

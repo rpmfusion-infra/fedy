@@ -22,7 +22,7 @@ The included plugins rely on the following packages,
 * `wget`
 * `rpmfusion-free-release`
 * `rpmfusion-nonfree-release`
-* `ozon-repos`
+* `folkswithhats-release`
 
 ### Installation
 

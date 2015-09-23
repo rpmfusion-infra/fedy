@@ -12,6 +12,6 @@
 			"label": "Revert",
 			"command": "sh revert.sh"
 		},
-		"status": { "command": "rpm --quiet --query ozon-font-config" }
+		"status": { "command": "rpm --quiet --query fedy-font-config" }
 	}
 }

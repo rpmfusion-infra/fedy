@@ -15,7 +15,7 @@ const Application = new Lang.Class({
 
     _init: function() {
         this.application = new Gtk.Application({
-            application_id: "org.ozonos.fedy",
+            application_id: "org.folkswithhats.fedy",
             flags: Gio.ApplicationFlags.FLAGS_NONE
         });
 
