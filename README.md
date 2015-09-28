@@ -26,7 +26,7 @@ The included plugins rely on the following packages,
 
 ### Installation
 
-Fedy can be installed with our [script](http://satya164.github.io/fedy/fedy-installer) which automatically sets up the repos and dependencies.
+Fedy can be installed with our [script](http://folkswithhats.org/fedy-installer) which automatically sets up the repos and dependencies.
 
 ### Usage
 
