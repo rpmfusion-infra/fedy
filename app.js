@@ -430,8 +430,8 @@ const Application = new Lang.Class({
         }
 
         let sort = (row1, row2) => {
-            let label1 = row1.get_children()[0].get_children()[3].get_label(),
-                label2 = row2.get_children()[0].get_children()[3].get_label();
+            let label1 = row1.get_children()[0].get_children()[4].get_label(),
+                label2 = row2.get_children()[0].get_children()[4].get_label();
 
             if (label1 > label2) {
                 return 1;
