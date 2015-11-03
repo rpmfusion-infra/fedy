@@ -1,4 +1,4 @@
 #!/bin/bash
 
-URL=$(wget "https://vivaldi.com/download/" -O - | grep -o "https://vivaldi.com/download/vivaldi_TP[0-9.-]*.$(uname -i).rpm" | head -n 1)
+URL=$(wget "https://vivaldi.com/download/" -O - | tr ' ' '\n' | grep -o "http*.\?://.*vivaldi.*.$(uname -m).rpm" | head -n 1)
 dnf -y install "$URL"
