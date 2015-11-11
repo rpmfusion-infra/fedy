@@ -1,0 +1,17 @@
+{
+	"label": "Arc Theme",
+	"description": "A non-transparent version of the Arc theme.",
+	"license": "GPLv3",
+	"category": "Themes",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query arc-theme-solid" }
+	}
+}
