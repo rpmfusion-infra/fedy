@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILE=/usr/bin/btsync
+FILE=/usr/local/bin/btsync
 
 if [ -f $FILE ]; then
     exit 0

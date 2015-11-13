@@ -13,6 +13,6 @@ wget -P /var/tmp/ https://download-cdn.getsync.com/stable/linux-$ARCH/BitTorrent
 mkdir -pv /opt/btsync
 tar xzfv /var/tmp/BitTorrent-Sync_$ARCH.tar.gz -C /opt/btsync
 
-ln -sf /opt/btsync/btsync /usr/bin/btsync
+ln -sf /opt/btsync/btsync /usr/local/bin/btsync
 
 echo "use \"sudo btsync\" to start"
