@@ -10,11 +10,9 @@ CACHEDIR="/var/cache/fedy/bittorrent-syn";
 mkdir -p "$CACHEDIR"
 cd "$CACHEDIR"
 
-wget -P /var/tmp/ https://download-cdn.getsync.com/stable/linux-$ARCH/BitTorrent-Sync_$ARCH.tar.gz
+URL=https://download-cdn.getsync.com/stable/linux-$ARCH/BitTorrent-Sync_$ARCH.tar.gz
+FILE=${URL##*/}
 
-mkdir -pv /opt/btsync
-tar xzfv /var/tmp/BitTorrent-Sync_$ARCH.tar.gz -C /opt/btsync
-
-ln -sf /opt/btsync/btsync /usr/local/bin/btsync
+wget -c "$URL" -O "$FILE"
 
 echo "use \"sudo btsync\" to start"
