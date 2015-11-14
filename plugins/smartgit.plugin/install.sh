@@ -1,8 +1,6 @@
 #!/bin/bash
 
-sudo rm -f /var/tmp/smartgit-generic-*.tar.gz*
-sudo rm -f /var/tmp/changelog.txt*
-wget -P /var/tmp/ https://www.syntevo.com/smartgit/changelog.txt
+dnf -y install java-1.8.0-openjdk java-1.8.0-openjdk-devel
 
 LATEST=$(head -n 1 /var/tmp/changelog.txt)
 VERSION=$(echo "$LATEST" | grep -Po '(?<=SmartGit )\d.\d.\d' | tr "." _)
