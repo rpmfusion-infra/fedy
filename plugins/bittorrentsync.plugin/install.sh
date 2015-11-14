@@ -15,4 +15,11 @@ FILE=${URL##*/}
 
 wget -c "$URL" -O "$FILE"
 
-echo "use \"sudo btsync\" to start"
+if [[ ! -f "$FILE" ]]; then
+	exit 1
+fi
+
+mkdir -p /opt/btsync
+tar -xzf "$FILE" -C "/opt/btsync"
+
+ln -sf "/opt/btsync/btsync" "/usr/bin/btsync"
