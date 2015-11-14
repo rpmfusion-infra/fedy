@@ -6,7 +6,9 @@ else
 	ARCH="i386"
 fi
 
-rm -f BitTorrent-Sync_*.tar.gz*
+CACHEDIR="/var/cache/fedy/bittorrent-syn";
+mkdir -p "$CACHEDIR"
+cd "$CACHEDIR"
 
 wget -P /var/tmp/ https://download-cdn.getsync.com/stable/linux-$ARCH/BitTorrent-Sync_$ARCH.tar.gz
 
