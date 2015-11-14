@@ -1,7 +1,7 @@
 {
 	"label": "SmartGit",
 	"description": "SmartGit is a Git client with support for GitHub Pull Requests+Comments, SVN and Mercurial.",
-	"license": "Free for non-commercial use",
+	"license": "Proprietary",
 	"category": "Apps",
 	"scripts": {
 		"exec": {
