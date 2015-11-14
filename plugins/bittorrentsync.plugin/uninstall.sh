@@ -2,4 +2,4 @@
 
 pkill btsync
 
-sudo rm -fr /opt/btsync
+rm -fr "/opt/btsync"
