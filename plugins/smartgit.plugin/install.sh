@@ -2,12 +2,14 @@
 
 dnf -y install java-1.8.0-openjdk java-1.8.0-openjdk-devel
 
-LATEST=$(head -n 1 /var/tmp/changelog.txt)
-VERSION=$(echo "$LATEST" | grep -Po '(?<=SmartGit )\d.\d.\d' | tr "." _)
+CACHEDIR="/var/cache/fedy/smartgit-generic";
+mkdir -p "$CACHEDIR"
+cd "$CACHEDIR"
 
-wget -P /var/tmp http://www.syntevo.com/downloads/smartgit/smartgit-generic-$VERSION.tar.gz
+FILE=smartgit-generic-$(wget "https://www.syntevo.com/smartgit/changelog.txt" -O - | head -n 1 | grep -Po '(?<=SmartGit )\d.\d.\d' | tr "." _).tar.gz
+URL=http://www.syntevo.com/downloads/smartgit/$FILE
 
-tar xfzv /var/tmp/smartgit*.tar.gz -C /opt
+wget -c "$URL" -O "$FILE"
 
 ln -fs /opt/smartgit/bin/smartgit.sh /usr/local/bin/smartgit
 /opt/smartgit/bin/add-menuitem.sh
