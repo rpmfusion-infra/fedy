@@ -12,6 +12,6 @@
 			"label": "Remove",
 			"command": "run-as-root -s uninstall.sh"
 		},
-		"status": { "command": "sh status.sh" }
+		"status": { "command": "test -f /usr/local/bin/btsync" }
 	}
 }
