@@ -17,6 +17,5 @@ fi
 
 tar -xzf "$FILE" -C "/opt/"
 
-ln -fs /opt/smartgit/bin/smartgit.sh /usr/local/bin/smartgit
+ln -sf "/opt/smartgit/bin/smartgit.sh" "/usr/bin/smartgit"
 /opt/smartgit/bin/add-menuitem.sh
-
