@@ -11,6 +11,12 @@ URL=http://www.syntevo.com/downloads/smartgit/$FILE
 
 wget -c "$URL" -O "$FILE"
 
+if [[ ! -f "$FILE" ]]; then
+	exit 1
+fi
+
+tar -xzf "$FILE" -C "/opt/"
+
 ln -fs /opt/smartgit/bin/smartgit.sh /usr/local/bin/smartgit
 /opt/smartgit/bin/add-menuitem.sh
 
