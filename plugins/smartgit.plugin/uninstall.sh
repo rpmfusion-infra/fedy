@@ -1,5 +1,6 @@
 #!/bin/bash
 
 /opt/smartgit/bin/remove-menuitem.sh
-sudo rm -rf /opt/smartgit
 
+rm -f "/usr/bin/smartgit"
+rm -rf "/opt/smartgit"
