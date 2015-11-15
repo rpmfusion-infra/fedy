@@ -1,0 +1,17 @@
+{
+	"label": "BitTorrent Sync",
+	"description": "Sync easily moves anything, anywhere - all the benefits of the cloud, none of the limitations.",
+	"license": [ "Proprietary", "Freemium" ],
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /usr/bin/btsync" }
+	}
+}
