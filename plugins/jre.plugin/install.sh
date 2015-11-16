@@ -22,13 +22,13 @@ else
     exit 1
 fi
 
-alternatives --install /usr/bin/java java /usr/java/latest/bin/java 200000
+alternatives --install /usr/bin/java java /usr/java/latest/bin/java 2000000
 alternatives --auto java
 
 if [[ "$arch" = "x86" ]]; then
-    alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so libjavaplugin.so /usr/java/latest/lib/i386/libnpjp2.so 200000
+    alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so libjavaplugin.so /usr/java/latest/lib/i386/libnpjp2.so 2000000
     alternatives --auto libjavaplugin.so
 elif [[ "$arch" = "x64" ]]; then
-    alternatives --install /usr/lib64/mozilla/plugins/libjavaplugin.so libjavaplugin.so.x86_64 /usr/java/latest/lib/amd64/libnpjp2.so 200000
+    alternatives --install /usr/lib64/mozilla/plugins/libjavaplugin.so libjavaplugin.so.x86_64 /usr/java/latest/lib/amd64/libnpjp2.so 2000000
     alternatives --auto libjavaplugin.so.x86_64
 fi
