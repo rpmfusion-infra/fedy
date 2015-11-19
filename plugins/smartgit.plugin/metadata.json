@@ -1,0 +1,17 @@
+{
+	"label": "SmartGit",
+	"description": "SmartGit is a Git client with support for GitHub Pull Requests+Comments, SVN and Mercurial.",
+	"license": "Proprietary",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /usr/bin/smartgit" }
+	}
+}
