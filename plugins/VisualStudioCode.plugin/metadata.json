@@ -1,0 +1,19 @@
+{
+	"icon": "vscode",
+	"label": "Visual Studio Code",
+	"description": "Open Source Text Editor from Microsoft.",
+	"license": "MIT",
+	"libre": true,
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query vscode" }
+	}
+}
