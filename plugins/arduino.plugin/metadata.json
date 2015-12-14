@@ -1,0 +1,17 @@
+{
+	"label": "Arduino",
+	"description": "The open-source Arduino Software (IDE).",
+	"license": "GNU GPLv2",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /usr/bin/arduino" }
+	}
+}
