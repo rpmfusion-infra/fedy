@@ -25,7 +25,7 @@ tar -xf "$FILE" -C "/opt/"
 mv "/opt/${FILE:0:13}" "/opt/arduino"
 
 ln -sf "/opt/arduino/arduino" "/usr/bin/arduino"
-/opt/arduino/arduino
+/opt/arduino/install.sh
 
 cp "/opt/arduino/arduino.desktop" "/usr/local/share/applications"
 rm -f "$HOME/.local/share/applications/arduino.desktop"
