@@ -6,7 +6,7 @@ CACHEDIR="/var/cache/fedy/intellij-idea-ultimate";
 mkdir -p "$CACHEDIR"
 cd "$CACHEDIR"
 
-URL=$(wget "https://www.jetbrains.com/idea/download/download_thanks.jsp?os=linux&edition=IU" -O - | grep -o "https://download.jetbrains.com/idea/ideaIU-[0-9.]*.tar.gz" | head -n 1)
+URL=https://download.jetbrains.com/idea/ideaIU-$(wget "https://confluence.jetbrains.com/display/IDEADEV/Home" -O - | grep -Po "IntelliJ IDEA [0-9.]* Release Notes" | grep -o [0-9.]* | tail -n 1).tar.gz
 FILE=${URL##*/}
 
 wget -c "$URL" -O "$FILE"
