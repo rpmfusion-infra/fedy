@@ -22,12 +22,15 @@ if [[ ! -f "$FILE" ]]; then
 fi
 
 tar -xf "$FILE" -C "/opt/"
-mv "/opt/${FILE:0:13}" "/opt/arduino"
+mv "/opt/arduino-$VERSION" "/opt/arduino"
 
-ln -sf "/opt/arduino/arduino-$VERSION/arduino" "/usr/bin/arduino"
-/opt/arduino/arduino-$VERSION/install.sh
+ln -sf "/opt/arduino/arduino" "/usr/bin/arduino"
+/opt/arduino/install.sh
 
-cp "/opt/arduino/arduino-$VERSION/arduino.desktop" "/usr/local/share/applications"
+if [ -f "$HOME/.local/share/applications/arduino.desktop" ]; then
+    rm -f "$HOME/.local/share/applications/arduino.desktop"
+fi
 
-rm -f "$HOME/.local/share/applications/arduino.desktop"
-rm -f "$HOME/Desktop/arduino.desktop"
+if [ -f "$HOME/Desktop/arduino.desktop" ]; then
+    rm -f "$HOME/Desktop/arduino.desktop"
+fi
