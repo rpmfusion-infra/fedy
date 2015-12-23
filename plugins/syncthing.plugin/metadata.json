@@ -1,0 +1,17 @@
+{
+	"label": "Syncthing",
+	"description": "Open Source Continuous File Synchronization.",
+	"license": ["MPLv2","GPLv2"],
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query syncthing syncthing-gtk" }
+	}
+}
