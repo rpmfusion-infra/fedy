@@ -6,7 +6,7 @@ CACHEDIR="/var/cache/fedy/webstorm";
 mkdir -p "$CACHEDIR"
 cd "$CACHEDIR"
 
-URL=$(wget "https://www.jetbrains.com/webstorm/download/download_thanks.jsp?os=linux" -O - | grep -o "https://download.jetbrains.com/webstorm/WebStorm-[0-9.]*.tar.gz" | head -n 1)
+URL=$(wget "https://data.services.jetbrains.com/products/releases?code=WS&latest=true" -O - | grep -o "https://download.jetbrains.com/webstorm/WebStorm-[0-9.]*.tar.gz" | head -n 1)
 FILE=${URL##*/}
 
 wget -c "$URL" -O "$FILE"

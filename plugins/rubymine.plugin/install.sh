@@ -6,7 +6,7 @@ CACHEDIR="/var/cache/fedy/rubymine";
 mkdir -p "$CACHEDIR"
 cd "$CACHEDIR"
 
-URL=$(wget "https://www.jetbrains.com/ruby/download/download_thanks.jsp?os=linux" -O - | grep -o "https://download.jetbrains.com/ruby/RubyMine-[0-9.]*.tar.gz" | head -n 1)
+URL=$(wget "https://data.services.jetbrains.com/products/releases?code=RM&latest=true" -O - | grep -o "https://download.jetbrains.com/ruby/RubyMine-[0-9.]*.tar.gz" | head -n 1)
 FILE=${URL##*/}
 
 wget -c "$URL" -O "$FILE"

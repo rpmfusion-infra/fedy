@@ -6,7 +6,7 @@ CACHEDIR="/var/cache/fedy/pycharm-professional";
 mkdir -p "$CACHEDIR"
 cd "$CACHEDIR"
 
-URL=$(wget "https://www.jetbrains.com/pycharm/download/download_thanks.jsp?os=linux" -O - | grep -o "https://download.jetbrains.com/python/pycharm-professional-[0-9.]*.tar.gz" | head -n 1)
+URL=$(wget "https://data.services.jetbrains.com/products/releases?code=PCP&latest=true" -O - | grep -o "https://download.jetbrains.com/python/pycharm-professional-[0-9.]*.tar.gz" | head -n 1)
 FILE=${URL##*/}
 
 wget -c "$URL" -O "$FILE"
