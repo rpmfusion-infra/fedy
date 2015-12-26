@@ -7,7 +7,7 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"command": "run-as-root dnf -y install http://sourceforge.net/projects/mscorefonts2/files/rpms/msttcore-fonts-installer-2.2-1.noarch.rpm"
+			"command": "run-as-root dnf -y install $(wget http://mscorefonts2.sourceforge.net/ -O - | grep -Po https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-[0-9.]{3}-[0-9].noarch.rpm)"
 		},
 		"undo": {
 			"label": "Remove",
