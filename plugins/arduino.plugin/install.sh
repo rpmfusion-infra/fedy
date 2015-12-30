@@ -11,8 +11,8 @@ fi
 CACHEDIR="/var/cache/fedy/arduino";
 mkdir -p "$CACHEDIR"
 cd "$CACHEDIR"
-
-FILE=arduino-$(wget "https://www.arduino.cc/en/Main/ReleaseNotes" -O - | grep -Po "ARDUINO [0-9.]{5}" | head -n 1 | cut -c 9-)-linux$ARCH.tar.xz
+VERSION=$(wget "https://www.arduino.cc/en/Main/ReleaseNotes" -O - | grep -Po "ARDUINO [0-9.]{5}" | head -n 1 | cut -c 9-)
+FILE=arduino-$VERSION-linux$ARCH.tar.xz
 URL=https://downloads.arduino.cc/$FILE
 
 wget -c "$URL" -O "$FILE"
@@ -22,11 +22,15 @@ if [[ ! -f "$FILE" ]]; then
 fi
 
 tar -xf "$FILE" -C "/opt/"
-mv "/opt/${FILE:0:13}" "/opt/arduino"
+mv "/opt/arduino-$VERSION" "/opt/arduino"
 
 ln -sf "/opt/arduino/arduino" "/usr/bin/arduino"
 /opt/arduino/install.sh
 
-cp "/opt/arduino/arduino.desktop" "/usr/local/share/applications"
-rm -f "$HOME/.local/share/applications/arduino.desktop"
-rm -f "$HOME/Desktop/arduino.desktop"
+if [ -f "$HOME/.local/share/applications/arduino.desktop" ]; then
+    rm -f "$HOME/.local/share/applications/arduino.desktop"
+fi
+
+if [ -f "$HOME/Desktop/arduino.desktop" ]; then
+    rm -f "$HOME/Desktop/arduino.desktop"
+fi
