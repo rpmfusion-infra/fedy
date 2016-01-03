@@ -1,7 +1,7 @@
 {
 	"icon": "drive-harddisk",
-	"label": "SSD I/O scheduler",
-	"description": "Switch to NOOP scheduler to boost performance for SSDs.",
+	"label": "Disk I/O Scheduler",
+	"description": "Switch to Deadline scheduler to boost performance for SSDs and HDDs.",
 	"category": "Tweaks",
 	"scripts": {
 		"exec": {
