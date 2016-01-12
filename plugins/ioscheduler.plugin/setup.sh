@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # This script originally had NOOP as the default scheduler for SSDs, but now deadline is used instead.
-# The scheduler variable has been maintained to make it easier to switch back to NOOP or any other scheduler in the future.
+# The scheduler variable has replaced by two separate variables, one each for SSDs and HDDs.
+# This will make it easier to switch back to NOOP or any other scheduler for both types of hard disks in the future.
 
 # References
 # IO scheduler udev rules: https://wiki.archlinux.org/index.php/Solid_State_Drives
