@@ -12,7 +12,7 @@ ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue
 ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="$rotating_scheduler"
 EOF
 
-for disk in `\ls -d /sys/block/sd*`; do
+for disk in /sys/block/sd*; do
     rot="$disk/queue/rotational"
     sched="$disk/queue/scheduler"
 
