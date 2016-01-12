@@ -1,15 +1,15 @@
 #!/bin/bash
 
-non-rotating-scheduler="deadline"
-rotating-scheduler="deadline"
+non_rotating_scheduler="deadline"
+rotating_scheduler="deadline"
 
 # Based on: https://wiki.archlinux.org/index.php/Solid_State_Drives
 # Reference for using deadline on SSDs: https://wiki.debian.org/SSDOptimization#Low-Latency_IO-Scheduler
 cat <<EOF | tee "/etc/udev/rules.d/60-io_schedulers.rules" > /dev/null 2>&1
 # Set noop scheduler for non-rotating disks
-ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="$non-rotating-scheduler"
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="$non_rotating_scheduler"
 # Set deadline scheduler for rotating disks
-ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="$rotating-scheduler"
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="$rotating_scheduler"
 EOF
 
 for disk in `\ls -d /sys/block/sd*`; do
