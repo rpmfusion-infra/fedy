@@ -7,11 +7,11 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"command": "run-as-root dnf -y install $(wget http://mscorefonts2.sourceforge.net/ -O - | grep -Po https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-[0-9.]{3}-[0-9].noarch.rpm)"
+			"command": "run-as-root -s install.sh"
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase msttcore-fonts-installer"
+			"command": "run-as-root -s uninstall.sh"
 		},
 		"status": { "command": "rpm --quiet --query msttcore-fonts-installer" }
 	}
