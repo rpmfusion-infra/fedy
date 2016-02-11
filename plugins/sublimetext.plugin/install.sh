@@ -11,7 +11,7 @@ fi
 mkdir -p "$CACHEDIR"
 cd "$CACHEDIR"
 
-URL="http://c758482.r82.cf2.rackcdn.com/$(wget http://www.sublimetext.com/3 -O - | grep -Po sublime_text_3_build_[0-9]{4}_$ARCH.tar.bz2)"
+URL="http://download.sublimetext.com/$(wget http://www.sublimetext.com/3 -O - | grep -Po sublime_text_3_build_[0-9]{4}_$ARCH.tar.bz2)"
 FILE=${URL##*/}
 
 wget -c "$URL" -O "$FILE"
