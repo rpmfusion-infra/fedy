@@ -11,7 +11,7 @@
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root -s uninstall.sh"
+			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase spotify-client"
 		},
 		"status": { "command": "rpm --quiet --query spotify-client" }
 	}
