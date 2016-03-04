@@ -1,7 +1,7 @@
 {
 	"icon": "spotify-client",
 	"label": "spotify",
-	"description": "The ultimate online game platform.",
+	"description": "Spotify is a digital music service that gives you access to millions of songs.",
 	"license": "Proprietary",
 	"category": "Apps",
 	"scripts": {
