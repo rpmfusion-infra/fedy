@@ -6,7 +6,7 @@ CACHEDIR="/var/cache/fedy/clion";
 mkdir -p "$CACHEDIR"
 cd "$CACHEDIR"
 
-URL=$(wget "https://www.jetbrains.com/clion/download/download_thanks.jsp?os=linux" -O - | grep -o "https://download.jetbrains.com/cpp/clion-[0-9.]*.tar.gz" | head -n 1)
+URL=$(wget "https://data.services.jetbrains.com/products/releases?code=CL&latest=true" -O - | grep -o "https://download.jetbrains.com/cpp/clion-[0-9.]*.tar.gz" | head -n 1)
 FILE=${URL##*/}
 
 wget -c "$URL" -O "$FILE"
