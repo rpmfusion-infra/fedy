@@ -24,5 +24,7 @@ for disk in /sys/block/sd*; do
 
     if [[ $(cat "$rot") -eq 0 ]]; then
         echo "$ssd_scheduler | tee $sched > /dev/null 2>&1"
+    elif [[ $(cat "$rot") -eq 1 ]]; then
+        echo "$hdd_scheduler | tee $sched > /dev/null 2>&1"
     fi
 done
