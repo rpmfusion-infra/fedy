@@ -13,9 +13,8 @@
         </p>
     </description>
     <screenshots>
-        <screenshot type="default" width="1360" height="765">http://satya164.github.io/fedy/images/apps.jpg</screenshot>
-        <screenshot width="1360" height="765">http://satya164.github.io/fedy/images/tweaks.jpg</screenshot>
+        <screenshot type="default" width="1360" height="765">http://folkswithhats.org/assets/fedy.png</screenshot>
     </screenshots>
-    <url type="homepage">http://satya164.github.io/fedy/</url>
+    <url type="homepage">http://folkswithhats.org/</url>
     <updatecontact>satyajit.happy@gmail.com</updatecontact>
 </application>
