@@ -44,10 +44,10 @@ Have a look at the existing plugins to know more about how to write plugins for 
 
 ### Source code
 
-You can get the latest source code from the [github page](http://github.com/satya164/fedy).
+You can get the latest source code from the [github page](https://github.com/folkswithhats/fedy).
 
-`git clone https://github.com/satya164/fedy.git`
+`git clone https://github.com/folkswithhats/fedy`
 
 ### Bugs and feature requests
 
-Please submit bugs and feature requests [here](http://github.com/satya164/fedy/issues). Pull requests are always welcome.
+Please submit bugs and feature requests [here](https://github.com/folkswithhats/fedy/issues). Pull requests are always welcome.
