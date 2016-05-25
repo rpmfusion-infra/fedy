@@ -1,0 +1,19 @@
+{
+	"icon": "gitkraken",
+	"label": "GitKraken",
+	"description": "The downright luxurious Git client",
+	"license": "GitKraken is currently free.",
+	"proprietary": true,
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/GitKraken/gitkraken" }
+	}
+}
