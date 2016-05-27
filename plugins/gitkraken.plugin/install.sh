@@ -17,6 +17,9 @@ tar -xzf "$FILE" -C "/opt/"
 
 ln -sf "/opt/GitKraken/gitkraken" "/usr/bin/gitkraken"
 
+cp "$(dirname $0)/gitkraken.svg" "/usr/share/icons/hicolor/scalable/apps/"
+gtk-update-icon-cache -f -t /usr/share/icons/hicolor
+
 cat <<EOF | tee /usr/share/applications/gitkraken.desktop
 [Desktop Entry]
 Name=GitKraken
