@@ -1,0 +1,19 @@
+{
+	"icon": "rambox",
+	"label": "Rambox",
+	"description": "Free and Open Source messaging and emailing app that combines common web applications into one.",
+	"license": "MIT",
+	"proprietary": false,
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/rambox/Rambox" }
+	}
+}
