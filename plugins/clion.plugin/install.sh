@@ -9,7 +9,7 @@ cd "$CACHEDIR"
 URL=$(wget "https://data.services.jetbrains.com/products/releases?code=CL&latest=true" -O - | grep -o "https://download.jetbrains.com/cpp/CLion-[0-9.]*.tar.gz" | head -n 1)
 FILE=${URL##*/}
 
-[[ -f "$FILE" ]] ||	wget -c "$URL" -O "$FILE"
+[[ -f "$FILE" ]] || wget -c "$URL" -O "$FILE"
 [[ -f "$FILE" ]] || exit 1
 
 mkdir "/opt/clion/"
