@@ -1,0 +1,18 @@
+{
+  "icon": "popcorn-time",
+  "label": "Popcorn Time",
+  "description": "Watch the best movies instantly in HD, with subtitles, for free.",
+  "license": "GPLv3",
+  "category": "Apps",
+  "scripts": {
+    "exec": {
+      "label": "Install",
+      "command": "run-as-root -s install.sh"
+    },
+    "undo": {
+      "label": "Remove",
+      "command": "run-as-root -s uninstall.sh"
+    },
+    "status": { "command": "test -f /opt/popcorn-time/Popcorn-Time" }
+  }
+}
