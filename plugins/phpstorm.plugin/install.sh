@@ -34,5 +34,5 @@ Categories=Development;IDE;
 Keywords=Idea;PHP;Web;Jetbrains;IDE;
 StartupNotify=true
 Terminal=false
-StartupWMClass=jetbrains-phpstorm10.0
+StartupWMClass=jetbrains-phpstorm
 EOF
