@@ -9,7 +9,7 @@ cd "$CACHEDIR"
 URL=$(wget "https://data.services.jetbrains.com/products/releases?code=CL&latest=true" -O - | grep -o "https://download.jetbrains.com/cpp/CLion-[0-9.]*.tar.gz" | head -n 1)
 FILE=${URL##*/}
 
-[[ -f "$FILE" ]] || wget -c "$URL" -O "$FILE"
+wget -c "$URL" -O "$FILE"
 [[ -f "$FILE" ]] || exit 1
 
 mkdir "/opt/clion/"
@@ -22,7 +22,7 @@ gtk-update-icon-cache -f -t /usr/share/icons/hicolor
 cat <<EOF | tee /usr/share/applications/clion.desktop
 [Desktop Entry]
 Name=CLion
-Icon=/opt/clion/bin/clion.svg
+Icon=clion
 Comment=This powerful IDE helps you develop in C and C++ on Linux
 Exec=clion
 Terminal=false
