@@ -32,7 +32,7 @@ cp -af "$CACHEDIR/sublime_text_2" "/opt/"
 
 for dir in /opt/sublime_text_2/Icon/*; do
     size="${dir##*/}"
-    xdg-icon-resource install --novendor --size "${size/x*}" "$dir/sublime_text.png" "sublime_text"
+    xdg-icon-resource install --novendor --size "${size/x*}" "$dir/sublime_text.png" "sublime-text-2"
 done
 
 gtk-update-icon-cache -f -t /usr/share/icons/hicolor
@@ -43,7 +43,7 @@ cat <<EOF | tee /usr/share/applications/sublime-text-2.desktop
 [Desktop Entry]
 Name=Sublime Text 2
 GenericName=Text Editor
-Icon=sublime_text
+Icon=sublime-text-2
 Comment=Sophisticated text editor \for code, markup and prose
 Exec=subl2 %F
 MimeType=text/plain;

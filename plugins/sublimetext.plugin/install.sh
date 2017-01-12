@@ -31,7 +31,7 @@ cp -af "$CACHEDIR/sublime_text_3" "/opt/"
 
 for dir in /opt/sublime_text_3/Icon/*; do
     size="${dir##*/}"
-    xdg-icon-resource install --novendor --size "${size/x*}" "$dir/sublime-text.png" "sublime-text"
+    xdg-icon-resource install --novendor --size "${size/x*}" "$dir/sublime-text.png" "sublime-text-3"
 done
 
 gtk-update-icon-cache -f -t /usr/share/icons/hicolor
@@ -42,7 +42,7 @@ cat <<EOF | tee /usr/share/applications/sublime-text-3.desktop
 [Desktop Entry]
 Name=Sublime Text 3
 GenericName=Text Editor
-Icon=sublime-text
+Icon=sublime-text-3
 Comment=Sophisticated text editor \for code, markup and prose
 Exec=subl %F
 MimeType=text/plain;
