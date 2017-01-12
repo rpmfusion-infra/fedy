@@ -1,0 +1,19 @@
+{
+	"icon": "lticon",
+	"label": "LightTable",
+	"description": "The next generation code editor.",
+	"license": "MIT",
+	"libre": true,
+	"category": "Developers",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/LightTable/LightTable" }
+	}
+}

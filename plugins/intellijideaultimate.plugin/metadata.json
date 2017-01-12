@@ -1,0 +1,19 @@
+{
+	"icon": "intellij-idea-ue",
+	"label": "IntelliJ IDEA Ultimate Edition",
+	"description": "A complete toolset for web, mobile and enterprise development.",
+	"license": "Commercial with free 30 day trial",
+	"proprietary": true,
+	"category": "Developers",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/intellij-idea-ultimate/bin/idea.sh" }
+	}
+}

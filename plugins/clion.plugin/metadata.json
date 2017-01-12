@@ -1,0 +1,19 @@
+{
+	"icon": "clion",
+	"label": "CLion",
+	"description": "Fully integrated C/C++ Development Environment.",
+	"license": "Commercial with free 30 day trial",
+	"proprietary": true,
+	"category": "Developers",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/clion/bin/clion.sh" }
+	}
+}

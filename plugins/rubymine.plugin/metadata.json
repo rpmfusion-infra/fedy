@@ -1,0 +1,19 @@
+{
+	"icon": "rubymine",
+	"label": "RubyMine",
+	"description": "The Most Intelligent Ruby and Rails IDE.",
+	"license": "Commercial with free 30 day trial",
+	"proprietary": true,
+	"category": "Developers",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/RubyMine/bin/rubymine.sh" }
+	}
+}
