@@ -4,7 +4,7 @@
 	"description": "An open source code editor for web designers and front-end developers.",
 	"license": "MIT",
 	"libre": true,
-	"category": "Developers",
+	"category": "Editors & IDEs",
 	"scripts": {
 		"exec": {
 			"label": "Install",

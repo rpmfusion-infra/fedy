@@ -1,8 +1,8 @@
 {
 	"icon": "eclipse",
-	"label": "Eclipse IDE for Automotive Software Developers (includes Incubating components)",
+	"label": "Eclipse IDE for Automotive Software Developers",
 	"description": "This package contains frameworks and tools used for the development of embedded automotive software: In addition to Eclipse Platform, Java Development Tools, and Plug-in Development Environment, it includes EMF, Sphinx, GMF, Xtext, Xtend, Xpand, UML2, selected other modeling components, C/C++ development tools, and XML/XSD editors and tools. To keep the package at a reasonable size, it includes only the runtime binaries but no source code and no developer documentation.",
-	"category": "Developers",
+	"category": "Editors & IDEs",
 	"scripts": {
 		"exec": {
 			"label": "Install",

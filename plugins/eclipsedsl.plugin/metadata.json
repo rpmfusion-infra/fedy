@@ -2,7 +2,7 @@
 	"icon": "eclipse",
 	"label": "Eclipse IDE for Java and DSL Developers",
 	"description": "The essential tools for Java and DSL developers, including a Java & Xtend IDE, a DSL Framework (Xtext), a Git client, XML Editor, and Maven integration.",
-	"category": "Developers",
+	"category": "Editors & IDEs",
 	"scripts": {
 		"exec": {
 			"label": "Install",

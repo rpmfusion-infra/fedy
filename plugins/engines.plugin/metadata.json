@@ -3,7 +3,7 @@
 	"label": "Theme engines",
 	"description": "Used by GTK themes to draw widgets.",
 	"license": [ "LGPLv2", "LGPLv3" ],
-	"category": "Apps",
+	"category": "Utilities",
 	"scripts": {
 		"exec": {
 			"label": "Install",

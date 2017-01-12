@@ -4,7 +4,7 @@
 	"description": "The downright luxurious Git client",
 	"license": "GitKraken is currently free.",
 	"proprietary": true,
-	"category": "Developers",
+	"category": "Editors & IDEs",
 	"scripts": {
 		"exec": {
 			"label": "Install",

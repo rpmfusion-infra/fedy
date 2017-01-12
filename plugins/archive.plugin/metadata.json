@@ -3,7 +3,7 @@
 	"label": "Archive formats",
 	"description": "Utilized by file-roller to extract or compress different formats.",
 	"license": [ "GPLv2", "GPLv3", "LGPLv2" ],
-	"category": "Apps",
+	"category": "Utilities",
 	"scripts": {
 		"exec": {
 			"label": "Install",

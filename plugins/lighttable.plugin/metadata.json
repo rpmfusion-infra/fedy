@@ -4,7 +4,7 @@
 	"description": "The next generation code editor.",
 	"license": "MIT",
 	"libre": true,
-	"category": "Developers",
+	"category": "Editors & IDEs",
 	"scripts": {
 		"exec": {
 			"label": "Install",

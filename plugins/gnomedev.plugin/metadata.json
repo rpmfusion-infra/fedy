@@ -3,7 +3,7 @@
 	"label": "GNOME developement tools",
 	"description": "Everything you need to start developing software for GNOME.",
 	"libre": true,
-	"category": "Developers",
+	"category": "Utilities",
 	"scripts": {
 		"exec": {
 			"label": "Install",
