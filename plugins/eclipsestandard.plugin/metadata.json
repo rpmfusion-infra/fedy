@@ -1,0 +1,17 @@
+{
+	"icon": "eclipse",
+	"label": "Eclipse IDE for Eclipse Committers 4.4.2",
+	"description": "Package suited for development of Eclipse itself at Eclipse.org; based on the Eclipse Platform adding PDE, Git, Marketplace Client, source code and developer documentation.",
+	"category": "Editors & IDEs",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/eclipse-standard/eclipse" }
+	}
+}

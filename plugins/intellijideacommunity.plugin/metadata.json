@@ -1,0 +1,19 @@
+{
+	"icon": "intellij-idea-ce",
+	"label": "IntelliJ IDEA Community Edition",
+	"description": "A free and open-source IDE for Java, Groovy, Scala and Android development.",
+	"license": "Apache 2.0",
+	"libre": true,
+	"category": "Editors & IDEs",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/intellij-idea-community/bin/idea.sh" }
+	}
+}

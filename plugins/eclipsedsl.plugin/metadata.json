@@ -1,0 +1,17 @@
+{
+	"icon": "eclipse",
+	"label": "Eclipse IDE for Java and DSL Developers",
+	"description": "The essential tools for Java and DSL developers, including a Java & Xtend IDE, a DSL Framework (Xtext), a Git client, XML Editor, and Maven integration.",
+	"category": "Editors & IDEs",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/eclipse-dsl/eclipse" }
+	}
+}

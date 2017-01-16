@@ -1,0 +1,20 @@
+{
+	"icon": "java",
+	"label": "Oracle JDK",
+	"description": "Development environment for building applications using the Java programming language.",
+	"license": "Sun License, GPL",
+	"libre": true,
+	"proprietary": true,
+	"category": "Utilities",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "sh status.sh" }
+	}
+}

@@ -3,7 +3,7 @@
 	"label": "Adobe Flash",
 	"description": "Browser plug-in and rich Internet application runtime.",
 	"license": "Proprietary",
-	"category": "Apps",
+	"category": "Utilities",
 	"scripts": {
 		"exec": {
 			"label": "Install",

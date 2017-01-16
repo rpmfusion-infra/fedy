@@ -2,7 +2,7 @@
 	"label": "Encrypted DVD playback (libdvdcss)",
 	"description": "Simple library designed for accessing DVDs like a block device.",
 	"license": "GPLv2",
-	"category": "Apps",
+	"category": "Utilities",
 	"scripts": {
 		"exec": {
 			"label": "Install",
