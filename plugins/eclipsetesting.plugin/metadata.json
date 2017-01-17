@@ -2,7 +2,7 @@
 	"icon": "eclipse",
 	"label": "Eclipse for Testers",
 	"description": "This package contains Eclipse features that support the software development quality assurance process, such as Jubula and Mylyn.",
-	"category": "Editors & IDEs",
+	"category": "Development Tools",
 	"scripts": {
 		"exec": {
 			"label": "Install",

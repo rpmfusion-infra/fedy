@@ -2,7 +2,7 @@
 	"icon": "eclipse",
 	"label": "Eclipse for Scout Developers",
 	"description": "Eclipse Scout is a framework to develop Java/Eclipse based business applications that run on the desktop, in browsers, and on mobile devices. This package includes a complete SDK, useful developer tools and source code.",
-	"category": "Editors & IDEs",
+	"category": "Development Tools",
 	"scripts": {
 		"exec": {
 			"label": "Install",

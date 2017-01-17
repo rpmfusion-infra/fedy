@@ -2,7 +2,7 @@
 	"icon": "eclipse",
 	"label": "Eclipse for Parallel Application Developers",
 	"description": "Tools for C, C++, Fortran, and UPC, including MPI, OpenMP, OpenACC, a parallel debugger, and remotely building, running and monitoring applications.",
-	"category": "Editors & IDEs",
+	"category": "Development Tools",
 	"scripts": {
 		"exec": {
 			"label": "Install",

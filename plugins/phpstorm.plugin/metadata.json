@@ -4,7 +4,7 @@
 	"description": "The Most Intelligent PHP IDE.",
 	"license": "Commercial with free 30 day trial",
 	"proprietary": true,
-	"category": "Editors & IDEs",
+	"category": "Development Tools",
 	"scripts": {
 		"exec": {
 			"label": "Install",
