@@ -4,7 +4,7 @@
 	"description": "Official IDE for Android application development, based on IntelliJ IDEA.",
 	"license": "Apache 2.0",
 	"libre": true,
-	"category": "Editors & IDEs",
+	"category": "Development Tools",
 	"scripts": {
 		"exec": {
 			"label": "Install",

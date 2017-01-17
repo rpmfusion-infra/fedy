@@ -3,7 +3,7 @@
 	"label": "Sublime Text 2",
 	"description": "Sophisticated text editor for code, markup and prose.",
 	"proprietary": true,
-	"category": "Developers",
+	"category": "Development Tools",
 	"scripts": {
 		"exec": {
 			"label": "Install",

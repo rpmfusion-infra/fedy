@@ -2,7 +2,7 @@
 	"icon": "pycharm",
 	"label": "PyCharm Community Edition",
 	"description": "Python IDE & Django IDE for Web Developers.",
-	"category": "Editors & IDEs",
+	"category": "Development Tools",
 	"scripts": {
 		"exec": {
 			"label": "Install",

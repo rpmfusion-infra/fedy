@@ -2,7 +2,7 @@
 	"icon": "eclipse",
 	"label": "Eclipse Modeling Tools",
 	"description": "The Modeling package provides tools and runtimes for building model-based applications. You can use it to graphically design domain models, to leverage those models at design time by creating and editing dynamic instances, to collaborate via Eclipse's team support with facilities for comparing and merging models and model instances structurally, and finally to generate Java code from those models to produce complete applications. In addition, via the package's discover catalog, you can easily install a wide range of additional powerful, model-based tools and runtimes to suit your specific needs.",
-	"category": "Editors & IDEs",
+	"category": "Development Tools",
 	"scripts": {
 		"exec": {
 			"label": "Install",

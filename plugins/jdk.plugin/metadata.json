@@ -5,7 +5,7 @@
 	"license": "Sun License, GPL",
 	"libre": true,
 	"proprietary": true,
-	"category": "Utilities",
+	"category": "Development Tools",
 	"scripts": {
 		"exec": {
 			"label": "Install",

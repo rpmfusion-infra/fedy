@@ -2,7 +2,7 @@
 	"icon": "eclipse",
 	"label": "Eclipse IDE for Java and Report Developers",
 	"description": "Java EE tools and BIRT reporting tool for Java developers to create Java EE and Web applications that also have reporting needs.",
-	"category": "Editors & IDEs",
+	"category": "Development Tools",
 	"scripts": {
 		"exec": {
 			"label": "Install",

@@ -4,7 +4,7 @@
 	"description": "Open Source Text Editor from Microsoft.",
 	"license": "MIT",
 	"libre": true,
-	"category": "Editors & IDEs",
+	"category": "Development Tools",
 	"scripts": {
 		"exec": {
 			"label": "Install",

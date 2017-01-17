@@ -2,7 +2,7 @@
 	"icon": "eclipse",
 	"label": "Eclipse for RCP and RAP Developers",
 	"description": "A complete set of tools for developers who want to create Eclipse plug-ins, Rich Client Applications or Remote Application Platform (RCP+RAP), plus Mylyn, the m2e Maven integration, and an XML editor. In addition to the CVS Eclipse Team provider, it also contains the EGit tooling for accessing Git version control systems.",
-	"category": "Editors & IDEs",
+	"category": "Development Tools",
 	"scripts": {
 		"exec": {
 			"label": "Install",
