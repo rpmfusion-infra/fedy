@@ -596,7 +596,7 @@ const Application = new Lang.Class({
 
             let filter = (row) => {
                 let items = row.get_children()[0].get_children(),
-                    title = items[3].get_label(),
+                    title = items[4].get_label(),
                     description = items[2].get_label();
 
                 return (title + description).toLowerCase().indexOf(searchtext) > -1;
