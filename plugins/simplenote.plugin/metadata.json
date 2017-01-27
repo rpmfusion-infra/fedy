@@ -1,0 +1,17 @@
+{
+	"label": "Simplenote",
+	"description": "A Simplenote React app packaged in Electron.",
+	"license": "GPLv2",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /usr/bin/Simplenote" }
+	}
+}
