@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" width="47" height="53" version="1.1"><rect id="backgroundrect" width="100%" height="100%" x="0" y="0" fill="none" stroke="none" class=""/>
+    <title>Slice 1</title>
+    <description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
+    <defs>
+        <linearGradient x1="0.633426184%" y1="72.4273392%" x2="100.157409%" y2="27.2015838%" id="linearGradient-1">
+            <stop stop-color="#FF8618" offset="4.3%"/>
+            <stop stop-color="#FF246E" offset="38.17%"/>
+            <stop stop-color="#AF1DF5" offset="98.92%"/>
+        </linearGradient>
+    </defs>
+    
+    <g class="currentLayer">
+        <title>Layer 1</title>
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage" class="" id="svg_1">
+        <g id="svg_3" sketch:type="MSLayerGroup">
+            <path d="M40.45402669914946,36.88730387505994 L28.93705322223853,43.193594335594206 L28.93705322223853,38.18452451969123 L40.45402669914946,31.878234059156952 L40.45402669914946,36.88730387505994 L40.45402669914946,36.88730387505994 z" id="Shape" fill="#FFFFFF" sketch:type="MSShapeGroup"/>
+            <g id="Group" sketch:type="MSShapeGroup">
+                <path d="M23.599277843670226,52.71082698580989 L47.19855568734045,39.50743270183997 L47.19855568734045,13.139175440176297 L23.599277843670226,26.34256972414621 L23.599277843670226,52.71082698580989 z" id="Shape" fill="#000001"/>
+                <path d="M28.529489092347855,40.457871589985665 L28.529489092347855,44.41375236767313 L38.82377017958673,38.659743963764065 L38.82377017958673,34.7038631860766 L28.529489092347855,40.457871589985665 z" id="Shape" fill="#FFFFFF"/>
+                <path d="M23.599277843670226,1.9630179135031543e-16 L0,13.139175440176297 L0,39.50743270183997 L23.599277843670226,52.71082698580989 L23.599277843670226,26.34256972414621 L47.19855568734045,13.139175440176297 L23.599277843670226,1.9630179135031543e-16 z" id="Shape" fill="url(#linearGradient-1)" transform=""/>
+            </g>
+        </g>
+        </g>
+    </g>
+</svg>
