@@ -6,12 +6,25 @@ dnf -y install https://dl.google.com/linux/direct/google-chrome-stable_current_$
 
 # Fix for double icon in dock
 file="/usr/share/applications/google-chrome.desktop"
-str_arr=("Desktop Entry" "NewWindow Shortcut Group" "NewIncognito Shortcut Group")
-fix_str="StartupWMClass=Google-chrome-stable"
+if [ -f ${file} ]; then
+    list=("Desktop Entry" "NewWindow" "NewPrivateWindow")
+    startupWMClass="StartupWMClass=Google-chrome-stable"
 
-for i in "${str_arr[@]}"
-do
-    line=`grep -n "\\[$i\\]" $file | cut -d : -f 1`
-    ((line++))
-    sed -i "$line"'i\'"$fix_str" $file
-done
+    echo
+    for i in "${list[@]}"; do
+        pattern='^\[.*'"$i"'.*\]$'
+        section=$(grep "$pattern" $file)
+        lineNumber=$(grep -n "$pattern" $file | cut -d : -f 1)
+
+        if [[ $lineNumber ]]; then
+            echo "OK: Section [$i] found."
+            sed --in-place "$lineNumber a $startupWMClass" $file
+        else
+            echo "ERROR: Section [$i] not found."
+            exit 1
+        fi
+    done
+else
+    echo "Desktop file not found."
+    exit 1
+fi
