@@ -26,7 +26,9 @@ The included plugins rely on the following packages,
 
 ### Installation
 
-Fedy can be installed with our [script](http://folkswithhats.org/fedy-installer) which automatically sets up the repos and dependencies.
+Installation instructions can be found on https://www.folkswithhats.org.
+
+_Do not follow instructions from any other source!_
 
 ### Usage
 
