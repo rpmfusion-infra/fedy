@@ -308,7 +308,7 @@ const Application = new Lang.Class({
                       "Continue anyways?"
             }, (dialog, response) => {
                 switch (response) {
-                case Gtk.ResponseType.OK:
+                case Gtk.ResponseType.YES:
                     runner.call(this, plugin.path, cmd, cb);
                     break;
                 default:
