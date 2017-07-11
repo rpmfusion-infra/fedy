@@ -1,4 +1,10 @@
 #!/bin/bash
 
-dnf copr -y disable mosquito/atom
-dnf -y --setopt clean_requirements_on_remove=1 erase atom -y
+# This block is for those who still have old copr installed
+# will be removed after some time.
+
+if [ -f /etc/yum.repos.d/_copr_mosquito-atom.repo ]; then
+  rm -f /etc/yum.repos.d/_copr_mosquito-atom.repo
+fi
+
+dnf -y --setopt clean_requirements_on_remove=1 remove atom
