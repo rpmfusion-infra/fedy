@@ -11,7 +11,7 @@
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase wps-office"
+			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 remove wps-office"
 		},
 		"status": { "command": "rpm --quiet --query wps-office" }
 	}
