@@ -5,7 +5,7 @@ CACHEDIR="/var/cache/fedy/skype"
 mkdir -p "$CACHEDIR"
 cd "$CACHEDIR"
 
-URL="http://www.skype.com/go/getskype-linux-fc10"
+URL="https://go.skype.com/skypeforlinux-64.rpm"
 FILE="skype_linux.rpm"
 
 wget -c "$URL" -O "$FILE"
