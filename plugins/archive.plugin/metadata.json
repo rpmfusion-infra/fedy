@@ -11,7 +11,7 @@
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase cabextract lzip p7zip p7zip-plugins unrar"
+			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 remove cabextract lzip p7zip p7zip-plugins unrar"
 		},
 		"status": { "command": "rpm --quiet --query cabextract lzip p7zip p7zip-plugins unrar" }
 	}
