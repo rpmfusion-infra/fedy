@@ -13,6 +13,6 @@
 			"label": "Remove",
 			"command": "run-as-root -s uninstall.sh"
 		},
-		"status": { "command": "test -f /opt/sublime_text_3/sublime_text" }
+		"status": { "command": "rpm --quite --query sublime-text" }
 	}
 }
