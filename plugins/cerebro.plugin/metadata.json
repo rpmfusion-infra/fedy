@@ -1,0 +1,19 @@
+{
+	"icon": "cerebro",
+	"label": "Cerebro",
+	"description": "Fast and Extendable System Launcher",
+	"license": "MIT",
+	"libre": true,
+	"category": "Development Tools",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/cerebro.AppImage" }
+	}
+}
