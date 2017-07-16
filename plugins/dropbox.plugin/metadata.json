@@ -11,7 +11,7 @@
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 remove nautilus-dropbox"
+			"command": "run-as-root dnf -y remove nautilus-dropbox"
 		},
 		"status": { "command": "rpm --quiet --query nautilus-dropbox" }
 	}

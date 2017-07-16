@@ -7,4 +7,4 @@ if [ -f /etc/yum.repos.d/_copr_mosquito-atom.repo ]; then
   rm -f /etc/yum.repos.d/_copr_mosquito-atom.repo
 fi
 
-dnf -y --setopt clean_requirements_on_remove=1 remove atom
+dnf -y remove atom

@@ -12,7 +12,7 @@
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root -s uninstall.sh"
+			"command": "run-as-root dnf -y remove google-play-music-desktop-player"
 		},
 		"status": { "command": "rpm --quiet --query google-play-music-desktop-player" }
 	}

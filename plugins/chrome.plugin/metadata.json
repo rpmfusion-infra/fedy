@@ -11,7 +11,7 @@
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 remove google-chrome-stable"
+			"command": "run-as-root dnf -y remove google-chrome-stable"
 		},
 		"status": { "command": "rpm --quiet --query google-chrome-stable" }
 	}

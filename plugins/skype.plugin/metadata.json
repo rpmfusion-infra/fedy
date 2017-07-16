@@ -11,7 +11,7 @@
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root -s uninstall.sh"
+			"command": "run-as-root dnf -y remove skypeforlinux"
 		},
 		"status": { "command": "rpm --quiet --query skypeforlinux" }
 	}

@@ -10,8 +10,8 @@
 			"command": "run-as-root -s install.sh"
 		},
 		"undo": {
-			"label": "Remove",			
-			"command": "run-as-root -s uninstall.sh"
+			"label": "Remove",
+			"command": "run-as-root dnf -y remove flash-plugin adobe-release"
 		},
 		"status": { "command": "rpm --quiet --query flash-plugin" }
 	}
