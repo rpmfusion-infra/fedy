@@ -1,5 +1,5 @@
 {
-	"label": "BitTorrent Sync",
+	"label": "Resilio Sync",
 	"description": "Sync easily moves anything, anywhere - all the benefits of the cloud, none of the limitations.",
 	"license": [ "Proprietary", "Freemium" ],
 	"category": "Apps",
@@ -12,6 +12,6 @@
 			"label": "Remove",
 			"command": "run-as-root -s uninstall.sh"
 		},
-		"status": { "command": "test -f /usr/bin/btsync" }
+		"status": { "command": "test -f /usr/bin/rslsync" }
 	}
 }

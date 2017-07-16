@@ -11,8 +11,8 @@
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase VirtualBox-5.0"
+			"command": "run-as-root dnf -y remove VirtualBox VirtualBox-guest-additions akmod-VirtualBox"
 		},
-		"status": { "command": "rpm --quiet --query VirtualBox-5.0" }
+		"status": { "command": "rpm --quiet --query VirtualBox" }
 	}
 }

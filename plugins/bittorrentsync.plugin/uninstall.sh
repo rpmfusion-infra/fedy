@@ -1,5 +1,5 @@
 #!/bin/bash
 
-pkill btsync
+pkill rslsync
 
-rm -fr "/opt/btsync"
+rm -fr "/opt/rslsync"

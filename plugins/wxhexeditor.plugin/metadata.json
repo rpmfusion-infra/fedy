@@ -1,9 +1,8 @@
 {
-	"icon": "vscode",
-	"label": "Visual Studio Code",
-	"description": "Open Source Text Editor from Microsoft.",
-	"license": "MIT",
-	"libre": true,
+	"icon": "wxHexEditor",
+	"label": "wxHexEditor",
+	"description": "Hex editor with support for large file and low level data",
+	"license": "GPLv2",
 	"category": "Development Tools",
 	"scripts": {
 		"exec": {
@@ -14,6 +13,6 @@
 			"label": "Remove",
 			"command": "run-as-root -s uninstall.sh"
 		},
-		"status": { "command": "rpm --quiet --query code" }
+		"status": { "command": "rpm --quiet --query wxHexEditor" }
 	}
 }

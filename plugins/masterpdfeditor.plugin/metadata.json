@@ -11,7 +11,7 @@
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase master-pdf-editor"
+			"command": "run-as-root dnf -y erase master-pdf-editor"
 		},
 		"status": { "command": "rpm --quiet --query master-pdf-editor3" }
 	}

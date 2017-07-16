@@ -13,6 +13,6 @@
 			"label": "Remove",
 			"command": "run-as-root -s uninstall.sh"
 		},
-		"status": { "command": "rpm --quiet --query evopop-icon-theme evopop-gtk-theme" }
+		"status": { "command": "rpm --quiet --query EvoPop-theme EvoPop-Azure-theme" }
 	}
 }
