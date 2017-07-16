@@ -1,7 +1,7 @@
 {
 	"icon": "google-play-music-desktop-player",
-	"label": "Google Music (Unofficial)",
-	"description": "Fast and friendly google music client",
+	"label": "Google Play Music Desktop Player",
+	"description": "Fast and friendly client for Google Play Music",
 	"license": "MIT",
 	"libre": true,
 	"category": "Apps",
