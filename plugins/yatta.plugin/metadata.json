@@ -14,6 +14,6 @@
 			"label": "Remove",
 			"command": "run-as-root rm --force /opt/yatta-eclipse-launcher.jar"
 		},
-		"status": { "command": "test -f /opt/yatta-eclipse-launcher-linux.jar" }
+		"status": { "command": "test -f /opt/yatta-eclipse-launcher.jar" }
 	}
 }
