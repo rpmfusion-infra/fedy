@@ -1,39 +1,46 @@
 #!/bin/bash
 
 
-
-
 # Setup variables
-LOG_DIR="/tmp/fedy/logs"
+LOG_DIR="/var/log/fedy/skype"
 LOG_FILE="${LOG_DIR}/skype.log"
 RPM_URI="https://go.skype.com/skypeforlinux-64.rpm"
 
 
+# Add a line feed if the file already exists
+if [ -f "$LOG_FILE" ]; then
+    echo "" >> "$LOG_FILE"
+fi
+
+# Ensure the logs directory exists
+if ! command mkdir -p "$LOG_DIR" > /dev/null 2>&1; then
+    echo "fedy: skype: fatal: failed  to create $LOG_DIR"
+    exit 1
+fi
+
+
 # Helper functions
 log() {
+    type="$1"
     prefix="fedy: skype"
 
-    case "$1" in
-        exec)
-            shift
-            echo "${prefix}: exec: $*" | tee -a "$LOG_FILE"
-            ;;
+    shift 1
+    case "$type" in
         try_start)
-            shift
-            printf "${prefix}: try: $*"
+            printf "%s: try: %s" "$prefix" "$*"
             ;;
         try_end)
-            shift
-            printf "$*\n"
+            printf "%s\n" "$*"
             ;;
-        error)
-            shift
-            echo "${prefix}: error: $*" | tee -a "$LOG_FILE"
+        exec)
+            log __to_file "${prefix}: exec: $*"
             ;;
         fatal)
-            shift
-            echo "${prefix}: fatal: $*" | tee -a "$LOG_FILE"
+            log __to_file "${prefix}: fatal: $*"
             exit 1
+            ;;
+        __to_file)
+            echo "$*" | tee -a "$LOG_FILE"
             ;;
     esac
 }
@@ -51,19 +58,13 @@ try() {
         log try_end "[ OK ]"
     else
         log try_end "[ FAIL ]"
-        log error "command failed: $action"
+        log fatal "command failed: $action"
     fi
 }
 
 
 # output time info to the log file
-echo "\n FEDY::SKYPE::INSTALL $(date)" >> "$LOG_FILE"
-
-
-# Ensure the logs directory exists
-try \
-    "mkdir -p $LOG_DIR" \
-    "creating $LOG_DIR"
+echo "FEDY::SKYPE::INSTALL [$(date -u)]" >> "$LOG_FILE"
 
 
 # Early fail checks
