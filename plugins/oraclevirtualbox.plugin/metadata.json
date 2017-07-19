@@ -7,11 +7,11 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"command": "run-as-root -s install.sh"
+			"command": "run-as-root dnf -y install VirtualBox akmod-VirtualBox kernel-devel-uname-r"
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root dnf -y remove VirtualBox VirtualBox-guest-additions akmod-VirtualBox"
+			"command": "run-as-root dnf -y remove VirtualBox akmod-VirtualBox"
 		},
 		"status": { "command": "rpm --quiet --query VirtualBox" }
 	}
