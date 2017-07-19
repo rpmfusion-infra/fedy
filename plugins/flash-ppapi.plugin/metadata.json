@@ -1,0 +1,18 @@
+{
+	"icon": "flash",
+	"label": "Adobe Flash (ppapi)",
+	"description": "Adobe Flash Player PPAPI for chromium based browsers",
+	"license": "Proprietary",
+	"category": "Utilities",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root dnf -y remove flash-player-ppapi"
+		},
+		"status": { "command": "rpm --quiet --query flash-player-ppapi" }
+	}
+}
