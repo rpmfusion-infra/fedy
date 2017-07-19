@@ -1,6 +1,6 @@
 #!/bin/bash
 
-URL=$(wget "http://code-industry.net/free-pdf-editor.php" -O - | grep -o "http://.*/master-pdf-editor[0-9a-z.\-]*.$(uname -m).rpm" | head -n 1)
+curl -sL "http://code-industry.net/free-pdf-editor.php" | grep -o "http://.*/master-pdf-editor.*.$(uname -m).rpm" |head -n 1 |cut -d\" -f1
 
 if [[ "$URL" != "" ]]; then
     dnf -y install "$URL"
