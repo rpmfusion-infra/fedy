@@ -1,7 +1,7 @@
 {
 	"icon": "flash",
-	"label": "Adobe Flash",
-	"description": "Browser plug-in and rich Internet application runtime.",
+	"label": "Adobe Flash (npapi)",
+	"description": "Browser plug-in and rich Internet application runtime for npapi enabled browser (firefox, etc)",
 	"license": "Proprietary",
 	"category": "Utilities",
 	"scripts": {
