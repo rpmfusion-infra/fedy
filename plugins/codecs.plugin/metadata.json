@@ -7,12 +7,12 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"command": "run-as-root dnf -y install fedy-multimedia-codecs"
+			"command": "run-as-root dnf -y groupinstall multimedia"
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root dnf -y remove fedy-multimedia-codecs"
+			"command": "run-as-root dnf -y remove gstreamer1-libav"
 		},
-		"status": { "command": "rpm --quiet --query fedy-multimedia-codecs" }
+		"status": { "command": "rpm --quiet --query gstreamer1-libav" }
 	}
 }
