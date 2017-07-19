@@ -11,7 +11,7 @@
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root dnf -y remove flash-plugin adobe-release"
+			"command": "run-as-root dnf -y remove flash-plugin"
 		},
 		"status": { "command": "rpm --quiet --query flash-plugin" }
 	}
