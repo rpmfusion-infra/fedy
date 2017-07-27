@@ -1,5 +1,7 @@
 #!/bin/bash
 
+dnf -y install libXScrnSaver
+
 CACHEDIR="/var/cache/fedy/gitkraken";
 mkdir -p "$CACHEDIR"
 cd "$CACHEDIR"
