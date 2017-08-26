@@ -1,7 +1,7 @@
 {
 	"icon": "virtualbox",
 	"label": "VirtualBox",
-	"description": "VirtualBox is an hypervisor software to create virtual machines.",
+	"description": "VirtualBox is a virtual machine hypervisor.",
 	"license": "GPLv2",
 	"category": "Apps",
 	"scripts": {
