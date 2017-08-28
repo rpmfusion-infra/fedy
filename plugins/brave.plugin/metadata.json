@@ -1,0 +1,19 @@
+{
+	"icon": "brave",
+	"label": "Brave Browser",
+	"description": "Browse faster by blocking ads and trackers",
+	"license": "Mozilla Public License 2.0",
+	"libre": true,
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "dnf -y remove brave"
+		},
+		"status": { "command": "rpm --quiet --query brave" }
+	}
+}
