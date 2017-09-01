@@ -1,0 +1,18 @@
+{
+	"icon": "opera",
+	"label": "Opera",
+	"description": "Fast and secure web browser",
+	"license": "Proprietary",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query opera-stable" }
+	}
+}
