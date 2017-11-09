@@ -1,0 +1,18 @@
+{
+	"icon": "papirus",
+	"label": "Papirus icon theme",
+	"description": "Icon themes from the Papirus Project.",
+	"license": ["GNU LGPL v3.0"],
+	"category": "Themes",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query papirus-icon-theme" }
+	}
+}
