@@ -5,7 +5,7 @@ FILE="firefox-developer.tar.bz2"
 URL="https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US"
 DIR="/opt/firefox-developer"
 
-[[ -d $CACHEDIR ]] || mkdir $CACHEDIR
+[[ -d $CACHEDIR ]] || mkdir -p $CACHEDIR
 [[ -f "$CACHEDIR/$FILE" ]] || wget -c "$URL" -O "$CACHEDIR/$FILE"
 
 tar jxf "$CACHEDIR/$FILE" -C "/opt"
