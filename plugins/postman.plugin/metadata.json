@@ -1,0 +1,19 @@
+{
+	"icon": "postman",
+	"label": "Postman",
+	"description": "The most complete toolchain for API developers.",
+	"license": "Freeware",
+	"proprietary": true,
+	"category": "Development Tools",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/Postman/Postman" }
+	}
+}
