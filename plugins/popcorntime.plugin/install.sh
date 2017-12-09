@@ -25,6 +25,7 @@ mkdir -p "/opt/popcorn-time"
 tar -xf "$FILE" -C "/opt/popcorn-time"
 unzip "/opt/popcorn-time/package.nw" "src/app/images/icon.png" -d "/opt/popcorn-time"
 ln -sf "/opt/popcorn-time/Popcorn-Time" "/usr/bin/popcorn"
+dnf -y install libXScrnSaver
 
 xdg-icon-resource install --novendor --size 256 "/opt/popcorn-time/src/app/images/icon.png" "popcorn-time"
 gtk-update-icon-cache -f -t /usr/share/icons/hicolor
