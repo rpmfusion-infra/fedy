@@ -1,7 +1,7 @@
 {
 	"icon": "sublime-text-2",
-	"label": "Sublime Text 2",
-	"description": "Sophisticated text editor for code, markup and prose. (deprecated)",
+	"label": "Sublime Text 2 (Deprecated)",
+	"description": "Sophisticated text editor for code, markup and prose.",
 	"proprietary": true,
 	"category": "Development Tools",
 	"scripts": {
