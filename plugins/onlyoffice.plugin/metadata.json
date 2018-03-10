@@ -1,0 +1,18 @@
+{
+	"icon": "onlyoffice-desktopeditors",
+	"label": "Only Office",
+	"description": "The most secure way to create, edit and collaborate on business documents online",
+	"license": "GPLv3",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm -q onlyoffice-desktopeditors" }
+	}
+}
