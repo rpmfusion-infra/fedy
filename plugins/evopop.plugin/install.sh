@@ -1,4 +1,4 @@
 #!/bin/bash
 
-dnf copr -y enable phnxrbrn/evopop
-dnf -y install evopop-icon-theme evopop-gtk-theme
+dnf copr -y enable tcg/themes
+dnf -y install EvoPop-theme EvoPop-Azure-theme

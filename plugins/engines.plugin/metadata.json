@@ -11,7 +11,7 @@
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase gtk-murrine-engine gtk-unico-engine"
+			"command": "run-as-root dnf -y remove gtk-murrine-engine gtk-unico-engine"
 		},
 		"status": { "command": "rpm --quiet --query gtk-murrine-engine gtk-unico-engine" }
 	}

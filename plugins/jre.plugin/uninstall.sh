@@ -8,7 +8,7 @@ fi
 
 PACKAGE=$(rpm --query --all jre1.8* | head -n 1)
 
-dnf -y --setopt clean_requirements_on_remove=1 erase "$PACKAGE"
+dnf -y erase "$PACKAGE"
 
 alternatives --remove java /usr/java/latest/bin/java
 alternatives --auto java

@@ -1,0 +1,17 @@
+{
+	"label": "Adapta Theme",
+	"description": "An adaptive Gtk+ theme based on Material Design Guidelines.",
+	"license": "GPLv2",
+	"category": "Themes",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query adapta-gtk-theme-gtk3" }
+	}
+}

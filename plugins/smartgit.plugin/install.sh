@@ -6,8 +6,8 @@ CACHEDIR="/var/cache/fedy/smartgit-generic";
 mkdir -p "$CACHEDIR"
 cd "$CACHEDIR"
 
-FILE=smartgit-generic-$(wget "https://www.syntevo.com/smartgit/changelog.txt" -O - | head -n 1 | grep -Po '(?<=SmartGit )\d.\d.\d' | tr "." _).tar.gz
-URL=http://www.syntevo.com/downloads/smartgit/$FILE
+FILE=smartgit-linux-$(wget "https://www.syntevo.com/smartgit/changelog.txt" -O - |  sed -n '1{s/SmartGit \([0-9][0-9]*\)\.\([0-9][0-9]*\)\.\([0-9][0-9]*\) .*/\1_\2_\3/ ; p}').tar.gz
+URL=http://www.syntevo.com/static/smart/download/smartgit/$FILE
 
 wget -c "$URL" -O "$FILE"
 

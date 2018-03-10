@@ -1,0 +1,18 @@
+{
+	"icon": "virtualbox",
+	"label": "VirtualBox-guest",
+	"description": "Tools to install guest additions in VirtualBox",
+	"license": "GPLv2",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root dnf -y install VirtualBox-guest-additions akmod-VirtualBox kernel-devel-uname-r"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root dnf -y remove VirtualBox-guest-additions akmod-VirtualBox"
+		},
+		"status": { "command": "rpm --quiet --query VirtualBox-guest-additions" }
+	}
+}

@@ -6,11 +6,11 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"command": "run-as-root -s install.sh"
+			"command": "run-as-root dnf -y install arc-theme"
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root -s uninstall.sh"
+			"command": "run-as-root dnf -y remove arc-theme"
 		},
 		"status": { "command": "rpm --quiet --query arc-theme" }
 	}

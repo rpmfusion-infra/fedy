@@ -2,9 +2,9 @@
 Name=Fedy
 GenericName=Fedy
 Icon=fedy
-Comment=Software, Codec Installs & System Tweaks
+Comment=Install codecs and additional software
 Exec=fedy
 Terminal=false
 Type=Application
-Categories=System;Utility;X-Fedora;
+Categories=Utility;X-Fedora;
 Keywords=clean;codec;fedora;fix;install;proprietary;

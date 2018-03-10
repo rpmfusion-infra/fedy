@@ -6,11 +6,11 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"command": "run-as-root -s install.sh"
+			"command": "run-as-root dnf install HandBrake-gui"
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root -s uninstall.sh"
+			"command": "run-as-root dnf remove HandBrake-gui"
 		},
 		"status": { "command": "rpm --quiet --query HandBrake-gui" }
 	}
