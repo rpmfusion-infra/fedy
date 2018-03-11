@@ -1,0 +1,18 @@
+{
+	"icon": "plexmediaplayer",
+	"label": "Plex Media Player",
+	"description": "Plex makes it possible to enjoy all of your media, whether in your living room, the car, or on a boat in the South Pacific!",
+	"license": "Proprietary",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query plexmediaplayer" }
+	}
+}
