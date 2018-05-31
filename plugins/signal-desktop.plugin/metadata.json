@@ -1,0 +1,19 @@
+{
+	"icon": "signal-desktop",
+	"label": "Signal Desktop",
+	"description": "Signal is an encrypted communications app",
+	"license": "GNU General Public License v3.0",
+	"libre": true,
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root dnf -y remove signal-desktop"
+		},
+		"status": { "command": "rpm --quiet --query signal-desktop" }
+	}
+}
