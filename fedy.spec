@@ -1,5 +1,5 @@
 Name:           fedy
-Version:        4.5.1
+Version:        4.6.0
 Release:        1%{?dist}
 Summary:        Install codecs and additional software
 
@@ -68,14 +68,34 @@ appstream-util validate-relax \
 
 
 %changelog
+* Sun Apr 22 2018 Benjamin Denhartog <ben@sudoforge.com> - 4.6.0-1
+- update author information for Benjamin Denhartog
+- repackage fedy with updated specfile
+* Wed Apr 18 2018 Benjamin Denhartog <ben@sudoforge.com> - 4.6.0-0
+- (6e2ec1e) ben@sudoforge.com re-add opera's fedy icon to the repository with LFS
+- (affdf71) ben@sudoforge.com remove opera's fedy icon from the git repository
+- (304e258) Malte Kiefer Added Papirus
+- (95ece48) danielandrewstewart@gmail.com Add firefox developer edition
+- (a467ca1) arvindhn602@outlook.com Fix Missing URL
+- (ecc5ad4) luca.dimaio1@gmail.com [WIP] Expand Software Offering: Opera
+- (98637ed) AbhinavOther@gmail.com Fixes requested in review
+- (7f32321) AbhinavOther@gmail.com Fixes Install of Sublime Text 3
+- (595df95) AbhinavOther@gmail.com #482 - Install Brave broswer
+- (acbd8e1) as.maps@gmail.com Simplify description for VirtualBox
+* Fri Aug 25 2017 Benjamin Denhartog <ben@sudoforge.com> 4.5.2-0
+- (3fede16) kwizart@gmail.com Add fedy spec into the fedy repo
+- (d681cc4) kwizart@gmail.com Improve comment (use verb) and remove desktop-validate
+- (4b2c3ad) kwizart@gmail.com Fix screenshot width and height for appdata-validate
+- (9688eab) ben@sudoforge.com re-add binary files to the index with git-lfs
+- (f682c2a) ben@sudoforge.com remove existing binary files from the index
 * Tue Aug 01 2017 Nicolas Chauvet <kwizart@gmail.com> - 4.5.1-1
 - Update to 4.5.1
-* Thu Jul 27 2017 Benjamin Denhartog <foss@bddenhartog.com> 4.5.1
+* Thu Jul 27 2017 Benjamin Denhartog <ben@sudoforge.com> 4.5.1
 - (d38f68d) devinshoe@gmail.com Install libXScrnSaver with GitKraken
 * Mon Jul 24 2017 Nicolas Chauvet <kwizart@gmail.com> - 4.5.0-1
 - Spec file clean-up
 - Obsoletes fedy-plugins and fedy-gui
-* Mon Jul 24 2017 Benjamin Denhartog <foss@bddenhartog.com> 4.5.0
+* Mon Jul 24 2017 Benjamin Denhartog <ben@sudoforge.com> 4.5.0
 - (c8f707e) adil452100@yahoo.fr Fix status command
 - (5d7308d) adil452100@yahoo.fr Fix generated link
 - (39cb1fc) kwizart@gmail.com Add flash-ppapi
@@ -86,17 +106,17 @@ appstream-util validate-relax \
 - (97d820f) kwizart@gmail.com HandBrake is now in RPM Fusion
 - (ac230d9) kwizart@gmail.com Switch to livna for libdvdcss
 - (9e28c15) kwizart@gmail.com Adobe Flash npapi plugin
-- (7d2c5c8) bddenhartog@gmail.com refactor the logging done in the plugin for skype
-* Mon Jul 17 2017 Benjamin Denhartog <foss@bddenhartog.com> 4.4.1
-- (cfe64c9) foss@bddenhartog.com add swapfiles to git ignore
-- (0cb09c6) foss@bddenhartog.com refactor skype plugin
-* Sun Jul 16 2017 Benjamin Denhartog <foss@bddenhartog.com> 4.4.0
-- (ce0b7e8) foss@bddenhartog.com refactor label for resilio sync
-- (574914a) foss@bddenhartog.com refactor label and description for google play music desktop player
-- (f81a195) foss@bddenhartog.com remove cerebro from plugins
-- (971c5aa) foss@bddenhartog.com fix invalid status check for yatta plugin
-- (b8877b1) foss@bddenhartog.com fix typo in 'quiet' option for rpm
-- (0fe8f8a) foss@bddenhartog.com apply changes requested in review
+- (7d2c5c8) ben@sudoforge.com refactor the logging done in the plugin for skype
+* Mon Jul 17 2017 Benjamin Denhartog <ben@sudoforge.com> 4.4.1
+- (cfe64c9) ben@sudoforge.com add swapfiles to git ignore
+- (0cb09c6) ben@sudoforge.com refactor skype plugin
+* Sun Jul 16 2017 Benjamin Denhartog <ben@sudoforge.com> 4.4.0
+- (ce0b7e8) ben@sudoforge.com refactor label for resilio sync
+- (574914a) ben@sudoforge.com refactor label and description for google play music desktop player
+- (f81a195) ben@sudoforge.com remove cerebro from plugins
+- (971c5aa) ben@sudoforge.com fix invalid status check for yatta plugin
+- (b8877b1) ben@sudoforge.com fix typo in 'quiet' option for rpm
+- (0fe8f8a) ben@sudoforge.com apply changes requested in review
 - (a7a6338) j.r.downie@sms.ed.ac.uk Added RStudio plugin.
 - (fc235c3) abhinavother@gmail.com Added wxHexEditor.
 - (e964de1) abhinavother@gmail.com Adding Peazip.
@@ -121,7 +141,7 @@ appstream-util validate-relax \
 - (bffd3c1) abhinavother@gmail.com Update Arc themes.
 - (16e18d4) abhinavother@gmail.com Erase command has been depricated in F25.
 - (7313446) abhinavother@gmail.com Updated dependencies
-* Sat Jun 10 2017 Benjamin Denhartog <foss@bddenhartog.com> 4.3.6
+* Sat Jun 10 2017 Benjamin Denhartog <ben@sudoforge.com> 4.3.6
 - Update plugins
 * Tue Jan 17 2017 Bryan Hernandez <bryan27hr@protonmail.ch> 4.2.4
 - Update plugins and bug fixes
