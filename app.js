@@ -533,9 +533,10 @@ const Application = new Lang.Class({
                     expand: true
                 });
 
-                license.set_text((Array.isArray(plugin.license) ? plugin.license.join(", ") : plugin.license) || "");
-
-                license.set_opacity(0.7);
+                if (plugin.license !== null) {
+                    license.set_text((Array.isArray(plugin.license) ? plugin.license.join(", ") : plugin.license) || "");
+                    license.set_opacity(0.7);
+                }
 
                 grid.attach_next_to(license, label, Gtk.PositionType.RIGHT, 1, 1);
 
