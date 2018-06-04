@@ -471,6 +471,7 @@ const Application = new Lang.Class({
 
             for (let item in this._plugins[category]) {
                 let plugin = this._plugins[category][item];
+                print('fedy: loading plugin ' + plugin.category + '::' + plugin.label);
 
                 let grid = new Gtk.Grid({
                     row_spacing: 5,
