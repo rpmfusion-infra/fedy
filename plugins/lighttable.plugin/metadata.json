@@ -3,7 +3,6 @@
 	"label": "LightTable",
 	"description": "The next generation code editor.",
 	"license": "MIT",
-	"libre": true,
 	"category": "Development Tools",
 	"scripts": {
 		"exec": {

@@ -3,7 +3,6 @@
 	"label": "Yatta Eclipse Launcher",
 	"description": "An Eclipse toolbox to install and manage eclipse products and profiles",
 	"license": "Free",
-	"libre": false,
 	"category": "Development Tools",
 	"scripts": {
 		"exec": {

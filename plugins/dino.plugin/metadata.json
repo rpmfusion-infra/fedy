@@ -3,7 +3,6 @@
 	"label": "Dino",
 	"description": "Modern Jabber/XMPP Client using GTK+/Vala",
 	"license": "GNU General Public License v3.0",
-	"libre": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

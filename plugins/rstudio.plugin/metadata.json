@@ -3,7 +3,6 @@
 	"label": "RStudio",
 	"description": "Open source IDE for R with built in tools for plotting and viewing data.",
 	"license": "AGPL",
-	"libre": true,
 	"category": "Development Tools",
 	"scripts": {
 		"exec": {

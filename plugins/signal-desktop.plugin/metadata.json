@@ -3,7 +3,6 @@
 	"label": "Signal Desktop",
 	"description": "Signal is an encrypted communications app",
 	"license": "GNU General Public License v3.0",
-	"libre": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

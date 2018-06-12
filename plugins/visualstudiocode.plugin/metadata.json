@@ -3,7 +3,6 @@
 	"label": "Visual Studio Code",
 	"description": "Open Source Text Editor from Microsoft.",
 	"license": "MIT",
-	"libre": true,
 	"category": "Development Tools",
 	"scripts": {
 		"exec": {

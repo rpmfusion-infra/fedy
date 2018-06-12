@@ -3,7 +3,6 @@
 	"label": "Google Play Music Desktop Player",
 	"description": "Fast and friendly client for Google Play Music",
 	"license": "MIT",
-	"libre": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

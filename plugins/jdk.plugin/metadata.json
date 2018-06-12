@@ -3,7 +3,6 @@
 	"label": "Oracle JDK",
 	"description": "Development environment for building applications using the Java programming language.",
 	"license": "Sun License, GPL",
-	"libre": true,
 	"proprietary": true,
 	"category": "Development Tools",
 	"scripts": {

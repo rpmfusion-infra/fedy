@@ -3,7 +3,6 @@
 	"label": "Brave Browser",
 	"description": "A privacy focused browser that blocks ads and trackers by default",
 	"license": "Mozilla Public License 2.0",
-	"libre": true,
 	"category": "Apps",
 	"scripts": {
 		"exec": {

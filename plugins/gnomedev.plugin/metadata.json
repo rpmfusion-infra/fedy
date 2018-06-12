@@ -2,7 +2,6 @@
 	"icon": "applications-development",
 	"label": "GNOME developement tools",
 	"description": "Everything you need to start developing software for GNOME.",
-	"libre": true,
 	"category": "Development Tools",
 	"scripts": {
 		"exec": {

@@ -3,7 +3,6 @@
 	"label": "Atom",
 	"description": "A hackable text editor for the 21st Century.",
 	"license": "MIT",
-	"libre": true,
 	"category": "Development Tools",
 	"scripts": {
 		"exec": {
