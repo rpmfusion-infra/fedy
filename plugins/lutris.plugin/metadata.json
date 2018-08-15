@@ -1,0 +1,18 @@
+{
+	"icon": "lutris",
+	"label": "Lutris",
+	"description": "Lutris is an open gaming platform for Linux. It helps you install and manage your games in a unified interface.",
+	"license": "GPLv3",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root dnf -y remove lutris"
+		},
+		"status": { "command": "rpm --quiet --query lutris" }
+	}
+}
