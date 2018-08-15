@@ -1,0 +1,17 @@
+{
+	"label": "Flat-Remix Theme",
+	"description": "Flat Remix theme is mostly flat with some shadows, highlights and gradients for some depth, and uses a colorful palette with nice contrasts.",
+	"license": "GPLv3",
+	"category": "Themes",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query flat-remix-gnome" }
+	}
+}
