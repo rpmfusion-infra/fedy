@@ -56,12 +56,15 @@ var FedyCli = new Lang.Class({
         FedyOptions.forEach(option => option.registerIn(fedy.application));
 
         this.fedy = fedy;
-        fedy.application.set_option_context_parameter_string("app.js");
-        fedy.application.set_option_context_description("");
-        fedy.application.set_option_context_summary(
-            "  fedy --list [--thick]\n" +
-            "  fedy [--force] [--status <plugin>]... [--undo <plugin>]... [--exec <plugin>]..."
-        );
+
+        if (typeof fedy.application.set_option_context_summary !== "undefined") {
+            fedy.application.set_option_context_parameter_string("app.js");
+            fedy.application.set_option_context_description("");
+            fedy.application.set_option_context_summary(
+                "  fedy --list [--thick]\n" +
+                "  fedy [--force] [--status <plugin>]... [--undo <plugin>]... [--exec <plugin>]..."
+            );
+        }
 
         this.fedy.application.connect("handle_local_options", Lang.bind(this, this._onOptions));
     },
