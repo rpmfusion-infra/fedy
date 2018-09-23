@@ -715,5 +715,4 @@ const Application = new Lang.Class({
 
 let app = new Application();
 
-// app.application.run(ARGV);
 app.application.run([System.programInvocationName].concat(ARGV));
