@@ -176,9 +176,9 @@ var FedyCli = new Lang.Class({
                 `run the command '${pluginStatus.maliciousPart}' ` +
                 `which might ${pluginStatus.maliciousDescription}. Use -f option to force the execution.`;
         } else if (commandStatusCode === 0) {
-            report = `✓ ${reportPrefix} (${pluginStatus.action.label}) "successfully completed"`;
+            report = `✓ ${reportPrefix} (${pluginStatus.action.label}) successfully completed`;
         } else {
-            report = `✗ ${reportPrefix} (${pluginStatus.action.label}) "failed"`;
+            report = `✗ ${reportPrefix} (${pluginStatus.action.label}) failed`;
         }
 
         return report;
