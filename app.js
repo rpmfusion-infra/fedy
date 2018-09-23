@@ -1,5 +1,6 @@
 #!/usr/bin/gjs
 
+imports.searchPath.unshift('.');
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
@@ -7,6 +8,8 @@ const GdkPixbuf = imports.gi.GdkPixbuf;
 const Notify = imports.gi.Notify;
 const Pango = imports.gi.Pango;
 const Lang = imports.lang;
+const System = imports.system;
+const FedyCli = imports.cli.FedyCli;
 
 const APP_NAME = "Fedy";
 
@@ -21,6 +24,8 @@ const Application = new Lang.Class({
 
         this.application.connect("activate", Lang.bind(this, this._onActivate));
         this.application.connect("startup", Lang.bind(this, this._onStartup));
+
+        this.cli = new FedyCli(this);
 
         Notify.init(APP_NAME);
     },
@@ -710,4 +715,5 @@ const Application = new Lang.Class({
 
 let app = new Application();
 
-app.application.run(ARGV);
+// app.application.run(ARGV);
+app.application.run([System.programInvocationName].concat(ARGV));
