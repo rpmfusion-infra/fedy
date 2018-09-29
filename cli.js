@@ -9,14 +9,20 @@ const
 const
     FedyOption = {
         LIST: new Option("list", GLib.OptionArg.NONE, "List available plugins", null, false),
-        THICK: new Option("thick", GLib.OptionArg.NONE, "Compact output when listing available plugins", null, false),
+        ONELINE: new Option("oneline", GLib.OptionArg.NONE, "Render each plugin description on one line", null, false),
         STATUS: new Option("status", GLib.OptionArg.STRING_ARRAY, "Report plugin status", "<plugin>", true),
-        EXEC: new Option("exec", GLib.OptionArg.STRING_ARRAY, "Execute plugin action", "<plugin>", true),
-        UNDO: new Option("undo", GLib.OptionArg.STRING_ARRAY, "Undo plugin action", "<plugin>", true),
+        ADD: new Option("add", GLib.OptionArg.STRING_ARRAY, "Add a plugin", "<plugin>", true),
+        REMOVE: new Option("remove", GLib.OptionArg.STRING_ARRAY, "Remove a plugin", "<plugin>", true),
         FORCE: new Option("force", GLib.OptionArg.NONE, "Force plugins action", null, false)
     },
-    FedyOptions = [ FedyOption.LIST, FedyOption.THICK,
-        FedyOption.STATUS, FedyOption.EXEC, FedyOption.UNDO, FedyOption.FORCE ];
+    FedyOptions = [
+        FedyOption.LIST,
+        FedyOption.ONELINE,
+        FedyOption.STATUS,
+        FedyOption.ADD,
+        FedyOption.REMOVE,
+        FedyOption.FORCE
+    ];
 
 
 var PluginAction = new Lang.Class({
@@ -61,8 +67,8 @@ var FedyCli = new Lang.Class({
             fedy.application.set_option_context_parameter_string("app.js");
             fedy.application.set_option_context_description("");
             fedy.application.set_option_context_summary(
-                "  fedy --list [--thick]\n" +
-                "  fedy [--force] [--status <plugin>]... [--undo <plugin>]... [--exec <plugin>]..."
+                "  fedy --list [--oneline]\n" +
+                "  fedy [--force] [--status <plugin>]... [--remove <plugin>]... [--add <plugin>]..."
             );
         }
 
@@ -96,7 +102,7 @@ var FedyCli = new Lang.Class({
     },
 
     _promiseOfCategoryReports(options) {
-        const compact = FedyOption.THICK.in(options);
+        const oneline = FedyOption.ONELINE.in(options);
         return this.pluginRepository
             .listCategories()
             .map(category => {
@@ -108,24 +114,24 @@ var FedyCli = new Lang.Class({
 
                 return Promise
                     .all(promiseOfPluginsWithStatuses)
-                    .then(pluginsWithStatuses => this._buildCategoryReport(category, pluginsWithStatuses, compact));
+                    .then(pluginsWithStatuses => this._buildCategoryReport(category, pluginsWithStatuses, oneline));
             });
     },
 
-    _buildCategoryReport(category, pluginsWithStatuses, compact) {
+    _buildCategoryReport(category, pluginsWithStatuses, oneline) {
         let report = `Category: ${category}\n`;
         pluginsWithStatuses.forEach(([ plugin, pluginStatus ]) => {
-            report += this._buildPluginReport(plugin, pluginStatus, compact);
+            report += this._buildPluginReport(plugin, pluginStatus, oneline);
         });
         report += "\n";
         return report;
     },
 
-    _buildPluginReport(plugin, pluginStatus, compact) {
+    _buildPluginReport(plugin, pluginStatus, oneline) {
         const statusCharacter = pluginStatus.isPluginEnable() ? "✓" : "✗",
-            compactReport = `${statusCharacter} [${plugin.name}] ${plugin.label}\n`,
+            onelineReport = `${statusCharacter} [${plugin.name}] ${plugin.label}\n`,
             license = (typeof plugin.license !== "undefined") ? `  (${plugin.license})\n` : "";
-        return (compact) ? compactReport : `${compactReport}  ${plugin.description}\n${license}`;
+        return (oneline) ? onelineReport : `${onelineReport}  ${plugin.description}\n${license}`;
     },
 
     _promiseOfActionReports: function (options) {
@@ -191,9 +197,9 @@ var FedyCli = new Lang.Class({
 
     _isAlreadyApplied(pluginAction, pluginStatus) {
         switch (pluginAction.option.name) {
-        case FedyOption.EXEC.name:
+        case FedyOption.ADD.name:
             return pluginStatus.code === 0;
-        case FedyOption.UNDO.name:
+        case FedyOption.REMOVE.name:
             return pluginStatus.code !== 0;
         default:
             return false;
