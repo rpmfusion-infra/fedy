@@ -1,5 +1,6 @@
 {
 	"label": "Simplenote",
+	"icon": "simplenote",
 	"description": "A Simplenote React app packaged in Electron.",
 	"license": "GPLv2",
 	"category": "Apps",
@@ -10,8 +11,8 @@
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root -s uninstall.sh"
+			"command": "run-as-root dnf remove -y simplenote"
 		},
-		"status": { "command": "test -f /usr/bin/Simplenote" }
+		"status": { "command": "rpm --quiet --query simplenote" }
 	}
 }
