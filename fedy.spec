@@ -27,6 +27,7 @@ Requires: rpmfusion-nonfree-release
 Requires: sed
 Requires: tar
 Requires: wget
+Requires: jq
 
 
 %description
