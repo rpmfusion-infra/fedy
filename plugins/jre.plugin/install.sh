@@ -17,7 +17,7 @@ FILE=${URL##*/}
 wget --header "Cookie: oraclelicense=a" -c "$URL" -O "$FILE"
 
 if [[ -f "$FILE" ]]; then
-    dnf -y install "$FILE"
+    rpm -ivh "$FILE"
 else
     exit 1
 fi
