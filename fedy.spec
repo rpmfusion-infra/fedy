@@ -1,5 +1,5 @@
 Name:           fedy
-Version:        4.6.0
+Version:        4.7.0
 Release:        1%{?dist}
 Summary:        Install codecs and additional software
 
