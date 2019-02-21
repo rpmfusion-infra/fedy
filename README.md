@@ -2,28 +2,6 @@
 
 Fedy lets you install multimedia codecs and additional software that Fedora [doesn't want to ship](http://fedoraproject.org/wiki/Forbidden_items?rd=ForbiddenItems), like mp3 support, Adobe Flash, Oracle Java etc., and much more with just a few clicks.
 
-### License
-
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along with this program.  If not, see [gnu.org/licenses](http://www.gnu.org/licenses/).
-
-Copyright (C) [Satyajit Sahoo](mailto:satyajit.happy@gmail.com)
-
-### Dependencies
-
-Fedy relies on `GTK+3` and `GJS` for it's UI layer.
-
-The included plugins rely on the following packages,
-* `dnf`
-* `dnf-plugins-core`
-* `wget`
-* `rpmfusion-free-release`
-* `rpmfusion-nonfree-release`
-* `folkswithhats-release`
-
 ### Installation
 
 Installation instructions can be found on https://www.folkswithhats.org.
@@ -46,10 +24,35 @@ Have a look at the existing plugins to know more about how to write plugins for 
 
 ### Source code
 
-You can get the latest source code from the [github page](https://github.com/folkswithhats/fedy).
+Source code is publicly available on GitHub, and automatically cloned to GitLab:
 
-`git clone https://github.com/folkswithhats/fedy`
+
+```sh
+
+$ git clone https://github.com/fedy/fedy.git
+
+# OR
+
+$ git clone https://gitlab.com/fedy/fedy.git
+```
 
 ### Bugs and feature requests
 
-Please submit bugs and feature requests [here](https://github.com/folkswithhats/fedy/issues). Pull requests are always welcome.
+Please submit bugs and feature requests [here][fedy/issues]. Pull requests are
+always welcome.
+
+[fedy/issues]: https://github.com/folkswithhats/fedy/issues
+
+### License
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program.  If not, see [gnu.org/licenses](http://www.gnu.org/licenses/).
