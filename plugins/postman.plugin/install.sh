@@ -22,7 +22,7 @@ fi
 tar -xzf "$FILE" -C "/opt/"
 ln -sf "/opt/Postman/Postman" "/usr/bin/postman"
 
-cp "/opt/Postman/resources/app/assets/icon.png" "/usr/share/icons/hicolor/128x128/apps/postman.png"
+cp "/opt/Postman/app/resources/app/assets/icon.png" "/usr/share/icons/hicolor/128x128/apps/postman.png"
 gtk-update-icon-cache -f -t /usr/share/icons/hicolor
 
 cat <<EOF | tee /usr/share/applications/postman.desktop
