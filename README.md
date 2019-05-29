@@ -8,6 +8,22 @@ Installation instructions can be found on https://www.folkswithhats.org.
 
 _Do not follow instructions from any other source!_
 
+### Build from source
+
+```
+# RPMFusion
+sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+# Install other dependencies
+sudo dnf install gjs gtk3 wget dnf-plugins-core
+
+# Clone and install
+git clone https://github.com/fedy/fedy.git && cd fedy && sudo make install
+
+# Clean up
+cd .. && rm -r fedy
+```
+
 ### Usage
 
 After installation, search for `Fedy` in the menu/overview or type `fedy` in the terminal.
