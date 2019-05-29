@@ -1,5 +1,5 @@
 Name:           fedy
-Version:        4.7.0
+Version:        4.8.0
 Release:        1%{?dist}
 Summary:        Install codecs and additional software
 
@@ -69,6 +69,60 @@ appstream-util validate-relax \
 
 
 %changelog
+* Wed May 29 2019 Benjamin Denhartog <ben@sudoforge.com> - 4.8.0-1
+- ea67502 ben@sudoforge.com bump: v4.8.0
+- 3e81360 danielandrewstewart@gmail.com add instructions for building from source
+- 1b99cf8 danielandrewstewart@gmail.com resize icons: dino, slack
+- af9c655 3893293+sudoforge@users.noreply.github.com add initial issue templates
+- 911a9de as.maps@gmail.com Update postman icon path
+- de792a6 eprudhomme@gmail.com Fix Gjs-WARNING on Uint8Array
+- 80072ab eprudhomme@gmail.com Refactor options to more meaningful names
+- 0e8741c eprudhomme@gmail.com Remove unnecessary double quote in reports
+- 6322e0f eprudhomme@gmail.com Update cli to customize option_context only if available
+- a37739b eprudhomme@gmail.com Remove unnecessary comments
+- 517985f eprudhomme@gmail.com Update Application class to register CLI options via FedyCli
+- b80de2f eprudhomme@gmail.com Add FedyCli class implementing CLI functionnality for fedy
+- 656aa88 eprudhomme@gmail.com Add PluginRepository class to wrap interactions with fedy plugins
+- e933b2b eprudhomme@gmail.com Add Option class for CLI behaviour
+- c096077 eprudhomme@gmail.com Remove duplicated 'no-octal-escape' eslint rule
+- 923468d danielandrewstewart@gmail.com Use RPM instead of DNF
+- 7ec0f31 ben@sudoforge.com bump to version 4.7
+- 0d2a30c ben@sudoforge.com minor readme changes
+- 6c3e8b0 danielandrewstewart@gmail.com Fix Simplenote install
+- 6b9f21a danielandrewstewart@gmail.com Fix URL
+- 753f099 3893293+sudoforge@users.noreply.github.com remove configuration for the 'stale' github application (#630)
+- f2e4fdb gaurav.rawal66@gmail.com rename COPYING to LICENSE (#627)
+- 25f6752 3893293+sudoforge@users.noreply.github.com add 'jq' as a dependency (#624)
+- 7d09ba2 eprudhomme@gmail.com Add Moka icon theme (#620)
+- 8e8e3ea ben@sudoforge.com remove libre property from all metadata files
+- 448fadb dman@EmmasLaptop.localdomain Add Mixx DJ Software plugin
+- 24cf33f dman@EmmasLaptop.localdomain Added Zoom plugin
+- f7dfb8c dman@EmmasLaptop.localdomain Adding Lutris plugin
+- 7a84140 dman@EmmasLaptop.localdomain Added Slack plugin
+- 1b40379 32564392+dmanlfc@users.noreply.github.com Adding the Flat-Remix theme (#613)
+- 2f28635 Malte Kiefer rename plugins/dino.plugin{=>s}
+- c47351c malte.kiefer@mailgermania.de add plugin 'quilter'
+- 36421c3 ben@sudoforge.com only set the license text display if a license property exists
+- b7e2314 ben@sudoforge.com display when a plugin is being loaded into the view
+- 47d1298 ben@sudoforge.com remove plugin 'brackets'
+- e417d87 ben@sudoforge.com update specfile to match currently deployed version of fedy
+- 640713e malte.kiefer@mailgermania.de add plugin signal-desktop
+- ab93ab1 ben@sudoforge.com add initial conffile for the 'stale' application
+- 3f1eac9 arvindhn602@outlook.com Android studio Icon Update
+- b0a5e39 Xmetalfanx@yahoo.com Download Google signing key needed for Hangouts
+- 5e82bbf danielandrewstewart@gmail.com Add plexmediaplayer Closes #433
+- 89e879f alistair@agchapman.com Add Postman plugin
+- b66ca3f danielandrewstewart@gmail.com Add OnlyOffice plugin
+- af1d348 nhubbard@users.noreply.github.com Update label attribute for Sublime Text 2
+- 14cc847 pr3ach3r@dismail.de Add files via upload
+- 321e5f1 pr3ach3r@dismail.de Create metadata.json
+- f97efa8 pr3ach3r@dismail.de Create install.sh
+- 6306e88 adil452100@yahoo.fr Fix missing shared library libXss.so.1 on startup
+- 230bfc5 nhubbard@users.noreply.github.com Updated Beta Status for Sublime Text 3
+- 83ebd06 nhubbard@users.noreply.github.com Update metadata.json
+- ba8b180 magnunleno@users.noreply.github.com Make parent directory
+- b9968f3 danielandrewstewart@gmail.com Add adapta theme
+- b18495a luca.dimaio1@gmail.com Fix MasterPdfEditor Install
 * Sun Apr 22 2018 Benjamin Denhartog <ben@sudoforge.com> - 4.6.0-1
 - update author information for Benjamin Denhartog
 - repackage fedy with updated specfile
