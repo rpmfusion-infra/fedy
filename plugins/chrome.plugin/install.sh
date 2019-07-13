@@ -7,7 +7,7 @@ dnf -y install https://dl.google.com/linux/direct/google-chrome-stable_current_$
 # Fix for double icon in dock
 file="/usr/share/applications/google-chrome.desktop"
 if [ -f ${file} ]; then
-    list=("Desktop Entry" "NewWindow" "NewPrivateWindow")
+    list=("Desktop Entry" "new-window" "new-private-window")
     startupWMClass="StartupWMClass=Google-chrome-stable"
 
     echo
