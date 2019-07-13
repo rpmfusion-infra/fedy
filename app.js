@@ -412,7 +412,7 @@ const Application = new Lang.Class({
                     this._setButtonState(button, plugin);
 
                     return false;
-                }, null);
+                });
             }, this._queueCommand);
         });
     },
