@@ -6,12 +6,12 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"command": "run-as-root -s install.sh"
+			"command": "run-as-root dnf -y install adapta-gtk-theme"
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root -s uninstall.sh"
+			"command": "run-as-root dnf -y remove adapta-gtk-theme"
 		},
-		"status": { "command": "rpm --quiet --query adapta-gtk-theme-gtk3" }
+		"status": { "command": "rpm --quiet --query adapta-gtk-theme" }
 	}
 }
