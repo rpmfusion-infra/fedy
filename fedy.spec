@@ -22,6 +22,7 @@ Obsoletes: fedy-release < 5.0.0-4
 Provides: fedy-release = 5.0.0-4
 
 Requires: dnf-plugins-core
+Requires: hicolor-icon-theme
 Requires: gjs
 Requires: gtk3
 Requires: libnotify
