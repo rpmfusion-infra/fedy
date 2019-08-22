@@ -11,7 +11,7 @@
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root dnf -y erase spotify-client"
+			"command": "run-as-root dnf -y erase spotify-client lpf-spotify-client"
 		},
 		"status": { "command": "rpm --quiet --query spotify-client" }
 	}
