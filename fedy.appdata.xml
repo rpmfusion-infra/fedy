@@ -13,7 +13,7 @@
         </p>
     </description>
     <screenshots>
-        <screenshot type="default" width="646" height="446">https://github.com/fedy/folkswithhats.org/raw/master/assets/fedy.png</screenshot>
+        <screenshot type="default" width="800" height="647">https://github.com/rpmfusion-infra/fedy-project/raw/master/fedy-screenshot-0.png</screenshot>
     </screenshots>
     <url type="homepage">https://github.com/rpmfusion-infra/fedy-project</url>
     <updatecontact>satyajit.happy@gmail.com</updatecontact>
