@@ -1,5 +1,5 @@
 #!/bin/bash
 
-dnf config-manager --add-repo=http://negativo17.org/repos/fedora-spotify.repo
+dnf config-manager --set-disabled --repo=fedora-spotify &>/dev/null
 
-dnf -y install spotify-client
+dnf -y install lpf-spotify-client
