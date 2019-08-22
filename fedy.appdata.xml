@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2015 Satyajit Sahoo <satyajit.happy@gmail.com> -->
 <application>
-    <id type="desktop">org.folkswithhats.fedy.desktop</id>
+    <id type="desktop">org.rpmfusion.fedy.desktop</id>
     <licence>GFDL</licence>
     <name>Fedy</name>
     <summary>Install codecs, software, and more...</summary>
@@ -15,6 +15,6 @@
     <screenshots>
         <screenshot type="default" width="646" height="446">https://github.com/fedy/folkswithhats.org/raw/master/assets/fedy.png</screenshot>
     </screenshots>
-    <url type="homepage">http://folkswithhats.org/</url>
+    <url type="homepage">https://github.com/rpmfusion-infra/fedy-project</url>
     <updatecontact>satyajit.happy@gmail.com</updatecontact>
 </application>

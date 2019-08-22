@@ -4,7 +4,7 @@ Fedy lets you install multimedia codecs and additional software that Fedora [doe
 
 ### Installation
 
-Installation instructions can be found on https://www.folkswithhats.org.
+Installation instructions can be found on https://github.com/rpmfusion-infra/fedy-project.
 
 _Do not follow instructions from any other source!_
 
@@ -18,7 +18,7 @@ sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-rele
 sudo dnf install gjs gtk3 wget dnf-plugins-core
 
 # Clone and install
-git clone https://github.com/fedy/fedy.git && cd fedy && sudo make install
+git clone https://github.com/rpmfusion-infra/fedy-project && cd fedy && sudo make install
 
 # Clean up
 cd .. && rm -r fedy
@@ -43,13 +43,11 @@ Have a look at the existing plugins to know more about how to write plugins for 
 Source code is publicly available on GitHub, and automatically cloned to GitLab:
 
 
-```sh
+```
 
-$ git clone https://github.com/fedy/fedy.git
+$ git clone https://github.com/rpmfusion-infra/fedy-project
 
-# OR
 
-$ git clone https://gitlab.com/fedy/fedy.git
 ```
 
 ### Bugs and feature requests
@@ -57,7 +55,7 @@ $ git clone https://gitlab.com/fedy/fedy.git
 Please submit bugs and feature requests [here][fedy/issues]. Pull requests are
 always welcome.
 
-[fedy/issues]: https://github.com/folkswithhats/fedy/issues
+[fedy/issues]: https://github.com/rpmfusion-infra/fedy-project/issues
 
 ### License
 
