@@ -5,8 +5,8 @@ Summary:        Install codecs and additional software
 
 Group:          System/Management
 License:        GPLv3+
-URL:            https://www.folkswithhats.org/
-Source0:        https://github.com/folkswithhats/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+URL:            https://github.com/rpmfusion-infra/fedy-project
+Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRequires:  desktop-file-utils
