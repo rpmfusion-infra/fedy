@@ -34,7 +34,7 @@ uninstall:
 	rm -f $(DESTDIR)/usr/bin/fedy
 
 	rm -f $(DESTDIR)/usr/share/applications/org.folkswithhats.fedy.desktop
-	rm -f $(DESTDIR)/usr/share/appdata/fedy.appdata.xml
+	rm -f $(DESTDIR)/usr/share/metainfo/fedy.appdata.xml
 
 	rm -f $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/fedy.svg
 	rm -f $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/fedy-symbolic.svg
