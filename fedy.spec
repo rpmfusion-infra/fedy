@@ -1,6 +1,6 @@
 Name:           fedy
 Version:        4.8.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Install codecs and additional software
 
 Group:          System/Management
@@ -17,13 +17,14 @@ Provides: fedy-core = %{version}-%{release}
 Obsoletes: fedy-core < 4.5.1-1
 Provides: fedy-plugins = %{version}-%{release}
 Obsoletes: fedy-plugins < 4.5.1-1
+# Obsoletes introduced in f29
+Obsoletes: fedy-release < 5.0.0-4
+Provides: fedy-release = 5.0.0-4
 
 Requires: dnf-plugins-core
 Requires: gjs
 Requires: gtk3
 Requires: libnotify
-Requires: rpmfusion-free-release
-Requires: rpmfusion-nonfree-release
 Requires: sed
 Requires: tar
 Requires: wget
@@ -52,12 +53,12 @@ desktop-file-validate \
   %{buildroot}%{_datadir}/applications/*%{name}.desktop
 
 # Validate appdata file
-appstream-util validate-relax \
+appstream-util validate-relax --nonet \
   %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 
 
 %files
-%license COPYING
+%license LICENSE
 %doc CREDITS README.md
 %{_bindir}/%{name}
 %{_datadir}/%{name}
@@ -65,10 +66,15 @@ appstream-util validate-relax \
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/icons/hicolor/scalable/apps/%{name}-symbolic.svg
 %{_datadir}/polkit-1/actions/org.folkswithhats.pkexec.run-as-root.policy
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/metainfo/%{name}.appdata.xml
 
 
 %changelog
+* Wed Aug 21 2019 Nicolas Chauvet <kwizart@gmail.com> - 4.8.0-2
+- Obsoletes fedy-release
+- Drop rpmfusion-release requires
+- Fix upstream URL for appdata
+- Add --nonet for metainfo
 * Wed May 29 2019 Benjamin Denhartog <ben@sudoforge.com> - 4.8.0-1
 - ea67502 ben@sudoforge.com bump: v4.8.0
 - 3e81360 danielandrewstewart@gmail.com add instructions for building from source
