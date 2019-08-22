@@ -54,7 +54,7 @@ desktop-file-validate \
 
 # Validate appdata file
 appstream-util validate-relax --nonet \
-  %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
+  %{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
 
 
 %files

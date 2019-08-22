@@ -9,7 +9,7 @@ install-core:
 	install -Dpm 0755 fedy.exec $(DESTDIR)/usr/bin/fedy
 
 	install -Dpm 0644 fedy.desktop $(DESTDIR)/usr/share/applications/org.folkswithhats.fedy.desktop
-	install -Dpm 0644 fedy.appdata.xml $(DESTDIR)/usr/share/appdata/fedy.appdata.xml
+	install -Dpm 0644 fedy.appdata.xml $(DESTDIR)/usr/share/metainfo/fedy.appdata.xml
 
 	install -Dpm 0644 fedy.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/fedy.svg
 	install -Dpm 0644 fedy-symbolic.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/fedy-symbolic.svg
