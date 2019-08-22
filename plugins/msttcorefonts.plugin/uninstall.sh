@@ -1,3 +1,3 @@
 #!/bin/bash
 
-dnf -y erase msttcore-fonts-installer
+dnf -y remove msttcore-fonts-installer lpf-mscore-fonts
