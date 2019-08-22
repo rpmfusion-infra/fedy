@@ -1,4 +1,4 @@
 #!/bin/bash
 
-dnf -y install http://rpm.livna.org/livna-release.rpm
+dnf -y install rpmfusion-free-release-tainted
 dnf -y install libdvdcss
