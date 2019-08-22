@@ -1,6 +1,6 @@
 Name:           fedy
-Version:        4.8.0
-Release:        2%{?dist}
+Version:        5.0.0
+Release:        1%{?dist}
 Summary:        Install codecs and additional software
 
 Group:          System/Management
@@ -70,6 +70,8 @@ appstream-util validate-relax --nonet \
 
 
 %changelog
+* Thu Aug 22 2019 Nicolas Chauvet <kwizart@gmail.com> - 5.0.0-1
+- Update to 5.0.0
 * Wed Aug 21 2019 Nicolas Chauvet <kwizart@gmail.com> - 4.8.0-2
 - Obsoletes fedy-release
 - Drop rpmfusion-release requires
