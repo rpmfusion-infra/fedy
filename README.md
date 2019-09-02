@@ -18,7 +18,7 @@ sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-rele
 sudo dnf install gjs gtk3 wget dnf-plugins-core
 
 # Clone and install
-git clone https://github.com/rpmfusion-infra/fedy-project && cd fedy && sudo make install
+git clone https://github.com/rpmfusion-infra/fedy && cd fedy && sudo make install
 
 # Clean up
 cd .. && rm -r fedy
