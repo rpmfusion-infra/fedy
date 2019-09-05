@@ -1,0 +1,17 @@
+{
+	"label": "Discord",
+	"description": "All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.",
+	"license": "Proprietary",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "test -f /opt/Discord//Discord" }
+	}
+}
