@@ -15,6 +15,9 @@ user=$(logname)
 [[ -n $user ]] && chown -R $user $DIR
 ln -sf "$DIR/firefox" "/usr/bin/firefox-developer"
 
+xdg-icon-resource install --novendor --size 128 "/opt/firefox-developer/browser/chrome/icons/default/default128.png" "firefox-developer"
+gtk-update-icon-cache -f -t /usr/share/icons/hicolor
+
 cat > /usr/local/share/applications/firefox-developer.desktop <<EOL
 [Desktop Entry]
 Version=1.0
@@ -22,7 +25,7 @@ Encoding=UTF-8
 Name=Firefox Developer Edition
 Comment=Firefox Developer Edition
 Exec=/usr/bin/firefox-developer
-Icon=/opt/firefox-developer/browser/icons/mozicon128.png
+Icon=firefox-developer
 Type=Application
 StartupNotify=true
 Keywords=firefox;dev;browser
