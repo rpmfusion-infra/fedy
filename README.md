@@ -4,24 +4,22 @@ Fedy lets you install multimedia codecs and additional software that Fedora [doe
 
 ### Installation
 
-Installation instructions can be found on https://github.com/rpmfusion-infra/fedy-project.
+Installation instructions can be found on https://github.com/rpmfusion-infra/fedy.
 
 _Do not follow instructions from any other source!_
 
 ### Build from source
 
 ```
-# RPMFusion
+# RPM Fusion
 sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-# Install other dependencies
-sudo dnf install gjs gtk3 wget dnf-plugins-core
+# Install fedy copr repository
+sudo dnf copr enable kwizart/fedy
 
-# Clone and install
-git clone https://github.com/rpmfusion-infra/fedy && cd fedy && sudo make install
+# Install fedy
+sudo dnf install fedy -y
 
-# Clean up
-cd .. && rm -r fedy
 ```
 
 ### Usage
@@ -45,9 +43,7 @@ Source code is publicly available on GitHub, and automatically cloned to GitLab:
 
 ```
 
-$ git clone https://github.com/rpmfusion-infra/fedy-project
-
-
+$ git clone https://github.com/rpmfusion-infra/fedy
 ```
 
 ### Bugs and feature requests
@@ -55,7 +51,7 @@ $ git clone https://github.com/rpmfusion-infra/fedy-project
 Please submit bugs and feature requests [here][fedy/issues]. Pull requests are
 always welcome.
 
-[fedy/issues]: https://github.com/rpmfusion-infra/fedy-project/issues
+[fedy/issues]: https://github.com/rpmfusion-infra/fedy/issues
 
 ### License
 
