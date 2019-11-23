@@ -8,12 +8,12 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"command": "run-as-root -s install.sh"
+			"command": "run-as-root dnf -y install https://release.gitkraken.com/linux/gitkraken-amd64.rpm"
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root -s uninstall.sh"
+			"command": "run-as-root dnf -y remove gitkraken"
 		},
-		"status": { "command": "test -f /opt/gitkraken/gitkraken" }
+		"status": { "command": "rpm -q gitkraken" }
 	}
 }
