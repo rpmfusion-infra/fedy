@@ -1,5 +1,5 @@
 {
-	"label": "Better font rendering",
+	"label": "Better font rendering (obsolete)",
 	"description": "Improve the font rendering for better readability.",
 	"license": [ "FTL", "GPLv2", "BSD", "MIT", "Apache 2.0" ],
 	"category": "Tweaks",
