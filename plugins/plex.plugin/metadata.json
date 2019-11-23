@@ -7,12 +7,12 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"command": "run-as-root -s install.sh"
+			"command": "run-as-root dnf -y install plex-media-player"
 		},
 		"undo": {
 			"label": "Remove",
 			"command": "run-as-root -s uninstall.sh"
 		},
-		"status": { "command": "rpm --quiet --query plexmediaplayer" }
+		"status": { "command": "rpm --quiet --query plex-media-player" }
 	}
 }
