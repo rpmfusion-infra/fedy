@@ -5,7 +5,7 @@ Summary:        Install codecs and additional software
 
 Group:          System/Management
 License:        GPLv3+
-URL:            https://github.com/rpmfusion-infra/fedy-project
+URL:            https://github.com/rpmfusion-infra/fedy
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildArch:      noarch

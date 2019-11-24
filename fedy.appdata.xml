@@ -13,8 +13,8 @@
         </p>
     </description>
     <screenshots>
-        <screenshot type="default" width="800" height="647">https://github.com/rpmfusion-infra/fedy-project/raw/master/fedy-screenshot-0.png</screenshot>
+        <screenshot type="default" width="800" height="647">https://github.com/rpmfusion-infra/fedy/raw/master/fedy-screenshot-0.png</screenshot>
     </screenshots>
-    <url type="homepage">https://github.com/rpmfusion-infra/fedy-project</url>
+    <url type="homepage">https://github.com/rpmfusion-infra/fedy</url>
     <updatecontact>satyajit.happy@gmail.com</updatecontact>
 </application>
