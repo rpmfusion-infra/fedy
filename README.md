@@ -8,8 +8,6 @@ Installation instructions can be found on https://github.com/rpmfusion-infra/fed
 
 _Do not follow instructions from any other source!_
 
-### Build from source
-
 ```
 # RPM Fusion
 sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
