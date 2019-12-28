@@ -1,0 +1,18 @@
+{
+	"icon": "anydesk",
+	"label": "Anydesk",
+	"description": "The Linux Remote Desktop App",
+	"license": "Proprietary",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root dnf -y remove anydesk"
+		},
+		"status": { "command": "rpm --quiet --query anydesk" }
+	}
+}
