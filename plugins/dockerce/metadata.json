@@ -1,0 +1,18 @@
+{
+	"icon": "docker",
+	"label": "Docker Community Edition",
+	"description": "A set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.",
+	"license": "Apache License 2.0",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root dnf -y remove docker-ce"
+		},
+		"status": { "command": "rpm --quiet --query docker-ce" }
+	}
+}
