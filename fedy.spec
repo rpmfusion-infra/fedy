@@ -3,7 +3,6 @@ Version:        5.0.2
 Release:        1%{?dist}
 Summary:        Install codecs and additional software
 
-Group:          System/Management
 License:        GPLv3+
 URL:            https://github.com/rpmfusion-infra/fedy
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
@@ -71,6 +70,20 @@ appstream-util validate-relax --nonet \
 
 
 %changelog
+* Wed Jan 01 2020 Nicolas Chauvet <kwizart@gmail.com> - 5.0.2-1
+- Switch jre install with rpm -Uvh
+- Fixup mp3/h264
+- Fix dino - now in fedora
+- Fix spotify reported by https://github.com/MalteKiefer
+- pull request #24 from MalteKiefer/neomutt
+- Add nvidia machine learning repo
+- Add nvidia-gpu-driver-390xx
+- Add nvidia-gpu-driver
+- Add cuda plugin
+- pull request #21 from MalteKiefer/docker_ce
+- pull request #20 from MalteKiefer/anydesk_add
+- pull request #17 from MalteKiefer/slack_fix
+
 * Tue Dec 10 2019 Nicolas Chauvet <kwizart@gmail.com> - 5.0.1-1
 - Update to 5.0.1
 
