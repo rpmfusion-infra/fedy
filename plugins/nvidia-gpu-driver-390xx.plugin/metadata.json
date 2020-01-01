@@ -1,0 +1,18 @@
+{
+	"icon": "nvidia-settings",
+	"label": "nvidia-gpu-driver-390xx",
+	"description": "Install the legacy NVIDIA GPU driver for Fermi",
+	"license": "NVIDIA Proprietary",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s remove.sh "
+		},
+		"status": { "command": "rpm --quiet --query xorg-x11-drv-nvidia-390xx" }
+	}
+}
