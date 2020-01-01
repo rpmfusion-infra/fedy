@@ -3,7 +3,7 @@
 	"label": "CUDA",
 	"description": "Install the CUDA Toolkit",
 	"license": "NVIDIA Proprietary",
-	"category": "Apps",
+	"category": "Development Tools",
 	"scripts": {
 		"exec": {
 			"label": "Install",
