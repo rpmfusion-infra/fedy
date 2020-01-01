@@ -1,0 +1,18 @@
+{
+	"icon": "neomutt",
+	"label": "NeoMutt",
+	"description": "NeoMutt is a command line mail reader (or MUA). It’s a fork of Mutt with added features",
+	"license": "GPLv2",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root dnf -y remove neomutt && run-as-root dnf copr remove flatcap/neomutt -y"
+		},
+		"status": { "command": "rpm --quiet --query neomutt" }
+	}
+}
