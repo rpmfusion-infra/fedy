@@ -1,0 +1,18 @@
+{
+	"icon": "nvidia-settings",
+	"label": "nvidia-machine-learning",
+	"description": "NVIDIA machine learning",
+	"license": "NVIDIA Proprietary",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s remove.sh "
+		},
+		"status": { "command": "rpm --quiet --query libcudnn7" }
+	}
+}
