@@ -1,8 +1,8 @@
 {
 	"icon": "nvidia-settings",
-	"label": "CUDA",
-	"description": "Install the CUDA Toolkit",
-	"license": "NVIDIA Proprietary",
+	"label": "CUDA Toolkit",
+	"description": "Install the NVIDIA CUDA Toolkit",
+	"license": "Proprietary",
 	"category": "Development Tools",
 	"scripts": {
 		"exec": {
