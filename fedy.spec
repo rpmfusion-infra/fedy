@@ -1,5 +1,5 @@
 Name:           fedy
-Version:        5.0.2
+Version:        5.0.3
 Release:        1%{?dist}
 Summary:        Install codecs and additional software
 
@@ -70,6 +70,22 @@ appstream-util validate-relax --nonet \
 
 
 %changelog
+* Thu Jan 02 2020 Nicolas Chauvet <kwizart@gmail.com> - 5.0.3-1
+- Add google-webdesigner
+- Add bluejeans-v2
+- Add google talk plugin
+- Add google earth pro
+- Rename chrome -> google-chrome
+- rename cuda -> nvidia-cuda
+- Add nouveau-firmware / dvb-firmware
+- Add b43-firmware
+- Add broadcom-bt plugin
+- Add broadcom-wl
+- Add google-cloud-sdk
+- Refresh brave
+- Remove popcorntime
+- Update description and order
+
 * Wed Jan 01 2020 Nicolas Chauvet <kwizart@gmail.com> - 5.0.2-1
 - Switch jre install with rpm -Uvh
 - Fixup mp3/h264
