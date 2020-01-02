@@ -1,0 +1,18 @@
+{
+	"icon": "bluejeans-v2",
+	"label": "BlueJeans",
+	"description": "BlueJeans Desktop App",
+	"license": "Proprietary",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root dnf -y remove bluejeans-v2"
+		},
+		"status": { "command": "rpm --quiet --query bluejeans-v2" }
+	}
+}
