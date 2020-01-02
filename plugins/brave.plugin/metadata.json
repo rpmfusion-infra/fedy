@@ -1,5 +1,5 @@
 {
-	"icon": "brave",
+	"icon": "brave_lion",
 	"label": "Brave Browser",
 	"description": "A privacy focused browser that blocks ads and trackers by default",
 	"license": "Mozilla Public License 2.0",
@@ -11,8 +11,8 @@
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root dnf -y remove brave"
+			"command": "run-as-root -s remove.sh"
 		},
-		"status": { "command": "rpm --quiet --query brave" }
+		"status": { "command": "rpm --quiet --query brave-browser" }
 	}
 }
