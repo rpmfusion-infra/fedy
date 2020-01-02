@@ -1,9 +1,9 @@
 {
 	"icon": "nvidia-settings",
-	"label": "nvidia-gpu-driver",
+	"label": "NVIDIA GPU driver",
 	"description": "Install the NVIDIA GPU driver",
-	"license": "NVIDIA Proprietary",
-	"category": "Apps",
+	"license": "Proprietary",
+	"category": "Drivers",
 	"scripts": {
 		"exec": {
 			"label": "Install",
