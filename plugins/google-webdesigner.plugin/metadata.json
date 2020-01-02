@@ -1,0 +1,18 @@
+{
+	"icon": "google-webdesigner",
+	"label": "Google Web Designer",
+	"description": "Create engaging, interactive HTML5-based designs that run on any device",
+	"license": "Proprietary",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root dnf -y remove google-webdesigner"
+		},
+		"status": { "command": "rpm --quiet --query google-webdesigner" }
+	}
+}
