@@ -1,0 +1,18 @@
+{
+	"icon": "",
+	"label": "Broadcom firmware for b43 kernel driver",
+	"description": "Install the broadcom b43-firmware",
+	"license": "Proprietary",
+	"category": "Drivers",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s remove.sh "
+		},
+		"status": { "command": "rpm --quiet --query b43-firmware" }
+	}
+}
