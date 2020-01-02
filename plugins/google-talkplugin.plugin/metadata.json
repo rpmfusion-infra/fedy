@@ -1,0 +1,18 @@
+{
+	"icon": "google-earth-pro",
+	"label": "Google Voice and Video chat",
+	"description": "Google Talk Plugin",
+	"license": "Proprietary",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root dnf -y remove google-talkplugin"
+		},
+		"status": { "command": "rpm --quiet --query google-talkplugin" }
+	}
+}
