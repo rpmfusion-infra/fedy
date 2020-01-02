@@ -1,0 +1,18 @@
+{
+	"icon": "",
+	"label": "Broadcom Blutooth firmwares",
+	"description": "Install the broadcom blutooth firmware files",
+	"license": "Proprietary",
+	"category": "Drivers",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s remove.sh "
+		},
+		"status": { "command": "rpm --quiet --query broadcom-bt-firmware" }
+	}
+}
