@@ -1,0 +1,18 @@
+{
+	"icon": "",
+	"label": "DVB firmware",
+	"description": "DVB firmwares extracted from binary drivers",
+	"license": "Proprietary",
+	"category": "Drivers",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s remove.sh "
+		},
+		"status": { "command": "rpm --quiet --query dvb-firmware" }
+	}
+}

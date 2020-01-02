@@ -1,0 +1,18 @@
+{
+	"icon": "video-display",
+	"label": "nouveau video firmware",
+	"description": "firmwares extracted from NVIDIA binary driver for nouveau",
+	"license": "Proprietary",
+	"category": "Drivers",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s remove.sh "
+		},
+		"status": { "command": "rpm --quiet --query nouveau-firmware" }
+	}
+}
