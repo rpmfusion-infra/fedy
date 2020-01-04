@@ -1,0 +1,18 @@
+{
+	"icon": "onedrive",
+	"label": "OneDrive",
+	"description": "Free terminal client for OneDrive on Linux",
+	"license": "GNU General Public License v3.0",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root dnf -y remove onedrive"
+		},
+		"status": { "command": "rpm --quiet --query onedrive" }
+	}
+}
