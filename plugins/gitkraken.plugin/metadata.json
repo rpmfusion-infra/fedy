@@ -14,6 +14,6 @@
 			"label": "Remove",
 			"command": "run-as-root dnf -y remove gitkraken"
 		},
-		"status": { "command": "rpm -q gitkraken" }
+		"status": { "command": "rpm -q --quiet gitkraken" }
 	}
 }
