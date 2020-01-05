@@ -5,7 +5,7 @@ gpgkey=$"https://packages.microsoft.com/keys/microsoft.asc"
 rpm --import $gpgkey
 
 cat <<EOF > /etc/yum.repos.d/azurecli.repo
-[code]
+[azurecli]
 name=Azure Cli
 baseurl=https://packages.microsoft.com/yumrepos/azure-cli
 enabled=1
