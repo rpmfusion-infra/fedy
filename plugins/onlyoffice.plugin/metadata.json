@@ -13,6 +13,6 @@
 			"label": "Remove",
 			"command": "run-as-root -s uninstall.sh"
 		},
-		"status": { "command": "rpm -q onlyoffice-desktopeditors" }
+		"status": { "command": "rpm -q --quiet onlyoffice-desktopeditors" }
 	}
 }
