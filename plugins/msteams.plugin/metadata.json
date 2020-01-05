@@ -1,0 +1,18 @@
+{
+	"icon": "teams",
+	"label": "Microsoft Teams",
+	"description": "A unified communication and collaboration platform from Microsoft.",
+	"license": "Proprietary",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query teams" }
+	}
+}
