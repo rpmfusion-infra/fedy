@@ -1,7 +1,7 @@
 {
-	"icon": "google-earth-pro",
-	"label": "Google Voice and Video chat",
-	"description": "Google Talk Plugin",
+	"icon": "web-google-hangouts",
+	"label": "Google Hangouts plugin",
+	"description": "Have voice and video conversations from your computer.",
 	"license": "Proprietary",
 	"category": "Apps",
 	"scripts": {
