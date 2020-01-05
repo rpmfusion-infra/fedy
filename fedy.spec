@@ -65,7 +65,7 @@ appstream-util validate-relax --nonet \
 %{_datadir}/applications/*.%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/icons/hicolor/scalable/apps/%{name}-symbolic.svg
-%{_datadir}/polkit-1/actions/org.folkswithhats.pkexec.run-as-root.policy
+%{_datadir}/polkit-1/actions/org.rpmfusion.pkexec.run-as-root.policy
 %{_datadir}/metainfo/%{name}.appdata.xml
 
 

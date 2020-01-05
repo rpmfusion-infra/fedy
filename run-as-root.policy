@@ -8,7 +8,7 @@
   <vendor_url>http://rpmfusion.org/</vendor_url>
   <icon_name>system-run</icon_name>
 
-  <action id="org.folkswithhats.pkexec.run-as-root">
+  <action id="org.rpmfusion.pkexec.run-as-root">
     <description>Run command as root</description>
     <message>Authentication is required to run command as root.</message>
     <defaults>
