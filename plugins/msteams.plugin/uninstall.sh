@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if command rpm --query --quiet teams; then
-    dnf -y remove teams
-    rm -f /etc/yum.repos.d/msteams.repo
+if [ -f "/etc/yum.repos.d/msteams.repo" ]; then
+  dnf -y remove teams
+  rm -f /etc/yum.repos.d/msteams.rep
 fi
