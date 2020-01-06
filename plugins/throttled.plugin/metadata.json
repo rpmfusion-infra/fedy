@@ -1,0 +1,18 @@
+{
+	"icon": "cpu",
+	"label": "throttled",
+	"description": "Workaround for Intel throttling issues in Linux with Lenovo notebooks.",
+	"license": "MIT",
+	"category": "Tweaks",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query throttled" }
+	}
+}
