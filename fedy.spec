@@ -1,5 +1,5 @@
 Name:           fedy
-Version:        5.0.3
+Version:        5.0.4
 Release:        1%{?dist}
 Summary:        Install codecs and additional software
 
@@ -70,6 +70,29 @@ appstream-util validate-relax --nonet \
 
 
 %changelog
+* Mon Jan 06 2020 Malte Kiefer <malte.kiefer@mailbox.org> - 5.0.4-1
+- Merge pull request #32 from MalteKiefer/azurecli - Malte Kiefer
+- Merge pull request #33 from MalteKiefer/msteams - Malte Kiefer
+- Merge pull request #37 from MalteKiefer/throttled - Malte Kiefer
+- change category - Malte Kiefer
+- change to Proprietary - Malte Kiefer
+- added throttled - Malte Kiefer
+- Remove old hangout plugin - Nicolas Chauvet
+- Update google-talkplugin as hangout - Nicolas Chauvet
+- [HACK] scale down Cloud_SDK.svg until it can be fixed properly - Nicolas Chauvet
+- [HACK] scale down brave_lion.svg until it can be displayed properly - Nicolas Chauvet
+- Quiet onlyoffice-desktopeditors status - Nicolas Chauvet
+- Quiet gitkraken status - Nicolas Chauvet
+- added Azure CLI - Malte Kiefer
+- better uninstall script - Malte Kiefer
+- added Microsoft Teams - Malte Kiefer
+- Merge pull request #27 from MalteKiefer/watchman - Nicolas Chauvet (kwizart)
+- Create metadata.json - Malte Kiefer
+- Create install.sh - Malte Kiefer
+- Merge pull request #25 from MalteKiefer/onedrive - Nicolas Chauvet (kwizart)
+- Create metadata.json - Malte Kiefer
+- Create install.sh - Malte Kiefer
+
 * Thu Jan 02 2020 Nicolas Chauvet <kwizart@gmail.com> - 5.0.3-1
 - Add google-webdesigner
 - Add bluejeans-v2
