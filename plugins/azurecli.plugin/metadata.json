@@ -2,7 +2,7 @@
 	"icon": "azurecli",
 	"label": "Azure Cli",
 	"description": "Microsoft Cloud computing control software.",
-	"license": "Closed Source",
+	"license": "Proprietary",
 	"category": "Apps",
 	"scripts": {
 		"exec": {
