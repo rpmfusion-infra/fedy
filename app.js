@@ -496,15 +496,17 @@ const Application = new Lang.Class({
 
                 if (plugin.icon) {
                     try {
-                        icon = Gtk.IconTheme.get_default().load_icon(plugin.icon, 48, 0);
+                        icon = Gtk.IconTheme.get_default().load_icon(plugin.icon , 48, 18);
 
                         if (icon.width > 48) {
+		   		print("Scaling icon for : " + plugin.label);
                             icon = icon.scale_simple(48, 48, GdkPixbuf.InterpType.NEAREST);
                         }
 
                         image.set_from_pixbuf(icon);
                     } catch (e) {
                         let formats = [ "", ".svg", ".png" ];
+	                print("Error from plugin.icon for : " + plugin.label);
 
                         for (let ext of formats) {
                             let path = plugin.path + "/" + plugin.icon + ext;
@@ -519,6 +521,11 @@ const Application = new Lang.Class({
                         if (icon) {
                             image.set_from_file(icon);
                         }
+
+                        if (icon && icon.width > 48) {
+                            icon = icon.scale_simple(48, 48, GdkPixbuf.InterpType.NEAREST);
+                        }
+
                     }
                 }
 
@@ -541,6 +548,10 @@ const Application = new Lang.Class({
                     halign: Gtk.Align.START,
                     expand: true
                 });
+
+		if (plugin.license == null) {
+			print("license_null for : " + plugin.label);
+		}
 
                 if (plugin.license !== null) {
                     license.set_text((Array.isArray(plugin.license) ? plugin.license.join(", ") : plugin.license) || "");
