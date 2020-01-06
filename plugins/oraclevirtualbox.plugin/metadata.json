@@ -7,7 +7,7 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"command": "run-as-root dnf -y install VirtualBox akmod-VirtualBox kernel-devel-uname-r"
+			"command": "run-as-root -s install.sh"
 		},
 		"undo": {
 			"label": "Remove",
