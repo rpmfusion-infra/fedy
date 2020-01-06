@@ -3,7 +3,7 @@
 	"label": "throttled",
 	"description": "Workaround for Intel throttling issues in Linux with Lenovo notebooks.",
 	"license": "MIT",
-	"category": "Drivers",
+	"category": "Tweaks",
 	"scripts": {
 		"exec": {
 			"label": "Install",
