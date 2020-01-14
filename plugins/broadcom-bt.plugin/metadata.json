@@ -1,7 +1,7 @@
 {
 	"icon": "",
-	"label": "Broadcom Blutooth firmwares",
-	"description": "Install the broadcom blutooth firmware files",
+	"label": "Broadcom Bluetooth firmwares",
+	"description": "Install the broadcom bluetooth firmware files",
 	"license": "Proprietary",
 	"category": "Drivers",
 	"scripts": {
