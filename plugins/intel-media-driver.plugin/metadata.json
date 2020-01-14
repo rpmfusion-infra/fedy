@@ -1,0 +1,18 @@
+{
+	"icon": "video-display",
+	"label": "Intel media driver",
+	"description": "Install Intel media driver for VAAPI",
+	"license": "Proprietary and MIT",
+	"category": "Drivers",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s remove.sh "
+		},
+		"status": { "command": "rpm --quiet --query intel-media-driver" }
+	}
+}
