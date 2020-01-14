@@ -1,0 +1,18 @@
+{
+	"icon": "video-display",
+	"label": "Intel legacy VAAPI driver",
+	"description": "Install Intel legacy driver for VAAPI",
+	"license": "MIT and EPL",
+	"category": "Drivers",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s remove.sh "
+		},
+		"status": { "command": "rpm --quiet --query libva-intel-driver" }
+	}
+}
