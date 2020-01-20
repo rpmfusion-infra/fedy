@@ -1,5 +1,5 @@
 Name:           fedy
-Version:        5.0.4
+Version:        5.0.5.1
 Release:        1%{?dist}
 Summary:        Install codecs and additional software
 
@@ -70,6 +70,9 @@ appstream-util validate-relax --nonet \
 
 
 %changelog
+* Mon Jan 20 2020 Nicolas Chauvet <kwizart@gmail.com> - 5.0.5.1-1
+- Update to 5.0.5.1
+
 * Mon Jan 06 2020 Malte Kiefer <malte.kiefer@mailbox.org> - 5.0.4-1
 - Merge pull request #32 from MalteKiefer/azurecli - Malte Kiefer
 - Merge pull request #33 from MalteKiefer/msteams - Malte Kiefer
