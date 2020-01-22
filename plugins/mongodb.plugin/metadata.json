@@ -1,0 +1,18 @@
+{
+	"icon": "mongodb",
+	"label": "MongoDB",
+	"description": "MongoDB is a cross-platform document-oriented database program.",
+	"license": "SSPL v1.0",
+	"category": "Development Tools",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query mongodb-org" }
+	}
+}
