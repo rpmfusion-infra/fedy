@@ -1,6 +1,7 @@
 #!/bin/bash
 
+dnf -y remove yarn
+
 if [ -f "/etc/yum.repos.d/yarn.repo" ]; then
-  dnf -y remove yarn
   rm -f /etc/yum.repos.d/yarn.repo
 fi
