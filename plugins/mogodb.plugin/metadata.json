@@ -2,7 +2,7 @@
 	"icon": "mongodb",
 	"label": "MongoDB",
 	"description": "MongoDB is a cross-platform document-oriented database program.",
-	"license": "",
+	"license": "SSPL v1.0",
 	"category": "Development Tools",
 	"scripts": {
 		"exec": {
