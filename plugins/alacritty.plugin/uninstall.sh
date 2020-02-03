@@ -1,4 +1,4 @@
 #!/bin/bash
 
-dnf copr remove pschyska/alacritty -y
+dnf copr remove atim/alacritty -y
 dnf remove -y alacritty 
