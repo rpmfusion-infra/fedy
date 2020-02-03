@@ -1,5 +1,5 @@
 Name:           fedy
-Version:        5.0.6-1
+Version:        5.0.6.2
 Release:        1%{?dist}
 Summary:        Install codecs and additional software
 
@@ -70,6 +70,9 @@ appstream-util validate-relax --nonet \
 
 
 %changelog
+* Mon Feb 03 2020 Malte Kiefer <malte.kiefer@mailgermania.de> - 5.0.6-2
+- Update to 5.0.6-2
+
 * Mon Feb 03 2020 Malte Kiefer <malte.kiefer@mailgermania.de> - 5.0.6-1
 - Update to 5.0.6-1
 
