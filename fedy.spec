@@ -1,5 +1,5 @@
 Name:           fedy
-Version:        5.0.5.2
+Version:        5.0.6
 Release:        1%{?dist}
 Summary:        Install codecs and additional software
 
@@ -70,7 +70,7 @@ appstream-util validate-relax --nonet \
 
 
 %changelog
-* Mon Feb 03 2020 Malte Kiefer <malte.kiefer@mailgermania.de> - 5.0.5
+* Mon Feb 03 2020 Malte Kiefer <malte.kiefer@mailgermania.de> - 5.0.6
 - added alacritty - Malte Kiefer
 - added waybar - Malte Kiefer
 - fix anydesk installation and uninstallation - Malte Kiefer
