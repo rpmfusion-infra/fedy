@@ -1,0 +1,18 @@
+{
+	"icon": "waybar",
+	"label": "Waybar",
+	"description": "Highly customizable Wayland bar for Sway and Wlroots based compositors.",
+	"license": "MIT",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query waybar" }
+	}
+}
