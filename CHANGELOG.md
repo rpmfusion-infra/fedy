@@ -1,3 +1,14 @@
+
+### [5.0.6] - 2020-02-03
+#### Added
+- Merge pull request #39 from MalteKiefer/mongodb - Malte Kiefer
+- Merge pull request #43 from MalteKiefer/alacritty - Malte Kiefer
+- Merge pull request #45 from MalteKiefer/waybar - Malte Kiefer
+
+#### Changed
+- Merge pull request #44 from MalteKiefer/fixed/anydesk - Malte Kiefer
+- Fixup pulseaudio category - Nicolas Chauvet
+
 ### [5.0.4] - 2020-01-06
 #### Added
 - Merge pull request #32 from MalteKiefer/azurecli - Malte Kiefer

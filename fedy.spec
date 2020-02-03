@@ -70,6 +70,13 @@ appstream-util validate-relax --nonet \
 
 
 %changelog
+* Mon Feb 03 2020 Malte Kiefer <malte.kiefer@mailgermania.de> - 5.0.5
+- added alacritty - Malte Kiefer
+- added waybar - Malte Kiefer
+- fix anydesk installation and uninstallation - Malte Kiefer
+- added MongoDB - Malte Kiefer
+- Fixup pulseaudio category - Nicolas Chauvet
+
 * Mon Jan 20 2020 Nicolas Chauvet <kwizart@gmail.com> - 5.0.5.2-1
 - Update to 5.0.5.2
 
