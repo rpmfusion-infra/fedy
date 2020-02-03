@@ -1,0 +1,18 @@
+{
+	"icon": "pamixer",
+	"label": "pamixer",
+	"description": "Pulseaudio command line mixer",
+	"license": "GPLv3",
+	"category": "Terminal Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query pamixer" }
+	}
+}
