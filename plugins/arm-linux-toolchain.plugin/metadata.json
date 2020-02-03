@@ -1,0 +1,18 @@
+{
+	"icon": "",
+	"label": "arm-linux-gnueabi-toolchain",
+	"description": "from copr lantw44/arm-linux-gnueabi-toolchain",
+	"license": "GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and BSD",
+	"category": "Development Tools",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s remove.sh "
+		},
+		"status": { "command": "rpm --quiet --query arm-linux-gnueabi-gcc" }
+	}
+}
