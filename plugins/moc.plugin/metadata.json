@@ -1,0 +1,18 @@
+{
+	"icon": "moc",
+	"label": "moc",
+	"description": "console audio player for Linux/UNIX",
+	"license": "GPLv3",
+	"category": "Terminal Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root dnf install -y moc"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root dnf remove -y moc"
+		},
+		"status": { "command": "rpm --quiet --query moc" }
+	}
+}
