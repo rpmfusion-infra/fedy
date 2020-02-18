@@ -1,0 +1,18 @@
+{
+	"icon": "",
+	"label": "kernel-longterm 5.4",
+	"description": "kernel longterm support 5.4",
+	"license": "GPLv2",
+	"category": "Drivers",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s remove.sh "
+		},
+		"status": { "command": "rpm --quiet --query kernel-longterm" }
+	}
+}
