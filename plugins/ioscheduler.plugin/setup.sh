@@ -8,8 +8,7 @@
 # IO scheduler udev rules: https://wiki.archlinux.org/index.php/Solid_State_Drives
 # Deadline on SSDs: https://wiki.debian.org/SSDOptimization#Low-Latency_IO-Scheduler
 
-ssd_scheduler="deadline"
-hdd_scheduler="deadline"
+declare {ssd,hdd}_scheduler="deadline"
 
 cat <<EOF | tee "/etc/udev/rules.d/60-io_schedulers.rules" > /dev/null 2>&1
 # Set deadline scheduler for non-rotating disks
