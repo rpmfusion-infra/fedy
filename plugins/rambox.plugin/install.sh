@@ -9,7 +9,7 @@ case "$KERNEL" in
   *) KERNEL_VERSION="ia32" ;;
 esac
 
-URL=$(curl -s $GITHUB_RELEASES_URL | grep -i browser_download_url | grep -i $KERNEL_VERSION.rpm | awk '{ print $2; }' | head -n 1)
+URL=$(curl -s $GITHUB_RELEASES_URL | grep -i browser_download_url | grep -i $KERNEL_VERSION.rpm | awk '{ print $2; }' | head -n 1 | sed 's/\"//g')
 
 dnf -y install $URL
 
