@@ -5,7 +5,7 @@
 rpm --query --quiet chromium-libs-media-freeworld
 has_legacy_chromium=$?
 
-if [ ${has_legacy_chromium} ] ; then
+if [ x${has_legacy_chromium} == x"0" ] ; then
   dnf swap chromium-libs-media-freeworld chromium-libs-media -y --quiet
 fi
 
