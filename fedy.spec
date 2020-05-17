@@ -81,6 +81,10 @@ fi || :
 %changelog
 * Sun May 17 2020 Nicolas Chauvet <kwizart@gmail.com> - 5.0.9-1
 - Update to 5.0.9
+- Add missing changelog - Nicolas Chauvet
+- Mention EL8 support - Nicolas Chauvet
+- Remove watchman (broken) - Nicolas Chauvet
+- Remove ioscheduler plugin (outdated) - Nicolas Chauvet
 
 * Sun May 17 2020 Nicolas Chauvet <kwizart@gmail.com> - 5.0.8-1
 - Update to 5.0.8
