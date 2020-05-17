@@ -18,6 +18,9 @@ sudo dnf copr enable kwizart/fedy
 # Install fedy
 sudo dnf install fedy -y
 
+# For EL8 (RHEL, CentOS and derivates), the support is still experimental (please report issues)
+
+
 ```
 
 ### Usage
