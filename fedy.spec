@@ -1,5 +1,5 @@
 Name:           fedy
-Version:        5.0.6.2
+Version:        5.0.7
 Release:        1%{?dist}
 Summary:        Install codecs and additional software
 
@@ -70,6 +70,16 @@ appstream-util validate-relax --nonet \
 
 
 %changelog
+* Sun May 17 2020 Nicolas Chauvet <kwizart@gmail.com> - 5.0.7-1
+- Update to 5.0.7
+- Remove with -y - Nicolas Chauvet
+- Add armhfp version - Nicolas Chauvet
+- Add kernel longterm 5.4 - Nicolas Chauvet
+- Add kernel-longterm-4.14 - Nicolas Chauvet
+- Add kernel-longterm-4.19 - Nicolas Chauvet
+- Add copr lantw44/arm-linux-gnueabi-toolchain - Nicolas Chauvet
+- Add chromium-freeworld - Nicolas Chauvet
+
 * Mon Feb 03 2020 Malte Kiefer <malte.kiefer@mailgermania.de> - 5.0.6-2
 - Update to 5.0.6-2
 
