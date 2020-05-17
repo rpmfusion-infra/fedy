@@ -1,5 +1,5 @@
 Name:           fedy
-Version:        5.0.7
+Version:        5.0.8
 Release:        1%{?dist}
 Summary:        Install codecs and additional software
 
@@ -70,6 +70,9 @@ appstream-util validate-relax --nonet \
 
 
 %changelog
+* Sun May 17 2020 Nicolas Chauvet <kwizart@gmail.com> - 5.0.8-1
+- Update to 5.0.8
+
 * Sun May 17 2020 Nicolas Chauvet <kwizart@gmail.com> - 5.0.7-1
 - Update to 5.0.7
 - Remove with -y - Nicolas Chauvet
