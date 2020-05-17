@@ -1,5 +1,5 @@
 Name:           fedy
-Version:        5.0.8
+Version:        5.0.9
 Release:        1%{?dist}
 Summary:        Install codecs and additional software
 
@@ -79,6 +79,9 @@ fi || :
 
 
 %changelog
+* Sun May 17 2020 Nicolas Chauvet <kwizart@gmail.com> - 5.0.9-1
+- Update to 5.0.9
+
 * Sun May 17 2020 Nicolas Chauvet <kwizart@gmail.com> - 5.0.8-1
 - Update to 5.0.8
 - chromium: fix condition - Nicolas Chauvet
