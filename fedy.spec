@@ -81,6 +81,7 @@ fi || :
 %changelog
 * Sun May 17 2020 Nicolas Chauvet <kwizart@gmail.com> - 5.0.8-1
 - Update to 5.0.8
+- chromium: fix condition - Nicolas Chauvet
 
 * Sun May 17 2020 Nicolas Chauvet <kwizart@gmail.com> - 5.0.7-1
 - Update to 5.0.7
