@@ -61,8 +61,8 @@ appstream-util validate-relax --nonet \
 %pre
 obsolete=/tmp/no-exists
 obsolete=$(echo %{obsolete_file} | base64 -d)
-if [ -f $(obsolete) ] ; then
-  rm -f $(obsolete)
+if [ -f ${obsolete} ] ; then
+  rm -f ${obsolete} &>/dev/null
 fi || :
 
 
