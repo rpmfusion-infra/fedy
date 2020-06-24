@@ -3,7 +3,7 @@
 	"label": "pamixer",
 	"description": "Pulseaudio command line mixer",
 	"license": "GPLv3",
-	"category": "Terminal Apps",
+	"category": "Apps",
 	"scripts": {
 		"exec": {
 			"label": "Install",
