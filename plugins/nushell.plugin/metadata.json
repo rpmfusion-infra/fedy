@@ -1,0 +1,18 @@
+{
+	"icon": "nushell",
+	"label": "Nushell",
+	"description": "A modern shell written in Rust ",
+	"license": "MIT",
+	"category": "Terminal Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query nushell" }
+	}
+}
