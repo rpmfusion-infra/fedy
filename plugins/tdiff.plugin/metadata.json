@@ -3,7 +3,7 @@
 	"label": "Tdiff",
 	"description": "Tree diff - diff, with mode, owner, permissions and other inode attributes ",
 	"license": "GPLv3",
-	"category": "Terminal Apps",
+	"category": "Apps",
 	"scripts": {
 		"exec": {
 			"label": "Install",

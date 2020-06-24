@@ -3,7 +3,7 @@
 	"label": "Nushell",
 	"description": "A modern shell written in Rust ",
 	"license": "MIT",
-	"category": "Terminal Apps",
+	"category": "Apps",
 	"scripts": {
 		"exec": {
 			"label": "Install",
