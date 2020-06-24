@@ -1,5 +1,5 @@
 Name:           fedy
-Version:        5.0.9
+Version:        5.0.10
 Release:        1%{?dist}
 Summary:        Install codecs and additional software
 
@@ -79,6 +79,9 @@ fi || :
 
 
 %changelog
+* Wed Jun 24 2020 Nicolas Chauvet <kwizart@gmail.com> - 5.0.10-1
+- Update to 5.0.10
+
 * Sun May 17 2020 Nicolas Chauvet <kwizart@gmail.com> - 5.0.9-1
 - Update to 5.0.9
 - Add missing changelog - Nicolas Chauvet
