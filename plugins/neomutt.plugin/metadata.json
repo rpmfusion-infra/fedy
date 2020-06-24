@@ -3,7 +3,7 @@
 	"label": "NeoMutt",
 	"description": "NeoMutt is a command line mail reader (or MUA). It’s a fork of Mutt with added features",
 	"license": "GPLv2",
-	"category": "Terminal Apps",
+	"category": "Apps",
 	"scripts": {
 		"exec": {
 			"label": "Install",

@@ -3,7 +3,7 @@
 	"label": "OneDrive",
 	"description": "Free terminal client for OneDrive on Linux",
 	"license": "GNU General Public License v3.0",
-	"category": "Terminal Apps",
+	"category": "Apps",
 	"scripts": {
 		"exec": {
 			"label": "Install",

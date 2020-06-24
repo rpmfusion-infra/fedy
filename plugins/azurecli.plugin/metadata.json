@@ -3,7 +3,7 @@
 	"label": "Azure Cli",
 	"description": "Microsoft Cloud computing control software.",
 	"license": "Proprietary",
-	"category": "Terminal Apps",
+	"category": "Apps",
 	"scripts": {
 		"exec": {
 			"label": "Install",
