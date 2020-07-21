@@ -2,7 +2,7 @@
 	"icon": "chromium",
 	"label": "chromium-freeworld",
 	"description": "open-source web browser, powered by WebKit (Blink)",
-	"license": "BSD and LGPLv2+ and ASL 2.0 and IJG and MIT and GPLv2+ and ISC and OpenSSL and (MPLv1.1 or GPLv2 or LGPLv2)",
+	"license": "FLOSS",
 	"category": "Apps",
 	"scripts": {
 		"exec": {
