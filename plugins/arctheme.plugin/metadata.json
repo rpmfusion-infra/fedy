@@ -1,16 +1,16 @@
 {
 	"label": "Arc Theme",
-	"description": "A flat theme with transparent elements.",
+	"description": "A dark and light theme with transparent and solid versions.",
 	"license": "GPLv3",
 	"category": "Themes",
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"command": "run-as-root dnf -y install arc-theme"
+			"command": "run-as-root -s install.sh"
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root dnf -y remove arc-theme"
+			"command": "run-as-root -s uninstall.sh"
 		},
 		"status": { "command": "rpm --quiet --query arc-theme" }
 	}
