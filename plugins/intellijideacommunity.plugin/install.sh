@@ -19,6 +19,7 @@ tar -xzf "$FILE" -C "/opt/"
 
 mv /opt/idea-IC* "/opt/intellij-idea-community"
 ln -sf "/opt/intellij-idea-community/bin/idea.sh" "/usr/bin/ideaIC"
+ln -sf "/etc/pki/java/cacerts" "/opt/intellij-idea-ultimate/jbr/lib/security/cacerts"
 
 xdg-icon-resource install --novendor --size 128 "/opt/intellij-idea-community/bin/idea.png" "intellij-idea-ce"
 gtk-update-icon-cache -f -t /usr/share/icons/hicolor
