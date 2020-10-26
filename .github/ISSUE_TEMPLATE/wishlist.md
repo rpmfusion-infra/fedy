@@ -1,5 +1,5 @@
 ---
-name: RPM Fusion package wishlist
+name: Package wishlist
 about: Wishlist of software to package for RPM Fusion
 title: ''
 labels: type:wishlist
