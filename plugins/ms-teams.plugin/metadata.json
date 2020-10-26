@@ -1,0 +1,18 @@
+{
+	"icon": "teams",
+	"label": "ms-teams",
+	"description": "Microsoft Teams for Linux is your chat-centered workspace in Office 365.",
+	"license": "Proprieatary",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s remove.sh"
+		},
+		"status": { "command": "rpm --quiet --query teams" }
+	}
+}
