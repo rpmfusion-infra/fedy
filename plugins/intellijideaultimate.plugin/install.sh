@@ -19,6 +19,7 @@ tar -xzf "$FILE" -C "/opt/"
 
 mv /opt/idea-IU* "/opt/intellij-idea-ultimate"
 ln -sf "/opt/intellij-idea-ultimate/bin/idea.sh" "/usr/bin/ideaIU"
+ln -sf "/etc/pki/java/cacerts" "/opt/intellij-idea-ultimate/jbr/lib/security/cacerts"
 
 xdg-icon-resource install --novendor --size 128 "/opt/intellij-idea-ultimate/bin/idea.png" "intellij-idea-ue"
 gtk-update-icon-cache -f -t /usr/share/icons/hicolor
