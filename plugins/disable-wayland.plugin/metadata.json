@@ -1,0 +1,17 @@
+{
+	"icon": "wayland",
+	"label": "Disable Wayland",
+	"description": "Default to X11 for display managers",
+	"category": "Tweaks",
+	"scripts": {
+		"exec": {
+			"label": "Setup",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Revert",
+			"command": "run-as-root -s remove.sh"
+		},
+		"status": { "command": "status.sh" }
+	}
+}
