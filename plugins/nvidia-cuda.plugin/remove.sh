@@ -10,6 +10,10 @@ if [ -f /etc/yum.repos.d/cuda-fedora32.repo ] ; then
   rm -f /etc/yum.repos.d/cuda-fedora32.repo
 fi
 
+if [ -f /etc/yum.repos.d/cuda-fedora33.repo ] ; then
+  rm -f /etc/yum.repos.d/cuda-fedora33.repo
+fi
+
 if [ -f /etc/yum.repos.d/cuda.repo ] ; then
   rm -f /etc/yum.repos.d/cuda.repo
 fi

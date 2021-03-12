@@ -29,6 +29,12 @@ fedora29_cuda_check_remove() {
   fi
 }
 
+fedora32_cuda_check_remove() {
+  if [ -f /etc/yum.repos.d/cuda-fedora32.repo ] ; then
+    rm -f /etc/yum.repos.d/cuda-fedora32.repo
+  fi
+}
+
 rhel8_cuda_check_remove() {
   if [ -f /etc/yum.repos.d/cuda-rhel8.repo ] ; then
     rm -f /etc/yum.repos.d/cuda-rhel8.repo
@@ -54,6 +60,16 @@ fedora32_cuda_install() {
   dnf -y module disable nvidia-driver
 }
 
+fedora33_cuda_install() {
+  fedora29_cuda_check_remove
+  fedora32_cuda_check_remove
+  rhel8_cuda_check_remove
+  dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/fedora33/x86_64/cuda-fedora33.repo
+  # prefer rpmfusion packaged driver on x86_64
+  dnf -y module disable nvidia-driver
+}
+
+
 el8_cuda_install() {
   fedora29_cuda_check_remove
   dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/rhel8/${cuda_arch}/cuda-rhel8.repo
@@ -68,7 +84,8 @@ el8_cuda_install() {
 fedora_cuda_install(){
   case ${VERSION_ID} in
     29|30|31) fedora29_cuda_install ;;
-    32|33) fedora32_cuda_install ;;
+    32) fedora32_cuda_install ;;
+    33|34|35) fedora33_cuda_install ;;
     *) exit 2 ;;
   esac
 }
