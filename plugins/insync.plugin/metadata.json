@@ -1,0 +1,18 @@
+{
+	"icon": "insync",
+	"label": "Insync",
+	"description": "Manage your Google Drive & OneDrive files straight from your Desktop.",
+	"license": "",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query insync" }
+	}
+}
