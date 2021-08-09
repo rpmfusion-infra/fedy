@@ -2,7 +2,7 @@
 	"icon": "insync",
 	"label": "Insync",
 	"description": "Manage your Google Drive & OneDrive files straight from your Desktop.",
-	"license": "",
+	"license": "Proprietary",
 	"category": "Apps",
 	"scripts": {
 		"exec": {
