@@ -1,6 +1,6 @@
 Name:           fedy
 Version:        5.0.13
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Install codecs and additional software
 
 License:        GPLv3+
@@ -79,6 +79,9 @@ fi || :
 
 
 %changelog
+* Sat Aug 14 2021 Malte Kiefer <malte.kiefer@mailgermania.de> - 5.0.13-2
+- Update to 5.0.13-2
+
 * Sat Aug 14 2021 Malte Kiefer <malte.kiefer@mailgermania.de> - 5.0.13-1
 - Update to 5.0.13
 - added dbeaver - Malte Kiefer
