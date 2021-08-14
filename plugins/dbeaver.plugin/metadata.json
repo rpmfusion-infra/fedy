@@ -1,0 +1,18 @@
+{
+	"icon": "dbeaver",
+	"label": "DBeaver",
+	"description": "Free multi-platform database tool for developers, SQL programmers, database administrators and analysts.",
+	"license": "Apache License 2.0",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query dbeaver-ce" }
+	}
+}
