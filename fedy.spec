@@ -1,5 +1,5 @@
 Name:           fedy
-Version:        5.0.12
+Version:        5.0.13
 Release:        1%{?dist}
 Summary:        Install codecs and additional software
 
@@ -79,6 +79,14 @@ fi || :
 
 
 %changelog
+* Sat Aug 14 2021 Malte Kiefer <malte.kiefer@mailgermania.de> - 5.0.13-1
+- Update to 5.0.13
+- added dbeaver - Malte Kiefer
+- update teamviewer - Malte Kiefer
+- added missing license - Malte Kiefer
+- added 1password - Malte Kiefer
+- added insync - Malte Kiefer
+
 * Fri Mar 12 2021 Nicolas Chauvet <kwizart@gmail.com> - 5.0.12-1
 - Update to 5.0.12
 
