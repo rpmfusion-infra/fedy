@@ -1,0 +1,18 @@
+{
+	"icon": "1password",
+	"label": "1Password",
+	"description": "Password manager and secure wallet",
+	"license": "Proprietary",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query 1password" }
+	}
+}
