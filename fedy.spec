@@ -10,6 +10,7 @@ Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
+BuildRequires:  make
 
 %global obsolete_file L2V0Yy95dW0ucmVwb3MuZC91bml0ZWRycG1zLnJlcG8K
 
