@@ -7,7 +7,7 @@ CACHEDIR="/var/cache/fedy/androidstudio";
 mkdir -p "$CACHEDIR"
 cd "$CACHEDIR"
 
-URL=$(wget "http://developer.android.com/sdk/index.html" -O - | grep -o "https://dl.google.com/.*/[0-9.]*/android-studio-ide-[0-9.]*-linux.zip" | head -n 1)
+URL=$(wget "http://developer.android.com/sdk/index.html" -O - | grep -o "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/[0-9.]*/android-studio-[0-9.]*-linux.tar.gz" | head -n 1)
 FILE=${URL##*/}
 
 wget -c "$URL" -O "$FILE"
@@ -17,7 +17,7 @@ if [[ ! -f "$FILE" ]]; then
 fi
 
 rm -rf "/opt/android-studio"
-unzip -xq "$FILE" -d "/opt/"
+tar xf "$FILE" -C "/opt/"
 
 ln -sf "/opt/android-studio/bin/studio.sh" "/usr/bin/android-studio"
 
