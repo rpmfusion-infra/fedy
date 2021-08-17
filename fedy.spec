@@ -1,5 +1,5 @@
 Name:           fedy
-Version:        5.0.14
+Version:        5.0.15
 Release:        1%{?dist}
 Summary:        Install codecs and additional software
 
@@ -80,6 +80,12 @@ fi || :
 
 
 %changelog
+* Thu Aug 17 2021 Malte Kiefer <malte.kiefer@mailgermania.de> - 5.0.15-1
+- added blanket - Malte Kiefer
+- added Wike - Malte Kiefer
+- fix Android Studio Download URL - Malte Kiefer
+- added GitFiend - Malte Kiefer
+
 * Sat Aug 14 2021 Malte Kiefer <malte.kiefer@mailgermania.de> - 5.0.14-1
 - Update to 5.0.14
 - added dbeaver - Malte Kiefer
