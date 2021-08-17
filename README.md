@@ -2,6 +2,8 @@
 
 [![Copr build status](https://copr.fedorainfracloud.org/coprs/kwizart/fedy/package/fedy/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/kwizart/fedy/package/fedy/) | [![License](https://img.shields.io/badge/License-GPLv3-green)](https://img.shields.io/badge/License-GPLv3-green)
 
+![Screen](https://raw.githubusercontent.com/rpmfusion-infra/fedy/master/fedy-screenshot-0.png)
+
 ### Introduction
 
 Fedy lets you install multimedia codecs and additional software that Fedora [doesn't want to ship](http://fedoraproject.org/wiki/Forbidden_items?rd=ForbiddenItems), like H264 support, Adobe Flash, Oracle Java etc., and much more with just a few clicks.
