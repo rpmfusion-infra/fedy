@@ -1,0 +1,18 @@
+{
+	"icon": "wike",
+	"label": "Wike",
+	"description": "Wike is a Wikipedia reader for the GNOME Desktop",
+	"license": "GPLv3",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query wike" }
+	}
+}
