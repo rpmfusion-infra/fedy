@@ -1,5 +1,5 @@
 Name:           fedy
-Version:        5.0.15
+Version:        5.0.16
 Release:        1%{?dist}
 Summary:        Install codecs and additional software
 
@@ -80,6 +80,9 @@ fi || :
 
 
 %changelog
+* Thu Aug 130 2021 Malte Kiefer <malte.kiefer@mailgermania.de> - 5.0.16-1
+- fix Signal Desktop installation - Malte Kiefer
+
 * Thu Aug 17 2021 Malte Kiefer <malte.kiefer@mailgermania.de> - 5.0.15-1
 - added blanket - Malte Kiefer
 - added Wike - Malte Kiefer
