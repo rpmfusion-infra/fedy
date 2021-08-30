@@ -1,0 +1,18 @@
+{
+	"icon": "qogir",
+	"label": "Qogir Theme",
+	"description": "Qogir is a flat Design theme for GTK 3, GTK 2 and Gnome-Shell.",
+	"license": ["GNU LGPL v3.0"],
+	"category": "Themes",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query qogir-theme" }
+	}
+}
