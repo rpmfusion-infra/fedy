@@ -1,0 +1,18 @@
+{
+	"icon": "qogir",
+	"label": "Qogir Icon Theme",
+	"description": "A flat colorful design icon theme for linux desktops",
+	"license": ["GNU LGPL v3.0"],
+	"category": "Themes",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query qogir-icon-theme" }
+	}
+}
