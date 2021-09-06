@@ -1,5 +1,5 @@
 Name:           fedy
-Version:        5.0.17
+Version:        5.0.18
 Release:        1%{?dist}
 Summary:        Install codecs and additional software
 
@@ -80,6 +80,9 @@ fi || :
 
 
 %changelog
+* Thu Sep 06 2021 Malte Kiefer <malte.kiefer@mailgermania.de> - 5.0.18-1
+- updated mailspring - Malte Kiefer
+
 * Thu Aug 30 2021 Malte Kiefer <malte.kiefer@mailgermania.de> - 5.0.17-1
 - added mailspring - Malte Kiefer
 - added qogir-icon-theme - Malte Kiefer
