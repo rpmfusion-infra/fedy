@@ -23,15 +23,9 @@ fi
 
 
 # Older cuda repositories check removal
-fedora29_cuda_check_remove() {
-  if [ -f /etc/yum.repos.d/cuda-fedora29.repo ] ; then
-    rm -f /etc/yum.repos.d/cuda-fedora29.repo
-  fi
-}
-
-fedora32_cuda_check_remove() {
-  if [ -f /etc/yum.repos.d/cuda-fedora32.repo ] ; then
-    rm -f /etc/yum.repos.d/cuda-fedora32.repo
+fedora_cuda_check_remove() {
+  if [ -f /etc/yum.repos.d/cuda-fedora${1}.repo ] ; then
+    rm -f /etc/yum.repos.d/cuda-fedora${1}.repo
   fi
 }
 
@@ -53,7 +47,7 @@ fedora29_cuda_install() {
 }
 
 fedora32_cuda_install() {
-  fedora29_cuda_check_remove
+  fedora_cuda_check_remove 29
   rhel8_cuda_check_remove
   dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/fedora32/x86_64/cuda-fedora32.repo
   # prefer rpmfusion packaged driver on x86_64
@@ -61,17 +55,27 @@ fedora32_cuda_install() {
 }
 
 fedora33_cuda_install() {
-  fedora29_cuda_check_remove
-  fedora32_cuda_check_remove
+  fedora_cuda_check_remove 29
+  fedora_cuda_check_remove 32
   rhel8_cuda_check_remove
   dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/fedora33/x86_64/cuda-fedora33.repo
   # prefer rpmfusion packaged driver on x86_64
   dnf -y module disable nvidia-driver
 }
 
+fedora34_cuda_install() {
+  fedora_cuda_check_remove 29
+  fedora_cuda_check_remove 32
+  fedora_cuda_check_remove 33
+  rhel8_cuda_check_remove
+  dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/fedora34/x86_64/cuda-fedora34.repo
+  # prefer rpmfusion packaged driver on x86_64
+  dnf -y module disable nvidia-driver
+}
+
 
 el8_cuda_install() {
-  fedora29_cuda_check_remove
+  fedora_cuda_check_remove 29
   dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/rhel8/${cuda_arch}/cuda-rhel8.repo
   if [ ${cuda_arch} == x86_64 ] ; then
     # prefer rpmfusion packaged driver on x86_64
@@ -85,7 +89,8 @@ fedora_cuda_install(){
   case ${VERSION_ID} in
     29|30|31) fedora29_cuda_install ;;
     32) fedora32_cuda_install ;;
-    33|34|35) fedora33_cuda_install ;;
+    33) fedora33_cuda_install ;;
+    34|35|36) fedora34_cuda_install ;;
     *) exit 2 ;;
   esac
 }
