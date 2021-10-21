@@ -1,7 +1,7 @@
 {
 	"icon": "githubcli",
 	"label": "GitHub Cli",
-	"description": "GitHub on the command lin",
+	"description": "GitHub on the command line",
 	"license": "MIT License",
 	"category": "Apps",
 	"scripts": {
