@@ -1,5 +1,5 @@
 Name:           fedy
-Version:        5.0.18
+Version:        5.0.19
 Release:        1%{?dist}
 Summary:        Install codecs and additional software
 
@@ -80,6 +80,9 @@ fi || :
 
 
 %changelog
+* Thu Oct 21 2021 Nicolas Chauvet <kwizart@gmail.com> - 5.0.19-1
+- Update to 5.0.19
+
 * Thu Sep 06 2021 Malte Kiefer <malte.kiefer@mailgermania.de> - 5.0.18-1
 - updated mailspring - Malte Kiefer
 
