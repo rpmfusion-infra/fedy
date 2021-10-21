@@ -1,0 +1,18 @@
+{
+	"icon": "glide",
+	"label": "Glide",
+	"description": "Glide is a simple and minimalistic media player relying on GStreamer for the multimedia support and GTK+ for the user interface.",
+	"license": "MIT",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query glide" }
+	}
+}
