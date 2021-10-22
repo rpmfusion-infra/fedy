@@ -12,6 +12,6 @@
 			"label": "Revert",
 			"command": "run-as-root -s remove.sh"
 		},
-		"status": { "command": "status.sh" }
+		"status": { "command": "sh status.sh" }
 	}
 }
