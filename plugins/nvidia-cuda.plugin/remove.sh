@@ -2,17 +2,12 @@
 
 # https://rpmfusion.org/Howto/CUDA
 
-if [ -f /etc/yum.repos.d/cuda-fedora29.repo ] ; then
-  rm -f /etc/yum.repos.d/cuda-fedora29.repo
-fi
 
-if [ -f /etc/yum.repos.d/cuda-fedora32.repo ] ; then
-  rm -f /etc/yum.repos.d/cuda-fedora32.repo
-fi
-
-if [ -f /etc/yum.repos.d/cuda-fedora33.repo ] ; then
-  rm -f /etc/yum.repos.d/cuda-fedora33.repo
-fi
+for i in 29 32 33 34 35 ; do
+  if [ -f /etc/yum.repos.d/cuda-fedora${i}.repo ] ; then
+    rm -f /etc/yum.repos.d/cuda-fedora${i}.repo
+  fi
+done
 
 if [ -f /etc/yum.repos.d/cuda.repo ] ; then
   rm -f /etc/yum.repos.d/cuda.repo
