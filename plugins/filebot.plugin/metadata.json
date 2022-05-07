@@ -12,7 +12,7 @@
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root -s remove.sh"
+			"command": "run-as-root -s uninstall.sh"
 		},
 		"status": { "command": "rpm --quiet --query filebot" }
 	}
