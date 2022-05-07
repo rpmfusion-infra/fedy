@@ -1,0 +1,18 @@
+{
+	"icon": "githubdesktop",
+	"label": "GitHub Desktop",
+	"description": "The Linux Remote Desktop App",
+	"license": "MIT",
+	"category": "Development Tools",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query anydesk" }
+	}
+}
