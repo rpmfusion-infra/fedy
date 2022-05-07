@@ -1,7 +1,7 @@
 {
 	"icon": "githubdesktop",
 	"label": "GitHub Desktop",
-	"description": "The Linux Remote Desktop App",
+	"description": "GitHub Desktop is an open source Electron-based GitHub app.",
 	"license": "MIT",
 	"category": "Development Tools",
 	"scripts": {
