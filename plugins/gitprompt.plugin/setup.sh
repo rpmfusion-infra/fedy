@@ -6,7 +6,7 @@ if [[ -f /etc/profile.d/color_prompt.sh ]]; then
 fi
 
 # Replace with Git annotations.
-cat <<EOF | tee /etc/profile.d/color_status.sh > /dev/null 2>&1
+cat <<EOF | tee /etc/profile.d/color_prompt.sh > /dev/null 2>&1
 # Quick fork by @mcjim to add stash status and tweak to suit his style.
 # http://henrik.nyh.se/2008/12/git-dirty-prompt
 # http://www.simplisticcomplexity.com/2008/03/13/show-your-git-branch-name-in-your-prompt/
