@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Remove existing file if it exists.
+if [[ -f /etc/profile.d/color_prompt.sh ]]; then
+  rm -f /etc/profile.d/color_prompt.sh
+fi
+
+# Replace with simple color prompt script.
 cat <<EOF | tee /etc/profile.d/color_prompt.sh > /dev/null 2>&1
 # Colors in Terminal (Bash)
 if [[ ! -z \$BASH ]]; then

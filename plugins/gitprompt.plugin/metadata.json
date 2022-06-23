@@ -1,0 +1,17 @@
+{
+	"icon": "utilities-terminal",
+	"label": "Fancy Bash prompt with Git",
+	"description": "Add colors to bash prompt to make it stand out and also append Git branch and status info.",
+	"category": "Tweaks",
+	"scripts": {
+		"exec": {
+			"label": "Setup",
+			"command": "run-as-root -s setup.sh"
+		},
+		"undo": {
+			"label": "Revert",
+			"command": "run-as-root rm -f /etc/profile.d/color_prompt.sh"
+		},
+		"status": { "command": "test -f /etc/profile.d/color_prompt.sh" }
+	}
+}
