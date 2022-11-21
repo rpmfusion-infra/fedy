@@ -1,0 +1,19 @@
+{
+	"icon": "filebot",
+	"label": "Filebot",
+	"description": "FileBot is the ultimate tool for renaming and organizing your movies, TV shows and Anime.",
+	"license": "Commercial",
+	"proprietary": true,
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query filebot" }
+	}
+}
