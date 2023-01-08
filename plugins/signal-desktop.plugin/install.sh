@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # We assume the 'evil' 99.0.0-1 version is used if the repo is available
-if [ -f /etc/wireguard/_copr:copr.fedorainfracloud.org:luminoso:Signal-Desktop.repo ] ; then
-	rm /etc/wireguard/_copr:copr.fedorainfracloud.org:luminoso:Signal-Desktop.repo
+if [ -f /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:luminoso:Signal-Desktop.repo ] ; then
+	rm /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:luminoso:Signal-Desktop.repo
 	rpm -e signal-desktop
 fi
 

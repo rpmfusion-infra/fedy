@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ -f /etc/wireguard/_copr:copr.fedorainfracloud.org:luminoso:Signal-Desktop.repo ] ; then
-	rm /etc/wireguard/_copr:copr.fedorainfracloud.org:luminoso:Signal-Desktop.repo
+if [ -f /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:luminoso:Signal-Desktop.repo ] ; then
+	rm /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:luminoso:Signal-Desktop.repo
 fi
 
 if [ -f  "/etc/yum.repos.d/network:im:signal.repo" ] ; then

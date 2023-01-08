@@ -11,7 +11,7 @@
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root dnf -y remove signal-desktop"
+			"command": "run-as-root -s remove.sh"
 		},
 		"status": { "command": "rpm --quiet --query signal-desktop" }
 	}
