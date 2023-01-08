@@ -1,0 +1,18 @@
+{
+	"icon": "mesa-freeworld",
+	"label": "mesa-freeworld",
+	"description": "Video HW codec drivers from mesa (AMD mostly)",
+	"license": "MIT",
+	"category": "Drivers",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s remove.sh"
+		},
+		"status": { "command": "rpm --quiet --query mesa-va-drivers mesa-vdpau-drivers" }
+	}
+}
