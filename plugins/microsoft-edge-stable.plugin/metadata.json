@@ -1,0 +1,18 @@
+{
+	"icon": "microsoft-edge-stable",
+	"label": "Microsoft Edge stable",
+	"description": "The web browser from Microsoft",
+	"license": "Proprietary",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s remove.sh"
+		},
+		"status": { "command": "rpm --quiet --query microsoft-edge-stable" }
+	}
+}
