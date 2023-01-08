@@ -1,0 +1,18 @@
+{
+	"icon": "",
+	"label": "pipewire-codec-aptx",
+	"description": "PipeWire Bluetooth aptX codec plugin",
+	"license": "MIT",
+	"category": "Drivers",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s remove.sh "
+		},
+		"status": { "command": "rpm --quiet --query pipewire-codec-aptx" }
+	}
+}
