@@ -3,7 +3,7 @@
 # https://rpmfusion.org/Howto/CUDA
 
 
-for i in 29 32 33 34 35 ; do
+for i in 29 32 33 34 35 36 ; do
   if [ -f /etc/yum.repos.d/cuda-fedora${i}.repo ] ; then
     rm -f /etc/yum.repos.d/cuda-fedora${i}.repo
   fi
@@ -19,6 +19,10 @@ fi
 
 if [ -f /etc/yum.repos.d/cuda-rhel8.repo ] ; then
   rm -f /etc/yum.repos.d/cuda-rhel8.repo
+fi
+
+if [ -f /etc/yum.repos.d/cuda-rhel9.repo ] ; then
+  rm -f /etc/yum.repos.d/cuda-rhel9.repo
 fi
 
 dnf remove -y cuda* 

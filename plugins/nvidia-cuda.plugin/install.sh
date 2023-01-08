@@ -19,7 +19,12 @@ fi
 if [ ${cuda_arch} != x86_64 ] && [ ${ID} == fedora ] ; then
   # Lie on distro origin to install nvidia provided repository for el
   ID=el
-  VERSION_ID=8
+  if [ ${cuda_arch} == sbsa ] ; then
+    VERSION_ID=9
+  else
+  # no ppc64le support yet
+    VERSION_ID=8
+  fi
 fi
 
 
@@ -81,7 +86,18 @@ fedora35_cuda_install() {
   fedora_cuda_check_remove 34
   rhel8_cuda_check_remove
   dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/fedora35/${cuda_arch}/cuda-fedora35.repo
-  # prefer rpmfusion packaged driver on x86_64
+  # prefer rpmfusion packaged driver
+  dnf -y module disable nvidia-driver
+}
+
+fedora36_cuda_install() {
+  fedora_cuda_check_remove 29
+  fedora_cuda_check_remove 32
+  fedora_cuda_check_remove 33
+  fedora_cuda_check_remove 34
+  rhel8_cuda_check_remove
+  dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/fedora36/${cuda_arch}/cuda-fedora36.repo
+  # prefer rpmfusion packaged driver
   dnf -y module disable nvidia-driver
 }
 
@@ -89,8 +105,16 @@ fedora35_cuda_install() {
 el8_cuda_install() {
   fedora_cuda_check_remove 29
   dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/rhel8/${cuda_arch}/cuda-rhel8.repo
-  if [ ${cuda_arch} == x86_64 ] ; then
-    # prefer rpmfusion packaged driver on x86_64
+  if [ ${cuda_arch} != "ppc64le" ] ; then
+    # prefer rpmfusion packaged driver
+    dnf -y module disable nvidia-driver
+  fi
+}
+
+el9_cuda_install() {
+  dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/rhel9/${cuda_arch}/cuda-rhel9.repo
+  if [ ${cuda_arch} != "ppc64le" ] ; then
+    # prefer rpmfusion packaged driver
     dnf -y module disable nvidia-driver
   fi
 }
@@ -103,14 +127,15 @@ fedora_cuda_install(){
     32) fedora32_cuda_install ;;
     33) fedora33_cuda_install ;;
     34) fedora34_cuda_install ;;
-    35|36|37) fedora35_cuda_install ;;
+    35) fedora35_cuda_install ;;
+    36|37|38) fedora36_cuda_install ;;
     *) exit 2 ;;
   esac
 }
 
 el_cuda_install() {
   case ${VERSION_ID} in
-    9*) el8_cuda_install ;;
+    9*) el9_cuda_install ;;
     8*) el8_cuda_install ;;
     *) exit 2 ;;
   esac
