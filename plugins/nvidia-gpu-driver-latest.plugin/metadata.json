@@ -1,0 +1,18 @@
+{
+	"icon": "nvidia-settings",
+	"label": "NVIDIA GPU driver (beta/latest)",
+	"description": "Switch to rpmfusion-nonfree-nvidia-driver-rawhide ",
+	"license": "Proprietary",
+	"category": "Drivers",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s remove.sh "
+		},
+		"status": { "command": "status.sh" }
+	}
+}
