@@ -2,4 +2,4 @@
 
 dnf copr -y enable emixampp/synology-drive 
 
-dnf --refresh install synology-drive
+dnf install -y synology-drive
