@@ -1,0 +1,18 @@
+{
+	"icon": "",
+	"label": "Surface Kernel",
+	"description": "Install kernel package for the Microsoft Surfaces devices",
+	"license": "GPLv2",
+	"category": "Drivers",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s remove.sh "
+		},
+		"status": { "command": "rpm --quiet --query kernel-surface" }
+	}
+}
