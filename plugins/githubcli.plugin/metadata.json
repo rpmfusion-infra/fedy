@@ -3,7 +3,7 @@
 	"label": "GitHub Cli",
 	"description": "GitHub on the command line",
 	"license": "MIT License",
-	"category": "Apps",
+	"category": "Development Tools",
 	"scripts": {
 		"exec": {
 			"label": "Install",
