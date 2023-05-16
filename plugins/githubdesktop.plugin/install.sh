@@ -6,11 +6,11 @@
 cat > /etc/yum.repos.d/GithubDesktop-Fedora.repo << "EOF" 
 [shiftkey]
 name=GitHub Desktop
-baseurl=https://mirror.mwt.me/ghd/rpm
+baseurl=https://rpm.packages.shiftkey.dev/rpm/
 enabled=1
-gpgcheck=0
+gpgcheck=1
 repo_gpgcheck=1
-gpgkey=https://mirror.mwt.me/ghd/gpgkey
+gpgkey=https://rpm.packages.shiftkey.dev/gpg.key
 EOF
 
 dnf install github-desktop -y
