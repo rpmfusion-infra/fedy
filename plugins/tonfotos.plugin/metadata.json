@@ -1,0 +1,18 @@
+{
+	"icon": "tonfotos",
+	"label": "Tonfotos",
+	"description": "Tonfotos simplifies browsing of large photo collections by grouping shots by events, dates, people, locations, and so on.",
+	"license": "Other",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query tonfotos" }
+	}
+}
