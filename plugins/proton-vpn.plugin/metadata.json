@@ -1,0 +1,18 @@
+{
+	"icon": "protonvpn-logo",
+	"label": "Proton VPN",
+	"description": "Official ProtonVPN metapackage that installs protonvpn-gui and protonvpn-cli",
+	"license": "GPL3",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query protonvpn" }
+	}
+}
