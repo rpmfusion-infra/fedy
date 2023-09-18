@@ -101,6 +101,17 @@ fedora36_cuda_install() {
   dnf -y module disable nvidia-driver
 }
 
+fedora37_cuda_install() {
+  fedora_cuda_check_remove 29
+  fedora_cuda_check_remove 32
+  fedora_cuda_check_remove 33
+  fedora_cuda_check_remove 34
+  rhel8_cuda_check_remove
+  dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/fedora37/${cuda_arch}/cuda-fedora37.repo
+  # prefer rpmfusion packaged driver
+  dnf -y module disable nvidia-driver
+}
+
 
 el8_cuda_install() {
   fedora_cuda_check_remove 29
@@ -128,7 +139,8 @@ fedora_cuda_install(){
     33) fedora33_cuda_install ;;
     34) fedora34_cuda_install ;;
     35) fedora35_cuda_install ;;
-    36|37|38) fedora36_cuda_install ;;
+    36) fedora36_cuda_install ;;
+    37|38|39|40) fedora37_cuda_install ;;
     *) exit 2 ;;
   esac
 }
