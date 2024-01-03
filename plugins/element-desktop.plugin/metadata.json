@@ -1,0 +1,18 @@
+{
+	"icon": "io.element.Element",
+	"label": "Element Desktop",
+	"description": "A glossy Matrix collaboration client - desktop",
+	"license": "ASL2.0",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s remove.sh"
+		},
+		"status": { "command": "rpm --quiet --query element-desktop" }
+	}
+}
