@@ -22,6 +22,9 @@ Obsoletes: fedy-plugins < 4.5.1-1
 # Obsoletes introduced in f29
 Obsoletes: fedy-release < 5.0.0-4
 Provides: fedy-release = 5.0.0-4
+# Obsoletes libva-intel-media-driver in f39+
+Obsoletes: libva-intel-media-driver
+Provides: libva-intel-media-driver
 
 Requires: dnf-plugins-core
 Requires: hicolor-icon-theme
