@@ -1,0 +1,19 @@
+{
+	"icon": "java",
+	"label": "Adoptium Temurin JRE/JDK repository",
+	"description": "Repository for the Adoptium Temurin JRE/JDK Java distribution",
+	"license": "GNU General Public License, version 2 with the Classpath Exception",
+	"proprietary": false,
+	"category": "Development Tools",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root rm -f /etc/yum.repos.d/adoptium.repo"
+		},
+		"status": { "command": "sh status.sh" }
+	}
+}
