@@ -7,12 +7,12 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"command": "run-as-root dnf -y groupinstall multimedia --exclude=PackageKit-gstreamer-plugin,libva-intel-media-driver"
+			"command": "run-as-root install.sh"
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root dnf -y remove vlc-plugins-freeworld"
+			"command": "run-as-root remove.sh"
 		},
-		"status": { "command": "rpm --quiet --query vlc-plugins-freeworld" }
+		"status": { "command": "status.sh" }
 	}
 }
