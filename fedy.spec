@@ -39,7 +39,7 @@ Requires: jq
 
 %description
 Fedy lets you install multimedia codecs and additional software that Fedora
-doesn't want to ship, like mp3 support, Adobe Flash, Oracle Java etc., and
+doesn't want to ship, like AAC,H264,H265 support, pre-built software, and
 much more with just a few clicks.
 
 
