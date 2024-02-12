@@ -25,6 +25,7 @@ Provides: fedy-release = 5.0.0-4
 # Obsoletes libva-intel-media-driver in f39+
 Obsoletes: libva-intel-media-driver
 Provides: libva-intel-media-driver
+Obsoletes: libigfxcmrt
 
 Requires: dnf-plugins-core
 Requires: hicolor-icon-theme
