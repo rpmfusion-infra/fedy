@@ -6,4 +6,4 @@ if [[ $(uname -r) =~ ^5.15 ]] ; then
 fi
 
 dnf copr disable kwizart/kernel-longterm-5.15 -y
-dnf remove -y kernel-longterm\*
+dnf remove -y "kernel-longterm-*-5.15.*-200.*

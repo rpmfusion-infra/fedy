@@ -6,4 +6,4 @@ if [[ $(uname -r) =~ ^6.1 ]] ; then
 fi
 
 dnf copr disable kwizart/kernel-longterm-6.1 -y
-dnf remove -y kernel-longterm\*
+dnf remove -y "kernel-longterm-*-6.1.*-200.*"
