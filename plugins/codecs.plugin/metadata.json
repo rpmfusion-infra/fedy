@@ -7,12 +7,12 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"command": "run-as-root install.sh"
+			"command": "run-as-root -s install.sh"
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root remove.sh"
+			"command": "run-as-root -s remove.sh"
 		},
-		"status": { "command": "status.sh" }
+		"status": { "command": "sh status.sh" }
 	}
 }
