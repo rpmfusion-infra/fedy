@@ -20,7 +20,7 @@ elif [ ${ID} != "fedora" -a "${VERSION_ID}" -lt 9 ]; then
   dnf -y install ffmpeg
 elif [ x$ffmpeg_free_test == x0 ] ; then
   dnf -y swap ffmpeg-free ffmpeg --allowerasing
-elif [ x$ffmpeg_free_test == x0 ] ; then
+elif [ x$libavcodec_free_test == x0 ] ; then
   dnf -y swap libavcodec-free ffmpeg-libs --allowerasing
 else
   dnf -y install ffmpeg
