@@ -13,6 +13,6 @@
 			"label": "Remove",
 			"command": "run-as-root -s remove.sh "
 		},
-		"status": { "command": "rpm --quiet --query kernel-longterm" }
+		"status": { "command": "status.sh" }
 	}
 }
