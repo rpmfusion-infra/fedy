@@ -1,0 +1,18 @@
+{
+	"icon": "tailscale",
+	"label": "Tailscale",
+	"description": "Tailscale makes creating software-defined networks easy: securely connecting users, services, and devices.",
+	"license": "Proprietary",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query tailscale" }
+	}
+}
