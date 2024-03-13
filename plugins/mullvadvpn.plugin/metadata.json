@@ -1,0 +1,18 @@
+{
+	"icon": "mullvad-vpn",
+	"label": "Mullvad VPN",
+	"description": "Mullvad is a commercial VPN service based in Sweden.",
+	"license": "Proprietary",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query mullvad-vpn" }
+	}
+}
