@@ -4,6 +4,7 @@
 # http://rpm.anydesk.com/howto.html
 
 cat > /etc/yum.repos.d/tailscale.repo << "EOF" 
+[tailscale]
 name=Tailscale stable
 baseurl=https://pkgs.tailscale.com/stable/fedora/$basearch
 enabled=1
