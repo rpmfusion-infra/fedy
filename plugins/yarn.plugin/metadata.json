@@ -1,7 +1,7 @@
 {
 	"icon": "yarn",
 	"label": "yarn",
-	"description": "arn is a modern package manager split into various packages for NodeJS",
+	"description": "Yarn is a modern package manager split into various packages for NodeJS",
 	"license": "BSD 2-Clause License",
 	"category": "Apps",
 	"scripts": {
