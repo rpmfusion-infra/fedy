@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Instructions adopted from
-# http://rpm.anydesk.com/howto.html
-
 cat > /etc/yum.repos.d/tailscale.repo << "EOF" 
 [tailscale]
 name=Tailscale stable
