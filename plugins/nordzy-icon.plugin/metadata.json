@@ -1,0 +1,18 @@
+{
+	"icon": "nordzy",
+	"label": "Nordzy Icons",
+	"description": "Nordzy is a free and open source icon theme for Linux desktops using the Nord color palette from Arctic Ice Studio and based on WhiteSur Icon Theme and Numix Icon Theme",
+	"license": "GPLv3",
+	"category": "Themes",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query nordzy-icon" }
+	}
+}
