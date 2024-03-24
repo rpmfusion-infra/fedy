@@ -1,0 +1,18 @@
+{
+	"icon": "teams-for-linux",
+	"label": "Teams for Linux",
+	"description": "Unofficial Microsoft Teams client for Linux using Electron. It uses the Web App and wraps it as a standalone application using Electron.",
+	"license": "GPLv3",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query teams-for-linux" }
+	}
+}
