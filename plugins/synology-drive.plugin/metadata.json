@@ -1,6 +1,6 @@
 {
 	"icon": "synology-drive",
-	"label": "Sybology Drive",
+	"label": "Synology Drive",
 	"description": "Drive for PC, the desktop utility of the DSM add-on package, Drive, allows you to sync and share files owned by you or shared by others between a centralized Synology NAS and multiple client computers.",
 	"license": "Proprietary",
 	"category": "Apps",
