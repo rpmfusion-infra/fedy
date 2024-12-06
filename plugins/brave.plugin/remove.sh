@@ -11,4 +11,8 @@ if [ -f /etc/yum.repos.d/brave-browser-rpm-release.s3.brave.com_x86_64_.repo ] ;
         rm -f /etc/yum.repos.d/brave-browser-rpm-release.s3.brave.com_x86_64_.repo
 fi
 
+if [ -f /etc/yum.repos.d/brave-browser.repo ] ; then
+        rm -f /etc/yum.repos.d/brave-browser.repo
+fi
+
 dnf -y remove brave brave-browser
