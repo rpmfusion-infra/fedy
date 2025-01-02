@@ -6,7 +6,7 @@
 
 ### Introduction
 
-Fedy lets you install multimedia codecs and additional software that Fedora [doesn't want to ship](http://fedoraproject.org/wiki/Forbidden_items?rd=ForbiddenItems), like H264 support, Adobe Flash, Oracle Java etc., and much more with just a few clicks.
+Fedy lets you install multimedia codecs and additional software that Fedora [doesn't want to ship](https://docs.fedoraproject.org/en-US/legal/), like H264 support, google-chrome, pre-built applications from 3rd part vendors and much more with just a few clicks.
 
 ### Installation
 
@@ -24,7 +24,7 @@ sudo dnf copr enable kwizart/fedy
 # Install fedy
 sudo dnf install fedy -y
 
-# For EL8 (RHEL, CentOS and derivates), the support is still experimental (please report issues)
+# For Enterprise Linux (RHEL, CentOS and derivates), the support is still experimental (please report issues)
 
 
 ```
