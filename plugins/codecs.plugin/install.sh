@@ -26,4 +26,4 @@ else
   dnf -y install ffmpeg
 fi
 
-dnf -y groupinstall multimedia --exclude=PackageKit-gstreamer-plugin,libva-intel-media-driver
+dnf -y install @multimedia --exclude=PackageKit-gstreamer-plugin,libva-intel-media-driver
