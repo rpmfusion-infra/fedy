@@ -3,7 +3,7 @@
 # Instructions adopted from
 # https://brave-browser.readthedocs.io/en/latest/installing-brave.html#linux
 
-cat > /etc/yum.repos.d/brave-browser.repo << "EOF" 
+cat > /etc/yum.repos.d/brave-browser.repo << "EOF"
 [brave-browser]
 name=Brave Browser
 enabled=1
