@@ -1,5 +1,5 @@
 Name:           fedy
-Version:        5.0.51
+Version:        5.0.52
 Release:        %autorelease
 Summary:        Install codecs and additional software
 
