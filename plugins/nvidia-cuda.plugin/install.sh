@@ -121,6 +121,13 @@ fedora39_cuda_install() {
   dnf -y module disable nvidia-driver
 }
 
+fedora41_cuda_install() {
+  dnf config-manager addrepo --from-repofile=https://developer.download.nvidia.com/compute/cuda/repos/fedora39/${cuda_arch}/cuda-fedora39.repo
+  # prefer rpmfusion packaged driver
+  dnf -y module disable nvidia-driver
+  dnf -y install gcc13
+}
+
 
 
 el8_cuda_install() {
@@ -152,6 +159,7 @@ fedora_cuda_install(){
     36) fedora36_cuda_install ;;
     37) fedora37_cuda_install ;;
     38|39|40) fedora39_cuda_install ;;
+    41|42) fedora41_cuda_install ;;
     *) exit 2 ;;
   esac
 }
