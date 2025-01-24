@@ -123,11 +123,13 @@ fedora39_cuda_install() {
 }
 
 fedora41_cuda_install() {
+  fedora_cuda_check_remove 39
   dnf config-manager addrepo --from-repofile=https://developer.download.nvidia.com/compute/cuda/repos/fedora41/${cuda_arch}/cuda-fedora41.repo
   # prefer rpmfusion packaged driver
   dnf -y module disable nvidia-driver
   dnf install -y xorg-x11-drv-nvidia-cuda
   dnf mark user xorg-x11-drv-nvidia-cuda
+  dnf config-manager setopt cuda-fedora41-${cuda_arch}.exclude=nvidia-driver,nvidia-modprobe,nvidia-persistenced,nvidia-settings,nvidia-libXNVCtrl,nvidia-xconfig
 }
 
 
