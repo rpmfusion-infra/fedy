@@ -119,13 +119,15 @@ fedora39_cuda_install() {
   dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/fedora39/${cuda_arch}/cuda-fedora39.repo
   # prefer rpmfusion packaged driver
   dnf -y module disable nvidia-driver
+  dnf install -y xorg-x11-drv-nvidia-cuda
 }
 
 fedora41_cuda_install() {
-  dnf config-manager addrepo --from-repofile=https://developer.download.nvidia.com/compute/cuda/repos/fedora39/${cuda_arch}/cuda-fedora39.repo
+  dnf config-manager addrepo --from-repofile=https://developer.download.nvidia.com/compute/cuda/repos/fedora41/${cuda_arch}/cuda-fedora41.repo
   # prefer rpmfusion packaged driver
   dnf -y module disable nvidia-driver
-  dnf -y install gcc13
+  dnf install -y xorg-x11-drv-nvidia-cuda
+  dnf mark user xorg-x11-drv-nvidia-cuda
 }
 
 
@@ -145,6 +147,7 @@ el9_cuda_install() {
     # prefer rpmfusion packaged driver
     dnf -y module disable nvidia-driver
   fi
+  dnf install -y xorg-x11-drv-nvidia-cuda
 }
 
 
@@ -180,4 +183,4 @@ case ${ID} in
 esac
 
 
-dnf install -y cuda
+dnf install -y cuda-toolkit
