@@ -1,6 +1,6 @@
 {
 	"icon": "applications-development",
-	"label": "GNOME developement tools",
+	"label": "GNOME development tools",
 	"description": "Everything you need to start developing software for GNOME.",
 	"category": "Development Tools",
 	"scripts": {
