@@ -7,7 +7,7 @@ if [ -f /etc/os-release ] ; then
 fi
 
 # NVIDIA Rawhide driver are currently only supported on f35+
-if [ ${FEDORA_ID} -ge 35 ] ; then
+if [[ ${VERSION_ID:-0} -ge 35 && ${ID} == "fedora" ]] ; then
   dnf copr enable kwizart/nvidia-driver-rawhide -y
   dnf install -y xorg-x11-drv-nvidia akmod-nvidia
 fi
