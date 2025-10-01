@@ -132,6 +132,15 @@ fedora41_cuda_install() {
   dnf config-manager setopt cuda-fedora41-${cuda_arch}.exclude=nvidia-driver,nvidia-modprobe,nvidia-persistenced,nvidia-settings,nvidia-libXNVCtrl,nvidia-xconfig
 }
 
+fedora42_cuda_install() {
+  fedora_cuda_check_remove 41
+  dnf config-manager addrepo --from-repofile=https://developer.download.nvidia.com/compute/cuda/repos/fedora42/${cuda_arch}/cuda-fedora42.repo
+  # prefer rpmfusion packaged driver
+  dnf install -y xorg-x11-drv-nvidia-cuda gcc14-c++
+  dnf mark user xorg-x11-drv-nvidia-cuda
+  dnf config-manager setopt cuda-fedora42-${cuda_arch}.exclude=nvidia-driver,nvidia-modprobe,nvidia-persistenced,nvidia-settings,nvidia-libXNVCtrl,nvidia-xconfig
+}
+
 
 
 el8_cuda_install() {
@@ -145,13 +154,16 @@ el8_cuda_install() {
 
 el9_cuda_install() {
   dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/rhel9/${cuda_arch}/cuda-rhel9.repo
-  if [ ${cuda_arch} != "ppc64le" ] ; then
-    # prefer rpmfusion packaged driver
-    dnf -y module disable nvidia-driver
-  fi
+  dnf -y module disable nvidia-driver
   dnf install -y xorg-x11-drv-nvidia-cuda
+  dnf mark user xorg-x11-drv-nvidia-cuda
 }
 
+el10_cuda_install() {
+  dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/rhel10/${cuda_arch}/cuda-rhel10.repo
+  dnf install -y xorg-x11-drv-nvidia-cuda
+  dnf mark user xorg-x11-drv-nvidia-cuda
+}
 
 # Distro install
 fedora_cuda_install(){
@@ -164,13 +176,15 @@ fedora_cuda_install(){
     36) fedora36_cuda_install ;;
     37) fedora37_cuda_install ;;
     38|39|40) fedora39_cuda_install ;;
-    41|42) fedora41_cuda_install ;;
+    41) fedora41_cuda_install ;;
+    42|43|44) fedora42_cuda_install ;;
     *) exit 2 ;;
   esac
 }
 
 el_cuda_install() {
   case ${VERSION_ID} in
+    10*) el10_cuda_install ;;
     9*) el9_cuda_install ;;
     8*) el8_cuda_install ;;
     *) exit 2 ;;
