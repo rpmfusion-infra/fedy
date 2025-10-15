@@ -14,7 +14,7 @@ Installation instructions can be found on https://github.com/rpmfusion-infra/fed
 
 _Do not follow instructions from any other source!_
 
-```
+```sh
 # RPM Fusion
 sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
@@ -23,11 +23,16 @@ sudo dnf copr enable kwizart/fedy
 
 # Install fedy
 sudo dnf install fedy -y
+```
 
+<!--
+
+```sh
 # For Enterprise Linux (RHEL, CentOS and derivates), the support is still experimental (please report issues)
 
-
 ```
+
+-->
 
 ### Usage
 
@@ -47,10 +52,8 @@ Have a look at the existing plugins to know more about how to write plugins for 
 
 Source code is publicly available on GitHub, and automatically cloned to GitLab:
 
-
-```
-
-$ git clone https://github.com/rpmfusion-infra/fedy
+```sh
+git clone https://github.com/rpmfusion-infra/fedy
 ```
 
 ### Bugs and feature requests
