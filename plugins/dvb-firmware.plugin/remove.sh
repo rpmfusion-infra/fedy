@@ -1,3 +1,3 @@
 #!/bin/bash
 
-dnf remove -y dvb-firmware
+dnf remove -y dvb-firmware-nonfree
