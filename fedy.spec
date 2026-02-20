@@ -24,7 +24,7 @@ Obsoletes: fedy-release < 5.0.0-4
 Provides: fedy-release = 5.0.0-4
 
 # Mostly needed for all 3rd part repos
-%if 0%{?fedora} || 0%{?rhel} > 10
+%if 0%{?fedora}
 Requires: dnf5-plugins
 Requires: libdnf5-plugin-expired-pgp-keys
 %else
