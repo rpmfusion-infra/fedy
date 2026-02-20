@@ -23,7 +23,13 @@ Obsoletes: fedy-plugins < 4.5.1-1
 Obsoletes: fedy-release < 5.0.0-4
 Provides: fedy-release = 5.0.0-4
 
+# Mostly needed for all 3rd part repos
+%if 0%{?fedora} || 0%{?rhel} > 10
+Requires: dnf5-plugins
+Requires: libdnf5-plugin-expired-pgp-keys
+%else
 Requires: dnf-plugins-core
+%endif
 Requires: hicolor-icon-theme
 Requires: gjs
 Requires: gtk3
