@@ -12,7 +12,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
 BuildRequires:  make
 
-%global obsolete_file L2V0Yy95dW0ucmVwb3MuZC91bml0ZWRycG1zLnJlcG8K
+%global obsolete_file L2V0Yy95dW0ucmVwb3MuZC9taWNyb3NvZnQtZWRnZS5yZXBvCg==
 
 # Obsoletes introduced in f26
 Provides: fedy-core = %{version}-%{release}
