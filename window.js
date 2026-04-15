@@ -200,7 +200,12 @@ export class FedyWindow {
             }
         }
 
-        this._searchScroll = new Gtk.ScrolledWindow({ child: this._searchList, visible: false });
+        this._searchScroll = new Gtk.ScrolledWindow({
+            child: this._searchList,
+            visible: false,
+            vexpand: true,
+            hexpand: true,
+        });
     }
 
     // --- Search ---
