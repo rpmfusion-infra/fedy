@@ -1,14 +1,11 @@
 #!/bin/bash
 
-cat > /etc/yum.repos.d/mullvad-vpn.repo << "EOF"
-[mullvad-stable]
-name=Mullvad VPN
-baseurl=https://repository.mullvad.net/rpm/stable/$basearch
-type=rpm
-enabled=1
-gpgcheck=1
-gpgkey=https://repository.mullvad.net/rpm/mullvad-keyring.asc
-EOF
+# https://mullvad.net/en/download/vpn/linux
+if dnf5 --version &>/dev/null; then
+  dnf5 config-manager addrepo --from-repofile=https://repository.mullvad.net/rpm/stable/mullvad.repo
+else
+  dnf4 config-manager --add-repo https://repository.mullvad.net/rpm/stable/mullvad.repo
+fi
 
 dnf install mullvad-vpn -y
 
