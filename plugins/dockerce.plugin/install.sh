@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if dnf5 --version &>/dev/null; then
-  dnf config-manager addrepo --from-repofile=https://download.docker.com/linux/fedora/docker-ce.repo
+  dnf5 config-manager addrepo --from-repofile=https://download.docker.com/linux/fedora/docker-ce.repo
 else
-  dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo -y
+  dnf4 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo -y
 fi
 
 dnf install docker-ce -y
