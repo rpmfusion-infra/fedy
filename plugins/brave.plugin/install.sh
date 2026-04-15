@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Instructions adopted from
-# https://brave-browser.readthedocs.io/en/latest/installing-brave.html#linux
+# https://brave.com/linux/
 
 cat > /etc/yum.repos.d/brave-browser.repo << "EOF"
 [brave-browser]

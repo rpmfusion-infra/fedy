@@ -166,14 +166,22 @@ el8_cuda_install() {
 }
 
 el9_cuda_install() {
-  dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/rhel9/${cuda_arch}/cuda-rhel9.repo
+  if dnf5 --version &>/dev/null; then
+    dnf config-manager addrepo --from-repofile=https://developer.download.nvidia.com/compute/cuda/repos/rhel9/${cuda_arch}/cuda-rhel9.repo
+  else
+    dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/rhel9/${cuda_arch}/cuda-rhel9.repo
+  fi
   dnf -y module disable nvidia-driver
   dnf install -y xorg-x11-drv-nvidia-cuda
   dnf mark user xorg-x11-drv-nvidia-cuda
 }
 
 el10_cuda_install() {
-  dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/rhel10/${cuda_arch}/cuda-rhel10.repo
+  if dnf5 --version &>/dev/null; then
+    dnf config-manager addrepo --from-repofile=https://developer.download.nvidia.com/compute/cuda/repos/rhel10/${cuda_arch}/cuda-rhel10.repo
+  else
+    dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/rhel10/${cuda_arch}/cuda-rhel10.repo
+  fi
   dnf install -y xorg-x11-drv-nvidia-cuda
   dnf mark user xorg-x11-drv-nvidia-cuda
 }

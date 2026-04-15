@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Instructions adopted from
-# http://rpm.anydesk.com/howto.html
+# https://protonvpn.com/support/official-linux-vpn-fedora
 
 cat > /etc/yum.repos.d/protonvpn.repo << "EOF" 
 #

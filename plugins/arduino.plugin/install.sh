@@ -11,7 +11,7 @@ fi
 CACHEDIR="/var/cache/fedy/arduino";
 mkdir -p "$CACHEDIR"
 cd "$CACHEDIR"
-VERSION=$(wget "https://www.arduino.cc/en/Main/ReleaseNotes" -O - | grep -Po "ARDUINO [0-9.]{5}" | head -n 1 | cut -c 9-)
+VERSION=$(wget -qO- "https://api.github.com/repos/arduino/Arduino/releases/latest" | grep -Po '"tag_name": "\K[0-9.]+')
 FILE=arduino-$VERSION-linux$ARCH.tar.xz
 URL=https://downloads.arduino.cc/$FILE
 
