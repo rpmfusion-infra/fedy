@@ -13,6 +13,7 @@ export class FedyWindow {
         this.plugins = plugins;
         this.commandRunner = commandRunner;
         this._listboxes = [];
+        this._allRows = [];
 
         this._window = new Gtk.ApplicationWindow({
             application,
@@ -23,6 +24,7 @@ export class FedyWindow {
 
         this._buildHeaderBar();
         this._buildPluginStack();
+        this._buildSearchResults();
         this._buildSearch();
         this._assembleLayout();
 
@@ -183,6 +185,24 @@ export class FedyWindow {
         return image;
     }
 
+    // --- Global search results list (all plugins, flat) ---
+
+    _buildSearchResults() {
+        this._searchList = new Gtk.ListBox({ selection_mode: Gtk.SelectionMode.NONE });
+        this._searchList.add_css_class('view');
+        this._searchList.set_sort_func((a, b) => a._sortKey.localeCompare(b._sortKey));
+
+        // Add a row for every plugin across all categories
+        for (const category of Object.keys(this.plugins).sort()) {
+            for (const name in this.plugins[category]) {
+                const plugin = this.plugins[category][name];
+                this._addPluginRow(this._searchList, plugin);
+            }
+        }
+
+        this._searchScroll = new Gtk.ScrolledWindow({ child: this._searchList, visible: false });
+    }
+
     // --- Search ---
 
     _buildSearch() {
@@ -192,18 +212,27 @@ export class FedyWindow {
 
         this._searchEntry.connect('search-changed', (entry) => {
             const text = entry.get_text().toLowerCase();
-            const filterFn = text
-                ? (row) => row._searchText.includes(text)
-                : null;
 
-            for (const list of this._listboxes) {
-                list.set_filter_func(filterFn);
+            if (text) {
+                // Show flat search results across all categories
+                this._stack.set_visible(false);
+                this._searchScroll.set_visible(true);
+                this._searchList.set_filter_func((row) => row._searchText.includes(text));
+            } else {
+                // Back to category tabs
+                this._searchScroll.set_visible(false);
+                this._stack.set_visible(true);
+                this._searchList.set_filter_func(null);
             }
         });
 
         const searchButton = new Gtk.ToggleButton({ icon_name: 'edit-find-symbolic' });
         searchButton.connect('toggled', (btn) => {
             this._searchBar.set_search_mode(btn.get_active());
+            // Reset when search is closed
+            if (!btn.get_active()) {
+                this._searchEntry.set_text('');
+            }
         });
         this._headerbar.pack_end(searchButton);
     }
@@ -212,6 +241,7 @@ export class FedyWindow {
         const vbox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL });
         vbox.append(this._searchBar);
         vbox.append(this._stack);
+        vbox.append(this._searchScroll);
         this._window.set_child(vbox);
     }
 
