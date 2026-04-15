@@ -1,6 +1,7 @@
 // Main application window - plugin list UI with search, actions, and notifications
 
 import GLib from 'gi://GLib';
+import Gdk from 'gi://Gdk?version=4.0';
 import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk?version=4.0';
 import Notify from 'gi://Notify';
@@ -15,11 +16,18 @@ export class FedyWindow {
         this._listboxes = [];
         this._allRows = [];
 
+        // Size window to 75% of the primary monitor
+        const display = Gdk.Display.get_default();
+        const monitor = display.get_monitors().get_item(0);
+        const geom = monitor.get_geometry();
+        const width = Math.round(geom.width * 0.75);
+        const height = Math.round(geom.height * 0.75);
+
         this._window = new Gtk.ApplicationWindow({
             application,
             title: APP_NAME,
-            default_width: 800,
-            default_height: 600,
+            default_width: width,
+            default_height: height,
         });
 
         this._buildHeaderBar();
