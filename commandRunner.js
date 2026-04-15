@@ -31,7 +31,8 @@ export class CommandRunner {
 
         let envp = GLib.get_environ();
         const path = GLib.environ_getenv(envp, 'PATH');
-        envp = GLib.environ_setenv(envp, 'PATH', `${path}:${this.appDir}/bin`, true);
+        // Include app bin/ and plugin working dir so scripts like status.sh are found
+        envp = GLib.environ_setenv(envp, 'PATH', `${path}:${this.appDir}/bin:${workingDir}`, true);
 
         let pid;
         try {
@@ -41,7 +42,7 @@ export class CommandRunner {
                 null
             );
         } catch (e) {
-            console.error(`Failed to spawn: ${e.message}`);
+            console.log(`Failed to spawn: ${e.message}`);
             callback(null, 1, e);
             return;
         }
