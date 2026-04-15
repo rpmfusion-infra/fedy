@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cd $(dirname "${BASH_SOURCE[0]}") && ./app.js $@
+cd "$(dirname "${BASH_SOURCE[0]}")" && ./app.js "$@"
