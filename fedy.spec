@@ -32,7 +32,7 @@ Requires: dnf-plugins-core
 %endif
 Requires: hicolor-icon-theme
 Requires: gjs
-Requires: gtk3
+Requires: gtk4
 Requires: libnotify
 Requires: sed
 Requires: tar

@@ -1,98 +1,87 @@
-const Lang = imports.lang;
+// Plugin data model and repository for CLI operations
 
-var PluginStatus = new Lang.Class({
-    Name: "PluginStatus",
-
-    _init(code, action, isMalicious, maliciousPart, maliciousDescription) {
+export class PluginStatus {
+    constructor(code, action, isMalicious, maliciousPart, maliciousDescription) {
         this.code = code;
         this.action = action;
         this.isMalicious = isMalicious;
         this.maliciousPart = maliciousPart;
         this.maliciousDescription = maliciousDescription;
-    },
+    }
 
     isPluginEnable() {
         return this.code === 0;
     }
-});
+}
 
-var Plugin = new Lang.Class({
-    Name: "Plugin",
-
-    _init(name, plugin) {
+export class Plugin {
+    constructor(name, raw) {
         this.name = name;
-        this.label = plugin.label;
-        this.description = plugin.description;
-        this.license = plugin.license;
-        this.category = plugin.category;
-        this.path = plugin.path;
-        this.icon = plugin.icon;
-        if (typeof plugin.scripts !== "undefined") {
+        this.label = raw.label;
+        this.description = raw.description;
+        this.license = raw.license;
+        this.category = raw.category;
+        this.path = raw.path;
+        this.icon = raw.icon;
+
+        if (raw.scripts) {
             this.scripts = {
-                exec: plugin.scripts.exec,
-                undo: plugin.scripts.undo,
-                status: plugin.scripts.status
+                exec: raw.scripts.exec,
+                undo: raw.scripts.undo,
+                status: raw.scripts.status,
             };
         }
     }
-});
+}
 
-var PluginRepository = new Lang.Class({
-    Name: "PluginRepository",
+// Provides plugin lookup and async status/command execution for CLI
+export class PluginRepository {
+    constructor(rawPlugins, commandRunner) {
+        this.commandRunner = commandRunner;
+        this._categorized = rawPlugins;
 
-    _init(fedy) {
-        this.fedy = fedy;
-        this.fedy._loadConfig();
-        this.fedy._loadPlugins();
-
+        // Build flat name -> Plugin map
         this.plugins = {};
-        for (let category in this.fedy._plugins) {
-            if (this.fedy._plugins.hasOwnProperty(category)) {
-                this._toPlugin(this.fedy._plugins[category]);
-                this.plugins = Object.assign({}, this.plugins, this.fedy._plugins[category]);
+        for (const category in rawPlugins) {
+            for (const name in rawPlugins[category]) {
+                this.plugins[name] = new Plugin(name, rawPlugins[category][name]);
             }
         }
-    },
+    }
 
     listCategories() {
-        return Object.keys(this.fedy._plugins).sort();
-    },
+        return Object.keys(this._categorized).sort();
+    }
 
     listByCategory(category) {
-        return Object.values(this.fedy._plugins[category]);
-    },
+        return Object.keys(this._categorized[category]).map(name => this.plugins[name]);
+    }
 
-    getByName(pluginName) {
-        return this.plugins.hasOwnProperty(pluginName) ? this.plugins[pluginName] : {name: pluginName};
-    },
+    getByName(name) {
+        return this.plugins[name] || { name };
+    }
 
+    // Resolve plugin status asynchronously
     promiseOfPluginStatus(plugin) {
         return new Promise((resolve) => {
-            if (typeof plugin.label === "undefined") {
+            if (typeof plugin.label === 'undefined') {
                 resolve(new PluginStatus());
+                return;
             }
 
-            this.fedy._getPluginStatus(plugin, (action, statusCode) => {
-                const [ isMalicious, maliciousPart, description ] = this.fedy._scanMaliciousCommand(plugin, action.command),
-                    pluginStatus = new PluginStatus(statusCode, action, isMalicious, maliciousPart, description);
-                resolve(pluginStatus);
+            this.commandRunner.getPluginStatus(plugin, (action, statusCode) => {
+                const [isMalicious, part, desc] = this.commandRunner.scanMalicious(
+                    plugin.path, action.command
+                );
+                resolve(new PluginStatus(statusCode, action, isMalicious, part, desc));
             });
         });
-    },
+    }
 
+    // Run a command and resolve with its exit code
     promiseOfCommandStatus(path, command) {
         return new Promise((resolve) => {
-            this.fedy._queueCommand(path, command, (pid, commandStatusCode) => {
-                resolve(commandStatusCode);
-            });
+            this.commandRunner.enqueue(path, command, (_pid, code) => resolve(code));
         });
-    },
-
-    _toPlugin(plugins) {
-        Object.keys(plugins)
-            .forEach(pluginName => {
-                plugins[pluginName] = new Plugin(pluginName, plugins[pluginName]);
-            });
     }
-});
-
+}
