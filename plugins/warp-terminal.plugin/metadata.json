@@ -1,0 +1,18 @@
+{
+	"icon": "warp-terminal",
+	"label": "Warp Terminal",
+	"description": "Modern Rust-based terminal with AI integration.",
+	"license": "Proprietary",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query warp-terminal" }
+	}
+}
