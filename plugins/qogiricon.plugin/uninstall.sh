@@ -1,4 +1,4 @@
 #!/bin/bash
 
-dnf copr -y mzink/Utils 
+dnf copr -y disable niohiani/MiscellanyMarketPlace
 dnf -y remove qogir-icon-theme

@@ -1,5 +1,5 @@
 #!/bin/bash
 
-dnf copr enable rubemlrm/nordzy-icon
+dnf copr enable rubemlrm/nordzy-icon -y
 dnf install -y nordzy-icon
 

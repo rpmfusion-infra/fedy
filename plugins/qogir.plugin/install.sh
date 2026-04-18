@@ -1,4 +1,4 @@
 #!/bin/bash
 
-dnf copr enable mzink/Utils -y
+dnf copr enable niohiani/MiscellanyMarketPlace -y
 dnf install -y qogir-theme
