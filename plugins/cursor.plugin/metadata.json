@@ -3,7 +3,7 @@
 	"label": "Cursor",
 	"description": "AI-first code editor based on VS Code.",
 	"license": "Proprietary",
-	"category": "Apps",
+	"category": "Development Tools",
 	"scripts": {
 		"exec": {
 			"label": "Install",
