@@ -1,16 +1,21 @@
 #!/bin/bash
 
-dnf -y install  libgcc.i686 glibc.i686 ncurses-libs.i686 zlib.i686 bzip2-libs.i686 glibc-devel.i686 libstdc++.i686 libX11-devel.i686 libXrender.i686 libXrandr.i686
+dnf -y install alsa-lib freetype libXrender libXtst which
 
-CACHEDIR="/var/cache/fedy/androidstudio";
-
+CACHEDIR="/var/cache/fedy/androidstudio"
 mkdir -p "$CACHEDIR"
 cd "$CACHEDIR"
 
-URL=$(wget "http://developer.android.com/sdk/index.html" -O - | grep -o "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/[0-9.]*/android-studio-[0-9.]*-linux.tar.gz" | head -n 1)
+URL=$(curl -s "https://developer.android.com/studio" | grep -oP 'https://dl\.google\.com/dl/android/studio/ide-zips/[^"]+linux\.tar\.gz' | head -n 1)
+
+if [[ -z "$URL" ]]; then
+	echo "Error: Could not find Android Studio download URL"
+	exit 1
+fi
+
 FILE=${URL##*/}
 
-wget -c "$URL" -O "$FILE"
+curl -L -C - -o "$FILE" "$URL"
 
 if [[ ! -f "$FILE" ]]; then
 	exit 1
@@ -19,12 +24,12 @@ fi
 rm -rf "/opt/android-studio"
 tar xf "$FILE" -C "/opt/"
 
-ln -sf "/opt/android-studio/bin/studio.sh" "/usr/bin/android-studio"
+ln -sf "/opt/android-studio/bin/studio" "/usr/bin/android-studio"
 
-xdg-icon-resource install --novendor --size 128 "/opt/android-studio/bin/studio.png" "android-studio"
+install -Dm644 "/opt/android-studio/bin/studio.png" "/usr/share/pixmaps/android-studio.png"
 gtk-update-icon-cache -f -t /usr/share/icons/hicolor
 
-cat <<EOF | tee /usr/share/applications/android-studio.desktop
+cat <<EOF > /usr/share/applications/android-studio.desktop
 [Desktop Entry]
 Name=Android Studio
 Icon=android-studio
