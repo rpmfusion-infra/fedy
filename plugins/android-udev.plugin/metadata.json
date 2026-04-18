@@ -1,0 +1,18 @@
+{
+	"icon": "",
+	"label": "Android udev rules",
+	"description": "Install udev rules for Android devices to enable ADB and Fastboot access without root",
+	"license": "GPLv3",
+	"category": "Drivers",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm --quiet --query android-udev-rules" }
+	}
+}
