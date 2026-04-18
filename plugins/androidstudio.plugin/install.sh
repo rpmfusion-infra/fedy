@@ -6,7 +6,7 @@ CACHEDIR="/var/cache/fedy/androidstudio"
 mkdir -p "$CACHEDIR"
 cd "$CACHEDIR"
 
-URL=$(curl -s "https://developer.android.com/studio" | grep -oP 'https://dl\.google\.com/dl/android/studio/ide-zips/[^"]+linux\.tar\.gz' | head -n 1)
+URL=$(curl -s "https://developer.android.com/studio" | grep -oP 'https://[^"]+android/studio/ide-zips/[^"]+linux\.tar\.gz' | head -n 1)
 
 if [[ -z "$URL" ]]; then
 	echo "Error: Could not find Android Studio download URL"
