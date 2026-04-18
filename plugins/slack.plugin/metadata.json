@@ -11,7 +11,7 @@
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "run-as-root dnf -y erase slack"
+			"command": "run-as-root dnf -y erase slack && run-as-root rm -f /etc/yum.repos.d/slack.repo"
 		},
 		"status": { "command": "rpm --quiet --query slack" }
 	}
