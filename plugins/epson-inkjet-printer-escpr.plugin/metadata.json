@@ -1,0 +1,18 @@
+{
+	"icon": "printer",
+	"label": "Epson Inkjet Printer Driver (ESC/P-R)",
+	"description": "CUPS filter and PPD files for a wide range of Epson inkjet printers using the ESC/P-R raster command protocol. Covers older Stylus/Artisan/WorkForce models not supported by ESC/P-R 2.",
+	"license": "GPL-2.0+",
+	"category": "Drivers",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm -q epson-inkjet-printer-escpr" }
+	}
+}

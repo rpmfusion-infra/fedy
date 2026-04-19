@@ -1,0 +1,18 @@
+{
+	"icon": "printer",
+	"label": "Epson Inkjet Printer Driver 2 (ESC/P-R 2)",
+	"description": "Second-generation ESC/P-R CUPS filter and PPD files for newer Epson inkjet and EcoTank printers. Supports duplex, high-resolution output, and extra media types including Velvet Fine Art Paper.",
+	"license": "LGPL-2.0+",
+	"category": "Drivers",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm -q epson-inkjet-printer-escpr2" }
+	}
+}
