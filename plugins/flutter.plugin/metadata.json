@@ -1,0 +1,18 @@
+{
+	"icon": "flutter",
+	"label": "Flutter",
+	"description": "Google's UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase. Includes Dart SDK.",
+	"license": "BSD-3-Clause",
+	"category": "Development Tools",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm -q flutter" }
+	}
+}
