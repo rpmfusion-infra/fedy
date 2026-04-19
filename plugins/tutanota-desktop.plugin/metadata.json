@@ -1,0 +1,18 @@
+{
+	"icon": "tutanota-desktop",
+	"label": "Tuta Mail (Tutanota) Desktop",
+	"description": "Official desktop client for the end-to-end encrypted e-mail service Tuta / Tutanota. Upstream signed AppImage, repackaged from maltekiefer/fedora-extras COPR.",
+	"license": "GPL-3.0+",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm -q tutanota-desktop" }
+	}
+}
