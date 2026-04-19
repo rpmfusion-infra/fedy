@@ -1,0 +1,18 @@
+{
+	"icon": "proton-authenticator",
+	"label": "Proton Authenticator",
+	"description": "Free and open-source 2FA app from Proton with secure sync and backup across devices. Installed from maltekiefer/fedora-extras COPR.",
+	"license": "GPL-3.0+",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm -q proton-authenticator" }
+	}
+}
