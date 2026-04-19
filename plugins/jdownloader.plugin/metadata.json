@@ -1,0 +1,18 @@
+{
+	"icon": "jdownloader",
+	"label": "JDownloader 2",
+	"description": "Java-based download manager for one-click hosting sites like Rapidshare, MEGA, and many others. Self-updates at first launch. Installed from maltekiefer/fedora-extras COPR.",
+	"license": "GPL-3.0+",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm -q jdownloader2" }
+	}
+}
