@@ -1,0 +1,18 @@
+{
+	"icon": "obsidian",
+	"label": "Obsidian",
+	"description": "A powerful knowledge base on top of a local folder of plain text Markdown files. Upstream amd64 .deb repackaged from maltekiefer/fedora-extras COPR.",
+	"license": "Proprietary",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm -q obsidian" }
+	}
+}
