@@ -1,0 +1,18 @@
+{
+	"icon": "printer",
+	"label": "Brother MFC-L3750CDW Driver",
+	"description": "LPR and CUPS filter/PPD for the Brother MFC-L3750CDW color laser multifunction printer. Repackages the upstream i386 .deb; requires glibc(x86-32). Installs the PPD and CUPS filter; add the printer afterwards via CUPS.",
+	"license": "GPL-2.0-or-later AND Brother-EULA",
+	"category": "Drivers",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s uninstall.sh"
+		},
+		"status": { "command": "rpm -q brother-mfc-l3750cdw" }
+	}
+}
