@@ -1,32 +1,34 @@
-const GLib = imports.gi.GLib,
-    Lang = imports.lang;
+// CLI option definition - wraps GLib option registration and lookup
 
-var Option = new Lang.Class({
-    Name: "Option",
+import GLib from 'gi://GLib';
 
-    _init(name, optionArg, desc, placeholder, isAction) {
+export class Option {
+    constructor(name, optionArg, desc, placeholder, isAction) {
         this.name = name;
-        this.shortName = this.name.charCodeAt(0);
+        this.shortName = name.charCodeAt(0);
         this.optionArg = optionArg;
         this.desc = desc;
         this.placeholder = placeholder;
         this.isAction = isAction;
-    },
+    }
 
+    // Register this option on a GtkApplication
     registerIn(application) {
         application.add_main_option(
-            this.name, this.shortName, GLib.OptionFlags.IN_MAIN, this.optionArg, this.desc, this.placeholder);
-    },
+            this.name, this.shortName, GLib.OptionFlags.IN_MAIN,
+            this.optionArg, this.desc, this.placeholder
+        );
+    }
 
     in(options) {
         return options.contains(this.name);
-    },
+    }
 
     match(optionName) {
         return this.name === optionName;
-    },
+    }
 
     parameters(options) {
         return options.lookup_value(this.name, null).get_strv();
     }
-});
+}

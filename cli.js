@@ -1,224 +1,173 @@
-/* global print, logError */
+// CLI interface - handles --list, --add, --remove, --status, --force options
 
-const
-    GLib = imports.gi.GLib,
-    Lang = imports.lang,
-    Option = imports.option.Option,
-    PluginRepository = imports.repository.PluginRepository;
+import GLib from 'gi://GLib';
+import { Option } from './option.js';
+import { PluginRepository } from './repository.js';
 
-const
-    FedyOption = {
-        LIST: new Option("list", GLib.OptionArg.NONE, "List available plugins", null, false),
-        ONELINE: new Option("oneline", GLib.OptionArg.NONE, "Render each plugin description on one line", null, false),
-        STATUS: new Option("status", GLib.OptionArg.STRING_ARRAY, "Report plugin status", "<plugin>", true),
-        ADD: new Option("add", GLib.OptionArg.STRING_ARRAY, "Add a plugin", "<plugin>", true),
-        REMOVE: new Option("remove", GLib.OptionArg.STRING_ARRAY, "Remove a plugin", "<plugin>", true),
-        FORCE: new Option("force", GLib.OptionArg.NONE, "Force plugins action", null, false)
-    },
-    FedyOptions = [
-        FedyOption.LIST,
-        FedyOption.ONELINE,
-        FedyOption.STATUS,
-        FedyOption.ADD,
-        FedyOption.REMOVE,
-        FedyOption.FORCE
-    ];
+// Available CLI options
+const OPTS = {
+    LIST:    new Option('list',    GLib.OptionArg.NONE,         'List available plugins',       null,       false),
+    ONELINE: new Option('oneline', GLib.OptionArg.NONE,         'One-line plugin descriptions', null,       false),
+    STATUS:  new Option('status',  GLib.OptionArg.STRING_ARRAY, 'Report plugin status',         '<plugin>', true),
+    ADD:     new Option('add',     GLib.OptionArg.STRING_ARRAY, 'Add a plugin',                 '<plugin>', true),
+    REMOVE:  new Option('remove',  GLib.OptionArg.STRING_ARRAY, 'Remove a plugin',              '<plugin>', true),
+    FORCE:   new Option('force',   GLib.OptionArg.NONE,         'Force plugin action',          null,       false),
+};
+const ALL_OPTS = Object.values(OPTS);
 
-
-var PluginAction = new Lang.Class({
-    Name: "PluginAction",
-
-    _init(option, plugin, forced) {
+// Represents a pending user action on a plugin
+class PluginAction {
+    constructor(option, plugin, forced) {
         this.option = option;
         this.plugin = plugin;
         this.forced = forced;
-    },
-
-    actionLabel() {
-        return this.option.name.charAt(0).toUpperCase() + this.option.name.substr(1);
-    },
-
-    pluginLabel() {
-        return (this.isPluginUnknown()) ? this.plugin.name : this.plugin.label;
-    },
-
-    isCommand() {
-        return !this.isPluginUnknown() && !this.isStatus();
-    },
-
-    isPluginUnknown() {
-        return typeof this.plugin.label === "undefined";
-    },
-
-    isStatus() {
-        return FedyOption.STATUS.match(this.option.name);
     }
-});
 
-var FedyCli = new Lang.Class({
-    Name: "FedyCli",
+    get actionLabel() {
+        return this.option.name.charAt(0).toUpperCase() + this.option.name.slice(1);
+    }
 
-    _init(fedy) {
-        FedyOptions.forEach(option => option.registerIn(fedy.application));
+    get pluginLabel() {
+        return this.isUnknown ? this.plugin.name : this.plugin.label;
+    }
 
-        this.fedy = fedy;
+    get isUnknown() {
+        return typeof this.plugin.label === 'undefined';
+    }
 
-        if (typeof fedy.application.set_option_context_summary !== "undefined") {
-            fedy.application.set_option_context_parameter_string("app.js");
-            fedy.application.set_option_context_description("");
-            fedy.application.set_option_context_summary(
-                "  fedy --list [--oneline]\n" +
-                "  fedy [--force] [--status <plugin>]... [--remove <plugin>]... [--add <plugin>]..."
+    get isStatus() {
+        return OPTS.STATUS.match(this.option.name);
+    }
+
+    get isCommand() {
+        return !this.isUnknown && !this.isStatus;
+    }
+}
+
+export class FedyCli {
+    constructor(app) {
+        this.app = app;
+
+        // Register all options on the GtkApplication
+        ALL_OPTS.forEach(opt => opt.registerIn(app.application));
+
+        if (typeof app.application.set_option_context_summary !== 'undefined') {
+            app.application.set_option_context_parameter_string('app.js');
+            app.application.set_option_context_description('');
+            app.application.set_option_context_summary(
+                '  fedy --list [--oneline]\n' +
+                '  fedy [--force] [--status <plugin>]... [--remove <plugin>]... [--add <plugin>]...'
             );
         }
 
-        this.fedy.application.connect("handle_local_options", Lang.bind(this, this._onOptions));
-    },
-
-    _onOptions(application, options) {
-        if (!this._isCliOptions(options)) {
-            return -1;
-        }
-
-        this.pluginRepository = new PluginRepository(this.fedy);
-
-        const loop = GLib.MainLoop.new(null, false);
-        let promiseOfReports = (FedyOption.LIST.in(options)) ?
-            this._promiseOfCategoryReports(options) :
-            this._promiseOfActionReports(options);
-
-        Promise
-            .all(promiseOfReports)
-            .then(reports => this._printReports(reports))
-            .then(() => loop.quit());
-
-        loop.run();
-
-        return 0;
-    },
-
-    _isCliOptions(options) {
-        return FedyOptions.some(option => option.in(options));
-    },
-
-    _promiseOfCategoryReports(options) {
-        const oneline = FedyOption.ONELINE.in(options);
-        return this.pluginRepository
-            .listCategories()
-            .map(category => {
-                const promiseOfPluginsWithStatuses = this.pluginRepository
-                    .listByCategory(category)
-                    .map(plugin => this.pluginRepository
-                        .promiseOfPluginStatus(plugin)
-                        .then(pluginStatus => [ plugin, pluginStatus ]));
-
-                return Promise
-                    .all(promiseOfPluginsWithStatuses)
-                    .then(pluginsWithStatuses => this._buildCategoryReport(category, pluginsWithStatuses, oneline));
-            });
-    },
-
-    _buildCategoryReport(category, pluginsWithStatuses, oneline) {
-        let report = `Category: ${category}\n`;
-        pluginsWithStatuses.forEach(([ plugin, pluginStatus ]) => {
-            report += this._buildPluginReport(plugin, pluginStatus, oneline);
-        });
-        report += "\n";
-        return report;
-    },
-
-    _buildPluginReport(plugin, pluginStatus, oneline) {
-        const statusCharacter = pluginStatus.isPluginEnable() ? "✓" : "✗",
-            onelineReport = `${statusCharacter} [${plugin.name}] ${plugin.label}\n`,
-            license = (typeof plugin.license !== "undefined") ? `  (${plugin.license})\n` : "";
-        return (oneline) ? onelineReport : `${onelineReport}  ${plugin.description}\n${license}`;
-    },
-
-    _promiseOfActionReports: function (options) {
-        const forced = FedyOption.FORCE.in(options);
-        return FedyOptions
-            .filter(option => option.in(options) && option.isAction)
-            .flatMap(option => this._pluginActions(options, option, forced))
-            .map(pluginActions => this._promiseOfActionReport(pluginActions));
-    },
-
-    _pluginActions(options, option, forced) {
-        return option
-            .parameters(options)
-            .map(pluginName => {
-                let plugin = this.pluginRepository.getByName(pluginName);
-                return new PluginAction(option, plugin, forced);
-            });
-    },
-
-    _promiseOfActionReport(pluginAction) {
-        return this.pluginRepository
-            .promiseOfPluginStatus(pluginAction.plugin)
-            .then(pluginStatus => {
-                if (!this._isCommandRequired(pluginAction, pluginStatus)) {
-                    return this._buildReport(pluginAction, pluginStatus, 0);
-                }
-
-                return this.pluginRepository
-                    .promiseOfCommandStatus(pluginAction.plugin.path, pluginStatus.action.command)
-                    .then(commandStatusCode => this._buildReport(pluginAction, pluginStatus, commandStatusCode));
-            })
-            .catch(e => logError(e));
-    },
-
-    _buildReport(pluginAction, pluginStatus, commandStatusCode) {
-        const actionLabel = pluginAction.actionLabel(),
-            reportPrefix = `${actionLabel} of '${pluginAction.pluginLabel()}'`;
-
-        let report;
-        if (pluginAction.isPluginUnknown()) {
-            report = `✗ ${reportPrefix} fail: plugin name unknown`;
-        } else if (pluginAction.isStatus()) {
-            report = `✓ ${reportPrefix} ${(pluginStatus.isPluginEnable()) ? "enabled" : "disabled"}`;
-        } else if (this._isAlreadyApplied(pluginAction, pluginStatus)) {
-            report = `✓ ${reportPrefix} already done`;
-        } else if (pluginStatus.isMalicious && !pluginAction.forced) {
-            report = `✗ ${reportPrefix} aborted: the plugin is trying to ` +
-                `run the command '${pluginStatus.maliciousPart}' ` +
-                `which might ${pluginStatus.maliciousDescription}. Use -f option to force the execution.`;
-        } else if (commandStatusCode === 0) {
-            report = `✓ ${reportPrefix} (${pluginStatus.action.label}) successfully completed`;
-        } else {
-            report = `✗ ${reportPrefix} (${pluginStatus.action.label}) failed`;
-        }
-
-        return report;
-    },
-
-    _isCommandRequired(pluginAction, pluginStatus) {
-        const isAlreadyApplied = this._isAlreadyApplied(pluginAction, pluginStatus);
-        return !isAlreadyApplied && pluginAction.isCommand() && (!pluginStatus.isMalicious || pluginAction.forced);
-    },
-
-    _isAlreadyApplied(pluginAction, pluginStatus) {
-        switch (pluginAction.option.name) {
-        case FedyOption.ADD.name:
-            return pluginStatus.code === 0;
-        case FedyOption.REMOVE.name:
-            return pluginStatus.code !== 0;
-        default:
-            return false;
-        }
-    },
-
-    _printReports(reports) {
-        print();
-        print("-------");
-        reports.forEach(report => {
-            print(report);
+        app.application.connect('handle_local_options', (_application, options) => {
+            return this._onOptions(options);
         });
     }
 
-});
+    // Returns -1 to continue to GUI, 0 to exit after CLI handling
+    _onOptions(options) {
+        if (!ALL_OPTS.some(opt => opt.in(options))) return -1;
 
-const concat = (x, y) => x.concat(y),
-    flatMap = (f, xs) => xs.map(f).reduce(concat, []);
-Array.prototype.flatMap = function(f) {
-    return flatMap(f, this);
-};
+        this.app.loadConfig();
+        this.app.loadPlugins();
+        const runner = this.app.createCommandRunner();
+        this._repo = new PluginRepository(this.app.plugins, runner);
 
+        const loop = GLib.MainLoop.new(null, false);
+        const promises = OPTS.LIST.in(options)
+            ? this._categoryReports(options)
+            : this._actionReports(options);
+
+        Promise.all(promises)
+            .then(reports => this._print(reports))
+            .then(() => loop.quit());
+
+        loop.run();
+        return 0;
+    }
+
+    // --- List mode ---
+
+    _categoryReports(options) {
+        const oneline = OPTS.ONELINE.in(options);
+        return this._repo.listCategories().map(category => {
+            const statusPromises = this._repo.listByCategory(category).map(plugin =>
+                this._repo.promiseOfPluginStatus(plugin).then(s => [plugin, s])
+            );
+            return Promise.all(statusPromises).then(entries =>
+                this._formatCategory(category, entries, oneline)
+            );
+        });
+    }
+
+    _formatCategory(category, entries, oneline) {
+        let report = `Category: ${category}\n`;
+        for (const [plugin, status] of entries) {
+            const mark = status.isPluginEnable() ? '\u2713' : '\u2717';
+            report += `${mark} [${plugin.name}] ${plugin.label}\n`;
+            if (!oneline) {
+                report += `  ${plugin.description}\n`;
+                if (plugin.license) report += `  (${plugin.license})\n`;
+            }
+        }
+        return report + '\n';
+    }
+
+    // --- Action mode (add/remove/status) ---
+
+    _actionReports(options) {
+        const forced = OPTS.FORCE.in(options);
+        return ALL_OPTS
+            .filter(opt => opt.in(options) && opt.isAction)
+            .flatMap(opt => opt.parameters(options).map(name => {
+                const plugin = this._repo.getByName(name);
+                return new PluginAction(opt, plugin, forced);
+            }))
+            .map(action => this._resolveAction(action));
+    }
+
+    _resolveAction(action) {
+        return this._repo.promiseOfPluginStatus(action.plugin).then(status => {
+            if (!this._needsExecution(action, status)) {
+                return this._formatResult(action, status, 0);
+            }
+            return this._repo
+                .promiseOfCommandStatus(action.plugin.path, status.action.command)
+                .then(code => this._formatResult(action, status, code));
+        }).catch(e => console.error(e));
+    }
+
+    _needsExecution(action, status) {
+        const done = this._alreadyApplied(action, status);
+        return !done && action.isCommand && (!status.isMalicious || action.forced);
+    }
+
+    _alreadyApplied(action, status) {
+        if (OPTS.ADD.match(action.option.name)) return status.code === 0;
+        if (OPTS.REMOVE.match(action.option.name)) return status.code !== 0;
+        return false;
+    }
+
+    _formatResult(action, status, exitCode) {
+        const prefix = `${action.actionLabel} of '${action.pluginLabel}'`;
+
+        if (action.isUnknown) return `\u2717 ${prefix} fail: plugin name unknown`;
+        if (action.isStatus) return `\u2713 ${prefix} ${status.isPluginEnable() ? 'enabled' : 'disabled'}`;
+        if (this._alreadyApplied(action, status)) return `\u2713 ${prefix} already done`;
+
+        if (status.isMalicious && !action.forced) {
+            return `\u2717 ${prefix} aborted: plugin tries to run '${status.maliciousPart}' ` +
+                `which might ${status.maliciousDescription}. Use -f to force.`;
+        }
+
+        return exitCode === 0
+            ? `\u2713 ${prefix} (${status.action.label}) successfully completed`
+            : `\u2717 ${prefix} (${status.action.label}) failed`;
+    }
+
+    _print(reports) {
+        console.log('\n-------');
+        reports.forEach(r => console.log(r));
+    }
+}
