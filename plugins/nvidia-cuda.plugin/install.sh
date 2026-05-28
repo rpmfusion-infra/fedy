@@ -151,7 +151,16 @@ fedora43_cuda_install() {
 }
 
 fedora44_cuda_install() {
-  fedora43_cuda_install
+  fedora_cuda_check_remove 43
+  dnf config-manager addrepo --from-repofile=https://developer.download.nvidia.com/compute/cuda/repos/fedora44/${cuda_arch}/cuda-fedora44.repo
+  # prefer rpmfusion packaged driver
+  dnf install -y xorg-x11-drv-nvidia-cuda
+  dnf mark user xorg-x11-drv-nvidia-cuda
+  dnf config-manager setopt cuda-fedora44-${cuda_arch}.exclude=nvidia-driver,nvidia-modprobe,nvidia-persistenced,nvidia-settings,nvidia-libXNVCtrl,nvidia-xconfig
+}
+
+fedora45_cuda_install() {
+  fedora44_cuda_install
   dnf install -y gcc15-c++
 }
 
@@ -192,7 +201,8 @@ fedora_cuda_install(){
     41) fedora41_cuda_install ;;
     42) fedora42_cuda_install ;;
     43) fedora43_cuda_install ;;
-    44|45) fedora44_cuda_install ;;
+    44) fedora44_cuda_install ;;
+    45|46) fedora45_cuda_install ;;
     *) exit 2 ;;
   esac
 }
