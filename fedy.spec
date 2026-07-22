@@ -23,6 +23,9 @@ Obsoletes: fedy-plugins < 4.5.1-1
 Obsoletes: fedy-release < 5.0.0-4
 Provides: fedy-release = 5.0.0-4
 
+# Signal desktop is currently broken
+Obsoletes: signal-desktop < 8.5.0-1.2
+
 # Mostly needed for all 3rd part repos
 %if 0%{?fedora}
 Requires: dnf5-plugins
