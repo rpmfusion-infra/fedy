@@ -1,0 +1,18 @@
+{
+	"icon": "claude-desktop-unofficial",
+	"label": "Claude Desktop",
+	"description": "Claude's Desktop client made by Anthropic. Originally released as a Debian (.deb) file, altered to work on rpm-based distros by aaddrick.",
+	"license": "Apache-2.0, MIT",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root -s remove.sh"
+		},
+		"status": { "command": "rpm --quiet --query claude-desktop-unofficial" }
+	}
+}
